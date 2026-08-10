@@ -1,0 +1,19 @@
+{
+  // Disable VS Code's native CSS validator so it stops flagging Tailwind's
+  // @tailwind / @apply directives as "Unknown at-rule". The Tailwind CSS
+  // IntelliSense extension then provides the correct highlighting/diagnostics.
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "stylelint.validate": ["css", "html"],
+  // Teach the Tailwind CSS IntelliSense extension to scan CSS files so that
+  // @tailwind / @apply are recognized and class completions work there too.
+  "tailwindCSS.includeLanguages": {
+    "css": "tailwindcss",
+    "scss": "tailwindcss",
+    "html": "tailwindcss",
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "typescriptreact": "typescriptreact"
+  }
+}
