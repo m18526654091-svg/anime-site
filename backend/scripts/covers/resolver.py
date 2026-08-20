@@ -15,7 +15,7 @@ from .myanimelist import MyAnimeListStaticProvider
 
 # 本地维护封面映射文件（人工可持续维护）
 MAPPING_FILE = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))),
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "data",
     "covers_mapping.json",
 )
