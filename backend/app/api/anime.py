@@ -1,12 +1,12 @@
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..deps import get_current_admin, get_current_user, get_optional_user
-from ..models import Anime, Rating, User
+from ..models import Anime, Episode, Rating, User
 from ..schemas import (
     AnimeCreate,
     AnimeOut,
@@ -14,11 +14,22 @@ from ..schemas import (
     AnimeUpdate,
     BulkAnimeIn,
     CategoryStat,
+    EpisodeOut,
+    EpisodesOut,
     RatingCreate,
     RatingOut,
 )
+from ..letter_util import compute_letter
 
 router = APIRouter(prefix="/api/anime", tags=["anime"])
+
+# 季度 -> 首播月份范围（12/1/2 冬季，3/4/5 春季，6/7/8 夏季，9/10/11 秋季）
+SEASON_MONTHS: dict[str, tuple[int, ...]] = {
+    "winter": (12, 1, 2),
+    "spring": (3, 4, 5),
+    "summer": (6, 7, 8),
+    "autumn": (9, 10, 11),
+}
 
 
 def _rating_stats(db: Session, anime_id: int) -> tuple[float, int]:
@@ -46,35 +57,65 @@ def list_anime(
     tag: Optional[str] = None,
     year: Optional[int] = None,
     region: Optional[str] = None,
+    status: Optional[str] = None,
+    letter: Optional[str] = None,
     author: Optional[str] = None,
     studio: Optional[str] = None,
-    sort: Optional[str] = Query(default=None, regex="^(latest|score|year)$"),
+    sort: Optional[str] = Query(default=None, regex="^(latest|score|year|quality)$"),
+    season: Optional[str] = Query(default=None, regex="^(winter|spring|summer|autumn)$"),
     page: Optional[int] = None,
     page_size: int = 18,
     db: Session = Depends(get_db),
 ):
     query = db.query(Anime)
     if q:
-        query = query.filter(Anime.title.contains(q))
+        # 中文名 / 原名 / slug 模糊匹配（支持"海贼"→海贼王、One Piece 等）
+        query = query.filter(
+            or_(
+                Anime.title.contains(q),
+                Anime.chinese_title.contains(q),
+                Anime.slug.contains(q),
+            )
+        )
     if category:
-        query = query.filter(Anime.genre == category)
+        # genre 存为多值字符串（如 "动作/奇幻/战斗"），用子串匹配以兼容前端
+        # genreMatch 的分词匹配行为，避免因精确等值匹配导致 /categories/动作 返回 0 结果。
+        query = query.filter(Anime.genre.contains(category))
     if tag:
         query = query.filter(Anime.tags.contains(tag))
     if year:
         query = query.filter(Anime.year == year)
     if region:
         query = query.filter(Anime.region == region)
+    if status:
+        query = query.filter(Anime.status == status)
+    if letter:
+        query = query.filter(func.upper(Anime.letter) == letter.strip().upper())
     if author:
         query = query.filter(Anime.author == author)
     if studio:
-        query = query.filter(Anime.studio == studio)
+        # 大小写不敏感匹配，兼容 /studio/mappa 与 "Mappa" 数据
+        query = query.filter(func.lower(Anime.studio) == studio.strip().lower())
+    if season:
+        # 季度筛选：结合 year 限定年份；有 month 数据的精确匹配，
+        # month 为空（旧数据）时保留该年作品，避免季度页空白。
+        months = SEASON_MONTHS[season]
+        season_filter = Anime.month.is_(None)
+        for m in months:
+            season_filter = season_filter | (Anime.month == m)
+        query = query.filter(season_filter)
 
     ordering = {
         "score": Anime.score.desc(),
         "year": Anime.year.desc(),
+        "quality": (Anime.quality_score.desc(), Anime.score.desc(), Anime.year.desc()),
         "latest": Anime.id.desc(),
     }.get(sort or "latest", Anime.id.desc())
-    query = query.order_by(ordering)
+    # 复合排序（quality 优先）需展开为多个参数
+    if isinstance(ordering, tuple):
+        query = query.order_by(*ordering)
+    else:
+        query = query.order_by(ordering)
 
     if page is None:
         return [
@@ -85,8 +126,7 @@ def list_anime(
     page_size = min(max(int(page_size), 1), 100)
     total = query.count()
     items = (
-        query.order_by(ordering)
-        .offset((page - 1) * page_size)
+        query.offset((page - 1) * page_size)
         .limit(page_size)
         .all()
     )
@@ -111,6 +151,20 @@ def list_categories(db: Session = Depends(get_db)):
         .all()
     )
     return [CategoryStat(genre=g, count=c) for g, c in rows]
+
+
+@router.get("/{anime_id}/episodes", response_model=EpisodesOut)
+def list_episodes(anime_id: int, db: Session = Depends(get_db)):
+    anime = db.get(Anime, anime_id)
+    if not anime:
+        raise HTTPException(status_code=404, detail="Anime not found")
+    items = (
+        db.query(Episode)
+        .filter(Episode.anime_id == anime_id)
+        .order_by(Episode.episode_number.asc())
+        .all()
+    )
+    return EpisodesOut(items=items, total=len(items))
 
 
 @router.get("/tags")
@@ -143,6 +197,51 @@ def list_years(db: Session = Depends(get_db)):
         .all()
     )
     return [{"year": y, "count": c} for y, c in rows if y is not None]
+
+
+@router.get("/studios")
+def list_studios(db: Session = Depends(get_db)):
+    """返回有作品的制作公司列表（含作品数），用于 studio 索引页与 sitemap。"""
+    rows = (
+        db.execute(
+            select(Anime.studio, func.count(Anime.id))
+            .where(Anime.studio != "")
+            .group_by(Anime.studio)
+            .order_by(func.count(Anime.id).desc())
+        )
+        .all()
+    )
+    return [{"studio": s, "count": c} for s, c in rows if (s or "").strip()]
+
+
+@router.get("/seasons")
+def list_seasons(db: Session = Depends(get_db)):
+    """返回有数据覆盖的 (year, season) 组合，用于季度新番页 sitemap。
+
+    有 month 数据的按实际首播月精确匹配季度；month 为空（旧数据）时
+    保留该年份的全部四个季度（季度页会按年份展示，保证页面非空）。
+    """
+    result: dict[tuple[int, str], None] = {}
+    # 有 month 数据 → 精确季度
+    rows = db.execute(
+        select(Anime.year, Anime.month).where(Anime.month.is_not(None))
+    ).all()
+    for y, m in rows:
+        if y is None:
+            continue
+        for season, months in SEASON_MONTHS.items():
+            if m in months:
+                result.setdefault((y, season), None)
+    # 无 month 数据的年份 → 四个季度都保留（回退按年展示）
+    yrows = db.execute(select(Anime.year).where(Anime.year.is_not(None))).all()
+    for (y,) in yrows:
+        for season in SEASON_MONTHS:
+            result.setdefault((y, season), None)
+
+    order = {"winter": 0, "spring": 1, "summer": 2, "autumn": 3}
+    out = [{"year": y, "season": s} for (y, s) in result]
+    out.sort(key=lambda x: (x["year"], order[x["season"]]), reverse=True)
+    return out
 
 
 @router.get("/people")
@@ -193,9 +292,49 @@ def list_regions(db: Session = Depends(get_db)):
     return [{"region": r, "count": c} for r, c in rows]
 
 
+@router.get("/statuses")
+def list_statuses(db: Session = Depends(get_db)):
+    rows = (
+        db.execute(
+            select(Anime.status, func.count(Anime.id))
+            .where(Anime.status != "")
+            .group_by(Anime.status)
+            .order_by(func.count(Anime.id).desc())
+        )
+        .all()
+    )
+    return [{"status": s, "count": c} for s, c in rows]
+
+
+@router.get("/letters")
+def list_letters(db: Session = Depends(get_db)):
+    rows = (
+        db.execute(
+            select(Anime.letter, func.count(Anime.id))
+            .where(Anime.letter != "")
+            .group_by(Anime.letter)
+            .order_by(Anime.letter)
+        )
+        .all()
+    )
+    return [{"letter": l, "count": c} for l, c in rows]
+
+
 @router.get("/{anime_id}", response_model=AnimeOut)
 def get_anime(anime_id: int, db: Session = Depends(get_db)):
     anime = db.get(Anime, anime_id)
+    if not anime:
+        raise HTTPException(status_code=404, detail="Anime not found")
+    return _serialize(db, anime)
+
+
+@router.get("/by-slug/{slug}", response_model=AnimeOut)
+def get_anime_by_slug(slug: str, db: Session = Depends(get_db)):
+    """按 SEO slug 读取一部动漫（slug 为空则回退用 id 匹配）。"""
+    slug = (slug or "").strip()
+    if not slug:
+        raise HTTPException(status_code=404, detail="Anime not found")
+    anime = db.query(Anime).filter(func.lower(Anime.slug) == slug.lower()).first()
     if not anime:
         raise HTTPException(status_code=404, detail="Anime not found")
     return _serialize(db, anime)
@@ -220,20 +359,55 @@ def bulk_create_anime(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_admin),
 ):
-    existing = {t for (t,) in db.query(Anime.title).all()}
+    """Bulk import / upsert anime (JSON array of AnimeCreate).
+
+    - dedup by title (existing rows updated, new rows inserted)
+    - normalizes tags (str/list -> "/"-joined)
+    - auto-generates `letter` via pinyin / ascii first letter
+    - fills sensible defaults
+    """
+    existing_titles = {t for (t,) in db.query(Anime.title).all()}
     added = 0
+    updated = 0
     skipped = 0
+    batch = 0
     for item in data.items:
         title = (item.title or "").strip()
-        if not title or title in existing:
+        if not title:
             skipped += 1
             continue
-        db.add(Anime(**item.model_dump()))
-        existing.add(title)
-        added += 1
+        payload = item.model_dump()
+        tags = payload.get("tags")
+        if isinstance(tags, (list, tuple)):
+            payload["tags"] = "/".join(str(t).strip() for t in tags if str(t).strip())
+        elif isinstance(tags, str):
+            payload["tags"] = "/".join(
+                t.strip() for t in tags.replace(",", "/").replace("，", "/").split("/") if t.strip()
+            )
+        else:
+            payload["tags"] = ""
+        payload.setdefault("chinese_title", payload.get("title") or "")
+        payload.setdefault("cover", "")
+        payload.setdefault("description", "")
+        payload.setdefault("genre", "")
+        payload.setdefault("year", item.year if item.year is not None else None)
+        payload.setdefault("score", 0.0)
+        payload["letter"] = compute_letter(payload.get("chinese_title") or payload.get("title") or "").upper()
+        if title in existing_titles:
+            anime = db.query(Anime).filter(Anime.title == title).first()
+            for k, v in payload.items():
+                if k != "title":
+                    setattr(anime, k, v)
+            updated += 1
+        else:
+            db.add(Anime(**payload))
+            existing_titles.add(title)
+            added += 1
+        batch += 1
+        if batch % 500 == 0:
+            db.commit()
     db.commit()
-    total = db.query(Anime).count()
-    return {"added": added, "skipped": skipped, "total": total}
+    return {"added": added, "updated": updated, "skipped": skipped, "total": db.query(Anime).count()}
 
 
 @router.put("/{anime_id}", response_model=AnimeOut)

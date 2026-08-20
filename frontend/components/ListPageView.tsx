@@ -16,13 +16,12 @@ export default function ListPageView({
   title,
   subtitle,
   items,
-  total,
   page,
   pages,
   pageUrl,
 }: Props) {
   const linkCls =
-    "h-9 w-9 rounded-xl border border-white/10 text-sm font-semibold text-slate-300 transition hover:border-pink-500/60 hover:text-white";
+    "flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-sm font-semibold text-slate-300 transition hover:border-pink-500/60 hover:text-white";
 
   return (
     <div className="mx-auto max-w-7xl animate-fade-in px-4 py-8">
@@ -81,10 +80,6 @@ export default function ListPageView({
           )}
         </nav>
       )}
-
-      <p className="mt-4 text-center text-xs text-slate-500">
-        共 {total} 部作品
-      </p>
     </div>
   );
 }

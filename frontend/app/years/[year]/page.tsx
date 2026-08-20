@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ListPageView from "@/components/ListPageView";
 import { fetchAnimeByFilter } from "@/lib/api";
 import type { AnimePage } from "@/types";
@@ -39,14 +40,28 @@ export default async function YearPage({
   }
 
   return (
-    <ListPageView
-      title={`${year}年动漫`}
-      subtitle={`共收录 ${data.total} 部${year}年动漫作品`}
-      items={data.items}
-      total={data.total}
-      page={data.page}
-      pages={data.pages}
-      pageUrl={(p) => `/years/${year}?page=${p}`}
-    />
+    <div>
+      {/* 站内导航：高分/季度/年份入口 */}
+      <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-4 pt-6 text-sm">
+        <Link href="/high-score" className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-slate-300 transition hover:border-pink-500/50 hover:text-white">
+          高分推荐
+        </Link>
+        <Link href="/seasons" className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-slate-300 transition hover:border-pink-500/50 hover:text-white">
+          季度新番
+        </Link>
+        <Link href="/years" className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-slate-300 transition hover:border-pink-500/50 hover:text-white">
+          全部年份
+        </Link>
+      </div>
+      <ListPageView
+        title={`${year}年动漫`}
+        subtitle={`${year} 年播出与收录的动漫作品精选。`}
+        items={data.items}
+        total={data.total}
+        page={data.page}
+        pages={data.pages}
+        pageUrl={(p) => `/years/${year}?page=${p}`}
+      />
+    </div>
   );
 }

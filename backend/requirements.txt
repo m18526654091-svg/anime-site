@@ -9,4 +9,5 @@ pydantic-settings
 httpx
 psycopg2-binary
 pytest
+pypinyin
 

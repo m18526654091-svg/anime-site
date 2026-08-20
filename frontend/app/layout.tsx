@@ -1,9 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
 
+// Next.js 14: themeColor 应放在独立 viewport export（避免 metadata 警告）
+export const viewport: Viewport = {
+  themeColor: "#0f172a",
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     default: "AnimeHub - 免费在线动漫资源站",
     template: "%s | AnimeHub",
@@ -11,6 +18,17 @@ export const metadata: Metadata = {
   description: "AnimeHub 是免费的在线动漫资源站，提供热门动漫、最新更新、分类浏览与详细动漫资料。每天更新，支持手机与电脑访问。",
   keywords: ["动漫", "在线动漫", "动漫资源站", "新番", "动漫排行榜", "免费动漫", "动漫详情", "热门动漫"],
   authors: [{ name: "AnimeHub" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "zh_CN",
@@ -18,14 +36,26 @@ export const metadata: Metadata = {
     siteName: "AnimeHub",
     title: "AnimeHub - 免费在线动漫资源站",
     description: "收录热门动漫与最新更新，分类清晰，即点即看。",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AnimeHub - 免费在线动漫资源站",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "AnimeHub - 免费在线动漫资源站",
     description: "收录热门动漫与最新更新，分类清晰，即点即看。",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
+  },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   },
 };
 
@@ -40,10 +70,83 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <main>{children}</main>
-          <footer className="mt-12 border-t border-white/10 py-6 text-center text-sm text-slate-500">
-            <p>
-              Anime<span className="text-pink-500">Hub</span> © 2026 · Free anime directory · Data from real backend API
-            </p>
+                    <footer className="mt-16 border-t border-white/10 py-10">
+            <div className="mx-auto max-w-7xl px-4">
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-4">
+                <div>
+                  <div className="mb-3 flex items-center gap-2 text-lg font-extrabold text-white">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-pink-500 to-indigo-600 text-sm font-black text-white">
+                    A
+                  </span>
+                    Anime<span className="text-pink-500">Hub</span>
+                  </div>
+                  <p className="text-xs text-slate-400">
+                    免费在线动漫资料站，不储存视频。
+                  </p>
+                </div>
+
+                <div>
+                  <p className="mb-3 text-sm font-bold text-white">导航</p>
+                  <ul className="space-y-2 text-sm text-slate-300">
+                    <li>
+                      <Link href="/" className="hover:text-pink-400">首页</Link>
+                    </li>
+                    <li>
+                      <Link href="/top-anime/" className="hover:text-pink-400">热门榜单</Link>
+                    </li>
+                    <li>
+                      <Link href="/latest-anime/" className="hover:text-pink-400">最新更新</Link>
+                    </li>
+                    <li>
+                      <Link href="/high-score/" className="hover:text-pink-400">高分推荐</Link>
+                    </li>
+                    <li>
+                      <Link href="/categories/" className="hover:text-pink-400">全部分类</Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="mb-3 text-sm font-bold text-white">热门分类</p>
+                  <ul className="flex flex-wrap gap-2 text-sm">
+                    {["热血", "奇幻", "战斗", "校园", "恋爱", "悬疑", "科幻", "日常"].map(
+                      (g) => (
+                        <li key={g}>
+                          <Link
+                            href={`/categories/${encodeURIComponent(g)}/`}
+                            className="rounded-md bg-white/5 px-2.5 py-1 text-slate-300 transition hover:bg-white/10 hover:text-pink-300"
+                          >
+                            {g}
+                          </Link>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="mb-3 text-sm font-bold text-white">年份</p>
+                  <ul className="flex flex-wrap gap-2 text-sm">
+                    {[2024, 2023, 2022, 2021, 2020].map((y) => (
+                      <li key={y}>
+                        <Link
+                          href={`/years/${y}/`}
+                          className="rounded-md bg-white/5 px-2.5 py-1 text-slate-300 transition hover:bg-white/10 hover:text-pink-300"
+                        >
+                          {y}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 border-t border-white/10 pt-5 text-center text-sm text-slate-500">
+                <p>
+                  Anime<span className="text-pink-500">Hub</span> © 2026 · Free anime directory · Data from real backend API
+                </p>
+              </div>
+            </div>
           </footer>
         </Providers>
       </body>

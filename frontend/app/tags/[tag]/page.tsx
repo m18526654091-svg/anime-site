@@ -42,7 +42,7 @@ export default async function TagPage({
   return (
     <ListPageView
       title={`「${tag}」动漫`}
-      subtitle={`共收录 ${data.total} 部与「${tag}」相关的动漫作品`}
+      subtitle={`与「${tag}」标签相关的动漫作品精选。`}
       items={data.items}
       total={data.total}
       page={data.page}

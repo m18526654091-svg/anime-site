@@ -128,10 +128,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <p className="mt-4 text-center text-xs text-slate-500">
-            提示：系统第一个注册的用户自动成为管理员
-          </p>
-          <p className="mt-3 text-center text-sm text-slate-400">
+                              <p className="mt-3 text-center text-sm text-slate-400">
             已有账号？
             <Link href="/login" className="ml-1 font-medium text-pink-400 hover:underline">
               去登录

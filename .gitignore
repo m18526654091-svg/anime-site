@@ -39,9 +39,6 @@ Thumbs.db
 npm-debug.log*
 
 # ---------- 部署辅助（不使用 Docker） ----------
-docker-compose.yml
-Dockerfile
-.dockerignore
 
 # ---------- 旧版本备份/归档（不提交） ----------
 AnimeHub-Platform-*/
