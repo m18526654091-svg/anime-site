@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     description: "收录热门动漫与最新更新，分类清晰，即点即看。",
     images: ["/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  // favicon 由 Next.js App Router 约定自动生成：
+  //   app/icon.svg + app/icon.png（浏览器标签页）、app/apple-icon.png（Apple touch）、
+  //   public/favicon.ico（旧浏览器兼容）。
   alternates: {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
   },
