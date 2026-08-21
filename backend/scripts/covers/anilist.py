@@ -14,13 +14,17 @@ Stage9-B 升级：
 from __future__ import annotations
 
 import json
+import logging
 import os
 import random
 import time
+import urllib.error
 import urllib.request
 from typing import Any, Optional
 
 from .base import CoverProvider
+
+logger = logging.getLogger("animehub.covers.anilist")
 
 ANILIST_ENDPOINT = "https://graphql.anilist.co"
 
@@ -29,6 +33,14 @@ QUERY_CANDIDATES = 5
 
 # 最低接受阈值（标题匹配权重 0.65 + 年份加成后需达标）
 MIN_SCORE = 60.0
+
+# ---- 全局请求节流（Stage 9-G）----
+# AniList 官方约 30 requests/minute 时开始降级，且有 burst limiter。
+# 目标速率 20~24 req/min，故每次真实 HTTP 请求最小间隔 ~2.7s（60/22）。
+RATE_LIMIT_INTERVAL = 60.0 / 22.0
+
+# 每次请求允许的最大尝试次数（HTTP/GraphQL 429 按 Retry-After/限流信息退避后重试）
+MAX_ATTEMPTS = 3
 
 _QUERY = (
     """
@@ -78,19 +90,33 @@ class AniListProvider(CoverProvider):
     def __init__(self, timeout: int = 15) -> None:
         self.timeout = timeout
         self.aliases = _load_aliases()
+        # 全局节流：记录上一次真实 HTTP 请求的时间（按每次 HTTP request 节流）
+        self._last_request_time = 0.0
 
-    def _fetch_candidates(self, search: str) -> list[dict[str, Any]]:
-        """向 AniList 搜索并返回结构化候选列表。
+    def _throttle(self) -> None:
+        """每次真实 HTTP 请求前调用：确保与上一次请求间隔 >= RATE_LIMIT_INTERVAL。
 
-        批量稳定性（Stage 9-F）：单次请求失败最多重试 3 次尝试，
-        第 2/3 次使用 1~2s 随机退避，缓解限流/网络抖动导致的批量偶发失败；
-        重试耗尽后异常抛给调用方，由 search_candidates 继续尝试下一查询词，
-        避免一次网络异常就快速判定「无候选」。不改变候选评分逻辑。
+        多查询词 / retry 都必须经过同一节流器，避免连续请求形成 burst。
         """
-        body = json.dumps({"query": _QUERY, "variables": {"search": search}}).encode("utf-8")
+        now = time.monotonic()
+        if self._last_request_time:
+            elapsed = now - self._last_request_time
+            if elapsed < RATE_LIMIT_INTERVAL:
+                time.sleep(RATE_LIMIT_INTERVAL - elapsed)
+        self._last_request_time = time.monotonic()
+
+    def _post(self, body: bytes) -> dict:
+        """发送一次 GraphQL POST（经全局节流），返回 JSON dict。
+
+        - HTTP 429：读取 Retry-After，至少等待该时间后重试（有限次数）；
+        - GraphQL errors 含 429 / Too Many Requests / rate limit：按限流信息退避后重试；
+        - 其他 GraphQL 错误：返回 {}（安全处理，调用方继续下一查询词，不阻断批次）；
+        - 其他网络异常：短退避重试，耗尽后抛出由调用方处理。
+        响应头 X-RateLimit-* 仅输出 debug 日志。
+        """
         last_exc: Optional[Exception] = None
-        data: Optional[dict] = None
-        for attempt in range(3):
+        for attempt in range(MAX_ATTEMPTS):
+            self._throttle()
             try:
                 req = urllib.request.Request(
                     ANILIST_ENDPOINT,
@@ -103,15 +129,84 @@ class AniListProvider(CoverProvider):
                     method="POST",
                 )
                 with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                    limit = resp.headers.get("X-RateLimit-Limit")
+                    remaining = resp.headers.get("X-RateLimit-Remaining")
+                    if limit or remaining:
+                        logger.debug(
+                            "[anilist] rate limit headers: limit=%s remaining=%s", limit, remaining
+                        )
                     data = json.loads(resp.read().decode("utf-8"))
-                break
-            except Exception as exc:  # noqa: BLE001 - 重试耗尽后抛给调用方
+            except urllib.error.HTTPError as exc:
+                if exc.code == 429:
+                    retry_after = (exc.headers or {}).get("Retry-After")
+                    try:
+                        wait = max(float(retry_after), 1.0) if retry_after else 2.0
+                    except (TypeError, ValueError):
+                        wait = 2.0
+                    logger.warning(
+                        "[anilist] HTTP 429 attempt=%d Retry-After=%r wait=%.1fs",
+                        attempt + 1,
+                        retry_after,
+                        wait,
+                    )
+                    last_exc = exc
+                    if attempt < MAX_ATTEMPTS - 1:
+                        time.sleep(wait)
+                        continue
+                    raise exc  # 有限次数耗尽，抛给调用方（继续下一查询词）
                 last_exc = exc
-                if attempt < 2:
+                if attempt < MAX_ATTEMPTS - 1:
                     time.sleep(random.uniform(1.0, 2.0))
-        if data is None:
-            if last_exc is not None:
-                raise last_exc
+                    continue
+                raise exc
+            except Exception as exc:  # noqa: BLE001 - 网络/解析异常
+                last_exc = exc
+                if attempt < MAX_ATTEMPTS - 1:
+                    time.sleep(random.uniform(1.0, 2.0))
+                    continue
+                raise exc
+
+            # HTTP 200：检查 GraphQL errors（限流可能在 GraphQL 层返回）
+            errs = (data or {}).get("errors")
+            if errs:
+                retry_after = None
+                for e in errs:
+                    st = e.get("status")
+                    msg = str((e.get("message") or "") + " " + (e.get("error") or "")).lower()
+                    if st == 429 or "too many requests" in msg or "rate limit" in msg:
+                        retry_after = e.get("retryAfter") or e.get("retry_after")
+                        break
+                if retry_after is not None:
+                    try:
+                        wait = max(float(retry_after), 1.0)
+                    except (TypeError, ValueError):
+                        wait = 2.0
+                    logger.warning(
+                        "[anilist] GraphQL 429 attempt=%d wait=%.1fs errors=%s",
+                        attempt + 1,
+                        wait,
+                        [e.get("status") for e in errs],
+                    )
+                    if attempt < MAX_ATTEMPTS - 1:
+                        time.sleep(wait)
+                        continue
+                    # 尝试耗尽：按无候选处理，不阻断
+                    return {}
+                # 其他 GraphQL 错误：安全返回空，不阻断批次
+                logger.debug("[anilist] GraphQL errors ignored: %s", errs)
+                return {}
+            return data
+        return {}
+
+    def _fetch_candidates(self, search: str) -> list[dict[str, Any]]:
+        """向 AniList 搜索并返回结构化候选列表。
+
+        Stage 9-G：所有真实 HTTP 请求都经全局节流（_throttle）与 _post 的
+        429 / GraphQL 限流重试处理。不改变候选评分逻辑。
+        """
+        body = json.dumps({"query": _QUERY, "variables": {"search": search}}).encode("utf-8")
+        data = self._post(body)
+        if not data:
             return []
         page = (data.get("data") or {}).get("Page") or {}
         media = page.get("media") or []
