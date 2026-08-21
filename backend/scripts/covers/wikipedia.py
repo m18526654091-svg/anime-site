@@ -23,6 +23,18 @@ _HEADERS = {
 _BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"}
 _OG_RE = re.compile(r'<meta property="og:image" content="([^"]+)"')
 
+# 明显的非动漫海报特征（Stage 9-C）：漫画单行本 / 卷 / Logo / 轻小说。
+# 命中这些特征的 Wikimedia 图片不作为动漫封面（继续交给下一来源或 fallback）。
+_OBVIOUS_BAD_MARKERS = ("manga", "vol", "volume", "comic", "logo", "light_novel", "novel")
+
+
+def _is_obvious_bad_cover(url: str) -> bool:
+    """URL path（不含 query）含明显非动漫海报特征时判定为坏封面。"""
+    if not url:
+        return True
+    path = url.split("?", 1)[0].lower()
+    return any(m in path for m in _OBVIOUS_BAD_MARKERS)
+
 
 def _clean(src: str) -> str:
     """去掉 wikimedia 地址附带的 UTM 参数。"""
@@ -71,7 +83,7 @@ class WikipediaZhProvider(CoverProvider):
                 candidates.append(c)
         for cand in candidates:
             img = self._summary_image(cand) or self._og_image(cand)
-            if img:
+            if img and not _is_obvious_bad_cover(img):
                 return img
         return None
 

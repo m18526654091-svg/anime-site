@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import json
 import os
+import random
+import time
 import urllib.request
 from typing import Any, Optional
 
@@ -78,20 +80,37 @@ class AniListProvider(CoverProvider):
         self.aliases = _load_aliases()
 
     def _fetch_candidates(self, search: str) -> list[dict[str, Any]]:
-        """向 AniList 搜索并返回结构化候选列表。网络异常抛出由调用方捕获。"""
+        """向 AniList 搜索并返回结构化候选列表。
+
+        单次请求异常做短重试（最多 2 次尝试，0.8~1.5s 随机退避），
+        重试耗尽后异常抛给调用方处理。不改变候选评分逻辑。
+        """
         body = json.dumps({"query": _QUERY, "variables": {"search": search}}).encode("utf-8")
-        req = urllib.request.Request(
-            ANILIST_ENDPOINT,
-            data=body,
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "User-Agent": "AnimeHub-Importer/1.0 (SEO content pipeline)",
-            },
-            method="POST",
-        )
-        with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
+        last_exc: Optional[Exception] = None
+        data: Optional[dict] = None
+        for attempt in range(2):
+            try:
+                req = urllib.request.Request(
+                    ANILIST_ENDPOINT,
+                    data=body,
+                    headers={
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "User-Agent": "AnimeHub-Importer/1.0 (SEO content pipeline)",
+                    },
+                    method="POST",
+                )
+                with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                break
+            except Exception as exc:  # noqa: BLE001 - 重试耗尽后抛给调用方
+                last_exc = exc
+                if attempt == 0:
+                    time.sleep(random.uniform(0.8, 1.5))
+        if data is None:
+            if last_exc is not None:
+                raise last_exc
+            return []
         page = (data.get("data") or {}).get("Page") or {}
         media = page.get("media") or []
         out: list[dict[str, Any]] = []
