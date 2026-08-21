@@ -37,20 +37,21 @@ def load_local_mapping() -> dict:
 def build_resolvers(enable_network: bool = True, mapping: Optional[dict] = None) -> List[CoverProvider]:
     """构建可插拔的封面提供方列表（按 priority 升序）。
 
-    优先级：本地 mapping（最稳） → MyAnimeList 静态 → Wikipedia（公开） → AniList（联网后备）。
+    优先级（Stage 9-C）：本地 mapping（最稳） → MyAnimeList 静态 → AniList（真实海报主源）
+    → Wikipedia（兜底，可能返回漫画 Vol.1 / Logo，不作为优先源）。
     """
-    from .wikipedia import WikipediaZhProvider
-
     providers: List[CoverProvider] = [LocalMappingProvider(mapping or {})]
     providers.append(MyAnimeListStaticProvider())
     if enable_network:
-        providers.append(WikipediaZhProvider())
         try:
             from .anilist import AniListProvider
 
             providers.append(AniListProvider())
-        except Exception:  # noqa: BLE001 - AniList 非主要源，失败不阻断
+        except Exception:  # noqa: BLE001 - AniList 异常不阻断
             pass
+        from .wikipedia import WikipediaZhProvider
+
+        providers.append(WikipediaZhProvider())
     return sorted(providers, key=lambda p: p.priority)
 
 

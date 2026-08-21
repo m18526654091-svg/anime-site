@@ -7,9 +7,13 @@
 - 读取数据库当前 Anime 数据（SQLite/PostgreSQL 均可，通过 SessionLocal）；
 - 只处理 cover 为空或占位图（placehold.co 等）的记录；
 - 使用 build_resolvers()/resolve_cover() 依序尝试：LocalMapping → MyAnimeListStatic
-  → Wikipedia → AniList；
+  → AniList → Wikipedia；
 - 成功则写回 Anime.cover，并同步更新 data/covers_mapping.json；
 - 已存在的真实封面绝不被覆盖；占位图失败保留 fallback（前端展示站内渐变占位）。
+
+Stage 9-C 新增：
+- --suggest-wikipedia：扫描已有 Wikimedia 封面，若 AniList 能找到更高置信候选
+  （score >= MIN_SCORE），仅打印建议替换，绝不写库。
 
 设计：
 - 默认运行安全（--dry-run 只打印不写库）；
@@ -29,11 +33,15 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."
 from app.database import SessionLocal  # noqa: E402
 from app.models import Anime  # noqa: E402
 from scripts.covers import build_resolvers, resolve_cover  # noqa: E402
+from scripts.covers.anilist import AniListProvider, MIN_SCORE  # noqa: E402
 from scripts.covers.resolver import MAPPING_FILE  # noqa: E402
 from scripts.normalize import is_placeholder_cover  # noqa: E402
 
 # 请求间隔（秒）：避免触发各来源 API 限流
 REQUEST_DELAY = 1.0
+
+# Wikimedia 封面前缀（用于 --suggest-wikipedia 扫描）
+WIKIMEDIA_PREFIX = "https://upload.wikimedia.org/"
 
 
 def source_of(url: str) -> str:
@@ -66,10 +74,45 @@ def save_mapping(mapping: dict) -> None:
         json.dump(mapping, f, ensure_ascii=False, indent=2)
 
 
+def suggest_wikipedia_replacements(db, anilist: AniListProvider, limit: int) -> None:
+    """扫描已有 Wikimedia 封面；AniList 有更高置信候选时仅打印建议（只读，不写库）。
+
+    判定：AniList best 候选 score >= MIN_SCORE 且封面与当前 Wikimedia URL 不同。
+    """
+    query = db.query(Anime).filter(Anime.cover.like(f"{WIKIMEDIA_PREFIX}%")).order_by(Anime.id.asc())
+    rows = query.all()
+    if limit:
+        rows = rows[:limit]
+    print(f"Wikimedia 封面数: {len(rows)}（limit={limit or '全部'}）")
+    suggestions = 0
+    for a in rows:
+        key = (a.chinese_title or a.title or "").strip()
+        time.sleep(REQUEST_DELAY)
+        r = anilist.search_candidates((a.title or ""), (a.chinese_title or ""), a.year)
+        best = r.get("best")
+        if not best or best.get("score", 0) < MIN_SCORE or not best.get("coverImage"):
+            continue
+        if best["coverImage"] == (a.cover or "").strip():
+            continue
+        suggestions += 1
+        print(
+            f"  [建议] {key} -> AniList score={best.get('score')} "
+            f"year={best.get('seasonYear')} format={best.get('format')}"
+        )
+        print(f"         当前(wikipedia): {(a.cover or '')[:90]}")
+        print(f"         建议(anilist)  : {best['coverImage'][:90]}")
+    print(f"完成: 建议替换 {suggestions} 条（仅建议，未写库）")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="批量回填缺失封面")
     parser.add_argument("--limit", type=int, default=50, help="单次最多处理条数")
     parser.add_argument("--dry-run", action="store_true", help="只打印，不写库")
+    parser.add_argument(
+        "--suggest-wikipedia",
+        action="store_true",
+        help="扫描 Wikimedia 封面，AniList 有更高置信候选时仅打印建议（只读，不写库）",
+    )
     args = parser.parse_args()
 
     providers = build_resolvers()
@@ -77,6 +120,13 @@ def main() -> None:
 
     db = SessionLocal()
     try:
+        if args.suggest_wikipedia:
+            anilist_provider = next((p for p in providers if isinstance(p, AniListProvider)), None)
+            if anilist_provider is None:
+                print("AniList provider 不可用，无法执行 --suggest-wikipedia")
+                return
+            suggest_wikipedia_replacements(db, anilist_provider, args.limit)
+            return
         total = db.query(Anime).count()
         # 全量查询后在 Python 中过滤空/占位封面：占位图（如 placehold.co）的 cover
         # 非空，若在 SQL 阶段用 (cover IS NULL OR cover='') 筛选会被提前排除，导致

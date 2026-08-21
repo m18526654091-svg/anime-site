@@ -69,7 +69,9 @@ def _load_aliases() -> dict:
 
 
 class AniListProvider(CoverProvider):
-    priority = 10
+    # Stage 9-C：priority 6，介于 MyAnimeListStatic(5) 与 WikipediaZh(8) 之间，
+    # 保证按 LocalMapping → MAL → AniList → Wikipedia 顺序尝试。
+    priority = 6
 
     def __init__(self, timeout: int = 15) -> None:
         self.timeout = timeout

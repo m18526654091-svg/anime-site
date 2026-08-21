@@ -34,5 +34,23 @@
   },
   "红辣椒": {
     "search": ["Paprika"]
+  },
+  "石纪元": {
+    "search": ["Dr. Stone", "Dr.STONE"]
+  },
+  "五等分的新娘": {
+    "search": ["5-toubun no Hanayome"]
+  },
+  "我的英雄学院": {
+    "search": ["Boku no Hero Academia"]
+  },
+  "名侦探柯南": {
+    "search": ["Detective Conan"]
+  },
+  "钢之炼金术师FA": {
+    "search": ["Fullmetal Alchemist: Brotherhood"]
+  },
+  "叛逆的鲁路修": {
+    "search": ["Code Geass: Hangyaku no Lelouch"]
   }
 }
