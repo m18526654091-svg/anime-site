@@ -58,5 +58,38 @@
   },
   "暗杀教室": {
     "search": ["Ansatsu Kyoushitsu", "Assassination Classroom"]
+  },
+  "头文字D": {
+    "search": ["Initial D"]
+  },
+  "文豪野犬": {
+    "search": ["Bungou Stray Dogs", "Bungo Stray Dogs"]
+  },
+  "哆啦A梦": {
+    "search": ["Doraemon"]
+  },
+  "蜡笔小新": {
+    "search": ["Crayon Shin-chan", "Shin-chan"]
+  },
+  "樱桃小丸子": {
+    "search": ["Chibi Maruko-chan"]
+  },
+  "数码宝贝大冒险": {
+    "search": ["Digimon Adventure"]
+  },
+  "精灵宝可梦": {
+    "search": ["Pokemon", "Pokémon"]
+  },
+  "游戏王": {
+    "search": ["Yu-Gi-Oh! Duel Monsters"]
+  },
+  "网球王子": {
+    "search": ["Prince of Tennis"]
+  },
+  "棒球大联盟": {
+    "search": ["Major S1"]
+  },
+  "赛马娘 Pretty Derby": {
+    "search": ["Uma Musume: Pretty Derby"]
   }
 }
