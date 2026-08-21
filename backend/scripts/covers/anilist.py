@@ -82,13 +82,15 @@ class AniListProvider(CoverProvider):
     def _fetch_candidates(self, search: str) -> list[dict[str, Any]]:
         """向 AniList 搜索并返回结构化候选列表。
 
-        单次请求异常做短重试（最多 2 次尝试，0.8~1.5s 随机退避），
-        重试耗尽后异常抛给调用方处理。不改变候选评分逻辑。
+        批量稳定性（Stage 9-F）：单次请求失败最多重试 3 次尝试，
+        第 2/3 次使用 1~2s 随机退避，缓解限流/网络抖动导致的批量偶发失败；
+        重试耗尽后异常抛给调用方，由 search_candidates 继续尝试下一查询词，
+        避免一次网络异常就快速判定「无候选」。不改变候选评分逻辑。
         """
         body = json.dumps({"query": _QUERY, "variables": {"search": search}}).encode("utf-8")
         last_exc: Optional[Exception] = None
         data: Optional[dict] = None
-        for attempt in range(2):
+        for attempt in range(3):
             try:
                 req = urllib.request.Request(
                     ANILIST_ENDPOINT,
@@ -105,8 +107,8 @@ class AniListProvider(CoverProvider):
                 break
             except Exception as exc:  # noqa: BLE001 - 重试耗尽后抛给调用方
                 last_exc = exc
-                if attempt == 0:
-                    time.sleep(random.uniform(0.8, 1.5))
+                if attempt < 2:
+                    time.sleep(random.uniform(1.0, 2.0))
         if data is None:
             if last_exc is not None:
                 raise last_exc
