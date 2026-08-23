@@ -40,14 +40,57 @@ class Base(DeclarativeBase):
 def ensure_schema() -> None:
     """Lightweight migration: add missing columns to an existing DB
     without recreating tables (keeps existing data intact).
-    Only supports SQLite and PostgreSQL."""
+    Only supports SQLite and PostgreSQL.
+
+    Stage 12-B: 幂等创建治理表（data_sources / external_entities /
+    anime_field_sources）并 seed 数据源登记；不影响现有业务表。
+    """
+    # 幂等建表（IF NOT EXISTS）：包含 Stage 12-B 治理表
+    Base.metadata.create_all(bind=engine)
     if DATABASE_URL.startswith("sqlite"):
         _ensure_sqlite_schema()
     elif DATABASE_URL.startswith("postgresql"):
         _ensure_postgres_schema()
+    # Stage 12-B：数据源登记 seed（幂等）
+    _seed_data_sources(engine)
     # Backfill SEO-critical fields for legacy rows (e.g. old seed data with
     # empty slug/seo_*). Idempotent: only fills missing values, never overwrites.
     _backfill_anime_seo_fields()
+
+
+# Stage 12-B：数据源登记 seed（按 Stage 11 审计结果；仅登记，不代表全部可生产）
+_SEED_SOURCES: list[tuple[str, str, str, str, str, int, int | None, str]] = [
+    # (source_key, name, source_type, license, license_url, attribution, commercial_ok, status)
+    ("wikidata", "Wikidata", "api", "CC0", "https://www.wikidata.org/wiki/Wikidata:Licensing", 0, 1, "active"),
+    ("wikipedia", "Wikipedia", "api", "CC BY-SA 4.0", "https://en.wikipedia.org/wiki/Wikipedia:Reusing_Wikipedia_content", 1, 1, "active"),
+    ("commons", "Wikimedia Commons", "api", "逐文件核实(CC0/CC BY/CC BY-SA/PD)", "https://commons.wikimedia.org/wiki/Commons:Licensing", 1, None, "active"),
+    ("anilist", "AniList", "api", "未明确(当前 HTTP 403)", "https://github.com/AniList/ApiV2-GraphQL-Docs", 0, None, "paused"),
+    ("mal", "MyAnimeList", "scrape", "未授权(登录墙未核实)", "", 0, 0, "excluded"),
+    ("manual", "AnimeHub 人工维护", "manual", "自有", "", 0, 1, "active"),
+]
+
+
+def _seed_data_sources(engine) -> None:
+    """幂等 seed data_sources（source_key UNIQUE 冲突时跳过）。"""
+    if engine.dialect.name == "sqlite":
+        sql = (
+            "INSERT OR IGNORE INTO data_sources "
+            "(source_key, name, source_type, license, license_url, attribution, commercial_ok, status) "
+            "VALUES (:k, :n, :t, :l, :u, :a, :c, :s)"
+        )
+    else:
+        sql = (
+            "INSERT INTO data_sources "
+            "(source_key, name, source_type, license, license_url, attribution, commercial_ok, status) "
+            "VALUES (:k, :n, :t, :l, :u, :a, :c, :s) "
+            "ON CONFLICT (source_key) DO NOTHING"
+        )
+    with engine.begin() as conn:
+        for k, n, t, lic, url, att, comm, st in _SEED_SOURCES:
+            conn.execute(
+                text(sql),
+                {"k": k, "n": n, "t": t, "l": lic, "u": url, "a": att, "c": comm, "s": st},
+            )
 
 
 def _ensure_sqlite_schema() -> None:

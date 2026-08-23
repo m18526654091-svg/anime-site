@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import (
+    CheckConstraint,
     Column,
     DateTime,
     Float,
@@ -119,3 +120,83 @@ class Favorite(Base):
 
     user = relationship("User", back_populates="favorites")
     anime = relationship("Anime", back_populates="favorites")
+
+
+# =====================================================================
+# Stage 12-B：数据治理基础设施（独立治理层，不影响现有业务表）
+# =====================================================================
+
+
+class DataSource(Base):
+    """数据源登记表（来源注册，不代表全部可用于生产）。"""
+
+    __tablename__ = "data_sources"
+
+    id = Column(Integer, primary_key=True, index=True)
+    source_key = Column(String(50), unique=True, nullable=False, index=True)
+    name = Column(String(120), nullable=False)
+    source_type = Column(String(20), default="api")  # api | dump | manual | scrape
+    license = Column(String(80), default="")
+    license_url = Column(Text, default="")
+    attribution = Column(Integer, default=0)  # 0=不需要 1=需要
+    # NULL=UNVERIFIED；1=允许商业；0=不允许
+    commercial_ok = Column(Integer, nullable=True)
+    # active | paused | excluded | unverified
+    status = Column(String(20), default="unverified")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class ExternalEntity(Base):
+    """外部实体映射（AniList/MAL/Wikidata 等 → AnimeHub anime）。"""
+
+    __tablename__ = "external_entities"
+    __table_args__ = (
+        UniqueConstraint("source_id", "source_entity_id", name="uq_external_source_entity"),
+        CheckConstraint(
+            "status IN ('candidate','verified','rejected','ambiguous')",
+            name="ck_external_status",
+        ),
+        CheckConstraint("confidence >= 0 AND confidence <= 100", name="ck_external_confidence"),
+        CheckConstraint(
+            "NOT (status = 'verified' AND anime_id IS NULL)",
+            name="ck_external_verified_needs_anime",
+        ),
+        CheckConstraint("source_entity_id <> ''", name="ck_external_entity_id_not_empty"),
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    anime_id = Column(Integer, ForeignKey("anime.id"), nullable=True, index=True)
+    source_id = Column(Integer, ForeignKey("data_sources.id"), nullable=False, index=True)
+    source_entity_id = Column(String(80), nullable=False)
+    # candidate | verified | rejected | ambiguous
+    status = Column(String(20), default="candidate", nullable=False)
+    confidence = Column(Integer, default=0)  # 0-100
+    canonical = Column(Integer, default=0)
+    # 仅保存与实体匹配直接相关的必要快照，绝不保存完整 API response
+    raw_snapshot = Column(Text, default="")
+    value_hash = Column(String(64), default="")
+    verified_at = Column(DateTime, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class AnimeFieldSource(Base):
+    """字段级来源追踪（字段值来自哪个数据源）。"""
+
+    __tablename__ = "anime_field_sources"
+    __table_args__ = (
+        UniqueConstraint("anime_id", "field_name", "source_id", name="uq_anime_field_source"),
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    anime_id = Column(Integer, ForeignKey("anime.id"), nullable=False, index=True)
+    field_name = Column(String(50), nullable=False)
+    source_id = Column(Integer, ForeignKey("data_sources.id"), nullable=False, index=True)
+    value_hash = Column(String(64), default="")
+    # 普通文本存规范化字段值；图片只存 URL / source reference，不存二进制
+    source_value = Column(Text, default="")
+    verified = Column(Integer, default=0)
+    fetched_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
