@@ -1,0 +1,769 @@
+{
+ "generated_at": "2026-08-24T07:09:05",
+ "scope": "前 20 部",
+ "summary": {
+  "VERIFIED_CANDIDATE": 11,
+  "REVIEW": 2,
+  "AMBIGUOUS": 3,
+  "REJECTED": 3,
+  "TYPE_MISMATCH": 1,
+  "TYPE_UNVERIFIED": 0,
+  "NO_MATCH": 1,
+  "API_ERROR": 0
+ },
+ "items": [
+  {
+   "sample": "进击的巨人",
+   "year": 2013,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=100.0 title=100.0 type=40 year_delta=30 ext=10",
+   "qid": "Q22126305",
+   "label": "進擊的巨人",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2013,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 100.0,
+   "mal_id": "16498",
+   "imdb_id": "tt2560140",
+   "candidates": [
+    {
+     "qid": "Q22126305",
+     "type": "anime",
+     "query": "进击的巨人"
+    },
+    {
+     "qid": "Q20800425",
+     "type": "unknown",
+     "query": "进击的巨人"
+    },
+    {
+     "qid": "Q586025",
+     "type": "excluded",
+     "query": "进击的巨人"
+    },
+    {
+     "qid": "Q61360999",
+     "type": "unknown",
+     "query": "进击的巨人"
+    },
+    {
+     "qid": "Q90006515",
+     "type": "unknown",
+     "query": "进击的巨人"
+    }
+   ]
+  },
+  {
+   "sample": "鬼灭之刃",
+   "year": 2019,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q63350570",
+   "label": "鬼灭之刃",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2019,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt9335498",
+   "candidates": [
+    {
+     "qid": "Q63350570",
+     "type": "anime",
+     "query": "鬼灭之刃"
+    },
+    {
+     "qid": "Q105847067",
+     "type": "anime",
+     "query": "鬼灭之刃"
+    },
+    {
+     "qid": "Q105037706",
+     "type": "unknown",
+     "query": "鬼灭之刃"
+    },
+    {
+     "qid": "Q107367351",
+     "type": "unknown",
+     "query": "鬼灭之刃"
+    },
+    {
+     "qid": "Q123811233",
+     "type": "unknown",
+     "query": "鬼灭之刃"
+    }
+   ]
+  },
+  {
+   "sample": "咒术回战",
+   "year": 2020,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q98836216",
+   "label": "咒术回战",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2020,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt12343534",
+   "candidates": [
+    {
+     "qid": "Q98836216",
+     "type": "anime",
+     "query": "咒术回战"
+    },
+    {
+     "qid": "Q55522899",
+     "type": "excluded",
+     "query": "咒术回战"
+    },
+    {
+     "qid": "Q105243579",
+     "type": "unknown",
+     "query": "咒术回战"
+    }
+   ]
+  },
+  {
+   "sample": "海贼王",
+   "year": 1999,
+   "status": "REJECTED",
+   "reason": "score=66.8 低置信",
+   "qid": "Q673",
+   "label": "海賊王",
+   "p31": [
+    "Q196600",
+    "Q18591554"
+   ],
+   "wd_year": null,
+   "title_score": 100.0,
+   "year_delta": 0,
+   "score": 66.8,
+   "mal_id": null,
+   "imdb_id": null,
+   "candidates": [
+    {
+     "qid": "Q673",
+     "type": "unknown",
+     "query": "海贼王"
+    },
+    {
+     "qid": "Q28667972",
+     "type": "excluded",
+     "query": "海贼王"
+    },
+    {
+     "qid": "Q111395668",
+     "type": "unknown",
+     "query": "海贼王"
+    },
+    {
+     "qid": "Q15285503",
+     "type": "unknown",
+     "query": "海贼王"
+    },
+    {
+     "qid": "Q140139123",
+     "type": "unknown",
+     "query": "海贼王"
+    }
+   ]
+  },
+  {
+   "sample": "火影忍者",
+   "year": 2002,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=100.0 title=100.0 type=40 year_delta=30 ext=10",
+   "qid": "Q25929253",
+   "label": "火影忍者",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2002,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 100.0,
+   "mal_id": "20",
+   "imdb_id": "tt0409591",
+   "candidates": [
+    {
+     "qid": "Q25929253",
+     "type": "anime",
+     "query": "火影忍者"
+    },
+    {
+     "qid": "Q12500134",
+     "type": "anime",
+     "query": "火影忍者"
+    },
+    {
+     "qid": "Q642",
+     "type": "unknown",
+     "query": "火影忍者"
+    },
+    {
+     "qid": "Q97255527",
+     "type": "unknown",
+     "query": "火影忍者"
+    },
+    {
+     "qid": "Q26971382",
+     "type": "excluded",
+     "query": "火影忍者"
+    }
+   ]
+  },
+  {
+   "sample": "间谍过家家",
+   "year": 2022,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q109333365",
+   "label": "间谍过家家",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2022,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt13706018",
+   "candidates": [
+    {
+     "qid": "Q109333365",
+     "type": "anime",
+     "query": "间谍过家家"
+    },
+    {
+     "qid": "Q117305646",
+     "type": "anime",
+     "query": "间谍过家家"
+    },
+    {
+     "qid": "Q122618291",
+     "type": "unknown",
+     "query": "间谍过家家"
+    },
+    {
+     "qid": "Q65231576",
+     "type": "excluded",
+     "query": "间谍过家家"
+    },
+    {
+     "qid": "Q111281063",
+     "type": "unknown",
+     "query": "间谍过家家"
+    }
+   ]
+  },
+  {
+   "sample": "电锯人",
+   "year": 2022,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=100.0 title=100.0 type=40 year_delta=30 ext=10",
+   "qid": "Q104211858",
+   "label": "鏈鋸人",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2022,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 100.0,
+   "mal_id": "44511",
+   "imdb_id": "tt13616990",
+   "candidates": [
+    {
+     "qid": "Q104211858",
+     "type": "anime",
+     "query": "电锯人"
+    },
+    {
+     "qid": "Q65240543",
+     "type": "excluded",
+     "query": "电锯人"
+    }
+   ]
+  },
+  {
+   "sample": "葬送的芙莉莲",
+   "year": 2023,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q115792176",
+   "label": "葬送的芙莉莲",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2023,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt22248376",
+   "candidates": [
+    {
+     "qid": "Q115792176",
+     "type": "anime",
+     "query": "葬送的芙莉莲"
+    },
+    {
+     "qid": "Q98642652",
+     "type": "excluded",
+     "query": "葬送的芙莉莲"
+    },
+    {
+     "qid": "Q123631191",
+     "type": "unknown",
+     "query": "葬送的芙莉莲"
+    }
+   ]
+  },
+  {
+   "sample": "我推的孩子",
+   "year": 2023,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=100.0 title=100.0 type=40 year_delta=30 ext=10",
+   "qid": "Q112305523",
+   "label": "【我推的孩子】",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2023,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 100.0,
+   "mal_id": "52034",
+   "imdb_id": "tt21030032",
+   "candidates": [
+    {
+     "qid": "Q112305523",
+     "type": "anime",
+     "query": "我推的孩子"
+    },
+    {
+     "qid": "Q97310775",
+     "type": "excluded",
+     "query": "我推的孩子"
+    },
+    {
+     "qid": "Q117605169",
+     "type": "unknown",
+     "query": "我推的孩子"
+    }
+   ]
+  },
+  {
+   "sample": "孤独摇滚！",
+   "year": 2022,
+   "status": "REJECTED",
+   "reason": "score=66.8 低置信",
+   "qid": "Q113317001",
+   "label": "孤獨搖滾！",
+   "p31": [
+    "Q196600"
+   ],
+   "wd_year": null,
+   "title_score": 100.0,
+   "year_delta": 0,
+   "score": 66.8,
+   "mal_id": null,
+   "imdb_id": null,
+   "candidates": [
+    {
+     "qid": "Q113317001",
+     "type": "unknown",
+     "query": "孤独摇滚！"
+    },
+    {
+     "qid": "Q65235667",
+     "type": "excluded",
+     "query": "孤独摇滚！"
+    },
+    {
+     "qid": "Q113317002",
+     "type": "unknown",
+     "query": "孤独摇滚！"
+    }
+   ]
+  },
+  {
+   "sample": "辉夜大小姐想让我告白",
+   "year": 2019,
+   "status": "AMBIGUOUS",
+   "reason": "top1=80.5 top2=79.2（多候选接近）",
+   "qid": "Q135010800",
+   "label": "辉夜大小姐想让我告白 通往大人的阶梯",
+   "p31": [
+    "Q104775758"
+   ],
+   "wd_year": null,
+   "title_score": 80.0,
+   "year_delta": 0,
+   "score": 80.5,
+   "mal_id": "61903",
+   "imdb_id": null,
+   "candidates": [
+    {
+     "qid": "Q135010800",
+     "type": "anime",
+     "query": "辉夜大小姐想让我告白"
+    },
+    {
+     "qid": "Q65076104",
+     "type": "unknown",
+     "query": "辉夜大小姐想让我告白"
+    },
+    {
+     "qid": "Q108504704",
+     "type": "unknown",
+     "query": "辉夜大小姐想让我告白"
+    },
+    {
+     "qid": "Q24867647",
+     "type": "excluded",
+     "query": "辉夜大小姐想让我告白"
+    }
+   ]
+  },
+  {
+   "sample": "石纪元",
+   "year": 2019,
+   "status": "REJECTED",
+   "reason": "TYPE_MISMATCH: 实体类型被排除(['Q21198342'])",
+   "qid": "Q38275959",
+   "label": "Dr.STONE 新石紀",
+   "p31": [
+    "Q21198342"
+   ],
+   "wd_year": 2017,
+   "title_score": 100.0,
+   "year_delta": 0,
+   "score": 60.5,
+   "mal_id": null,
+   "imdb_id": null,
+   "candidates": [
+    {
+     "qid": "Q38275959",
+     "type": "excluded",
+     "query": "石纪元"
+    }
+   ]
+  },
+  {
+   "sample": "约定的梦幻岛",
+   "year": 2019,
+   "status": "NO_MATCH",
+   "reason": "请求成功但无候选",
+   "qid": null,
+   "label": "",
+   "p31": [],
+   "wd_year": null,
+   "title_score": 0,
+   "year_delta": 0,
+   "score": 0,
+   "mal_id": null,
+   "imdb_id": null,
+   "candidates": []
+  },
+  {
+   "sample": "五等分的新娘",
+   "year": 2019,
+   "status": "AMBIGUOUS",
+   "reason": "top1=98.0 top2=95.0（多候选接近）",
+   "qid": "Q62593542",
+   "label": "五等分的新娘",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2019,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt9584920",
+   "candidates": [
+    {
+     "qid": "Q62593542",
+     "type": "anime",
+     "query": "五等分的新娘"
+    },
+    {
+     "qid": "Q64025024",
+     "type": "anime",
+     "query": "五等分的新娘"
+    },
+    {
+     "qid": "Q96409560",
+     "type": "anime",
+     "query": "五等分的新娘"
+    },
+    {
+     "qid": "Q38277250",
+     "type": "excluded",
+     "query": "五等分的新娘"
+    },
+    {
+     "qid": "Q60519242",
+     "type": "unknown",
+     "query": "五等分的新娘"
+    }
+   ]
+  },
+  {
+   "sample": "刀剑神域",
+   "year": 2012,
+   "status": "REVIEW",
+   "reason": "score=78.0 需人工确认",
+   "qid": "Q24238538",
+   "label": "刀剑神域：序列之争",
+   "p31": [
+    "Q20650540"
+   ],
+   "wd_year": 2017,
+   "title_score": 80.0,
+   "year_delta": -30,
+   "score": 78.0,
+   "mal_id": "31765",
+   "imdb_id": "tt5544384",
+   "candidates": [
+    {
+     "qid": "Q24238538",
+     "type": "anime",
+     "query": "刀剑神域"
+    },
+    {
+     "qid": "Q26218026",
+     "type": "unknown",
+     "query": "刀剑神域"
+    },
+    {
+     "qid": "Q24031919",
+     "type": "unknown",
+     "query": "刀剑神域"
+    },
+    {
+     "qid": "Q21039919",
+     "type": "unknown",
+     "query": "刀剑神域"
+    },
+    {
+     "qid": "Q27863",
+     "type": "unknown",
+     "query": "刀剑神域"
+    }
+   ]
+  },
+  {
+   "sample": "一拳超人",
+   "year": 2015,
+   "status": "AMBIGUOUS",
+   "reason": "top1=98.0 top2=95.0（多候选接近）",
+   "qid": "Q22341674",
+   "label": "一拳超人",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2015,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt4508902",
+   "candidates": [
+    {
+     "qid": "Q22341674",
+     "type": "anime",
+     "query": "一拳超人"
+    },
+    {
+     "qid": "Q105081756",
+     "type": "anime",
+     "query": "一拳超人"
+    },
+    {
+     "qid": "Q105081766",
+     "type": "anime",
+     "query": "一拳超人"
+    },
+    {
+     "qid": "Q5102879",
+     "type": "unknown",
+     "query": "一拳超人"
+    },
+    {
+     "qid": "Q76545877",
+     "type": "unknown",
+     "query": "一拳超人"
+    }
+   ]
+  },
+  {
+   "sample": "我的英雄学院",
+   "year": 2016,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q63686324",
+   "label": "我的英雄学院",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2016,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt5626028",
+   "candidates": [
+    {
+     "qid": "Q63686324",
+     "type": "anime",
+     "query": "我的英雄学院"
+    },
+    {
+     "qid": "Q50578031",
+     "type": "unknown",
+     "query": "我的英雄学院"
+    },
+    {
+     "qid": "Q29915557",
+     "type": "unknown",
+     "query": "我的英雄学院"
+    },
+    {
+     "qid": "Q70001863",
+     "type": "unknown",
+     "query": "我的英雄学院"
+    },
+    {
+     "qid": "Q135215057",
+     "type": "unknown",
+     "query": "我的英雄学院"
+    }
+   ]
+  },
+  {
+   "sample": "排球少年！！",
+   "year": 2014,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=98.0 title=100.0 type=40 year_delta=30 ext=5",
+   "qid": "Q67144604",
+   "label": "排球少年！！",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2014,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 98.0,
+   "mal_id": null,
+   "imdb_id": "tt3398540",
+   "candidates": [
+    {
+     "qid": "Q67144604",
+     "type": "anime",
+     "query": "排球少年！！"
+    },
+    {
+     "qid": "Q123354229",
+     "type": "anime",
+     "query": "排球少年！！"
+    },
+    {
+     "qid": "Q326642",
+     "type": "excluded",
+     "query": "排球少年！！"
+    },
+    {
+     "qid": "Q17049331",
+     "type": "unknown",
+     "query": "排球少年！！"
+    },
+    {
+     "qid": "Q133219547",
+     "type": "unknown",
+     "query": "排球少年！！"
+    }
+   ]
+  },
+  {
+   "sample": "灌篮高手",
+   "year": 1993,
+   "status": "REVIEW",
+   "reason": "score=79.2 需人工确认",
+   "qid": "Q2430523",
+   "label": "灌藍好手",
+   "p31": [
+    "Q11424"
+   ],
+   "wd_year": 1993,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 79.2,
+   "mal_id": null,
+   "imdb_id": "tt0109067",
+   "candidates": [
+    {
+     "qid": "Q2430523",
+     "type": "unknown",
+     "query": "灌篮高手"
+    },
+    {
+     "qid": "Q714760",
+     "type": "excluded",
+     "query": "灌篮高手"
+    },
+    {
+     "qid": "Q1200787",
+     "type": "unknown",
+     "query": "灌篮高手"
+    },
+    {
+     "qid": "Q11313369",
+     "type": "excluded",
+     "query": "灌篮高手"
+    }
+   ]
+  },
+  {
+   "sample": "黑子的篮球",
+   "year": 2012,
+   "status": "VERIFIED_CANDIDATE",
+   "reason": "score=100.0 title=100.0 type=40 year_delta=30 ext=10",
+   "qid": "Q120118751",
+   "label": "黑子的篮球",
+   "p31": [
+    "Q63952888"
+   ],
+   "wd_year": 2012,
+   "title_score": 100.0,
+   "year_delta": 30,
+   "score": 100.0,
+   "mal_id": "11771",
+   "imdb_id": "tt2348803",
+   "candidates": [
+    {
+     "qid": "Q120118751",
+     "type": "anime",
+     "query": "黑子的篮球"
+    },
+    {
+     "qid": "Q482715",
+     "type": "excluded",
+     "query": "黑子的篮球"
+    }
+   ]
+  }
+ ]
+}
