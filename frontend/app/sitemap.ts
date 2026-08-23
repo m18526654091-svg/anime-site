@@ -4,7 +4,6 @@ import {
   fetchCategories,
   fetchSeasons,
   fetchStudios,
-  fetchTags,
   fetchYears,
 } from "@/lib/api";
 import type { Anime } from "@/types";
@@ -104,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const cats = await fetchCategories();
     categoryPages = cats
-      .filter((c) => (c.genre || "").trim())
+      .filter((c) => (c.genre || "").trim() && c.count >= 5) // Stage 10-B：<5 部组合不进 sitemap
       .map((c) => ({
         url: `${siteBase}/categories/${encodeURIComponent(c.genre)}/`,
         lastModified,
@@ -115,20 +114,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch categories for sitemap:", error);
   }
 
+  // Stage 10-B：tag 页全部 noindex，不进 sitemap（与 genre 高度重叠，避免重复/薄页）
   let tagPages: MetadataRoute.Sitemap = [];
-  try {
-    const tags = await fetchTags();
-    tagPages = tags
-      .filter((t) => (t.tag || "").trim())
-      .map((t) => ({
-        url: `${siteBase}/tags/${encodeURIComponent(t.tag)}/`,
-        lastModified,
-        changeFrequency: "daily",
-        priority: 0.5,
-      }));
-  } catch (error) {
-    console.error("Failed to fetch tags for sitemap:", error);
-  }
 
   let yearPages: MetadataRoute.Sitemap = [];
   try {
@@ -149,7 +136,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     const studios = await fetchStudios();
     studioPages = studios
-      .filter((s) => (s.studio || "").trim())
+      .filter((s) => (s.studio || "").trim() && s.count >= 3) // Stage 10-B：<3 部不进 sitemap
       .map((s) => ({
         url: `${siteBase}/studio/${encodeURIComponent(s.studio)}/`,
         lastModified,

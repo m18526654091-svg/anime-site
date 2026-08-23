@@ -47,6 +47,8 @@ class AnimeBase(BaseModel):
     letter: Optional[str] = ""
     episodes: Optional[int] = None
     score: Optional[float] = 0.0
+    anilist_id: Optional[int] = None
+    mal_id: Optional[int] = None
     seo_title: Optional[str] = ""
     seo_description: Optional[str] = ""
     play_data: Optional[str] = ""
@@ -74,6 +76,8 @@ class AnimeUpdate(BaseModel):
     letter: Optional[str] = None
     episodes: Optional[int] = None
     score: Optional[float] = None
+    anilist_id: Optional[int] = None
+    mal_id: Optional[int] = None
     seo_title: Optional[str] = None
     seo_description: Optional[str] = None
     play_data: Optional[str] = None

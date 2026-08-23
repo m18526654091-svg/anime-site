@@ -10,9 +10,11 @@ export async function generateMetadata({
   params: { tag: string };
 }) {
   const tag = decodeURIComponent(params.tag);
+  // Stage 10-B：tag 与 genre 高度重叠且独立价值低，全部 noindex（不进 sitemap）
   return {
     title: `${tag}动漫推荐 - ${tag}标签动漫大全`,
     description: `浏览标记为「${tag}」标签的动漫作品，按热度与更新时间整理，方便你快速找到感兴趣的${tag}题材动漫。`,
+    robots: { index: false, follow: true },
   };
 }
 

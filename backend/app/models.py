@@ -51,6 +51,9 @@ class Anime(Base):
     letter = Column(String(1), default="", index=True)
     episodes = Column(Integer, nullable=True)
     score = Column(Float, default=0.0, index=True)
+    # 外部稳定身份（Stage 10-B）：可空，暂不启动回填/同步
+    anilist_id = Column(Integer, nullable=True, index=True)
+    mal_id = Column(Integer, nullable=True, index=True)
     seo_title = Column(String(200), default="")
     seo_description = Column(String(500), default="")
     quality_score = Column(Integer, default=100, index=True)  # 内容质量分 0-100

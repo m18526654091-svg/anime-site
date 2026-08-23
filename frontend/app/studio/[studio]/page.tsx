@@ -1,6 +1,6 @@
 import Link from "next/link";
 import AnimeCard from "@/components/AnimeCard";
-import { fetchAnimeByFilter } from "@/lib/api";
+import { fetchAnimeByFilter, fetchStudios } from "@/lib/api";
 import type { AnimePage } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -16,11 +16,25 @@ function displayName(raw: string): string {
 }
 
 export async function generateMetadata({ params }: { params: { studio: string } }) {
-  const studio = displayName(params.studio);
-  const canonical = `${SITE_BASE}/studio/${encodeURIComponent(params.studio)}`;
+  // Next.js 动态段对 %20 不自动解码，需显式 decodeURIComponent（A-1%20Pictures → A-1 Pictures）
+  const raw = decodeURIComponent(params.studio || "");
+  const studio = displayName(raw);
+  const canonical = `${SITE_BASE}/studio/${encodeURIComponent(raw)}`;
+  // Stage 10-B：作品数 <3 → noindex（与 sitemap 过滤口径一致，用 fetchStudios 精确计数）
+  let indexable = false;
+  try {
+    const studios = await fetchStudios();
+    const s = studios.find(
+      (x) => (x.studio || "").toLowerCase() === (raw || "").toLowerCase(),
+    );
+    indexable = !!s && s.count >= 3;
+  } catch {
+    indexable = false; // 后端不可达 → 保守 noindex
+  }
   return {
     title: `${studio}制作动漫大全 - AnimeHub`,
     description: `${studio}制作的动漫作品大全，收录${studio}出品的经典与新番，按评分与热度整理，支持免费在线观看。`,
+    robots: indexable ? { index: true, follow: true } : { index: false, follow: true },
     alternates: { canonical },
     openGraph: {
       type: "website",
@@ -58,7 +72,8 @@ export default async function StudioPage({
   params: { studio: string };
   searchParams: { page?: string };
 }) {
-  const studio = params.studio;
+  // 显式解码 %20（A-1 Pictures 等含空格 studio）
+  const studio = decodeURIComponent(params.studio || "");
   const display = displayName(studio);
   const page = Math.max(1, parseInt(searchParams.page || "1", 10) || 1);
 

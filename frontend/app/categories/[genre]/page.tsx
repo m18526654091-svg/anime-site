@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ListPageView from "@/components/ListPageView";
-import { fetchAnimeByFilter } from "@/lib/api";
+import { fetchAnimeByFilter, fetchCategories } from "@/lib/api";
 import { animePath } from "@/lib/slug";
 import { getSiteBase } from "@/lib/site";
 import type { AnimePage } from "@/types";
@@ -67,9 +67,19 @@ export async function generateMetadata({ params }: { params: { genre: string } }
   const genre = decodeURIComponent(params.genre);
   const base = getSiteBase();
   const desc = categoryDescription(genre);
+  // Stage 10-B：组合作品数 <5 → noindex（与 sitemap 过滤口径一致，用 fetchCategories 精确组合计数）
+  let indexable = false;
+  try {
+    const cats = await fetchCategories();
+    const c = cats.find((x) => x.genre === genre);
+    indexable = !!c && c.count >= 5;
+  } catch {
+    indexable = false; // 后端不可达 → 保守 noindex，与 sitemap 保持一致
+  }
   return {
     title: `${genre}动漫推荐 - AnimeHub`,
     description: desc.slice(0, 160),
+    robots: indexable ? { index: true, follow: true } : { index: false, follow: true },
     alternates: {
       canonical: `${base}/categories/${encodeURIComponent(genre)}`,
     },
