@@ -1,5 +1,5 @@
 import AnimeDetailClient from "@/components/AnimeDetailClient";
-import { fetchAnimeBySlug, fetchAnimeDetail, fetchRatings } from "@/lib/api";
+import { fetchAnimeBySlug, fetchAnimeDetail, fetchRatings, fetchRelated } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Anime, RatingsInfo } from "@/types";
@@ -133,9 +133,19 @@ export default async function AnimeDetailPage({
         }
       : undefined;
 
+  // 服务端获取相关推荐（SSR 渲染 → 爬虫可见 anime→anime 内链，增强 crawler discovery）
+  let initialRelated: Anime[] = [];
+  if (anime) {
+    try {
+      initialRelated = await fetchRelated(anime.id, 8);
+    } catch {
+      initialRelated = [];
+    }
+  }
+
   return (
     <>
-      <AnimeDetailClient anime={anime} error={error} />
+      <AnimeDetailClient anime={anime} error={error} initialRelated={initialRelated} />
             {anime && (
         <script
           type="application/ld+json"

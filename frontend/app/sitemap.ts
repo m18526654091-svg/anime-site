@@ -8,6 +8,7 @@ import {
 } from "@/lib/api";
 import type { Anime } from "@/types";
 import { animePath } from "@/lib/slug";
+import { filterRedundantSeasons } from "@/lib/seasonIndex";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -150,7 +151,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let seasonPages: MetadataRoute.Sitemap = [];
   try {
     const seasons = await fetchSeasons();
-    seasonPages = seasons
+    // 同年 4 季 ID 集合相同 → 重复季页不进 sitemap（Final SEO Deployment；不改变 indexability 规则）
+    const uniqueSeasons = await filterRedundantSeasons(seasons);
+    seasonPages = uniqueSeasons
       .filter((s) => s.year != null && (s.season || "").trim())
       .map((s) => ({
         url: `${siteBase}/season/${s.year}/${s.season}/`,

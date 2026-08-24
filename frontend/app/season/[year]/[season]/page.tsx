@@ -2,6 +2,7 @@ import Link from "next/link";
 import AnimeCard from "@/components/AnimeCard";
 import SeasonSortFAB from "@/components/SeasonSortFAB";
 import { fetchAnimeByFilter } from "@/lib/api";
+import { isSeasonRedundant } from "@/lib/seasonIndex";
 import type { AnimePage } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -30,6 +31,15 @@ export async function generateMetadata({
   const season = params.season;
   const seasonCn = SEASON_CN[season] || season;
   const canonical = `${SITE_BASE}/season/${year}/${season}`;
+  // 同年 4 季 ID 集合完全相同 → 重复页 noindex（Final SEO Deployment）
+  const redundant = await isSeasonRedundant(Number(year), season);
+  if (redundant) {
+    return {
+      title: `${year}年${seasonCn}新番动漫大全 - AnimeHub`,
+      description: `${year}年${seasonCn}新番动漫盘点，收录该季度播出与收录的动漫作品。`,
+      robots: { index: false, follow: true },
+    };
+  }
   return {
     title: `${year}年${seasonCn}新番动漫大全 - AnimeHub`,
     description: `${year}年${seasonCn}新番动漫盘点，收录该季度播出与收录的动漫作品，含热血、奇幻、恋爱等全类型，按热度与评分排序。`,

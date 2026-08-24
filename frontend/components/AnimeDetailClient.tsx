@@ -20,12 +20,13 @@ import type { Anime, Episode } from "@/types";
 interface Props {
   anime: Anime | null;
   error: string;
+  initialRelated?: Anime[];
 }
 
-export default function AnimeDetailClient({ anime, error }: Props) {
+export default function AnimeDetailClient({ anime, error, initialRelated = [] }: Props) {
   const router = useRouter();
   const { isLoggedIn } = useAuth();
-  const [related, setRelated] = useState<Anime[]>([]);
+  const [related, setRelated] = useState<Anime[]>(initialRelated);
   const [favorited, setFavorited] = useState(false);
   const [favLoading, setFavLoading] = useState(false);
   const [dbEpisodes, setDbEpisodes] = useState<Episode[]>([]);
