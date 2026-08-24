@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ListPageView from "@/components/ListPageView";
 import { fetchAnimeByFilter } from "@/lib/api";
+import { notFound } from "next/navigation";
 import type { AnimePage } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -11,6 +12,10 @@ export async function generateMetadata({
   params: { year: string };
 }) {
   const year = parseInt(params.year, 10);
+  if (!Number.isFinite(year) || year < 1900 || year > 2100) {
+    // 无效年份：绝不可索引（页面 notFound() 返回真 404）
+    return { title: "年份不存在", robots: { index: false, follow: false } };
+  }
   return {
     title: `${year}年动漫大全 - ${year}年新番动漫`,
     description: `盘点 ${year} 年播出与收录的动漫作品，含热血、奇幻、恋爱等全类型新番，按年份浏览${year}年动漫。`,
@@ -27,8 +32,8 @@ export default async function YearPage({
   searchParams: { page?: string };
 }) {
   const year = parseInt(params.year, 10);
-  if (!Number.isFinite(year)) {
-    return <p className="py-24 text-center text-slate-500">参数错误</p>;
+  if (!Number.isFinite(year) || year < 1900 || year > 2100) {
+    notFound(); // 无效年份 → 真 404
   }
   const page = Math.max(1, parseInt(searchParams.page || "1", 10) || 1);
 

@@ -145,6 +145,11 @@ export default function RootLayout({
                 <p>
                   Anime<span className="text-pink-500">Hub</span> © 2026 · Free anime directory · Data from real backend API
                 </p>
+                <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-400">
+                  <Link href="/privacy" className="hover:text-pink-400">隐私政策</Link>
+                  <Link href="/contact" className="hover:text-pink-400">联系我们</Link>
+                  <Link href="/copyright" className="hover:text-pink-400">版权声明 / DMCA</Link>
+                </div>
               </div>
             </div>
           </footer>

@@ -2,8 +2,38 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { fetchAnimeDetail, fetchEpisodes } from "@/lib/api";
 import type { Anime, Episode } from "@/types";
+import { animePath } from "@/lib/slug";
+import type { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
+
+const SITE_BASE = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
+
+// watch 播放页不独立作为 SEO 落地页：noindex（搜索入口统一走 /anime/[slug] 详情页）
+// 策略在下方 generateMetadata 中统一声明（含不存在时的 noindex）
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const id = Number(params.id);
+  if (!Number.isFinite(id)) {
+    return { title: "动漫不存在", robots: { index: false, follow: false } };
+  }
+  try {
+    const anime = await fetchAnimeDetail(id);
+    return {
+      title: `${anime.chinese_title || anime.title} 在线观看 - AnimeHub`,
+      description: `在线播放 ${anime.chinese_title || anime.title}。`,
+      robots: { index: false, follow: true },
+      // canonical 指向 SEO 详情页，避免 /watch/{id} 被当作重复落地页
+      alternates: { canonical: `${SITE_BASE}${animePath(anime)}/` },
+    };
+  } catch {
+    return { title: "动漫不存在", robots: { index: false, follow: false } };
+  }
+}
 
 export default async function WatchPage({
   params,
@@ -19,29 +49,17 @@ export default async function WatchPage({
 
   let anime: Anime | null = null;
   let episodes: Episode[] = [];
-  let error = "";
 
   try {
     anime = await fetchAnimeDetail(id);
+  } catch {
+    notFound(); // 动漫不存在 / 后端不可达 → 真 404
+  }
+  try {
     const data = await fetchEpisodes(id);
     episodes = data.items;
   } catch {
-    error = "无法加载播放信息";
-  }
-
-  if (error || !anime) {
-    return (
-      <div className="mx-auto max-w-4xl px-4 py-24 text-center">
-        <p className="text-4xl">😢</p>
-        <p className="mt-4 text-slate-400">{error || "动漫不存在"}</p>
-        <Link
-          href={`/anime/${id}`}
-          className="mt-6 inline-block rounded-lg bg-white/5 px-5 py-2 text-pink-400 transition hover:bg-white/10"
-        >
-          ← 返回详情页
-        </Link>
-      </div>
-    );
+    episodes = []; // 播放资源获取失败 → 显示「暂无播放资源」
   }
 
   const requestedEp = Number(searchParams?.ep);

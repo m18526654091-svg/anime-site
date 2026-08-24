@@ -1,7 +1,7 @@
 import AnimeDetailClient from "@/components/AnimeDetailClient";
 import { fetchAnimeBySlug, fetchAnimeDetail, fetchRatings } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
-import { permanentRedirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Anime, RatingsInfo } from "@/types";
 
 // Render on demand with real backend data.
@@ -71,7 +71,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
   } catch (error) {
     console.error("[generateMetadata] fetchAnimeBySlug failed:", error instanceof Error ? error.message : error, (error as { response?: { status?: number } })?.response?.status);
-    return { title: "动漫不存在" };
+    // 不存在 / 后端不可达：绝不可索引、不生成 canonical（由页面 notFound() 返回真 404）
+    return {
+      title: "动漫不存在",
+      robots: { index: false, follow: false },
+    };
   }
 }
 
@@ -102,6 +106,8 @@ export default async function AnimeDetailPage({
   } catch (error) {
     error = "Anime not found or backend unavailable";
     console.error("[AnimeDetailPage] fetch anime failed:", error instanceof Error ? error.message : error, (error as { response?: { status?: number } })?.response?.status);
+    // 不存在 / 后端不可达 → 真 404（不再是可索引的 soft-404）
+    notFound();
   }
 
     const schemaType = anime && anime.episodes && anime.episodes > 1 ? "TVSeries" : "Movie";
@@ -141,6 +147,7 @@ export default async function AnimeDetailPage({
               description: anime.seo_description || anime.description,
               ...(anime.cover ? { image: anime.cover } : {}),
               ...(anime.genre ? { genre: anime.genre } : {}),
+              ...(anime.studio ? { productionCompany: { "@type": "Organization", name: anime.studio } } : {}),
               ...(anime.year ? { datePublished: `${anime.year}-01-01` } : {}),
                             ...(anime.episodes && anime.episodes > 1
                 ? { numberOfEpisodes: anime.episodes }
