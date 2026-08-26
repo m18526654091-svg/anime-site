@@ -214,10 +214,13 @@ class VoiceActor(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(120), nullable=False, index=True)   # 中文名（常用名）
     name_en = Column(String(120), default="")
+    native_name = Column(String(120), default="")  # 日文原名
     slug = Column(String(160), default="", index=True)
     description = Column(Text, default="")
     aliases = Column(String(300), default="")  # 别名，逗号分隔
     image = Column(Text, default="")
+    source = Column(String(40), default="")      # 数据来源（anilist / manual / ...）
+    source_id = Column(String(64), default="")   # 外部稳定 ID
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -236,10 +239,13 @@ class Character(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(120), nullable=False, index=True)   # 中文名（常用名）
     name_en = Column(String(120), default="")
+    native_name = Column(String(120), default="")  # 日文原名
     slug = Column(String(160), default="", index=True)
     description = Column(Text, default="")
     aliases = Column(String(300), default="")  # 别名，逗号分隔
     image = Column(Text, default="")
+    source = Column(String(40), default="")      # 数据来源（anilist / manual / ...）
+    source_id = Column(String(64), default="")   # 外部稳定 ID
     anime_id = Column(Integer, ForeignKey("anime.id"), nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
