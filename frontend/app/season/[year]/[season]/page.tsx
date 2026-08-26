@@ -30,14 +30,17 @@ export async function generateMetadata({
   const year = params.year;
   const season = params.season;
   const seasonCn = SEASON_CN[season] || season;
-  const canonical = `${SITE_BASE}/season/${year}/${season}`;
+  // 规范 URL 使用尾斜杠（与项目 /anime/xxx/ 规范一致）
+  const canonical = `${SITE_BASE}/season/${year}/${season}/`;
   // 同年 4 季 ID 集合完全相同 → 重复页 noindex（Final SEO Deployment）
   const redundant = await isSeasonRedundant(Number(year), season);
   if (redundant) {
+    // 空季度/重复季度：noindex，但 canonical 仍指向自身规范 URL（不能回退首页）
     return {
       title: `${year}年${seasonCn}新番动漫大全 - AnimeHub`,
       description: `${year}年${seasonCn}新番动漫盘点，收录该季度播出与收录的动漫作品。`,
       robots: { index: false, follow: true },
+      alternates: { canonical },
     };
   }
   return {
