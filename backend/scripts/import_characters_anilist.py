@@ -27,6 +27,12 @@ from sqlalchemy import text
 from app.database import Base, engine, SessionLocal
 from app.models import Anime, Character, CharacterVoice, VoiceActor
 
+# stdout 行缓冲：日志重定向到文件时能实时看到进度
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+except Exception:
+    pass
+
 OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 GRAPHQL = 'https://graphql.anilist.co'
 MANIFEST = 'data/anilist_characters_manifest.json'
@@ -52,8 +58,18 @@ def _slug(v: str) -> str:
     return s or 'x'
 
 def _norm(v: str) -> str:
-    """名称规范化：小写、去空格/标点/长音符，用于宽容匹配。"""
-    s = re.sub(r'[\s\W_]+', '', (v or '').lower())
+    """名称规范化：小写、去空格/标点/长音符，用于宽容匹配。
+
+    仅对含拉丁字母/数字的名称做规范化（正则 \\W 会吃掉 CJK/假名/谚文，
+    纯非拉丁文本保留原样，避免不同日文名被压成空串互相误匹配）。
+    """
+    s = (v or '').strip()
+    if not s:
+        return s
+    low = s.lower()
+    if not re.search(r'[a-z0-9]', low):
+        return s
+    s = re.sub(r'[\s\W_]+', '', low)
     for a, b in (('ō', 'o'), ('ū', 'u'), ('ā', 'a'), ('ī', 'i'), ('ē', 'e'), ('ō', 'o')):
         s = s.replace(a, b)
     return s
@@ -238,10 +254,35 @@ def find_voice_actor(db, va, merge_map):
                 return v, 'reuse'
     return None, 'new'
 
+
+def build_configs_from_db(db, n: int):
+    """从数据库自动发现高价值作品（anilist_id 非空，按评分排序取前 n，anilist_id 去重）。
+
+    无 only_ids / characters_cn：角色按 MAIN > SUPPORTING 截取前 max_characters 个，
+    name 使用 AniList 可靠原名（native 日文 / 英文），不猜测中文译名。
+    """
+    rows = db.execute(text(
+        "SELECT slug, anilist_id, COALESCE(score, 0) AS sc, year FROM anime "
+        "WHERE anilist_id IS NOT NULL ORDER BY sc DESC, year DESC")).fetchall()
+    seen = set()
+    configs = []
+    for r in rows:
+        aid = int(r[1])
+        if aid in seen:
+            continue
+        seen.add(aid)
+        configs.append({'anime_slug': r[0], 'anilist_id': aid,
+                        'min_role': 'SUPPORTING', 'max_characters': 6})
+        if len(configs) >= n:
+            break
+    return configs
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--anime', default='', help='只处理指定 anime_slug（逗号分隔）')
+    ap.add_argument('--anime-from-db', type=int, default=0,
+                    help='从数据库自动发现：按评分选前 N 部 anilist 作品拉角色（0=用 manifest）')
     ap.add_argument('--delay', type=float, default=DEFAULT_DELAY,
                     help='请求最小间隔秒数（默认 %.1f）' % DEFAULT_DELAY)
     ap.add_argument('--retries', type=int, default=DEFAULT_RETRIES,
@@ -253,9 +294,15 @@ def main():
     Base.metadata.create_all(engine)
     ensure_columns()
 
-    manifest = json.load(open(MANIFEST, encoding='utf-8'))
-    merge_map = manifest.get('voice_actor_merge', {})
     db = SessionLocal()
+    if args.anime_from_db:
+        configs = build_configs_from_db(db, args.anime_from_db)
+        merge_map = {}
+        print('[auto] 从数据库自动选择 %d 部高价值作品（按评分排序）' % len(configs))
+    else:
+        manifest = json.load(open(MANIFEST, encoding='utf-8'))
+        configs = manifest['animes']
+        merge_map = manifest.get('voice_actor_merge', {})
     stats = {'va_new': 0, 'char_new': 0, 'rel_new': 0,
              'va_reuse': 0, 'char_reuse': 0, 'rel_skip': 0,
              'skip_no_anime': [], 'conflict': [], 'failed': [],
@@ -271,24 +318,43 @@ def main():
         if r[0] and r[1]:
             existing_rels.add((r[0], r[1]))
     try:
-        for conf in manifest['animes']:
+        # 阶段 1：并发 fetch 全部作品的角色（3 workers，稳定优先，delay/retry 保留）
+        import concurrent.futures
+
+        def _fetch_one(conf):
+            return fetch_characters(conf['anilist_id'], timeout=args.timeout,
+                                    retries=args.retries, delay=args.delay)
+
+        fetch_results = {}
+        targets = [c for c in configs if not only or c['anime_slug'] in only]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=3) as ex:
+            future_map = {ex.submit(_fetch_one, conf): conf for conf in targets}
+            for fut in concurrent.futures.as_completed(future_map):
+                conf = future_map[fut]
+                try:
+                    media_title, chars = fut.result()
+                    fetch_results[conf['anime_slug']] = (conf, media_title, chars)
+                    print('== %s (anilist %s) fetch OK | 角色 %d'
+                          % (conf['anime_slug'], conf['anilist_id'], len(chars)))
+                except Exception as e:
+                    stats['failed'].append((conf['anime_slug'], str(e)[:120]))
+                    print('== %s fetch 失败: %s' % (conf['anime_slug'], str(e)[:120]))
+
+        # 阶段 2：串行导入（幂等去重）
+        for conf in configs:
             slug = conf['anime_slug']
             if only and slug not in only:
                 continue
+            fetched = fetch_results.get(slug)
+            if fetched is None:
+                continue  # fetch 失败已记录在 failed
             anime = db.query(Anime).filter(Anime.slug == slug).first()
             if anime is None:
                 stats['skip_no_anime'].append(slug)
                 continue
-            print('== %s (%s, anilist %s)' % (anime.title, slug, conf['anilist_id']))
-            try:
-                media_title, chars = fetch_characters(
-                    conf['anilist_id'], timeout=args.timeout,
-                    retries=args.retries, delay=args.delay)
-            except Exception as e:
-                stats['failed'].append((slug, str(e)[:120]))
-                print('   fetch 失败: %s' % str(e)[:120])
-                continue
+            conf, media_title, chars = fetched
             stats['succeeded'].append(slug)
+            print('-- 导入 %s (%s) | 角色 %d' % (anime.title, slug, len(chars)))
             cns = conf.get('characters_cn', {})
             vans = conf.get('voice_actors_cn', {})
             maxc = conf.get('max_characters', 10)
