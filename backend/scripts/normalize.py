@@ -195,6 +195,7 @@ def normalize_item(item: dict[str, Any]) -> dict[str, Any]:
     # 已有 tags 保留；为空时用 genre/region/year 自动补全，绝不覆盖已有值
     d["tags"] = normalize_tags(d.get("tags")) or build_auto_tags(d)
     d["year"] = d.get("year")
+    d["month"] = d.get("month")
     d["score"] = float(d.get("score") or 0.0)
     d["episodes"] = d.get("episodes")
     d["play_data"] = d.get("play_data") or ""

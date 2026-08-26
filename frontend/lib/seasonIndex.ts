@@ -41,7 +41,7 @@ export async function isSeasonRedundant(year: number, season: string): Promise<b
   } catch {
     return false;
   }
-  if (mine.length === 0) return false;
+  if (mine.length === 0) return true; // 空季度 → 不索引（sitemap 也由 filterRedundantSeasons 排除）
   for (const other of SEASONS) {
     if (other === season) continue;
     try {
@@ -76,6 +76,7 @@ export async function filterRedundantSeasons(
     );
     for (const s of seasons) {
       const mine = idsMap[s] ?? [];
+      if (mine.length === 0) continue; // 空季度不进 sitemap
       let redundant = false;
       for (const other of SEASONS) {
         if (other === s) continue;

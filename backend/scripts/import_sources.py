@@ -134,6 +134,7 @@ def main() -> None:
                 genre=(norm.get("genre") or "").strip(),
                 tags=norm.get("tags") or "",
                 year=norm.get("year"),
+                month=norm.get("month"),
                 region=(norm.get("region") or "").strip(),
                 author=(norm.get("author") or "").strip(),
                 studio=(norm.get("studio") or "").strip(),
