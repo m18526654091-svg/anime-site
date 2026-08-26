@@ -1,0 +1,1065 @@
+{
+  "design": {
+    "minimal_content_model": [
+      "title（已有）",
+      "short description（建议 2-3 句独特概述）",
+      "studio（建议来自 wikidata）",
+      "year（已有）",
+      "format（需评估 schema）",
+      "episodes（建议来自 wikidata）",
+      "status（manual 维护）",
+      "region（已有）",
+      "genres/tags（已有）"
+    ],
+    "field_assessment": {
+      "studio": {
+        "has_field": true,
+        "production_missing": 120,
+        "source": "wikidata",
+        "license": "CC0",
+        "coverage": "high（知名作品几乎都有制片公司属性）",
+        "confidence": "high",
+        "pipeline_ready": "建议进入正式 data pipeline"
+      },
+      "episodes": {
+        "has_field": true,
+        "production_missing": 120,
+        "source": "wikidata",
+        "license": "CC0",
+        "coverage": "中高（TV 集数属性完整；剧场版用 1）",
+        "confidence": "high",
+        "pipeline_ready": "建议进入正式 data pipeline"
+      },
+      "format": {
+        "has_field": false,
+        "production_missing": "schema 无此列",
+        "source": "wikidata (P31 媒体类型/P2047 时长派生)",
+        "license": "CC0",
+        "coverage": "高",
+        "confidence": "medium（需派生规则）",
+        "pipeline_ready": "需要先评估 schema 变更，非本阶段范围"
+      },
+      "month": {
+        "has_field": true,
+        "production_missing": "需快照确认",
+        "source": "wikidata",
+        "license": "CC0",
+        "coverage": "中（首播日期属性 P580）",
+        "confidence": "medium（需从首播日期提取）",
+        "pipeline_ready": "辅助维度，建议二次增强而非核心"
+      }
+    },
+    "description_no_min_length": "description 不设机械字数门槛；以信息密度/独特性/准确性为准",
+    "sources": [
+      "wikidata (CC0)",
+      "wikipedia (CC BY-SA，改写后署名)",
+      "manual (自有)",
+      "已有可靠字段"
+    ],
+    "excluded_sources": [
+      "Jikan",
+      "MAL 抓取",
+      "AniList 批量",
+      "未审计 API"
+    ]
+  },
+  "sample_count": 10,
+  "selected_sample_keys": [
+    "进击的巨人",
+    "鬼灭之刃",
+    "钢之炼金术师FA",
+    "死亡笔记",
+    "命运石之门",
+    "叛逆的鲁路修",
+    "灌篮高手",
+    "为美好的世界献上祝福！",
+    "你的名字。",
+    "千与千寻"
+  ],
+  "not_found_in_snapshot": [],
+  "samples": [
+    {
+      "anime_id": 1,
+      "title": "进击的巨人",
+      "chinese_title": "进击的巨人",
+      "wikidata_qid": "Q22126305",
+      "current": {
+        "description": "人类在巨人的威胁下筑起高墙生存，艾伦为了夺回自由而战。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2013,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "WIT STUDIO（S1-3）/ MAPPA（Final）"
+        },
+        "episodes": {
+          "value": 87
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 4
+        },
+        "year": {
+          "value": 2013
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2013年TV · WIT STUDIO（S1-3）/ MAPPA（Final）制作 · 87 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "人类在巨人与高墙的末世中苟延残喘，少年艾伦目睹母亲被巨人吞噬后加入调查兵团，用立体机动装置与巨刃发起反抗，并一步步逼近巨人之力背后的世界真相，探讨自由、战争与人性代价的残酷命题。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "进击的巨人 - 在线观看 - AnimeHub",
+        "candidate": "进击的巨人（2013）全季 87 集高清在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 2,
+      "title": "鬼灭之刃",
+      "chinese_title": "鬼灭之刃",
+      "wikidata_qid": "Q51444756",
+      "current": {
+        "description": "少年炭治郎为拯救变成鬼的妹妹，加入鬼杀队踏上斩鬼之旅。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2019,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "ufotable"
+        },
+        "episodes": {
+          "value": 26
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 4
+        },
+        "year": {
+          "value": 2019
+        },
+        "status": {
+          "value": "连载中（续篇企划）"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2019年TV · ufotable制作 · 26 · 连载中（续篇企划）。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "少年灶门炭治郎的家人被鬼袭击，妹妹祢豆子化作鬼后他拜入鬼杀队，与伙伴一同猎杀恶鬼，剑术与呼吸法的华丽战斗之外，是骨肉羁绊与不灭人性之光的温情叙事。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "鬼灭之刃 - 在线观看 - AnimeHub",
+        "candidate": "鬼灭之刃（2019）动画全集在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 25,
+      "title": "钢之炼金术师FA",
+      "chinese_title": "钢之炼金术师FA",
+      "wikidata_qid": "Q210740",
+      "current": {
+        "description": "爱德华兄弟为取回失去的身体，追寻贤者之石的旅途。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2009,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "BONES"
+        },
+        "episodes": {
+          "value": 64
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 4
+        },
+        "year": {
+          "value": 2009
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2009年TV · BONES制作 · 64 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "爱德华与阿尔冯斯兄弟为炼金术的代价付出沉重牺牲，为找回身体踏上寻找贤者之石的旅程；等价交换原则贯穿始终，军事国家阴谋与人性挣扎交织成宏大而自洽的经典叙事。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "钢之炼金术师FA - 在线观看 - AnimeHub",
+        "candidate": "钢之炼金术师FA（2009）64 集高清在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 23,
+      "title": "死亡笔记",
+      "chinese_title": "死亡笔记",
+      "wikidata_qid": "Q232759",
+      "current": {
+        "description": "捡到死亡笔记的夜神月与天才侦探L展开智力对决。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2006,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "MADHOUSE"
+        },
+        "episodes": {
+          "value": 37
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 10
+        },
+        "year": {
+          "value": 2006
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2006年TV · MADHOUSE制作 · 37 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "天才高中生夜神月捡到一本写上名字即可杀人的死亡笔记，以「新世界的神」自居惩戒罪犯；世界第一侦探 L 与之展开猫鼠博弈，正义、权力与智力的终极对弈步步紧逼。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "死亡笔记 - 在线观看 - AnimeHub",
+        "candidate": "死亡笔记（2006）37 集在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 24,
+      "title": "命运石之门",
+      "chinese_title": "命运石之门",
+      "wikidata_qid": "Q836582",
+      "current": {
+        "description": "疯狂科学家冈部伦太郎发现时间旅行，陷入无法回头的命运线。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2011,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "WHITE FOX"
+        },
+        "episodes": {
+          "value": 24
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 4
+        },
+        "year": {
+          "value": 2011
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2011年TV · WHITE FOX制作 · 24 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "自称疯狂科学家的冈部伦太郎与伙伴偶然发明向过去发送短信的「D-mail」，从此被卷入改变世界线的事件旋涡；为了拯救重要的人，他必须在无数因果分支中反复选择与舍弃。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "命运石之门 - 在线观看 - AnimeHub",
+        "candidate": "命运石之门（2011）24 集在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 27,
+      "title": "叛逆的鲁路修",
+      "chinese_title": "叛逆的鲁路修",
+      "wikidata_qid": "Q114200",
+      "current": {
+        "description": "以Geass之力颠覆帝国的黑色王子鲁路修，掀起惊天革命。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2006,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "SUNRISE"
+        },
+        "episodes": {
+          "value": 50
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 10
+        },
+        "year": {
+          "value": 2006
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2006年TV · SUNRISE制作 · 50 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "被帝国流放的皇子鲁路修获得绝对命令之力「Geass」，化身戴面具的 Zero 领导反抗军推翻超级大国不列颠尼亚；机甲战斗与权谋布局并行，最终以惊世结局成就一代经典。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "叛逆的鲁路修 - 在线观看 - AnimeHub",
+        "candidate": "反叛的鲁路修（2006）全 50 集在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 19,
+      "title": "灌篮高手",
+      "chinese_title": "灌篮高手",
+      "wikidata_qid": "Q28872",
+      "current": {
+        "description": "问题儿童樱木花道为爱加入篮球队，一步步成长为篮板奇才。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 1993,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "东映动画"
+        },
+        "episodes": {
+          "value": 101
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 10
+        },
+        "year": {
+          "value": 1993
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "1993年TV · 东映动画制作 · 101 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "问题少年樱木花道为追女生加入湘北篮球队，在天才流川枫、队长赤木等人的影响下真正爱上篮球；全国大赛征程中的汗水、友情与青春呐喊，是无数人心中无法磨灭的热血记忆。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "灌篮高手 - 在线观看 - AnimeHub",
+        "candidate": "灌篮高手（1993）101 集在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 31,
+      "title": "为美好的世界献上祝福！",
+      "chinese_title": "为美好的世界献上祝福！",
+      "wikidata_qid": "Q18239141",
+      "current": {
+        "description": "废柴女神与废柴冒险团的爆笑异世界日常。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2016,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "Studio DEEN"
+        },
+        "episodes": {
+          "value": 10
+        },
+        "format": {
+          "value": "TV"
+        },
+        "month": {
+          "value": 1
+        },
+        "year": {
+          "value": 2016
+        },
+        "status": {
+          "value": "连载中（续篇制作中）"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2016年TV · Studio DEEN制作 · 10 · 连载中（续篇制作中）。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "废柴冒险者佐藤和真在异世界转生后，与爆炸狂魔惠惠、抖M女神达克妮斯和无用女神阿库娅组成「最弱队伍」，日常爆笑冒险中暗藏对异世界题材的犀利吐槽与反套路叙事。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "为美好的世界献上祝福！ - 在线观看 - AnimeHub",
+        "candidate": "为美好的世界献上祝福！（2016）在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 42,
+      "title": "你的名字。",
+      "chinese_title": "你的名字。",
+      "wikidata_qid": "Q18824401",
+      "current": {
+        "description": "交换身体的少年少女，跨越时间与空间寻找彼此。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2016,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "CoMix Wave Films"
+        },
+        "episodes": {
+          "value": 1
+        },
+        "format": {
+          "value": "Movie"
+        },
+        "month": {
+          "value": 8
+        },
+        "year": {
+          "value": 2016
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2016年Movie · CoMix Wave Films制作 · 剧场版 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "住在东京的少年立花泷与乡间少女宫水三叶在梦中互换身体，跨越时空的奇妙连结背后隐藏着彗星灾难与宿命般的拯救；新海诚以绚烂画面与动人配乐讲述「你的名字，是我想永远记住的名字」。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "你的名字。 - 在线观看 - AnimeHub",
+        "candidate": "你的名字。（2016）剧场版动画在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    },
+    {
+      "anime_id": 44,
+      "title": "千与千寻",
+      "chinese_title": "千与千寻",
+      "wikidata_qid": "Q139903",
+      "current": {
+        "description": "少女千寻误入神灵世界，在汤屋打工中找到勇气与自我。",
+        "studio": "",
+        "episodes": null,
+        "format": "schema 无 format 列",
+        "status": "",
+        "year": 2001,
+        "month": null,
+        "region": ""
+      },
+      "proposed_metadata": {
+        "studio": {
+          "value": "吉卜力工作室"
+        },
+        "episodes": {
+          "value": 1
+        },
+        "format": {
+          "value": "Movie"
+        },
+        "month": {
+          "value": 7
+        },
+        "year": {
+          "value": 2001
+        },
+        "status": {
+          "value": "完结"
+        },
+        "region": {
+          "value": "日本"
+        }
+      },
+      "description_a": {
+        "text": "2001年Movie · 吉卜力工作室制作 · 剧场版 · 完结。",
+        "note": "方案 A：结构化 metadata 行 + 当前简介（低成本，立即可用）"
+      },
+      "description_b": {
+        "text": "少女千寻误入神明的浴场世界，为拯救变成猪的父母不得不为汤婆婆打工；在锅炉爷爷、无脸男、白龙等人的陪伴下完成从怯懦到勇敢的成长，宫崎骏凭此作斩获奥斯卡最佳动画长片。",
+        "note": "方案 B：结构化 metadata + 独立完整简介（每部独特）"
+      },
+      "seo_title": {
+        "current": "千与千寻 - 在线观看 - AnimeHub",
+        "candidate": "千与千寻（2001）吉卜力剧场版在线观看 | AnimeHub"
+      },
+      "provenance": {
+        "studio": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）；抓取后人工复核"
+        },
+        "episodes": {
+          "source": "wikidata",
+          "confidence": "high",
+          "license": "CC0",
+          "note": "Stage 11 已审计（active，CC0）"
+        },
+        "format": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "由 P31/P2047 派生，需规则定义"
+        },
+        "month": {
+          "source": "wikidata",
+          "confidence": "medium",
+          "license": "CC0",
+          "note": "从首播日期(P580)提取月份"
+        },
+        "status": {
+          "source": "manual",
+          "confidence": "medium",
+          "license": "自有",
+          "note": "需人工维护（企划状态动态变化）"
+        },
+        "description": {
+          "source": "wikipedia",
+          "confidence": "high",
+          "license": "CC BY-SA 4.0（需署名）",
+          "note": "基于条目剧情概述改写；不逐句复制"
+        }
+      },
+      "evaluation": {
+        "info_completeness": "studio/episodes/format/month 建议补齐后信息完整",
+        "uniqueness": "desc_b 为独立简介，无重复句式",
+        "readability": "可读性良好（中文自然句）",
+        "source_reliability": "wikidata CC0 高可靠；wikipedia 文本需人工改写避侵权",
+        "license_risk": "低（wikidata CC0；wikipedia 改写后 CC BY-SA 署名即可）",
+        "batch_cost": "低（结构化字段可批量）；描述需逐部人工/半自动撰写"
+      }
+    }
+  ],
+  "seo_title_assessment": {
+    "current_pattern": "{title} - 在线观看 - AnimeHub（120/120 固定尾缀）",
+    "recommendation": "候选加入 年份/集数/类型 增加唯一性；建议小样本 A/B 验证后再决定",
+    "worth_changing": "中等收益（当前模板无害但同质化；改造需回归 canonical URL）"
+  },
+  "pipeline_recommendation": {
+    "studio": "建议进入正式 production data pipeline（wikidata CC0，高置信）",
+    "episodes": "建议进入正式 production data pipeline（wikidata CC0）",
+    "format": "需先评估 schema 变更与派生规则，暂缓",
+    "month": "辅助维度，二次增强",
+    "description": "建议人工/半自动逐部重写（本阶段 10 部样本验证），不批量套模板",
+    "proceed_next_stage": "建议进入 Stage 12-J：wikidata studio/episodes 小批量试点（先 dry-run）"
+  }
+}
