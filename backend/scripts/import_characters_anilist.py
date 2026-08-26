@@ -277,6 +277,14 @@ def build_configs_from_db(db, n: int):
             break
     return configs
 
+
+def resolve_anime_config(db, slug: str):
+    """从数据库解析 slug → {anime_slug, anilist_id}。数据库不存在或无 anilist_id 返回 None。"""
+    row = db.execute(text("SELECT slug, anilist_id FROM anime WHERE slug = :s"), {'s': slug}).first()
+    if row is None or not row[1]:
+        return None
+    return {'anime_slug': row[0], 'anilist_id': int(row[1])}
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true')
@@ -308,6 +316,20 @@ def main():
              'skip_no_anime': [], 'conflict': [], 'failed': [],
              'succeeded': []}
     only = [s for s in args.anime.split(',') if s] if args.anime else []
+    # 兼容：--anime 指定 slug 在 manifest 缺失但数据库存在 → 自动从 db 解析最小 config。
+    # manifest 中已有的 slug 继续使用原配置（only_ids / characters_cn 等），不覆盖。
+    if only and not args.anime_from_db:
+        known = {c['anime_slug'] for c in configs}
+        for slug in only:
+            if slug in known:
+                continue
+            conf = resolve_anime_config(db, slug)
+            if conf:
+                configs.append(conf)
+                print('[db-resolve] %s → anilist %s（自动解析，无手工映射）'
+                      % (slug, conf['anilist_id']))
+            else:
+                print('[error] 指定作品不存在: %s（manifest 与数据库均无）' % slug)
     # 已有关系键（character.source_id, voice_actor.source_id）——dry-run/正式统一用外部键去重
     existing_rels = set()
     for r in db.execute(text(
