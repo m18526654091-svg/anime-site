@@ -31,6 +31,16 @@ OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 GRAPHQL = 'https://graphql.anilist.co'
 MANIFEST = 'data/anilist_characters_manifest.json'
 
+# 默认请求参数（保守稳定优先，可通过 CLI 覆盖）
+DEFAULT_DELAY = 1.0       # 成功请求之间最小间隔（秒）
+DEFAULT_RETRIES = 4       # 429/网络错误最大重试次数
+DEFAULT_TIMEOUT = 45      # 单请求超时（秒）
+MAX_BACKOFF = 30          # 指数退避上限（秒）
+
+# 全局请求状态（统计 + 间隔控制）
+REQUEST_STATS = {'count': 0, 'http_429': 0, 'http_5xx': 0, 'http_other': 0}
+_last_request_at = 0.0
+
 # 新列（旧库需 ALTER 补充）
 NEW_COLUMNS = {
     'characters': [('native_name', 'VARCHAR(120)'), ('source', 'VARCHAR(40)'), ('source_id', 'VARCHAR(64)')],
@@ -63,20 +73,83 @@ def ensure_columns():
                 if col not in existing:
                     c.execute(text('ALTER TABLE %s ADD COLUMN %s %s DEFAULT \'\'' % (table, col, typ)))
 
-def gql(query: str, timeout: int = 60):
+def _backoff_seconds(attempt: int) -> float:
+    """指数退避：第1次失败 2s、第2次 4s、第3次 8s，上限 MAX_BACKOFF。"""
+    return min(2 ** (attempt + 1), MAX_BACKOFF)
+
+
+def gql(query: str, timeout: float = None, retries: int = None, delay: float = None):
+    """GraphQL 请求，带 429 Retry-After / 指数退避 / 请求间隔。
+
+    策略:
+      - 429: 优先遵守 Retry-After header，否则 2^n 指数退避（上限 30s），最多 retries 次重试
+      - 5xx: 最多 2 次重试（指数退避）
+      - 4xx 非 429: 不重试，直接抛错
+      - 网络/超时错误: 指数退避重试
+    每次请求（含重试）前保证与上一次至少间隔 delay 秒。
+    """
+    timeout = timeout if timeout is not None else DEFAULT_TIMEOUT
+    retries = retries if retries is not None else DEFAULT_RETRIES
+    delay = delay if delay is not None else DEFAULT_DELAY
+    global _last_request_at
+
     body = json.dumps({'query': query}).encode('utf-8')
     req = urllib.request.Request(GRAPHQL, data=body, headers={
         'Content-Type': 'application/json', 'User-Agent': 'AnimeHub-Import/1.0'})
+
     last = None
-    for i in range(3):
+    for attempt in range(retries + 1):  # 初始请求 + retries 次重试
+        # 请求间隔控制（成功/失败请求都算）
+        wait = delay - (time.time() - _last_request_at)
+        if wait > 0:
+            time.sleep(wait)
+        _last_request_at = time.time()
+        REQUEST_STATS['count'] += 1
         try:
-            return json.loads(OPENER.open(req, timeout=timeout).read().decode('utf-8'))
-        except Exception as e:
+            resp = OPENER.open(req, timeout=timeout)
+            return json.loads(resp.read().decode('utf-8'))
+        except urllib.error.HTTPError as e:
+            status = e.code
+            if status == 429:
+                REQUEST_STATS['http_429'] += 1
+                ra = e.headers.get('Retry-After') if e.headers else None
+                wait_s = 0
+                if ra and ra.strip().isdigit():
+                    wait_s = min(int(ra.strip()), MAX_BACKOFF)
+                else:
+                    wait_s = _backoff_seconds(attempt)
+                if attempt < retries:
+                    time.sleep(wait_s)
+                    continue
+                last = e
+            elif status >= 500:
+                REQUEST_STATS['http_5xx'] += 1
+                if attempt < min(retries, 2):  # 5xx 最多 2 次重试
+                    time.sleep(_backoff_seconds(attempt))
+                    continue
+                last = e
+            else:
+                # 4xx 非 429 不重试
+                REQUEST_STATS['http_other'] += 1
+                last = e
+            break
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            REQUEST_STATS['http_other'] += 1
             last = e
-            time.sleep(4)
+            if attempt < retries:
+                time.sleep(_backoff_seconds(attempt))
+                continue
+            break
+        except Exception as e:
+            REQUEST_STATS['http_other'] += 1
+            last = e
+            if attempt < retries:
+                time.sleep(_backoff_seconds(attempt))
+                continue
+            break
     raise last
 
-def fetch_characters(anilist_id: int):
+def fetch_characters(anilist_id: int, timeout: float = None, retries: int = None, delay: float = None):
     """分页拉取 AniList 角色（perPage 上限 50，最多 4 页）。"""
     all_out = []
     title = ''
@@ -85,7 +158,7 @@ def fetch_characters(anilist_id: int):
              'characters(page: %d, perPage: 50, sort: ROLE) { edges { role '
              'voiceActors(language: JAPANESE) { id name { full native } } '
              'node { id name { full native } } } } } }' % (anilist_id, page))
-        d = gql(q)
+        d = gql(q, timeout=timeout, retries=retries, delay=delay)
         m = d['data']['Media']
         if not title:
             title = m['title']['romaji']
@@ -169,6 +242,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--anime', default='', help='只处理指定 anime_slug（逗号分隔）')
+    ap.add_argument('--delay', type=float, default=DEFAULT_DELAY,
+                    help='请求最小间隔秒数（默认 %.1f）' % DEFAULT_DELAY)
+    ap.add_argument('--retries', type=int, default=DEFAULT_RETRIES,
+                    help='429/网络错误最大重试次数（默认 %d）' % DEFAULT_RETRIES)
+    ap.add_argument('--timeout', type=float, default=DEFAULT_TIMEOUT,
+                    help='单请求超时秒数（默认 %d）' % DEFAULT_TIMEOUT)
     args = ap.parse_args()
 
     Base.metadata.create_all(engine)
@@ -179,7 +258,8 @@ def main():
     db = SessionLocal()
     stats = {'va_new': 0, 'char_new': 0, 'rel_new': 0,
              'va_reuse': 0, 'char_reuse': 0, 'rel_skip': 0,
-             'skip_no_anime': [], 'conflict': []}
+             'skip_no_anime': [], 'conflict': [], 'failed': [],
+             'succeeded': []}
     only = [s for s in args.anime.split(',') if s] if args.anime else []
     # 已有关系键（character.source_id, voice_actor.source_id）——dry-run/正式统一用外部键去重
     existing_rels = set()
@@ -201,10 +281,14 @@ def main():
                 continue
             print('== %s (%s, anilist %s)' % (anime.title, slug, conf['anilist_id']))
             try:
-                media_title, chars = fetch_characters(conf['anilist_id'])
+                media_title, chars = fetch_characters(
+                    conf['anilist_id'], timeout=args.timeout,
+                    retries=args.retries, delay=args.delay)
             except Exception as e:
+                stats['failed'].append((slug, str(e)[:120]))
                 print('   fetch 失败: %s' % str(e)[:120])
                 continue
+            stats['succeeded'].append(slug)
             cns = conf.get('characters_cn', {})
             vans = conf.get('voice_actors_cn', {})
             maxc = conf.get('max_characters', 10)
@@ -295,6 +379,11 @@ def main():
         print('新增关系: %d | 已存在关系跳过: %d' % (stats['rel_new'], stats['rel_skip']))
         print('跳过(无作品):', stats['skip_no_anime'] or '无')
         print('冲突:', stats['conflict'] or '无')
+        print('成功作品:', stats['succeeded'] or '无')
+        print('失败作品:', [(s, e) for s, e in stats['failed']] or '无')
+        print('请求统计: 429次数=%d | HTTP 5xx次数=%d | 其他错误=%d | 实际请求次数=%d'
+              % (REQUEST_STATS['http_429'], REQUEST_STATS['http_5xx'],
+                 REQUEST_STATS['http_other'], REQUEST_STATS['count']))
     finally:
         db.close()
 
