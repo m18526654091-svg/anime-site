@@ -2,7 +2,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api import anime, comments, favorites, users
+from .api import anime, characters, comments, favorites, users, voice_actors
 from .database import DATABASE_URL, ENVIRONMENT, SessionLocal, Base, engine, ensure_schema
 from .models import Anime
 from .seed import seed_anime
@@ -77,6 +77,8 @@ app.add_middleware(
 
 app.include_router(users.router)
 app.include_router(anime.router)
+app.include_router(characters.router)
+app.include_router(voice_actors.router)
 app.include_router(comments.router)
 app.include_router(favorites.router)
 

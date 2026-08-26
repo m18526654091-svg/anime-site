@@ -5,6 +5,53 @@ import { isNumericSlug } from "@/lib/slug";
 export const TOKEN_KEY = "animehub_token";
 export const USER_KEY = "animehub_user";
 
+// ---------- 角色 / 声优实体类型（Stage: 角色+声优 SEO MVP） ----------
+export interface CharacterDetail {
+  id: number;
+  name: string;
+  name_en: string;
+  slug: string;
+  description: string;
+  aliases: string;
+  image: string;
+  anime: { id: number; title: string; chinese_title: string; slug: string } | null;
+  voice_actors: { id: number; name: string; slug: string }[];
+}
+
+export interface VoiceActorDetail {
+  id: number;
+  name: string;
+  name_en: string;
+  slug: string;
+  description: string;
+  aliases: string;
+  image: string;
+  characters: {
+    id: number; name: string; slug: string;
+    anime_title?: string; anime_slug?: string;
+  }[];
+}
+
+export async function fetchCharacterBySlug(slug: string): Promise<CharacterDetail> {
+  const { data } = await api.get<CharacterDetail>(`/api/characters/${slug}`);
+  return data;
+}
+
+export async function fetchVoiceActorBySlug(slug: string): Promise<VoiceActorDetail> {
+  const { data } = await api.get<VoiceActorDetail>(`/api/voice-actors/${slug}`);
+  return data;
+}
+
+export async function fetchAllCharacters(): Promise<{ slug: string }[]> {
+  const { data } = await api.get<{ slug: string }[]>("/api/characters");
+  return data;
+}
+
+export async function fetchAllVoiceActors(): Promise<{ slug: string }[]> {
+  const { data } = await api.get<{ slug: string }[]>("/api/voice-actors");
+  return data;
+}
+
 // Service-side (SSR/SSG) calls FastAPI directly via loopback.
 const INTERNAL_API_URL = "http://127.0.0.1:8000";
 

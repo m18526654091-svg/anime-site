@@ -67,6 +67,7 @@ class Anime(Base):
     favorites = relationship("Favorite", back_populates="anime")
     ratings = relationship("Rating", back_populates="anime", cascade="all, delete-orphan")
     episodes_list = relationship("Episode", back_populates="anime", cascade="all, delete-orphan")
+    characters = relationship("Character", back_populates="anime", cascade="all, delete-orphan")
 
 
 class Episode(Base):
@@ -200,3 +201,63 @@ class AnimeFieldSource(Base):
     fetched_at = Column(DateTime, default=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class VoiceActor(Base):
+    """声优 / 配音演员（Stage: 角色+声优 SEO MVP）。"""
+
+    __tablename__ = "voice_actors"
+    __table_args__ = (
+        UniqueConstraint("slug", name="uq_voice_actor_slug"),
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(120), nullable=False, index=True)   # 中文名（常用名）
+    name_en = Column(String(120), default="")
+    slug = Column(String(160), default="", index=True)
+    description = Column(Text, default="")
+    aliases = Column(String(300), default="")  # 别名，逗号分隔
+    image = Column(Text, default="")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    characters = relationship("Character", secondary="character_voices",
+                              back_populates="voice_actors")
+
+
+class Character(Base):
+    """动漫角色（Stage: 角色+声优 SEO MVP）。"""
+
+    __tablename__ = "characters"
+    __table_args__ = (
+        UniqueConstraint("slug", name="uq_character_slug"),
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(120), nullable=False, index=True)   # 中文名（常用名）
+    name_en = Column(String(120), default="")
+    slug = Column(String(160), default="", index=True)
+    description = Column(Text, default="")
+    aliases = Column(String(300), default="")  # 别名，逗号分隔
+    image = Column(Text, default="")
+    anime_id = Column(Integer, ForeignKey("anime.id"), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    anime = relationship("Anime", back_populates="characters")
+    voice_actors = relationship("VoiceActor", secondary="character_voices",
+                                back_populates="characters")
+
+
+class CharacterVoice(Base):
+    """角色-声优关系（角色 → 声优）。"""
+
+    __tablename__ = "character_voices"
+    __table_args__ = (
+        UniqueConstraint("character_id", "voice_actor_id", name="uq_character_voice"),
+    )
+
+    id = Column(Integer, primary_key=True, index=True)
+    character_id = Column(Integer, ForeignKey("characters.id"), nullable=False, index=True)
+    voice_actor_id = Column(Integer, ForeignKey("voice_actors.id"), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow)

@@ -9,6 +9,7 @@ import {
 import type { Anime } from "@/types";
 import { animePath } from "@/lib/slug";
 import { filterRedundantSeasons } from "@/lib/seasonIndex";
+import { fetchAllCharacters, fetchAllVoiceActors } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -165,5 +166,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch seasons for sitemap:", error);
   }
 
-  return [...staticPages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...animePages];
+  let characterPages: MetadataRoute.Sitemap = [];
+  let voiceActorPages: MetadataRoute.Sitemap = [];
+  try {
+    const chars = await fetchAllCharacters();
+    characterPages = chars.map((c) => ({
+      url: `${siteBase}/character/${c.slug}/`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.5,
+    }));
+    const vas = await fetchAllVoiceActors();
+    voiceActorPages = vas.map((v) => ({
+      url: `${siteBase}/voice-actor/${v.slug}/`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.5,
+    }));
+  } catch (error) {
+    console.error("Failed to fetch character/voice-actor pages for sitemap:", error);
+  }
+
+  return [...staticPages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...animePages, ...characterPages, ...voiceActorPages];
 }
