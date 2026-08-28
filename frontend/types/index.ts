@@ -21,6 +21,7 @@ export interface Anime {
   seo_description?: string;
   quality_score?: number;
   is_indexable?: number;
+  anime_seo_priority?: number;
   play_data?: string;
   updated_at?: string;
 }

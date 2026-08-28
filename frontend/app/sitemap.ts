@@ -7,7 +7,7 @@ import {
   fetchYears,
 } from "@/lib/api";
 import type { Anime } from "@/types";
-import { animePath } from "@/lib/slug";
+import { animePath, isNumericSlug } from "@/lib/slug";
 import { filterRedundantSeasons } from "@/lib/seasonIndex";
 import { fetchAllCharacters, fetchAllVoiceActors } from "@/lib/api";
 
@@ -70,6 +70,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteBase}/years/`, lastModified, changeFrequency: "daily", priority: 0.8 },
     { url: `${siteBase}/seasons/`, lastModified, changeFrequency: "daily", priority: 0.8 },
     { url: `${siteBase}/studios/`, lastModified, changeFrequency: "daily", priority: 0.8 },
+    // SEO Growth Phase 2：列表页（Traffic Acquisition）
+    { url: `${siteBase}/best-anime/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/isekai/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/action/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/romance/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/fantasy/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/horror/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/comedy/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/new-anime/`, lastModified, changeFrequency: "daily", priority: 0.8 },
+    { url: `${siteBase}/upcoming-anime/`, lastModified, changeFrequency: "daily", priority: 0.8 },
+    // Phase 4：Watch Order + 新 Best Lists
+    { url: `${siteBase}/watch-order/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/attack-on-titan/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/naruto/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/code-geass/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/one-piece/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/dragon-ball/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/best-anime/psychological/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/slice-of-life/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/short/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/beginners/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/saddest/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/happy-ending-romance/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   let animePages: MetadataRoute.Sitemap = [];
@@ -99,6 +122,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     animePages = deduped;
   } catch (error) {
     console.error("Failed to fetch anime for sitemap:", error);
+  }
+
+  // SEO Growth Phase 1-B：Similar Anime 页（仅 anime_seo_priority>=60 的高优先级动漫）
+  let similarPages: MetadataRoute.Sitemap = [];
+  try {
+    const allAnime = await fetchAllAnimePages();
+    const seenSim = new Set<string>();
+    for (const a of allAnime) {
+      if ((a.anime_seo_priority ?? 0) < 60) continue;
+      const slug = (a.slug || "").trim();
+      if (!slug || isNumericSlug(slug)) continue;
+      const url = `${siteBase}/anime/${slug}/similar/`;
+      if (seenSim.has(url)) continue;
+      seenSim.add(url);
+      similarPages.push({
+        url,
+        lastModified: a.updated_at ? new Date(a.updated_at) : lastModified,
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+    }
+  } catch (error) {
+    console.error("Failed to fetch anime for similar sitemap:", error);
   }
 
   let categoryPages: MetadataRoute.Sitemap = [];
@@ -166,6 +212,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch seasons for sitemap:", error);
   }
 
+  // SEO Growth Phase 1-D：Season 英文页 /season/{season}-{year}-anime/
+  let seasonSlugPages: MetadataRoute.Sitemap = [];
+  try {
+    const seasons = await fetchSeasons();
+    const uniqueSeasons = await filterRedundantSeasons(seasons);
+    const seenSlug = new Set<string>();
+    for (const s of uniqueSeasons) {
+      if (s.year == null || !(s.season || "").trim()) continue;
+      const url = `${siteBase}/season/${s.season}-${s.year}-anime/`;
+      if (seenSlug.has(url)) continue;
+      seenSlug.add(url);
+      seasonSlugPages.push({ url, lastModified, changeFrequency: "weekly", priority: 0.5 });
+    }
+  } catch (error) {
+    console.error("Failed to fetch seasons for english sitemap:", error);
+  }
+
   let characterPages: MetadataRoute.Sitemap = [];
   let voiceActorPages: MetadataRoute.Sitemap = [];
   try {
@@ -187,5 +250,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch character/voice-actor pages for sitemap:", error);
   }
 
-  return [...staticPages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...animePages, ...characterPages, ...voiceActorPages];
+  return [...staticPages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...seasonSlugPages, ...animePages, ...similarPages, ...characterPages, ...voiceActorPages];
 }

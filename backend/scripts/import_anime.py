@@ -147,6 +147,10 @@ def main() -> None:
                     anime.chinese_title = (item.get("chinese_title") or "").strip()
                     anime.genre = (item.get("genre") or "").strip()
                     anime.year = item.get("year")
+                    # month：仅当数据源提供非空 month 时更新，避免覆盖已有首播月。
+                    _month = item.get("month")
+                    if _month is not None:
+                        anime.month = _month
                     anime.region = (item.get("region") or "").strip()
                     anime.author = (item.get("author") or "").strip()
                     anime.studio = (item.get("studio") or "").strip()
@@ -168,6 +172,7 @@ def main() -> None:
                         "genre",
                         "tags",
                         "year",
+                        "month",
                         "region",
                         "author",
                         "studio",

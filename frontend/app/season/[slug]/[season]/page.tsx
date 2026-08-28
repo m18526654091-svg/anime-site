@@ -25,9 +25,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { year: string; season: string };
+  params: { slug: string; season: string };
 }) {
-  const year = params.year;
+  const year = Number(params.slug);
   const season = params.season;
   const seasonCn = SEASON_CN[season] || season;
   // 规范 URL 使用尾斜杠（与项目 /anime/xxx/ 规范一致）
@@ -62,10 +62,10 @@ export default async function SeasonPage({
   params,
   searchParams,
 }: {
-  params: { year: string; season: string };
+  params: { slug: string; season: string };
   searchParams: { page?: string; sort?: string | string[] };
 }) {
-  const year = parseInt(params.year, 10);
+  const year = parseInt(params.slug, 10);
   const season = params.season;
   const seasonCn = SEASON_CN[season] || season;
 

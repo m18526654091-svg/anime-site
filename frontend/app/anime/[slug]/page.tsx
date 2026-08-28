@@ -1,8 +1,15 @@
 import AnimeDetailClient from "@/components/AnimeDetailClient";
-import { fetchAnimeBySlug, fetchAnimeDetail, fetchRatings, fetchRelated } from "@/lib/api";
+import {
+  fetchAnimeBySlug,
+  fetchAnimeDetail,
+  fetchRatings,
+  fetchRelated,
+  fetchCharactersByAnime,
+} from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Anime, RatingsInfo } from "@/types";
+import type { AnimeCharacter } from "@/lib/api";
 
 // Render on demand with real backend data.
 export const revalidate = 600;
@@ -32,16 +39,58 @@ function buildKeywords(anime: Anime): string[] {
   return Array.from(new Set(list)).filter(Boolean);
 }
 
+// ---- SEO Growth Phase 1-A：英文自然 SEO title/description（面向美国 Google 搜索） ----
+
+const GENRE_TITLE_SUFFIX: Record<string, string> = {
+  动作: "Action, Plot & Characters",
+  奇幻: "Fantasy World, Plot & Characters",
+  恋爱: "Romance, Story & More",
+  悬疑: "Mystery & Plot Twists",
+  推理: "Mystery & Plot Twists",
+  科幻: "Sci-Fi Story & More",
+  热血: "Battle Scenes & Story",
+  战斗: "Battle Scenes & Story",
+  治愈: "Heartwarming Story & More",
+  搞笑: "Comedy, Characters & More",
+  异世界: "Isekai Adventure, Plot & More",
+};
+
+/** 纯 ASCII 标题 → 生成英文 SEO title（如 "Solo Leveling: Release Date, Story & Characters"） */
+function buildEnglishSeoTitle(anime: Anime): string | null {
+  const title = (anime.title || "").trim();
+  if (!title || !/^[\x20-\x7E]+$/.test(title)) return null;
+  const genre = (anime.genre || "").split("/").map((g) => g.trim()).find(Boolean) || "";
+  const suffix = GENRE_TITLE_SUFFIX[genre] || "Release Date, Story & Characters";
+  return `${title}: ${suffix}`;
+}
+
+/** 生成 150-160 字符英文 meta description（不复制 AniList 原文） */
+function buildEnglishSeoDescription(anime: Anime): string | null {
+  const title = (anime.title || "").trim();
+  if (!title || !/^[\x20-\x7E]+$/.test(title)) return null;
+  const genre = (anime.genre || "").replace(/\//g, ", ") || "anime";
+  const year = anime.year ? ` first aired in ${anime.year}` : "";
+  const episodes = anime.episodes ? ` with ${anime.episodes} episodes` : "";
+  const why = "Fans search this title for its story, characters, and release details.";
+  const desc =
+    `${title} (${year}): a ${genre} anime${episodes}. ${why} ` +
+    `Get the synopsis, episode list, and watch it free on AnimeHub.`;
+  return desc.length > 160 ? `${desc.slice(0, 157)}...` : desc;
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   try {
         const anime = await fetchAnimeBySlug(params.slug);
     const seoTitle = (anime.seo_title || "").trim();
     const rawTitle = anime.chinese_title || anime.title;
+    // SEO Growth Phase 1-A：英文标题条目 → 生成英文自然 SEO 标题/描述
+    const enTitle = buildEnglishSeoTitle(anime);
+    const enDesc = buildEnglishSeoDescription(anime);
     // seo_title 已是完整优化标题（含品牌），直接使用；否则用规则生成。
-    const pageTitle = seoTitle || `${rawTitle} - 在线观看 - AnimeHub`;
+    const pageTitle = enTitle || seoTitle || `${rawTitle} - 在线观看 - AnimeHub`;
     const rawDesc = anime.seo_description || anime.description || "";
     const description =
-      trimText(rawDesc) || `${rawTitle}在线观看，提供动漫简介、类型、年份与选集信息。`;
+      enDesc || trimText(rawDesc) || `${rawTitle}在线观看，提供动漫简介、类型、年份与选集信息。`;
     const canonical = `${getSiteBase()}${animePath(anime)}/`;
     const keywords = buildKeywords(anime);
     // 低质量页面（quality_score < 50）使用 noindex，避免 Google 收录大量低质内容
@@ -143,9 +192,20 @@ export default async function AnimeDetailPage({
     }
   }
 
+  // Sprint 6-D：服务端获取角色+声优（SSR 渲染 → 爬虫可见 anime→character→voice-actor 实体内链）
+  // 无角色动漫返回空数组，页面不渲染该区块，保持不变。
+  let initialCharacters: AnimeCharacter[] = [];
+  if (anime) {
+    try {
+      initialCharacters = await fetchCharactersByAnime(anime.id);
+    } catch {
+      initialCharacters = [];
+    }
+  }
+
   return (
     <>
-      <AnimeDetailClient anime={anime} error={error} initialRelated={initialRelated} />
+      <AnimeDetailClient anime={anime} error={error} initialRelated={initialRelated} initialCharacters={initialCharacters} />
             {anime && (
         <script
           type="application/ld+json"

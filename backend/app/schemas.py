@@ -54,6 +54,7 @@ class AnimeBase(BaseModel):
     play_data: Optional[str] = ""
     quality_score: Optional[int] = 100
     is_indexable: Optional[int] = 1
+    anime_seo_priority: Optional[int] = 0
     updated_at: Optional[datetime] = None
 
 

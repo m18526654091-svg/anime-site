@@ -32,6 +32,15 @@ export interface VoiceActorDetail {
   }[];
 }
 
+// Sprint 6-D：anime 详情页 SSR 角色/声优实体内链（列表接口 + anime_id 过滤）
+export interface AnimeCharacter {
+  id: number;
+  name: string;
+  slug: string;
+  anime_slug?: string;
+  voice_actors: { id: number; name: string; slug: string }[];
+}
+
 export async function fetchCharacterBySlug(slug: string): Promise<CharacterDetail> {
   const { data } = await api.get<CharacterDetail>(`/api/characters/${slug}`);
   return data;
@@ -49,6 +58,14 @@ export async function fetchAllCharacters(): Promise<{ slug: string }[]> {
 
 export async function fetchAllVoiceActors(): Promise<{ slug: string }[]> {
   const { data } = await api.get<{ slug: string }[]>("/api/voice-actors");
+  return data;
+}
+
+// Sprint 6-D：按 anime_id 获取角色及配音声优（SSR 实体内链用）
+export async function fetchCharactersByAnime(animeId: number): Promise<AnimeCharacter[]> {
+  const { data } = await api.get<AnimeCharacter[]>("/api/characters", {
+    params: { anime_id: animeId },
+  });
   return data;
 }
 
@@ -311,6 +328,31 @@ export async function fetchRelated(animeId: number, limit = 8): Promise<Anime[]>
 
   return results.slice(0, limit);
 }
+
+// ---------- SEO Growth Phase 1-B：Similar Anime ----------
+
+export interface SimilarAnime {
+  id: number;
+  title: string;
+  chinese_title?: string;
+  slug?: string;
+  cover?: string;
+  genre?: string;
+  tags?: string;
+  year?: number | null;
+  score?: number;
+  anime_seo_priority?: number;
+  similarity_score: number;
+  reason: string;
+}
+
+export async function fetchSimilarAnime(animeId: number, limit = 8): Promise<SimilarAnime[]> {
+  const { data } = await api.get<SimilarAnime[]>(`/api/anime/${animeId}/similar`, {
+    params: { limit },
+  });
+  return data;
+}
+
 
 /** 月份(1-12) → 季度（spring/summer/autumn/winter），未知返回 null */
 function monthToSeason(month: number): string | null {

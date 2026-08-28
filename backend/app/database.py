@@ -137,6 +137,8 @@ def _ensure_sqlite_schema() -> None:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN is_indexable INTEGER DEFAULT 1"))
             if "seo_description" not in cols:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN seo_description TEXT DEFAULT ''"))
+            if "anime_seo_priority" not in cols:
+                conn.execute(text("ALTER TABLE anime ADD COLUMN anime_seo_priority INTEGER DEFAULT 0"))
             if "play_data" not in cols:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN play_data TEXT DEFAULT ''"))
             if "updated_at" not in cols:
@@ -184,6 +186,7 @@ def _ensure_postgres_schema() -> None:
         # ALTER ADD COLUMN 不会自动建索引，手动补齐（与 models.py index=True 一致，幂等）
         statements.append("CREATE INDEX IF NOT EXISTS ix_anime_anilist_id ON anime (anilist_id)")
         statements.append("CREATE INDEX IF NOT EXISTS ix_anime_mal_id ON anime (mal_id)")
+        statements.append("CREATE INDEX IF NOT EXISTS ix_anime_anime_seo_priority ON anime (anime_seo_priority)")
         if "seo_title" not in cols:
             statements.append("ALTER TABLE anime ADD COLUMN seo_title TEXT DEFAULT ''")
         if "quality_score" not in cols:
@@ -192,6 +195,8 @@ def _ensure_postgres_schema() -> None:
             statements.append("ALTER TABLE anime ADD COLUMN is_indexable INTEGER DEFAULT 1")
         if "seo_description" not in cols:
             statements.append("ALTER TABLE anime ADD COLUMN seo_description TEXT DEFAULT ''")
+        if "anime_seo_priority" not in cols:
+            statements.append("ALTER TABLE anime ADD COLUMN anime_seo_priority INTEGER DEFAULT 0")
         if "updated_at" not in cols:
             statements.append("ALTER TABLE anime ADD COLUMN updated_at TIMESTAMP")
         if "play_data" not in cols:

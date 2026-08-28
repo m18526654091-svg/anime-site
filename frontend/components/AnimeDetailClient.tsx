@@ -16,14 +16,16 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import AnimeCover from "@/components/AnimeCover";
 import RatingWidget from "@/components/RatingWidget";
 import type { Anime, Episode } from "@/types";
+import type { AnimeCharacter } from "@/lib/api";
 
 interface Props {
   anime: Anime | null;
   error: string;
   initialRelated?: Anime[];
+  initialCharacters?: AnimeCharacter[];
 }
 
-export default function AnimeDetailClient({ anime, error, initialRelated = [] }: Props) {
+export default function AnimeDetailClient({ anime, error, initialRelated = [], initialCharacters = [] }: Props) {
   const router = useRouter();
   const { isLoggedIn } = useAuth();
   const [related, setRelated] = useState<Anime[]>(initialRelated);
@@ -334,6 +336,15 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [] }:
               {anime.description || "暂无简介"}
             </p>
 
+            {/* SEO Growth：Anime Like {title} 入口（简介下方） */}
+            <Link
+              href={`/anime/${anime.slug || anime.id}/similar/`}
+              className="mt-4 inline-flex items-center gap-2 rounded-xl border border-indigo-500/40 bg-indigo-500/10 px-4 py-2.5 text-sm font-semibold text-indigo-300 transition hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-white"
+            >
+              Anime Like {anime.title || anime.chinese_title}
+              <span aria-hidden="true">→</span>
+            </Link>
+
             {/* 详情 (SEO text) */}
             <h2 className="mt-6 text-lg font-semibold text-white">详情</h2>
             <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-300">
@@ -437,13 +448,63 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [] }:
 
       {/* 广告位已隐藏，保留 AdPlaceholder 组件供未来接入真实广告时使用 */}
 
-      {/* ===== Related ===== */}
-      {related.length > 0 && (
+      {/* ===== Characters（Sprint 6-D：SSR 实体内链 anime→character→voice-actor）===== */}
+      {initialCharacters.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-5 flex items-center gap-3 text-xl font-bold text-white">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
-            相关推荐
+            登场角色
           </h2>
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+            {initialCharacters.map((ch) => (
+              <div
+                key={ch.id}
+                className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:border-pink-500/50 hover:shadow-glow"
+              >
+                <Link
+                  href={`/character/${ch.slug}/`}
+                  className="truncate font-bold text-white transition hover:text-pink-300"
+                >
+                  {ch.name}
+                </Link>
+                {ch.voice_actors.length > 0 && (
+                  <p className="mt-2 text-xs leading-relaxed text-slate-400">
+                    配音：
+                    {ch.voice_actors.map((va, idx) => (
+                      <span key={va.id}>
+                        {idx > 0 && <span className="text-slate-600"> / </span>}
+                        <Link
+                          href={`/voice-actor/${va.slug}/`}
+                          className="text-pink-400 hover:underline"
+                        >
+                          {va.name}
+                        </Link>
+                      </span>
+                    ))}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ===== Related ===== */}
+      {related.length > 0 && (
+        <section className="mt-10">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="flex items-center gap-3 text-xl font-bold text-white">
+              <span className="h-6 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
+              相关推荐
+            </h2>
+            <Link
+              href={`/anime/${anime.slug || anime.id}/similar/`}
+              className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-500/40 bg-indigo-500/10 px-3 py-1.5 text-xs font-semibold text-indigo-300 transition hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-white"
+            >
+              Anime Like {anime.title || anime.chinese_title}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {related.map((a) => (
               <Link key={a.id} href={animePath(a)} className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-pink-500/50 hover:shadow-glow">
@@ -466,6 +527,48 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [] }:
           </div>
         </section>
       )}
+
+      {/* SEO Growth Phase 2 Task 4：详情页 -> 列表页 -> 详情页 内链网络 */}
+      <section className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur sm:p-6">
+        <h2 className="flex items-center gap-3 text-lg font-semibold text-white">
+          <span className="h-5 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
+          Explore More Anime
+        </h2>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/best-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            Best Anime Lists
+          </Link>
+          <Link
+            href={`/anime/${anime.slug || anime.id}/similar/`}
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            Similar Anime
+          </Link>
+          <Link
+            href="/seasons/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            Season Pages
+          </Link>
+          <Link
+            href="/new-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            New Anime
+          </Link>
+          {anime.year && (
+            <Link
+              href={`/years/${anime.year}`}
+              className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+            >
+              {anime.year} Anime
+            </Link>
+          )}
+        </div>
+      </section>
 
       {/* 广告位已隐藏，保留 AdPlaceholder 组件供未来接入真实广告时使用 */}
     </div>

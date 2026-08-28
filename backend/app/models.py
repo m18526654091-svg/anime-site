@@ -59,6 +59,7 @@ class Anime(Base):
     seo_description = Column(String(500), default="")
     quality_score = Column(Integer, default=100, index=True)  # 内容质量分 0-100
     is_indexable = Column(Integer, default=1, index=True)  # 1=进sitemap；0=不提交sitemap
+    anime_seo_priority = Column(Integer, default=0, index=True)  # SEO 优先级 0-100（Phase 1-C）
     play_data = Column(Text, default="")
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     created_at = Column(DateTime, default=datetime.utcnow)

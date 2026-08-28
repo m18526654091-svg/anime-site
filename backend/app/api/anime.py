@@ -244,7 +244,115 @@ def list_seasons(db: Session = Depends(get_db)):
     return out
 
 
+# 共享 genre 的英文描述（用于 similar 页面 reason，符合英文搜索表达）
+_GENRE_REASON = {
+    "热血": "intense battles and determined protagonists",
+    "战斗": "high-octane fight scenes and skilled warriors",
+    "动作": "fast-paced action and adrenaline-fueled moments",
+    "奇幻": "immersive fantasy worlds and epic quests",
+    "冒险": "grand adventures across unknown lands",
+    "恋爱": "heartfelt romance and character-driven drama",
+    "校园": "relatable school-life stories and coming-of-age moments",
+    "科幻": "mind-bending sci-fi concepts and futuristic worlds",
+    "悬疑": "mysteries that keep you guessing until the end",
+    "推理": "clever mysteries and sharp deductions",
+    "异世界": "epic isekai adventures in other worlds",
+    "穿越": "thrilling time-travel and otherworldly journeys",
+    "机甲": "mecha battles and strategic warfare",
+    "搞笑": "sharp comedy and hilariously over-the-top characters",
+    "日常": "slice-of-life warmth and everyday charm",
+    "治愈": "heartwarming, soothing stories that lift your mood",
+    "运动": "competitive sports rivalries and team spirit",
+    "音乐": "music-driven stories with memorable performances",
+    "恐怖": "tense, unsettling horror atmosphere",
+    "黑暗": "dark, mature themes and moral complexity",
+    "魔法": "spellbinding magic systems and mystical powers",
+    "偶像": "idol performances and dreams of stardom",
+    "历史": "epic historical settings and sweeping drama",
+    "美食": "mouth-watering food and culinary passion",
+    "推理": "clever mysteries and psychological twists",
+    "心理": "deep psychological drama and mind games",
+}
+
+
+def _genre_set(genre: str) -> set[str]:
+    return {g.strip() for g in (genre or "").split("/") if g.strip()}
+
+
+def _tag_set(tags: str) -> set[str]:
+    return {t.strip().lower() for t in (tags or "").split("/") if t.strip()}
+
+
+def _jaccard(a: set, b: set) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / len(a | b)
+
+
+def _similarity_reason(shared_genres: set[str]) -> str:
+    if not shared_genres:
+        return "similar themes, tone, and storytelling style"
+    reasons = []
+    for g in sorted(shared_genres):
+        if g in _GENRE_REASON:
+            reasons.append(_GENRE_REASON[g])
+        elif len(reasons) < 2:
+            reasons.append(f"strong {g} themes")
+        if len(reasons) >= 2:
+            break
+    return "Both feature " + " and ".join(reasons[:2])
+
+
+@router.get("/{anime_id}/similar")
+def similar_anime(anime_id: int, limit: int = 8, db: Session = Depends(get_db)):
+    """基于 genre/tags 重叠 + score/year 接近计算相似动漫（Phase 1-B Similar SEO 页）。"""
+    anime = db.get(Anime, anime_id)
+    if not anime:
+        raise HTTPException(status_code=404, detail="Anime not found")
+    limit = min(max(limit, 1), 24)
+    target_genres = _genre_set(anime.genre)
+    target_tags = _tag_set(anime.tags)
+    target_score = float(anime.score or 0.0)
+    target_year = anime.year
+
+    results = []
+    for other in db.query(Anime).filter(Anime.id != anime_id).all():
+        if (other.quality_score or 100) < 70:
+            continue
+        g = _genre_set(other.genre)
+        t = _tag_set(other.tags)
+        genre_j = _jaccard(target_genres, g)
+        tag_j = _jaccard(target_tags, t)
+        score_sim = max(0.0, 1.0 - abs(target_score - float(other.score or 0)) / 5.0)
+        year_sim = 1.0
+        if target_year and other.year:
+            year_sim = max(0.0, 1.0 - abs(target_year - other.year) / 10.0)
+        raw = genre_j * 45 + tag_j * 25 + score_sim * 18 + year_sim * 12
+        if raw < 15:
+            continue
+        shared = target_genres & g
+        score = round(min(raw + (other.anime_seo_priority or 0) * 0.05, 100), 1)
+        results.append({
+            "id": other.id,
+            "title": other.title,
+            "chinese_title": other.chinese_title,
+            "slug": other.slug,
+            "cover": other.cover,
+            "genre": other.genre,
+            "tags": other.tags,
+            "year": other.year,
+            "score": other.score,
+            "anime_seo_priority": other.anime_seo_priority or 0,
+            "similarity_score": round(raw, 1),
+            "reason": _similarity_reason(shared),
+        })
+    results.sort(key=lambda x: (x["similarity_score"] + (x["anime_seo_priority"] or 0) * 0.1), reverse=True)
+    return results[:limit]
+
+
+
 @router.get("/people")
+
 def list_people(db: Session = Depends(get_db)):
     author_rows = (
         db.execute(
