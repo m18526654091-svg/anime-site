@@ -484,10 +484,10 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 >
                   {ch.name}
                 </Link>
-                {ch.voice_actors.length > 0 && (
+                {Array.isArray(ch.voice_actors) && ch.voice_actors.length > 0 && (
                   <p className="mt-2 text-xs leading-relaxed text-slate-400">
                     配音：
-                    {ch.voice_actors.map((va, idx) => (
+                    {(ch.voice_actors || []).map((va, idx) => (
                       <span key={va.id}>
                         {idx > 0 && <span className="text-slate-600"> / </span>}
                         <Link

@@ -33,12 +33,13 @@ export interface VoiceActorDetail {
 }
 
 // Sprint 6-D：anime 详情页 SSR 角色/声优实体内链（列表接口 + anime_id 过滤）
+// voice_actors 在部分后端版本（生产 1.7.0 characters API）中可能缺失，声明为可选。
 export interface AnimeCharacter {
   id: number;
   name: string;
   slug: string;
   anime_slug?: string;
-  voice_actors: { id: number; name: string; slug: string }[];
+  voice_actors?: { id: number; name: string; slug: string }[];
 }
 
 export async function fetchCharacterBySlug(slug: string): Promise<CharacterDetail> {
