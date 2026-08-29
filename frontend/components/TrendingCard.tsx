@@ -3,9 +3,52 @@ import type { Anime } from "@/types";
 import AnimeCover from "@/components/AnimeCover";
 import { animePath } from "@/lib/slug";
 
+/** 中文 genre 片段 → 英文推荐短语（只基于可靠字段，不虚构剧情） */
+const GENRE_PHRASE: Record<string, string> = {
+  动作: "high-energy action",
+  热血: "intense, high-energy action",
+  战斗: "action-packed battles",
+  奇幻: "a rich fantasy world",
+  异世界: "an immersive isekai adventure",
+  科幻: "thought-provoking sci-fi",
+  机甲: "epic mecha battles",
+  恋爱: "heartfelt romance",
+  校园: "school-life charm",
+  日常: "warm slice-of-life moments",
+  治愈: "a heartwarming, soothing tone",
+  悬疑: "mystery and suspense",
+  推理: "mind-bending mystery",
+  心理: "deep psychological themes",
+  恐怖: "tense horror",
+  搞笑: "sharp comedy",
+  喜剧: "lighthearted comedy",
+  冒险: "epic adventure",
+  剧情: "emotional drama",
+  历史: "a rich historical setting",
+  运动: "inspiring sports drama",
+  音乐: "a music-driven story",
+};
+
+/** 生成 1 句英文推荐理由（genre + year + score，不虚构剧情事实） */
+export function shortReason(a: Anime): string {
+  const genres = (a.genre || "")
+    .split(/[/，,、\s]+/)
+    .map((g) => g.trim())
+    .filter(Boolean);
+  const phrases = genres.map((g) => GENRE_PHRASE[g]).filter(Boolean) as string[];
+  const base =
+    phrases.length > 0
+      ? `A ${phrases.slice(0, 2).join(" and ")} anime`
+      : "A fan-favorite anime";
+  const yearBit = a.year ? ` from ${a.year}` : "";
+  const score = Number(a.score ?? 0);
+  const scoreBit = score > 0 ? ` rated ${score.toFixed(1)}/10 by fans` : "";
+  return `${base}${yearBit}${scoreBit}.`;
+}
+
 /**
  * Trending / Discover 页使用的英文标题卡片。
- * 包含：score、genre、year、详情链接、Similar 链接 —— 支持
+ * 包含：score、genre、year、short reason、详情链接、Similar 链接 —— 支持
  * Detail -> Detail 与 Detail -> Similar 的发现路径。
  */
 export default function TrendingCard({ anime }: { anime: Anime }) {
@@ -42,7 +85,7 @@ export default function TrendingCard({ anime }: { anime: Anime }) {
           </h3>
         </Link>
         <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-400">
-          {anime.description || ""}
+          {shortReason(anime)}
         </p>
         <div className="mt-auto pt-2.5">
           <Link

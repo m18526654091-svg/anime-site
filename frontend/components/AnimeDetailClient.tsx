@@ -33,6 +33,28 @@ const SEASON_LABEL: Record<string, string> = {
   winter: "Winter",
 };
 
+/** anime genre（中文）→ best-anime 分类 slug + 英文 label（条件内链，只基于可靠 genre 字段） */
+const BEST_GENRE_MAP: { match: string[]; slug: string; label: string }[] = [
+  { match: ["异世界"], slug: "isekai", label: "Isekai" },
+  { match: ["动作", "热血", "战斗"], slug: "action", label: "Action" },
+  { match: ["恋爱"], slug: "romance", label: "Romance" },
+  { match: ["奇幻"], slug: "fantasy", label: "Fantasy" },
+  { match: ["恐怖"], slug: "horror", label: "Horror" },
+  { match: ["搞笑", "喜剧"], slug: "comedy", label: "Comedy" },
+  { match: ["心理", "悬疑", "推理"], slug: "psychological", label: "Psychological" },
+  { match: ["日常", "治愈"], slug: "slice-of-life", label: "Slice of Life" },
+];
+
+function bestGenreEntry(genre?: string | null) {
+  if (!genre) return null;
+  const parts = genre.split(/[/，,、\s]+/).map((g) => g.trim());
+  for (const p of parts) {
+    const hit = BEST_GENRE_MAP.find((m) => m.match.includes(p));
+    if (hit) return hit;
+  }
+  return null;
+}
+
 function currentSeason(): { season: string; year: number; label: string } {
   const now = new Date();
   const m = now.getMonth() + 1;
@@ -570,6 +592,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
           >
             Best Anime Lists
           </Link>
+          {(() => {
+            const bg = bestGenreEntry(anime.genre);
+            if (!bg) return null;
+            return (
+              <Link
+                href={`/best-anime/${bg.slug}/`}
+                className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+              >
+                Popular {bg.label} Anime
+              </Link>
+            );
+          })()}
           <Link
             href={`/anime/${anime.slug || anime.id}/similar/`}
             className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"

@@ -38,17 +38,24 @@ export default async function TrendingAnimePage() {
 
   let trending: Anime[] = [];
   let seasonHits: Anime[] = [];
+  let popular: Anime[] = [];
+  let recentFavorites: Anime[] = [];
+  let latest: Anime[] = [];
   try {
-    const t = await fetchAnimeBySort("quality", PAGE_SIZE);
+    const [t, s, p, rf, l] = await Promise.all([
+      fetchAnimeBySort("quality", PAGE_SIZE),
+      fetchAnimeByFilter({ year, season, sort: "score" }, 1, 8),
+      fetchAnimeBySort("score", 8),
+      fetchAnimeByFilter({ year, sort: "quality" }, 1, 8),
+      fetchAnimeBySort("latest", 8),
+    ]);
     trending = t.items ?? [];
-  } catch {
-    trending = [];
-  }
-  try {
-    const s = await fetchAnimeByFilter({ year, season, sort: "score" }, 1, 8);
     seasonHits = s.items ?? [];
+    popular = p.items ?? [];
+    recentFavorites = rf.items ?? [];
+    latest = l.items ?? [];
   } catch {
-    seasonHits = [];
+    // backend offline: modules render empty
   }
 
   const canonical = `${site}/trending-anime/`;
@@ -155,6 +162,72 @@ export default async function TrendingAnimePage() {
           </div>
           <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
             {seasonHits.map((a) => (
+              <TrendingCard key={a.id} anime={a} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {popular.length > 0 && (
+        <section className="mt-12">
+          <div className="flex items-center justify-between">
+            <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span className="h-5 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
+              Popular Anime
+            </h2>
+            <Link
+              href="/top-anime/"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              View all top anime →
+            </Link>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+            {popular.map((a) => (
+              <TrendingCard key={a.id} anime={a} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {recentFavorites.length > 0 && (
+        <section className="mt-12">
+          <div className="flex items-center justify-between">
+            <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span className="h-5 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
+              Recent Fan Favorites ({year})
+            </h2>
+            <Link
+              href="/new-anime/"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              View new anime →
+            </Link>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+            {recentFavorites.map((a) => (
+              <TrendingCard key={a.id} anime={a} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {latest.length > 0 && (
+        <section className="mt-12">
+          <div className="flex items-center justify-between">
+            <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span className="h-5 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
+              Recently Added
+            </h2>
+            <Link
+              href="/latest-anime/"
+              className="text-sm font-medium text-blue-600 hover:underline"
+            >
+              View all new entries →
+            </Link>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+            {latest.map((a) => (
               <TrendingCard key={a.id} anime={a} />
             ))}
           </div>

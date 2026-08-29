@@ -50,6 +50,7 @@ export default async function DiscoverAnimePage() {
   let topScore: Anime[] = [];
   let latest: Anime[] = [];
   let seasonHits: Anime[] = [];
+  let upcoming: Anime[] = [];
 
   try {
     const [t, s, l, sh] = await Promise.all([
@@ -64,6 +65,25 @@ export default async function DiscoverAnimePage() {
     seasonHits = sh.items ?? [];
   } catch {
     // backend offline: render hub links only
+  }
+  // Upcoming：未来年份 + 未上映状态（与 /upcoming-anime/ 同口径，仅取前 8）
+  {
+    const seen = new Map<number, Anime>();
+    try {
+      const [u1, u2, u3] = await Promise.all([
+        fetchAnimeByFilter({ year: year + 1, sort: "score" }, 1, MODULE_SIZE),
+        fetchAnimeByFilter({ year, sort: "score" }, 1, MODULE_SIZE),
+        fetchAnimeByFilter({ status: "未上映", sort: "score" }, 1, MODULE_SIZE),
+      ]);
+      for (const pg of [u1, u2, u3]) {
+        for (const a of pg.items ?? []) {
+          if (!seen.has(a.id)) seen.set(a.id, a);
+        }
+      }
+    } catch {
+      // ignore
+    }
+    upcoming = Array.from(seen.values()).slice(0, MODULE_SIZE);
   }
 
   const canonical = `${site}/discover-anime/`;
@@ -161,6 +181,21 @@ export default async function DiscoverAnimePage() {
           </div>
           <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-4 md:grid-cols-4">
             {topScore.map((a) => (
+              <TrendingCard key={a.id} anime={a} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Upcoming module */}
+      {upcoming.length > 0 && (
+        <section className="mt-12">
+          <div className="flex items-center justify-between">
+            <SectionTitle>Upcoming Anime</SectionTitle>
+            <MoreLink href="/upcoming-anime/">View all upcoming</MoreLink>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-5 sm:grid-cols-4 md:grid-cols-4">
+            {upcoming.map((a) => (
               <TrendingCard key={a.id} anime={a} />
             ))}
           </div>

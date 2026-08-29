@@ -179,7 +179,7 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
                 ) : null}
               </div>
               <p className="mt-1 text-sm text-slate-600">
-                Why: {s.reason || "similar themes and storytelling"}
+                Why you may like it: {s.reason || (s.genre ? `It shares the ${s.genre.replace(/\//g, ", ")} vibe you enjoyed.` : "It shares similar themes and storytelling.")}
               </p>
             </div>
           </div>
