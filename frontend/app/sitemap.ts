@@ -108,6 +108,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteBase}/watch-order/monogatari/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteBase}/watch-order/bleach/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteBase}/watch-order/rezero/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    // Phase 9：Franchise + Historical
+    { url: `${siteBase}/anime-series/fate/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/best-anime/historical/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   let animePages: MetadataRoute.Sitemap = [];

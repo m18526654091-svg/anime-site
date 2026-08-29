@@ -21,6 +21,7 @@ const CATEGORIES = [
   { slug: "school", label: "Best School Anime" },
   { slug: "adventure", label: "Best Adventure Anime" },
   { slug: "underrated", label: "Underrated Anime & Hidden Gems" },
+  { slug: "historical", label: "Best Historical Anime" },
 ];
 
 const SITE_BASE = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");

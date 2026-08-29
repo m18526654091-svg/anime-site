@@ -93,9 +93,59 @@ export default async function SeasonSlugPage({ params }: { params: { slug: strin
 
       <h1 className="text-3xl font-bold text-slate-900">{label} Anime</h1>
       <p className="mt-2 max-w-3xl text-slate-600">
-        The complete {label} anime lineup ({months}). Browse new releases, top-rated shows, and
-        hidden gems airing this season — with scores, genres, and release years.
+        The {label} anime lineup ({months}) from our database. Browse top-rated shows and new
+        releases tagged for this season — with scores, genres, and release years. Rankings are
+        based on stored metadata, not live airing data.
       </p>
+
+      {/* ItemList JSON-LD（季度条目列表，增强爬虫理解） */}
+      {data.items.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: `${label} Anime`,
+              numberOfItems: data.items.length,
+              itemListElement: data.items.map((a, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                url: `${getSiteBase()}${animePath(a)}/`,
+                name: a.chinese_title || a.title,
+              })),
+            }),
+          }}
+        />
+      )}
+
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Link
+          href="/trending-anime/"
+          className="rounded-full bg-indigo-600 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-indigo-500"
+        >
+          Trending Anime →
+        </Link>
+        <Link
+          href="/new-anime/"
+          className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
+        >
+          New Anime
+        </Link>
+        <Link
+          href="/upcoming-anime/"
+          className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
+        >
+          Upcoming Anime
+        </Link>
+        <Link
+          href="/discover-anime/"
+          className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
+        >
+          Discover Anime
+        </Link>
+      </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {data.items.map((a) => (

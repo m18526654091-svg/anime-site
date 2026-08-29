@@ -13,6 +13,7 @@ import {
 import { useAuth } from "@/lib/auth";
 import { animePath } from "@/lib/slug";
 import { FRANCHISES, matchWatchOrderFranchise } from "@/lib/watchOrder";
+import { FRANCHISE_DEFS, matchFranchise } from "@/lib/franchise";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import AnimeCover from "@/components/AnimeCover";
 import RatingWidget from "@/components/RatingWidget";
@@ -633,6 +634,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
               >
                 Popular {bg.label} Anime
+              </Link>
+            );
+          })()}
+          {(() => {
+            const fslug = matchFranchise(anime.title, anime.chinese_title);
+            if (!fslug) return null;
+            return (
+              <Link
+                href={`/anime-series/${fslug}/`}
+                className="rounded-full border border-amber-500/40 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-300 transition hover:bg-amber-500/20 hover:text-white"
+              >
+                {FRANCHISE_DEFS[fslug].name} Series
               </Link>
             );
           })()}

@@ -126,6 +126,12 @@ const CATEGORY_META: Record<string, { title: string; genres: string[]; intro: st
     filter: "underrated",
     intro: "Underrated anime that deserve more attention — high-quality shows with strong scores that often fly under the radar. Hidden gems worth discovering.",
   },
+  historical: {
+    title: "Historical",
+    genres: ["历史", "时代剧", "战国", "武士"],
+    filter: "genre",
+    intro: "Historical anime bring the past to life — samurai epics, war dramas, and period pieces grounded in real history. The best historical shows ranked by score.",
+  },
 };
 
 function getSiteBase(): string {
