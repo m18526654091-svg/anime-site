@@ -75,6 +75,50 @@ export const FRANCHISES: Record<string, Franchise> = {
       { match: ["dragon ball gt", "龙珠gt"], note: "An alternate ending — optional viewing." },
     ],
   },
+  monogatari: {
+    slug: "monogatari",
+    name: "Monogatari",
+    intro:
+      "Monogatari is famous for its deliberately unusual episode order. The safest approach for a first watch is the original broadcast (aired) order, which matches the order the author and studio intended.",
+    steps: [
+      { match: ["化物语", "bakemonogatari", "monogatari"], note: "Start with Bakemonogatari (2009) — where the story begins." },
+      { match: ["物语系列第二季", "セカンドシーズン", "second season", "monogatari series second"], note: "Monogatari Series Second Season (2013) continues the timeline." },
+      { match: ["凭物语", "tsukimonogatari"], note: "Tsukimonogatari (2014) — a short but important 'ghost' arc." },
+      { match: ["终物语", "owarimonogatari"], note: "Owarimonogatari (2015) advances the main story." },
+      { match: ["历物语", "koyomimonogatari"], note: "Koyomimonogatari (2016) — 12 short episodes that bridge arcs." },
+      { match: ["伤物语", "kizumonogatari"], note: "Kizumonogatari films (2016-2017) — the prequel trilogy, best watched after the earlier seasons." },
+      { match: ["终物语下", "owarimonogatari second", "終物語（下）"], note: "Owarimonogatari Second Season (2017) — the final part of the main story." },
+      { match: ["终物语续", "zoku owarimonogatari", "終物語続"], note: "Zoku Owarimonogatari (2019) — the aftermath." },
+      { match: ["off season", "off monster", "off&monster", "オフ"], note: "OFF & MONSTER Season (2024) — the newest chapter." },
+    ],
+  },
+  bleach: {
+    slug: "bleach",
+    name: "Bleach",
+    intro:
+      "Bleach's story is straightforward in the main arcs, but the anime includes filler arcs you can safely skip. The Thousand-Year Blood War (TYBW) is split into multiple cours — follow the order below.",
+    steps: [
+      { match: ["bleach", "死神"], note: "Start with the original Bleach (2004) TV series." },
+      { match: ["thousand-year blood war", "千年血战"], note: "The final arc — Thousand-Year Blood War (2022)." },
+      { match: ["separation", "诀别", "訣別"], note: "TYBW Part 2: The Separation (2023)." },
+      { match: ["conflict", "相克", "相剋"], note: "TYBW Part 3: The Conflict (2024)." },
+      { match: ["calamity", "祸进", "禍進"], note: "TYBW Part 4: The Calamity (2026, ongoing)." },
+    ],
+  },
+  rezero: {
+    slug: "rezero",
+    name: "Re:Zero",
+    intro:
+      "Re:Zero has a single continuous timeline across seasons plus an optional prequel movie. Watch the seasons in release order — the movie is a side story, not required for the main plot.",
+    steps: [
+      { match: ["从零开始的异世界生活", "異世界生活", "re:zero", "re zero"], note: "Start with the 2016 first season." },
+      { match: ["冰结之绊", "frozen bond"], note: "Re:Zero Movie: The Frozen Bond (2019) — optional prequel." },
+      { match: ["从零开始的异世界生活第二季", "2nd season", "異世界生活 2nd"], note: "Season 2 (2020) — the Sanctuary arc." },
+      { match: ["part 2", "part2"], note: "Season 2 Part 2 (2021) — continues the Sanctuary arc." },
+      { match: ["从零开始的异世界生活第三季", "third season", "異世界生活 3"], note: "Season 3 (2024)." },
+      { match: ["从零开始的异世界生活第四季", "4th season", "異世界生活 4"], note: "Season 4 (2026) — the newest season." },
+    ],
+  },
 };
 
 export const WATCH_ORDER_FRANCHISES = Object.keys(FRANCHISES);

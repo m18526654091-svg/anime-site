@@ -9,6 +9,18 @@ const CATEGORIES = [
   { slug: "fantasy", label: "Best Fantasy Anime" },
   { slug: "horror", label: "Best Horror Anime" },
   { slug: "comedy", label: "Best Comedy Anime" },
+  { slug: "psychological", label: "Best Psychological Anime" },
+  { slug: "slice-of-life", label: "Best Slice of Life Anime" },
+  { slug: "short", label: "Best Short Anime" },
+  { slug: "beginners", label: "Best Anime for Beginners" },
+  { slug: "saddest", label: "Saddest Anime" },
+  { slug: "happy-ending-romance", label: "Romance Anime With Happy Endings" },
+  { slug: "mystery", label: "Best Mystery Anime" },
+  { slug: "mecha", label: "Best Mecha Anime" },
+  { slug: "sports", label: "Best Sports Anime" },
+  { slug: "school", label: "Best School Anime" },
+  { slug: "adventure", label: "Best Adventure Anime" },
+  { slug: "underrated", label: "Underrated Anime & Hidden Gems" },
 ];
 
 const SITE_BASE = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");

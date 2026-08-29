@@ -98,6 +98,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteBase}/discover-anime/`, lastModified, changeFrequency: "daily", priority: 0.8 },
     { url: `${siteBase}/about/`, lastModified, changeFrequency: "monthly", priority: 0.3 },
     { url: `${siteBase}/terms/`, lastModified, changeFrequency: "monthly", priority: 0.3 },
+    // Phase 8：Best Lists 扩展 + Watch Order 扩展
+    { url: `${siteBase}/best-anime/mystery/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/mecha/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/sports/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/school/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/adventure/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/best-anime/underrated/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteBase}/watch-order/monogatari/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/bleach/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${siteBase}/watch-order/rezero/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   let animePages: MetadataRoute.Sitemap = [];

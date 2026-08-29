@@ -352,6 +352,38 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
               )}
             </div>
 
+            {/* Phase 8：英文信息行（episode / status / release intent 承载，未知用 Not announced，不猜测） */}
+            {(() => {
+              const m = anime.month ?? 1;
+              const seasonEn =
+                m <= 2 || m === 12 ? "Winter" : m <= 5 ? "Spring" : m <= 8 ? "Summer" : "Fall";
+              const release = anime.year
+                ? `${seasonEn} ${anime.year}`
+                : "Release date not announced";
+              const statusEn =
+                anime.status === "完结"
+                  ? "Completed"
+                  : anime.status === "连载" || anime.status === "连载中"
+                  ? "Airing"
+                  : anime.status === "未上映"
+                  ? "Not yet aired"
+                  : anime.status
+                  ? anime.status
+                  : "Unknown";
+              const epCount = anime.episodes
+                ? `${anime.episodes} episodes`
+                : "Episode count not announced";
+              return (
+                <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-xs leading-relaxed text-slate-300">
+                  <span className="font-semibold text-slate-200">Release:</span> {release}
+                  <span className="mx-2 text-slate-600">·</span>
+                  <span className="font-semibold text-slate-200">Status:</span> {statusEn}
+                  <span className="mx-2 text-slate-600">·</span>
+                  <span className="font-semibold text-slate-200">Episodes:</span> {epCount}
+                </div>
+              );
+            })()}
+
             {/* Meta list */}
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {anime.author && (

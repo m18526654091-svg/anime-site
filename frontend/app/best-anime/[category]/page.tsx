@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchAnimeByFilter } from "@/lib/api";
 import { animePath } from "@/lib/slug";
+import { shortReason } from "@/components/TrendingCard";
 import type { Anime } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -89,6 +90,42 @@ const CATEGORY_META: Record<string, { title: string; genres: string[]; intro: st
     filter: "romance-happy",
     intro: "Heartwarming romance anime with satisfying, happy endings. Feel-good love stories you can watch without the heartbreak.",
   },
+  mystery: {
+    title: "Mystery",
+    genres: ["悬疑", "推理", "侦探"],
+    filter: "genre",
+    intro: "Mystery anime revolve around crimes, puzzles, and cases waiting to be solved — whodunits, detective stories, and mind-bending riddles ranked by score.",
+  },
+  mecha: {
+    title: "Mecha",
+    genres: ["机甲", "机器人"],
+    filter: "genre",
+    intro: "Mecha anime center on piloted robots — from war epics and political dramas to classic super-robot battles. Here are the top mecha series ranked by score.",
+  },
+  sports: {
+    title: "Sports",
+    genres: ["运动"],
+    filter: "genre",
+    intro: "Sports anime capture the thrill of competition — underdog comebacks, team bonds, and relentless training. The best sports shows ranked by score.",
+  },
+  school: {
+    title: "School",
+    genres: ["校园"],
+    filter: "genre",
+    intro: "School anime are set in classrooms, clubs, and campuses — romance, drama, and comedy under the same school roof. The top school-set shows ranked by score.",
+  },
+  adventure: {
+    title: "Adventure",
+    genres: ["冒险"],
+    filter: "genre",
+    intro: "Adventure anime take heroes on journeys across new worlds — quests, discoveries, and growth along the road. The best adventure series ranked by score.",
+  },
+  underrated: {
+    title: "Underrated",
+    genres: ["动作", "奇幻", "恋爱", "悬疑", "科幻", "日常"],
+    filter: "underrated",
+    intro: "Underrated anime that deserve more attention — high-quality shows with strong scores that often fly under the radar. Hidden gems worth discovering.",
+  },
 };
 
 function getSiteBase(): string {
@@ -136,6 +173,9 @@ async function fetchRanked(genres: string[], filter: string): Promise<Anime[]> {
     list = list.filter((a) => (a.episodes ?? 99) <= 26);
   } else if (filter === "beginner") {
     list = list.filter((a) => (a.episodes ?? 99) <= 60);
+  } else if (filter === "underrated") {
+    // 高分但曝光低（seo_priority 低）= 值得被发现的隐藏佳作
+    list = list.filter((a) => (a.score || 0) >= 7.5 && (a.anime_seo_priority || 0) < 60);
   }
   return list.sort((x, y) => (y.score || 0) - (x.score || 0)).slice(0, PAGE_SIZE);
 }
@@ -224,6 +264,7 @@ export default async function BestAnimeCategoryPage({ params }: { params: { cate
                 {a.year ? <span className="rounded bg-slate-100 px-1.5 py-0.5">{a.year}</span> : null}
                 {a.score ? <span className="rounded bg-amber-50 px-1.5 py-0.5 text-amber-700">★ {a.score.toFixed(1)}</span> : null}
               </div>
+              <p className="mt-1 text-xs text-slate-500">{shortReason(a)}</p>
             </div>
           </div>
         ))}
