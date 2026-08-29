@@ -12,6 +12,7 @@ import {
 } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { animePath } from "@/lib/slug";
+import { FRANCHISES, matchWatchOrderFranchise } from "@/lib/watchOrder";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import AnimeCover from "@/components/AnimeCover";
 import RatingWidget from "@/components/RatingWidget";
@@ -23,6 +24,22 @@ interface Props {
   error: string;
   initialRelated?: Anime[];
   initialCharacters?: AnimeCharacter[];
+}
+
+const SEASON_LABEL: Record<string, string> = {
+  spring: "Spring",
+  summer: "Summer",
+  autumn: "Fall",
+  winter: "Winter",
+};
+
+function currentSeason(): { season: string; year: number; label: string } {
+  const now = new Date();
+  const m = now.getMonth() + 1;
+  const y = now.getFullYear();
+  const season =
+    m >= 3 && m <= 5 ? "spring" : m >= 6 && m <= 8 ? "summer" : m >= 9 && m <= 11 ? "autumn" : "winter";
+  return { season, year: y, label: `${SEASON_LABEL[season]} ${y}` };
 }
 
 export default function AnimeDetailClient({ anime, error, initialRelated = [], initialCharacters = [] }: Props) {
@@ -536,6 +553,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
         </h2>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
+            href="/trending-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            Trending Anime
+          </Link>
+          <Link
+            href="/discover-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            Discover Anime
+          </Link>
+          <Link
             href="/best-anime/"
             className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
           >
@@ -554,6 +583,12 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
             Season Pages
           </Link>
           <Link
+            href={`/season/${(() => { const cs = currentSeason(); return `${cs.season}-${cs.year}-anime`; })()}/`}
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
+          >
+            {(() => { const cs = currentSeason(); return `Popular This ${cs.label}`; })()}
+          </Link>
+          <Link
             href="/new-anime/"
             className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-300 transition hover:bg-indigo-500/20 hover:text-white"
           >
@@ -567,6 +602,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
               {anime.year} Anime
             </Link>
           )}
+          {(() => {
+            const wslug = matchWatchOrderFranchise(anime.title, anime.chinese_title);
+            if (!wslug) return null;
+            return (
+              <Link
+                href={`/watch-order/${wslug}/`}
+                className="rounded-full border border-amber-500/40 bg-amber-500/10 px-4 py-1.5 text-sm font-medium text-amber-300 transition hover:bg-amber-500/20 hover:text-white"
+              >
+                {FRANCHISES[wslug].name} Watch Order
+              </Link>
+            );
+          })()}
         </div>
       </section>
 

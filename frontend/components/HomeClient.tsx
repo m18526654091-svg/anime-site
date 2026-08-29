@@ -261,13 +261,17 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
     // ===== 首页主体布局 =====
   return (
     <div className="mx-auto max-w-7xl px-4 pb-16">
-      {/* 页头口号 — 强化「专业动漫资料站」定位 */}
+      {/* 页头口号 — 英文主定位（Anime Database / Recommendations / Watch Orders） */}
       <section className="mb-8 text-center">
         <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
-          免费在线动漫库
+          Anime Database, Recommendations &amp; Watch Orders
         </h1>
         <p className="mt-3 max-w-2xl text-slate-300">
-          热门新番、分类精选、高分佳作与更新追番，一站浏览，随时收藏。
+          Discover popular anime, best lists, similar shows, watch orders and seasonal new
+          releases — ranked by score with genres, years and episode details.
+        </p>
+        <p className="mt-2 text-xs text-slate-500">
+          热门新番 · 分类精选 · 高分佳作 · 观看顺序，一站浏览
         </p>
       </section>
 

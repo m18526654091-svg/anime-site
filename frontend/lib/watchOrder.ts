@@ -78,3 +78,27 @@ export const FRANCHISES: Record<string, Franchise> = {
 };
 
 export const WATCH_ORDER_FRANCHISES = Object.keys(FRANCHISES);
+
+/**
+ * 判断一部动漫是否属于某个 watch-order 系列（基于 title/chinese_title 关键词匹配）。
+ * 命中时返回 franchise slug，否则返回 null。供详情页条件内链使用。
+ */
+export function matchWatchOrderFranchise(
+  title?: string | null,
+  chineseTitle?: string | null
+): string | null {
+  const haystack = [title || "", chineseTitle || ""]
+    .join(" ")
+    .toLowerCase()
+    .trim();
+  if (!haystack) return null;
+  for (const slug of WATCH_ORDER_FRANCHISES) {
+    const fr = FRANCHISES[slug];
+    const matched = fr.steps.some((step) =>
+      step.match.some((kw) => haystack.includes(kw.toLowerCase()))
+    );
+    if (matched) return slug;
+  }
+  return null;
+}
+

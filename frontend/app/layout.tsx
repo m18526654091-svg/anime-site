@@ -12,11 +12,20 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "AnimeHub - 免费在线动漫资源站",
+    default: "AnimeHub - Anime Database, Recommendations & Watch Orders",
     template: "%s | AnimeHub",
   },
-  description: "AnimeHub 是免费的在线动漫资源站，提供热门动漫、最新更新、分类浏览与详细动漫资料。每天更新，支持手机与电脑访问。",
-  keywords: ["动漫", "在线动漫", "动漫资源站", "新番", "动漫排行榜", "免费动漫", "动漫详情", "热门动漫"],
+  description:
+    "AnimeHub is an anime database and recommendation hub: anime details, similar shows, watch orders, best lists, and seasonal lineups.",
+  keywords: [
+    "anime database",
+    "anime recommendations",
+    "similar anime",
+    "anime watch order",
+    "best anime",
+    "seasonal anime",
+    "trending anime",
+  ],
   authors: [{ name: "AnimeHub" }],
   robots: {
     index: true,
@@ -31,24 +40,26 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
     url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
     siteName: "AnimeHub",
-    title: "AnimeHub - 免费在线动漫资源站",
-    description: "收录热门动漫与最新更新，分类清晰，即点即看。",
+    title: "AnimeHub - Anime Database, Recommendations & Watch Orders",
+    description:
+      "Discover anime, similar shows, watch orders, best lists, and seasonal lineups on AnimeHub.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "AnimeHub - 免费在线动漫资源站",
+        alt: "AnimeHub - Anime Database, Recommendations & Watch Orders",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AnimeHub - 免费在线动漫资源站",
-    description: "收录热门动漫与最新更新，分类清晰，即点即看。",
+    title: "AnimeHub - Anime Database, Recommendations & Watch Orders",
+    description:
+      "Discover anime, similar shows, watch orders, best lists, and seasonal lineups on AnimeHub.",
     images: ["/og-image.png"],
   },
   // favicon 由 Next.js App Router 约定自动生成：
@@ -81,27 +92,27 @@ export default function RootLayout({
                     Anime<span className="text-pink-500">Hub</span>
                   </div>
                   <p className="text-xs text-slate-400">
-                    免费在线动漫资料站，不储存视频。
+                    Anime database &amp; recommendations — no video streaming or downloads.
                   </p>
                 </div>
 
                 <div>
-                  <p className="mb-3 text-sm font-bold text-white">导航</p>
+                  <p className="mb-3 text-sm font-bold text-white">Explore</p>
                   <ul className="space-y-2 text-sm text-slate-300">
                     <li>
-                      <Link href="/" className="hover:text-pink-400">首页</Link>
+                      <Link href="/trending-anime/" className="hover:text-pink-400">Trending Anime</Link>
                     </li>
                     <li>
-                      <Link href="/top-anime/" className="hover:text-pink-400">热门榜单</Link>
+                      <Link href="/discover-anime/" className="hover:text-pink-400">Discover Anime</Link>
                     </li>
                     <li>
-                      <Link href="/latest-anime/" className="hover:text-pink-400">最新更新</Link>
+                      <Link href="/top-anime/" className="hover:text-pink-400">Top Anime</Link>
                     </li>
                     <li>
-                      <Link href="/high-score/" className="hover:text-pink-400">高分推荐</Link>
+                      <Link href="/best-anime/" className="hover:text-pink-400">Best Anime Lists</Link>
                     </li>
                     <li>
-                      <Link href="/categories/" className="hover:text-pink-400">全部分类</Link>
+                      <Link href="/watch-order/" className="hover:text-pink-400">Watch Orders</Link>
                     </li>
                   </ul>
                 </div>
@@ -146,9 +157,11 @@ export default function RootLayout({
                   Anime<span className="text-pink-500">Hub</span> © 2026 · Free anime directory · Data from real backend API
                 </p>
                 <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-slate-400">
-                  <Link href="/privacy" className="hover:text-pink-400">隐私政策</Link>
-                  <Link href="/contact" className="hover:text-pink-400">联系我们</Link>
-                  <Link href="/copyright" className="hover:text-pink-400">版权声明 / DMCA</Link>
+                  <Link href="/about" className="hover:text-pink-400">About</Link>
+                  <Link href="/terms" className="hover:text-pink-400">Terms of Use</Link>
+                  <Link href="/privacy" className="hover:text-pink-400">Privacy Policy</Link>
+                  <Link href="/contact" className="hover:text-pink-400">Contact</Link>
+                  <Link href="/copyright" className="hover:text-pink-400">Copyright / DMCA</Link>
                 </div>
               </div>
             </div>

@@ -7,6 +7,8 @@ import { useAuth } from "@/lib/auth";
 
 const NAV_ITEMS = [
   { label: "首页", href: "/" },
+  { label: "热门", href: "/trending-anime" },
+  { label: "发现", href: "/discover-anime" },
   { label: "最新更新", href: "/latest-anime" },
   { label: "排行", href: "/ranking" },
   { label: "分类", href: "/categories" },

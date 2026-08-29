@@ -93,6 +93,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteBase}/best-anime/beginners/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteBase}/best-anime/saddest/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteBase}/best-anime/happy-ending-romance/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    // Phase 6：Trending / Discover / About / Terms
+    { url: `${siteBase}/trending-anime/`, lastModified, changeFrequency: "daily", priority: 0.9 },
+    { url: `${siteBase}/discover-anime/`, lastModified, changeFrequency: "daily", priority: 0.8 },
+    { url: `${siteBase}/about/`, lastModified, changeFrequency: "monthly", priority: 0.3 },
+    { url: `${siteBase}/terms/`, lastModified, changeFrequency: "monthly", priority: 0.3 },
   ];
 
   let animePages: MetadataRoute.Sitemap = [];

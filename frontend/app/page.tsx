@@ -11,18 +11,19 @@ const SITE_BASE = (
 ).replace(/\/$/, "");
 
 export const metadata = {
-  title: "AnimeHub - 热门动漫与最新更新",
+  title: "AnimeHub - Anime Database, Recommendations & Watch Orders",
   description:
-    "浏览 AnimeHub 收录的热门动漫、最新更新与分类精选，支持搜索、分类与排行榜浏览。",
+    "Discover popular anime, best lists, similar anime, watch orders and seasonal new releases. Ranked by score with genres, years and details — AnimeHub.",
   robots: { index: true, follow: true },
+  alternates: { canonical: `${SITE_BASE}/` },
   openGraph: {
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
     url: SITE_BASE,
     siteName: "AnimeHub",
-    title: "AnimeHub - 热门动漫与最新更新",
+    title: "AnimeHub - Anime Database, Recommendations & Watch Orders",
     description:
-      "浏览 AnimeHub 收录的热门动漫、最新更新与分类精选，支持搜索、分类与排行榜浏览。",
+      "Discover popular anime, best lists, similar anime, watch orders and seasonal new releases — ranked by score on AnimeHub.",
   },
 };
 
@@ -36,8 +37,8 @@ function HomeJsonLd() {
     "@type": "WebSite",
     name: "AnimeHub",
     url: `${SITE_BASE}/`,
-    description: "AnimeHub - 免费在线动漫资料站，收录热门新番、分类精选与高分佳作",
-    inLanguage: "zh-CN",
+    description: "Anime database with popular anime, recommendations, best lists, watch orders and seasonal releases",
+    inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_BASE}/?q={search_term_string}`,
@@ -46,26 +47,26 @@ function HomeJsonLd() {
     hasPart: [
       {
         "@type": "ItemList",
-        name: "热门动漫榜单",
+        name: "Popular Anime",
         url: `${SITE_BASE}/top-anime/`,
         position: 1,
       },
       {
         "@type": "ItemList",
-        name: "最新更新",
-        url: `${SITE_BASE}/latest-anime/`,
+        name: "Trending Anime",
+        url: `${SITE_BASE}/trending-anime/`,
         position: 2,
       },
       {
         "@type": "ItemList",
-        name: "高分推荐",
-        url: `${SITE_BASE}/high-score/`,
+        name: "Discover Anime",
+        url: `${SITE_BASE}/discover-anime/`,
         position: 3,
       },
       {
         "@type": "ItemList",
-        name: "动漫分类",
-        url: `${SITE_BASE}/categories/`,
+        name: "Seasonal Anime",
+        url: `${SITE_BASE}/seasons/`,
         position: 4,
       },
     ],
