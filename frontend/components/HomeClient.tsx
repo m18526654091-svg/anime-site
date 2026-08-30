@@ -270,9 +270,6 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
           Discover popular anime, best lists, similar shows, watch orders and seasonal new
           releases — ranked by score with genres, years and episode details.
         </p>
-        <p className="mt-2 text-xs text-slate-500">
-          热门新番 · 分类精选 · 高分佳作 · 观看顺序，一站浏览
-        </p>
       </section>
 
       {/* 顶部主视觉轮播图 */}
@@ -331,24 +328,24 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-3 text-xl font-bold text-white">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-sky-400 to-indigo-500" />
-            季度新番
+            Seasonal Anime
           </h2>
           <Link href="/seasons" className="shrink-0 text-sm text-pink-400 hover:underline">
-            查看全部 →
+            View all →
           </Link>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {(["winter", "spring", "summer", "autumn"] as const).map((s, i) => {
+          {(["winter", "spring", "summer", "autumn"] as const).map((s) => {
             const year = new Date().getFullYear();
-            const seasonCn = { spring: "春季", summer: "夏季", autumn: "秋季", winter: "冬季" }[s];
+            const seasonEn = { winter: "Winter", spring: "Spring", summer: "Summer", autumn: "Fall" }[s];
             return (
               <Link
                 key={s}
                 href={`/season/${year}/${s}`}
                 className="rounded-2xl border border-white/10 bg-white/5 p-4 text-center transition hover:border-pink-500/50 hover:bg-pink-500/5"
               >
-                <p className="font-bold text-white">{year}年{seasonCn}</p>
-                <p className="mt-1 text-sm text-slate-400">新番动漫</p>
+                <p className="font-bold text-white">{seasonEn} {year}</p>
+                <p className="mt-1 text-sm text-slate-400">Seasonal anime</p>
               </Link>
             );
           })}
@@ -360,10 +357,10 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-3 text-xl font-bold text-white">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-pink-500 to-fuchsia-600" />
-            动漫类型
+            Genres
           </h2>
           <Link href="/genres" className="shrink-0 text-sm text-pink-400 hover:underline">
-            查看全部 →
+            View all →
           </Link>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -384,10 +381,10 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-3 text-xl font-bold text-white">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-emerald-400 to-teal-500" />
-            制作公司
+            Studios
           </h2>
           <Link href="/studios" className="shrink-0 text-sm text-pink-400 hover:underline">
-            查看全部 →
+            View all →
           </Link>
         </div>
         <div className="flex flex-wrap gap-2">
