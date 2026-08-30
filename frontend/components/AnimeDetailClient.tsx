@@ -379,14 +379,14 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
               )}
             </div>
 
-            {/* Phase 8：英文信息行（episode / status / release intent 承载，未知用 Not announced，不猜测） */}
+            {/* Phase 11：Anime Information 结构化英文模块（仅基于 DB 字段） */}
             {(() => {
               const m = anime.month ?? 1;
               const seasonEn =
                 m <= 2 || m === 12 ? "Winter" : m <= 5 ? "Spring" : m <= 8 ? "Summer" : "Fall";
               const release = anime.year
                 ? `${seasonEn} ${anime.year}`
-                : "Release date not announced";
+                : "Not announced";
               const statusEn =
                 anime.status === "完结"
                   ? "Completed"
@@ -399,15 +399,78 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                   : "Unknown";
               const epCount = anime.episodes
                 ? `${anime.episodes} episodes`
-                : "Episode count not announced";
+                : "Not announced";
+              const typeEn =
+                anime.episodes && anime.episodes > 1
+                  ? "TV Series"
+                  : anime.episodes === 1
+                  ? "Movie"
+                  : "Unknown";
+              const gs = (anime.genre || "")
+                .split(/[/，,、\s]+/)
+                .map((g) => g.trim())
+                .filter(Boolean);
+              const genresEn = gs.map((g) => GENRE_EN[g] || g).join(", ") || "Anime";
+              const updated = anime.updated_at
+                ? new Date(anime.updated_at).toISOString().slice(0, 10)
+                : null;
               return (
-                <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-3 text-xs leading-relaxed text-slate-300">
-                  <span className="font-semibold text-slate-200">Release:</span> {release}
-                  <span className="mx-2 text-slate-600">·</span>
-                  <span className="font-semibold text-slate-200">Status:</span> {statusEn}
-                  <span className="mx-2 text-slate-600">·</span>
-                  <span className="font-semibold text-slate-200">Episodes:</span> {epCount}
+                <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-sm font-semibold text-white">Anime Information</div>
+                  <dl className="mt-2 grid grid-cols-1 gap-1.5 text-xs leading-relaxed text-slate-300 sm:grid-cols-2">
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Type: </dt>
+                      <dd className="inline">{typeEn}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Episodes: </dt>
+                      <dd className="inline">{epCount}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Status: </dt>
+                      <dd className="inline">{statusEn}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Release period: </dt>
+                      <dd className="inline">{release}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Genres: </dt>
+                      <dd className="inline">{genresEn}</dd>
+                    </div>
+                    <div>
+                      <dt className="inline font-semibold text-slate-200">Score: </dt>
+                      <dd className="inline">★ {score.toFixed(1)} / 10</dd>
+                    </div>
+                  </dl>
+                  {updated && (
+                    <div className="mt-2 border-t border-white/10 pt-2 text-xs text-slate-500">
+                      Last updated: {updated}
+                    </div>
+                  )}
                 </div>
+              );
+            })()}
+
+            {/* Phase 11：Why This Anime Appears Here（数据信号说明，不写剧情） */}
+            {(() => {
+              const gs = (anime.genre || "")
+                .split(/[/，,、\s]+/)
+                .map((g) => g.trim())
+                .filter(Boolean);
+              const genresEn = gs.map((g) => GENRE_EN[g] || g).join(" and ") || "anime";
+              const yearBit = anime.year ? ` from ${anime.year}` : "";
+              const scoreBit = anime.score
+                ? ` with a ${Number(anime.score).toFixed(1)}/10 fan rating`
+                : "";
+              return (
+                <p className="mt-3 text-xs leading-relaxed text-slate-400">
+                  <span className="font-semibold text-slate-300">
+                    Why this anime appears here:{" "}
+                  </span>
+                  Recommended because it is a {genresEn} anime{yearBit}
+                  {scoreBit}, selected from our database based on genre and audience signals.
+                </p>
               );
             })()}
 
