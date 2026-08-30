@@ -6,9 +6,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return {
-    title: "热门动漫排行榜 - 大家都在看的动漫",
+    title: "Top Anime: Most Popular Shows",
     description:
-      "AnimeHub 热门动漫排行榜，收录当前最受欢迎、热度最高的动漫作品，按人气与评分整理，实时更新，支持手机与电脑免费在线观看。",
+      "AnimeHub top anime — the most popular and highest-rated shows, ranked by popularity and score.",
   };
 }
 
@@ -36,8 +36,8 @@ export default async function TopAnimePage({
 
   return (
     <ListPageView
-      title="热门动漫排行榜"
-      subtitle="当前人气最高的动漫作品，按热度与评分实时排序。"
+      title="Top Anime"
+      subtitle="The most popular anime right now, ranked by fan score."
       items={data.items}
       total={data.total}
       page={data.page}

@@ -6,9 +6,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return {
-    title: "最新更新动漫 - 每日更新抢先看",
+    title: "Latest Anime Updates - New Shows Daily",
     description:
-      "AnimeHub 最新更新动漫，每天实时更新最新剧集与新增作品，第一时间看到新番与续作，分类清晰，免费在线观看。",
+      "AnimeHub latest anime — newly added shows and recent updates, refreshed daily.",
   };
 }
 
@@ -36,8 +36,8 @@ export default async function LatestAnimePage({
 
   return (
     <ListPageView
-      title="最新更新动漫"
-      subtitle="新番与续作持续更新，第一时间掌握最新剧集动态。"
+      title="Latest Anime"
+      subtitle="New shows and sequels added regularly — see the latest updates first."
       items={data.items}
       total={data.total}
       page={data.page}

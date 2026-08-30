@@ -118,7 +118,7 @@ export default function RootLayout({
                 </div>
 
                 <div>
-                  <p className="mb-3 text-sm font-bold text-white">热门分类</p>
+                  <p className="mb-3 text-sm font-bold text-white">Popular Genres</p>
                   <ul className="flex flex-wrap gap-2 text-sm">
                     {["热血", "奇幻", "战斗", "校园", "恋爱", "悬疑", "科幻", "日常"].map(
                       (g) => (

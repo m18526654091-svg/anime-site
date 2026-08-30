@@ -9,7 +9,7 @@ export default function AnimeCard({ anime }: { anime: Anime }) {
     return (
     <Link
       href={animePath(anime)}
-      aria-label={`观看 ${anime.chinese_title || anime.title} - AnimeHub`}
+      aria-label={`Watch ${anime.chinese_title || anime.title} - AnimeHub`}
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:border-pink-500/50 hover:shadow-pink-500/20 hover:shadow-2xl"
     >
       {/* Cover area */}
@@ -66,7 +66,7 @@ export default function AnimeCard({ anime }: { anime: Anime }) {
           )}
         </div>
         <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-400">
-          {anime.description || "暂无简介"}
+          {anime.description || "No synopsis available."}
         </p>
       </div>
     </Link>

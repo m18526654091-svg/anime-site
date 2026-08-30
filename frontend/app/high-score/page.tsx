@@ -6,9 +6,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
   return {
-    title: "高评分动漫 - 高分神作推荐",
+    title: "Top Rated Anime: Best High-Score Shows",
     description:
-      "AnimeHub 高评分动漫推荐，精选用户口碑与评分俱佳的动漫作品，高分神作一网打尽，按评分排序，免费在线观看。",
+      "AnimeHub top-rated anime — the highest-scored shows, ranked by fan rating.",
   };
 }
 
@@ -36,8 +36,8 @@ export default async function HighScorePage({
 
   return (
     <ListPageView
-      title="高评分动漫"
-      subtitle="口碑与评分俱佳的动漫佳作精选，按评分排序推荐。"
+      title="Top Rated Anime"
+      subtitle="The best-loved shows with the highest scores, ranked for you."
       items={data.items}
       total={data.total}
       page={data.page}

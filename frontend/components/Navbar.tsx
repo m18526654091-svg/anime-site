@@ -6,13 +6,13 @@ import { useState } from "react";
 import { useAuth } from "@/lib/auth";
 
 const NAV_ITEMS = [
-  { label: "首页", href: "/" },
-  { label: "热门", href: "/trending-anime" },
-  { label: "发现", href: "/discover-anime" },
-  { label: "最新更新", href: "/latest-anime" },
-  { label: "排行", href: "/ranking" },
-  { label: "分类", href: "/categories" },
-  { label: "年份", href: "/years" },
+  { label: "Home", href: "/" },
+  { label: "Trending", href: "/trending-anime" },
+  { label: "Discover", href: "/discover-anime" },
+  { label: "Latest", href: "/latest-anime" },
+  { label: "Ranking", href: "/ranking" },
+  { label: "Genres", href: "/categories" },
+  { label: "Years", href: "/years" },
 ];
 
 export default function Navbar() {
@@ -61,7 +61,7 @@ export default function Navbar() {
             <input
               value={kw}
               onChange={(e) => setKw(e.target.value)}
-              placeholder="搜索动漫..."
+              placeholder="Search anime..."
               className="w-full rounded-full border border-white/10 bg-slate-900/60 py-2 pl-9 pr-4 text-sm text-white placeholder-slate-500 backdrop-blur transition focus:border-pink-500/60 focus:outline-none focus:ring-2 focus:ring-pink-500/30"
             />
           </div>
@@ -69,14 +69,14 @@ export default function Navbar() {
             type="submit"
             className="hidden rounded-full bg-gradient-to-r from-pink-600 to-fuchsia-600 px-4 py-2 text-sm font-semibold text-white shadow-glow transition hover:brightness-110 sm:inline-block"
           >
-            搜索
+            Search
           </button>
                 </form>
 
         <div className="flex items-center gap-1">
           <Link
             href="/favorites"
-            aria-label="我的收藏"
+            aria-label="My favorites"
             className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/5 hover:text-pink-400"
           >
             ❤️
@@ -94,26 +94,26 @@ export default function Navbar() {
                   router.replace("/");
                 }}
                 className="rounded-lg px-2 py-1 text-pink-400 transition hover:text-pink-300"
-                aria-label="退出登录"
+                aria-label="Log out"
               >
-                退出
+                Logout
               </button>
             </div>
           ) : hydrated && !isLoggedIn ? (
             <>
               <Link
                 href="/login"
-                aria-label="登录"
+                aria-label="Login"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-300 transition hover:bg-white/5 hover:text-pink-400 sm:hidden"
               >
                 👤
               </Link>
               <div className="hidden items-center gap-1 sm:flex">
                 <Link href="/login" className={navLink("/login")}>
-                  登录
+                  Login
                 </Link>
                 <Link href="/register" className={navLink("/register")}>
-                  注册
+                  Register
                 </Link>
               </div>
             </>

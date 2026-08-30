@@ -17,20 +17,20 @@ import { getCover } from "@/lib/cover";
 
 const PAGE_SIZE = 18;
 
-// 热门分类标签（按流行类型筛选）
-const CATEGORIES = [
-  "全部",
-  "热血",
-  "奇幻",
-  "战斗",
-  "校园",
-  "恋爱",
-  "悬疑",
-  "科幻",
-  "日常",
-  "魔法",
-  "治愈",
-  "历史",
+// 热门分类标签（按流行类型筛选）：label 显示英文，value 用于后端中文 genre 匹配
+const CATEGORIES: { label: string; value: string }[] = [
+  { label: "All", value: "全部" },
+  { label: "Action", value: "热血" },
+  { label: "Fantasy", value: "奇幻" },
+  { label: "Battle", value: "战斗" },
+  { label: "School", value: "校园" },
+  { label: "Romance", value: "恋爱" },
+  { label: "Mystery", value: "悬疑" },
+  { label: "Sci-Fi", value: "科幻" },
+  { label: "Slice of Life", value: "日常" },
+  { label: "Magic", value: "魔法" },
+  { label: "Healing", value: "治愈" },
+  { label: "Historical", value: "历史" },
 ];
 
 // 后端 Anime -> HeroBanner FeaturedAnime 适配
@@ -93,7 +93,7 @@ function ScrollRow({
         </h2>
         {href && (
           <Link href={href} className="shrink-0 text-sm text-pink-400 hover:underline">
-            查看全部 →
+            View all →
           </Link>
         )}
       </div>
@@ -110,7 +110,7 @@ function ScrollRow({
           ))}
         </div>
       ) : items.length === 0 ? (
-        <p className="py-8 text-center text-sm text-slate-500">暂无相关动漫</p>
+        <p className="py-8 text-center text-sm text-slate-500">No anime found</p>
       ) : (
         <div className="flex gap-4 overflow-x-auto pb-2">
           {items.map((a) => (
@@ -129,18 +129,18 @@ function CategoryBar({ active }: { active: string }) {
   return (
     <nav className="mt-8 flex gap-2 overflow-x-auto py-1 no-scrollbar">
       {CATEGORIES.map((c) => {
-        const same = c === active;
+        const same = c.value === active;
         return (
           <Link
-            key={c}
-            href={c === "全部" ? "/" : `/?category=${encodeURIComponent(c)}`}
+            key={c.value}
+            href={c.value === "全部" ? "/" : `/?category=${encodeURIComponent(c.value)}`}
             className={`shrink-0 rounded-full border px-4 py-1.5 text-sm font-medium transition ${
               same
                 ? "border-pink-500 bg-gradient-to-r from-pink-500 to-fuchsia-600 text-white shadow-glow"
                 : "border-white/10 bg-white/5 text-slate-300 hover:border-white/20 hover:text-white"
             }`}
           >
-            {c}
+            {c.label}
           </Link>
         );
       })}
@@ -241,12 +241,12 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
     return (
       <div className="mx-auto max-w-7xl animate-fade-in px-4 py-8">
         <h1 className="mb-6 text-2xl font-black text-white">
-          搜索结果：<span className="text-pink-400">「{q}」</span>
+          Search results for <span className="text-pink-400">“{q}”</span>
         </h1>
         {searchLoading ? (
-          <p className="py-16 text-center text-slate-400">搜索中...</p>
+          <p className="py-16 text-center text-slate-400">Searching...</p>
         ) : items.length === 0 ? (
-          <p className="py-16 text-center text-slate-500">未找到相关动漫</p>
+          <p className="py-16 text-center text-slate-500">No anime found</p>
         ) : (
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {items.map((a) => (
@@ -279,7 +279,7 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
       <div className="mt-6">
         {loading ? (
           <div className="flex min-h-[340px] animate-pulse items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-slate-500">
-            加载中...
+            Loading...
           </div>
         ) : (
           <HeroBanner
@@ -301,7 +301,7 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
 
       {/* 热门动漫（横向滚动） */}
       <ScrollRow
-        title="热门动漫"
+        title="Popular Anime"
         gradient="from-pink-500 to-fuchsia-600"
         items={hotF}
         loading={loading}
@@ -310,7 +310,7 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
 
       {/* 最新更新（横向滚动） */}
       <ScrollRow
-        title="最新更新"
+        title="Latest Anime"
         gradient="from-cyan-400 to-indigo-500"
         items={latestF}
         loading={loading}
@@ -319,7 +319,7 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
 
       {/* 高分推荐（横向滚动） */}
       <ScrollRow
-        title="高分推荐"
+        title="Top Rated"
         gradient="from-amber-400 to-pink-500"
         items={highF}
         loading={loading}
@@ -367,13 +367,13 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
           </Link>
         </div>
         <div className="flex flex-wrap gap-2">
-          {CATEGORIES.filter((c) => c !== "全部").slice(0, 10).map((c) => (
+          {CATEGORIES.filter((c) => c.value !== "全部").slice(0, 10).map((c) => (
             <Link
-              key={c}
-              href={`/categories/${encodeURIComponent(c)}`}
+              key={c.value}
+              href={`/categories/${encodeURIComponent(c.value)}`}
               className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-slate-300 transition hover:border-pink-500/50 hover:text-white"
             >
-              {c}
+              {c.label}
             </Link>
           ))}
         </div>
@@ -405,7 +405,7 @@ export default function HomeClient({ initialPage }: { initialPage: AnimePage }) 
 
       {/* 完结动漫（横向滚动） */}
       <ScrollRow
-        title="完结动漫"
+        title="Completed Anime"
         gradient="from-emerald-400 to-indigo-500"
         items={completedF}
         loading={loading}

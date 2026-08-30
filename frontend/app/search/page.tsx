@@ -15,15 +15,15 @@ export async function generateMetadata({
   const base = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
   if (!q) {
     return {
-      title: "动漫搜索 - AnimeHub",
-      description: "在 AnimeHub 搜索动漫，按名称快速找到想看的作品，支持中文名、英文名与模糊匹配。",
+      title: "Anime Search - AnimeHub",
+      description: "Search anime on AnimeHub by name — English, Chinese, and partial title matching. Find synopsis, episodes, and ratings instantly.",
       alternates: { canonical: `${base}/search` },
       robots: { index: false, follow: true },
     };
   }
   return {
-    title: `搜索 ${q} 动漫结果 - AnimeHub`,
-    description: `「${q}」动漫搜索结果：包含热门新番、高分佳作与分类精选，一键在线浏览。`,
+    title: `Search "${q}" Anime - AnimeHub`,
+    description: `Anime results for "${q}" on AnimeHub — top-rated shows, seasonal hits, and more.`,
     alternates: { canonical: `${base}/search?q=${encodeURIComponent(q)}` },
     robots: { index: true, follow: true },
   };
@@ -79,14 +79,14 @@ export default async function SearchPage({
         <h1 className="text-3xl font-black text-white">
           {q ? (
             <>
-              搜索「<span className="text-pink-400">{q}</span>」
+              Search "<span className="text-pink-400">{q}</span>"
             </>
           ) : (
-            "动漫搜索"
+            "Anime Search"
           )}
         </h1>
         {q && (
-          <p className="mt-2 text-slate-400">共找到 {data.total} 部相关作品</p>
+          <p className="mt-2 text-slate-400">{data.total} results found</p>
         )}
       </header>
 
@@ -100,10 +100,10 @@ export default async function SearchPage({
         <div>
           <div className="rounded-2xl border border-white/10 bg-white/5 p-10 text-center">
             <p className="mt-3 text-lg font-semibold text-white">
-              未找到与「{q}」相关的动漫
+              No anime found for "{q}"
             </p>
             <p className="mt-1 text-sm text-slate-400">
-              试试其他关键词，或浏览以下高分推荐
+              Try a different keyword, or browse these top-rated picks
             </p>
           </div>
           {hot.items.length > 0 && (

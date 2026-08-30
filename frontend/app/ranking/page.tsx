@@ -11,17 +11,17 @@ const SITE_BASE = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").
 export async function generateMetadata() {
   const canonical = `${SITE_BASE}/ranking`;
   return {
-    title: "动漫排行榜 - 热门与高分动漫 - AnimeHub",
+    title: "Anime Rankings: Top & Popular Shows",
     description:
-      "AnimeHub 动漫排行榜：评分最高动漫、热门动漫、历年新番排行，按热度与评分实时更新，发现值得一看的佳作。",
+      "AnimeHub rankings — highest-scored, most popular, and yearly anime charts.",
     alternates: { canonical },
     openGraph: {
       type: "website",
       locale: "zh_CN",
       url: canonical,
       siteName: "AnimeHub",
-      title: "动漫排行榜 - AnimeHub",
-      description: "评分最高与热门动漫排行。",
+      title: "Anime Rankings - AnimeHub",
+      description: "Highest-scored and most popular anime rankings.",
     },
   };
 }
@@ -44,8 +44,8 @@ export default async function RankingPage() {
   ]);
 
   const blocks = [
-    { title: "评分最高动漫", items: scoreTop.items, href: "/high-score" },
-    { title: "热门动漫排行", items: hotTop.items, href: "/top-anime" },
+    { title: "Top Rated", items: scoreTop.items, href: "/high-score" },
+    { title: "Popular Anime", items: hotTop.items, href: "/top-anime" },
     { title: `${thisYear}年动漫排行`, items: yearThis.items, href: `/years/${thisYear}` },
     { title: `${thisYear - 1}年动漫排行`, items: yearPrev.items, href: `/years/${thisYear - 1}` },
   ];

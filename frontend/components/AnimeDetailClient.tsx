@@ -174,12 +174,12 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
     return (
       <div className="mx-auto max-w-3xl px-4 py-24 text-center">
         <p className="text-4xl">😢</p>
-        <p className="mt-4 text-slate-400">{error || "动漫不存在"}</p>
+        <p className="mt-4 text-slate-400">{error || "Anime not found"}</p>
         <Link
           href="/"
           className="mt-6 inline-block rounded-lg bg-white/5 px-5 py-2 text-pink-400 transition hover:bg-white/10"
         >
-          ← 返回首页
+          ← Back to Home
         </Link>
       </div>
     );
@@ -197,18 +197,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
   const friendlyText = useMemo(() => {
     const parts = [
       anime.title,
-      anime.genre ? `类型: ${anime.genre}` : "",
-      anime.year ? `年份: ${anime.year}` : "",
-      anime.region ? `地区: ${anime.region}` : "",
-      anime.author ? `作者: ${anime.author}` : "",
-      anime.studio ? `制作公司: ${anime.studio}` : "",
-      anime.status ? `状态: ${anime.status}` : "",
-      anime.episodes ? `集数: ${anime.episodes}` : "",
+      anime.genre ? `Genre: ${anime.genre}` : "",
+      anime.year ? `Year: ${anime.year}` : "",
+      anime.region ? `Region: ${anime.region}` : "",
+      anime.author ? `Author: ${anime.author}` : "",
+      anime.studio ? `Studio: ${anime.studio}` : "",
+      anime.status ? `Status: ${anime.status}` : "",
+      anime.episodes ? `Episodes: ${anime.episodes}` : "",
     ].filter(Boolean);
 
     const intro = parts.join(" | ");
-    const desc = seoText || "暂无详细介绍。";
-    const extras = tags.length > 0 ? ` 标签: ${tags.join(", ")}.` : "";
+    const desc = seoText || "No detailed description available.";
+    const extras = tags.length > 0 ? `  Tags: ${tags.join(", ")}.` : "";
     const related = `如果你喜欢 ${anime.title}, 你可能会喜欢其他 ${anime.genre || "同类型动漫"}.`;
 
     return `${intro}. ${desc}${extras} ${related}`;
@@ -255,11 +255,11 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
           .find(Boolean);
         return (
           <nav
-            aria-label="面包屑"
+            aria-label="Breadcrumb"
             className="mb-6 flex flex-wrap items-center gap-1.5 text-sm text-slate-400"
           >
             <Link href="/" className="hover:text-pink-400">
-              首页
+              Home
             </Link>
             {primaryGenre && (
               <>
@@ -279,7 +279,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                   href={`/years/${anime.year}`}
                   className="hover:text-pink-400"
                 >
-                  {anime.year}年动漫
+                  {anime.year} Anime
                 </Link>
               </>
             )}
@@ -362,7 +362,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                       href={`/watch/${anime.id}`}
                       className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-pink-600 to-fuchsia-600 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:from-pink-500 hover:to-fuchsia-500"
                     >
-                      开始播放
+                      Watch Now
                     </Link>
                   </div>
                 )}
@@ -377,7 +377,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                     : "border-white/10 bg-white/5 text-slate-300 hover:border-pink-500/60 hover:text-white"
                 }`}
               >
-                {favorited ? "★ 已收藏" : "☆ 收藏"}
+                {favorited ? "★ Favorited" : "☆ Favorite"}
               </button>
             </div>
 
@@ -395,7 +395,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                     href={primaryGenre ? `/categories/${encodeURIComponent(primaryGenre)}` : "/categories"}
                     className="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-300 transition hover:bg-pink-500/15 hover:text-pink-300"
                   >
-                    类型: {anime.genre}
+                    Genre: {anime.genre}
                   </Link>
                 );
               })()}
@@ -404,22 +404,22 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                   href={`/years/${anime.year}`}
                   className="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-300 transition hover:bg-pink-500/15 hover:text-pink-300"
                 >
-                  年份: {anime.year}
+                  Year: {anime.year}
                 </Link>
               )}
               {anime.region && (
                 <span className="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-300">
-                  地区: {anime.region}
+                  Region: {anime.region}
                 </span>
               )}
               {anime.status && (
                 <span className="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-300">
-                  状态: {anime.status}
+                  Status: {anime.status}
                 </span>
               )}
               {anime.episodes && (
                 <span className="rounded-full bg-white/5 px-3 py-1 text-sm text-slate-300">
-                  集数: {anime.episodes}
+                  Episodes: {anime.episodes}
                 </span>
               )}
             </div>
@@ -519,15 +519,6 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
               );
             })()}
 
-            {/* Phase 9：英文 SEO 内容区块（About / Who Should Watch，基于字段，不编造剧情） */}
-            <h2 className="mt-5 text-lg font-semibold text-white">About This Anime</h2>
-            <p className="mt-2 leading-relaxed text-slate-300">
-              {anime.seo_description || anime.description || "Synopsis coming soon."}
-            </p>
-
-            <h2 className="mt-5 text-lg font-semibold text-white">Who Should Watch This Anime</h2>
-            <p className="mt-2 leading-relaxed text-slate-300">{whoShouldWatchText(anime)}</p>
-
             {/* Phase 10：英文 Genres 区块（结构化，链接分类页） */}
             {(() => {
               const gs = (anime.genre || "")
@@ -558,11 +549,20 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
               );
             })()}
 
+            {/* Phase 9：英文 SEO 内容区块（About / Who Should Watch，基于字段，不编造剧情） */}
+            <h2 className="mt-5 text-lg font-semibold text-white">About This Anime</h2>
+            <p className="mt-2 leading-relaxed text-slate-300">
+              {anime.seo_description || anime.description || "Synopsis coming soon."}
+            </p>
+
+            <h2 className="mt-5 text-lg font-semibold text-white">Who Should Watch This Anime</h2>
+            <p className="mt-2 leading-relaxed text-slate-300">{whoShouldWatchText(anime)}</p>
+
             {/* Meta list */}
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {anime.author && (
                 <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-300">
-                  <span className="text-slate-500">作者:</span> {anime.author}
+                  <span className="text-slate-500">Author:</span> {anime.author}
                 </div>
               )}
               {anime.studio && (
@@ -570,15 +570,15 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                   href={`/studio/${encodeURIComponent(anime.studio)}`}
                   className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-300 transition hover:border-pink-500/40 hover:text-white"
                 >
-                  <span className="text-slate-500">制作公司:</span> {anime.studio}
+                  <span className="text-slate-500">Studio:</span> {anime.studio}
                 </Link>
               )}
             </div>
 
             {/* 简介 */}
-            <h2 className="mt-5 text-lg font-semibold text-white">简介</h2>
+            <h2 className="mt-5 text-lg font-semibold text-white">Synopsis</h2>
             <p className="mt-2 whitespace-pre-line leading-relaxed text-slate-300">
-              {anime.description || "暂无简介"}
+              {anime.description || "No synopsis available."}
             </p>
 
             {/* SEO Growth：Anime Like {title} 入口（简介下方） */}
@@ -591,7 +591,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
             </Link>
 
             {/* 详情 (SEO text) */}
-            <h2 className="mt-6 text-lg font-semibold text-white">详情</h2>
+            <h2 className="mt-6 text-lg font-semibold text-white">Details</h2>
             <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-slate-300">
               {friendlyText}
             </p>
@@ -625,11 +625,11 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
         <div className="mb-4 flex items-center justify-between">
           <h2 className="flex items-center gap-3 text-lg font-semibold text-white">
             <span className="h-5 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
-            在线播放
+            Watch Online
           </h2>
           {playData && episodes.length > 0 && (
             <span className="text-xs text-slate-400">
-              共 {episodes.length} 集 · 当前第 {activeEp + 1} 集
+              Total {episodes.length} episodes · Currently on episode {activeEp + 1}
             </span>
           )}
         </div>
@@ -637,7 +637,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
         {!playData ? (
           <div className="py-12 text-center">
             <p className="text-4xl">🎬</p>
-            <p className="mt-3 text-sm text-slate-500">暂无播放资源</p>
+            <p className="mt-3 text-sm text-slate-500">No streaming source available</p>
           </div>
         ) : (
           <>
@@ -655,7 +655,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                         : "bg-white/5 text-slate-300 hover:bg-white/10"
                     }`}
                   >
-                    {line.name || `线路${i + 1}`}
+                    {line.name || `Server ${i + 1}`}
                   </button>
                 ))}
               </div>
@@ -678,13 +678,13 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                         : "bg-white/5 text-slate-300 hover:bg-white/10"
                     }`}
                   >
-                    {ep.title || `第${ep.ep}集`}
+                    {ep.title || `Episode ${ep.ep}`}
                   </button>
                 ))}
               </div>
             ) : (
               <div className="py-8 text-center">
-                <p className="text-sm text-slate-500">暂无选集</p>
+                <p className="text-sm text-slate-500">No episodes listed</p>
               </div>
             )}
           </>
@@ -698,7 +698,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
         <section className="mt-10">
           <h2 className="mb-5 flex items-center gap-3 text-xl font-bold text-white">
             <span className="h-6 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
-            登场角色
+            Characters
           </h2>
           <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
             {initialCharacters.map((ch) => (
@@ -714,7 +714,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 </Link>
                 {Array.isArray(ch.voice_actors) && ch.voice_actors.length > 0 && (
                   <p className="mt-2 text-xs leading-relaxed text-slate-400">
-                    配音：
+                    Voiced by: 
                     {(ch.voice_actors || []).map((va, idx) => (
                       <span key={va.id}>
                         {idx > 0 && <span className="text-slate-600"> / </span>}
@@ -740,7 +740,7 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
           <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
             <h2 className="flex items-center gap-3 text-xl font-bold text-white">
               <span className="h-6 w-1 rounded-full bg-gradient-to-b from-pink-500 to-indigo-500" />
-              相关推荐
+              Related Anime
             </h2>
             <Link
               href={`/anime/${anime.slug || anime.id}/similar/`}
