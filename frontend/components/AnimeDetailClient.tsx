@@ -34,6 +34,16 @@ const SEASON_LABEL: Record<string, string> = {
   winter: "Winter",
 };
 
+/** 中文 genre 片段 → 英文（detail 正文 Genres 区块） */
+const GENRE_EN: Record<string, string> = {
+  动作: "Action", 热血: "Action", 战斗: "Action", 奇幻: "Fantasy", 异世界: "Isekai",
+  科幻: "Sci-Fi", 机甲: "Mecha", 恋爱: "Romance", 校园: "School", 日常: "Slice of Life",
+  治愈: "Healing", 悬疑: "Mystery", 推理: "Mystery", 心理: "Psychological",
+  恐怖: "Horror", 惊悚: "Thriller", 搞笑: "Comedy", 喜剧: "Comedy", 冒险: "Adventure",
+  剧情: "Drama", 历史: "Historical", 时代剧: "Historical", 运动: "Sports", 音乐: "Music",
+  青春: "Youth", 战争: "War", 侦探: "Detective", 黑暗: "Dark", 魔法: "Magic",
+};
+
 /** anime genre（中文）→ best-anime 分类 slug + 英文 label（条件内链，只基于可靠 genre 字段） */
 const BEST_GENRE_MAP: { match: string[]; slug: string; label: string }[] = [
   { match: ["异世界"], slug: "isekai", label: "Isekai" },
@@ -409,6 +419,36 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
 
             <h2 className="mt-5 text-lg font-semibold text-white">Who Should Watch This Anime</h2>
             <p className="mt-2 leading-relaxed text-slate-300">{whoShouldWatchText(anime)}</p>
+
+            {/* Phase 10：英文 Genres 区块（结构化，链接分类页） */}
+            {(() => {
+              const gs = (anime.genre || "")
+                .split(/[/，,、\s]+/)
+                .map((g) => g.trim())
+                .filter(Boolean);
+              if (gs.length === 0) return null;
+              return (
+                <div className="mt-5">
+                  <h2 className="text-lg font-semibold text-white">Genres</h2>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {gs.map((g) => {
+                      const en = GENRE_EN[g] || g;
+                      const bg = bestGenreEntry(g);
+                      const href = bg ? `/best-anime/${bg.slug}/` : `/categories/${encodeURIComponent(g)}/`;
+                      return (
+                        <Link
+                          key={g}
+                          href={href}
+                          className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 transition hover:bg-indigo-500/20 hover:text-white"
+                        >
+                          {en}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Meta list */}
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
