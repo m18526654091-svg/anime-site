@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import Navbar from "@/components/Navbar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 // Next.js 14: themeColor 应放在独立 viewport export（避免 metadata 警告）
 export const viewport: Viewport = {
@@ -79,6 +80,7 @@ export default function RootLayout({
     <html lang="zh-CN">
       <body>
         <Providers>
+          <GoogleAnalytics />
           <Navbar />
           <main>{children}</main>
                     <footer className="mt-16 border-t border-white/10 py-10">
