@@ -7,6 +7,7 @@ import {
   fetchCharactersByAnime,
 } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
+import { matchWatchOrderFranchise } from "@/lib/watchOrder";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Anime, RatingsInfo } from "@/types";
 import type { AnimeCharacter } from "@/lib/api";
@@ -55,26 +56,46 @@ const GENRE_TITLE_SUFFIX: Record<string, string> = {
   异世界: "Isekai Adventure, Plot & More",
 };
 
-/** 纯 ASCII 标题 → 生成英文 SEO title（如 "Solo Leveling: Release Date, Story & Characters"） */
+/** 纯 ASCII 标题 → 生成英文 SEO title（含 "Anime" 词 + Watch Order 条件后缀，控制长度） */
 function buildEnglishSeoTitle(anime: Anime): string | null {
   const title = (anime.title || "").trim();
   if (!title || !/^[\x20-\x7E]+$/.test(title)) return null;
   const genre = (anime.genre || "").split("/").map((g) => g.trim()).find(Boolean) || "";
-  const suffix = GENRE_TITLE_SUFFIX[genre] || "Release Date, Story & Characters";
-  return `${title}: ${suffix}`;
+  const suffix = GENRE_TITLE_SUFFIX[genre] || "Episodes, Release Date & Characters";
+  const watchBit = matchWatchOrderFranchise(anime.title, anime.chinese_title)
+    ? ", Watch Order"
+    : "";
+  const t = `${title} Anime: ${suffix}${watchBit}`;
+  // 超长时回退（去掉 Watch Order 后缀），避免 SERP 截断
+  return t.length > 68 ? `${title} Anime: ${suffix}` : t;
 }
 
-/** 生成 150-160 字符英文 meta description（不复制 AniList 原文） */
+/** 中文 genre 片段 → 英文（用于英文 meta description，避免中英混杂） */
+const GENRE_EN: Record<string, string> = {
+  动作: "action", 热血: "action", 战斗: "action", 奇幻: "fantasy", 异世界: "isekai",
+  科幻: "sci-fi", 机甲: "mecha", 恋爱: "romance", 校园: "school", 日常: "slice of life",
+  治愈: "healing", 悬疑: "mystery", 推理: "mystery", 心理: "psychological",
+  恐怖: "horror", 惊悚: "thriller", 搞笑: "comedy", 喜剧: "comedy", 冒险: "adventure",
+  剧情: "drama", 历史: "historical", 时代剧: "historical", 运动: "sports", 音乐: "music",
+  青春: "youth", 战争: "war", 侦探: "detective", 黑暗: "dark", 魔法: "magic",
+};
+
+/** 生成 150 字符内英文 meta description（含 episodes/characters/release/watch order 关键词，不超长截断） */
 function buildEnglishSeoDescription(anime: Anime): string | null {
   const title = (anime.title || "").trim();
   if (!title || !/^[\x20-\x7E]+$/.test(title)) return null;
-  const genre = (anime.genre || "").replace(/\//g, ", ") || "anime";
-  const year = anime.year ? ` first aired in ${anime.year}` : "";
-  const episodes = anime.episodes ? ` with ${anime.episodes} episodes` : "";
-  const why = "Fans search this title for its story, characters, and release details.";
+  const genres = (anime.genre || "")
+    .split(/[/，,、\s]+/)
+    .map((g) => g.trim())
+    .filter(Boolean);
+  const genreEn = genres.map((g) => GENRE_EN[g] || g).join(", ") || "anime";
+  const yearBit = anime.year ? ` (${anime.year}` : "";
+  const epsBit = anime.episodes ? `, ${anime.episodes} eps` : "";
+  const watchOrder = matchWatchOrderFranchise(anime.title, anime.chinese_title);
+  const watchText = watchOrder ? " + watch order" : "";
   const desc =
-    `${title} (${year}): a ${genre} anime${episodes}. ${why} ` +
-    `Get the synopsis, episode list, and watch it free on AnimeHub.`;
+    `${title}: ${genreEn} anime${yearBit}${epsBit}${anime.year ? ")" : ""}. ` +
+    `Episodes, characters, release date & watch info${watchText} on AnimeHub.`;
   return desc.length > 160 ? `${desc.slice(0, 157)}...` : desc;
 }
 

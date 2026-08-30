@@ -275,6 +275,48 @@ export default async function BestAnimeCategoryPage({ params }: { params: { cate
           </div>
         ))}
       </div>
+
+      {/* Phase 9：相关发现内链（Trending/Discover/Season/Watch Order/Best Lists） */}
+      <div className="mt-10 rounded-2xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Keep Discovering</h2>
+        <p className="mt-1 text-sm text-slate-500">
+          Not sure what to watch next? These pages are updated with the latest seasonal anime
+          and fan favorites.
+        </p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link
+            href="/trending-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Trending Anime
+          </Link>
+          <Link
+            href="/discover-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Discover Anime
+          </Link>
+          <Link
+            href="/seasons/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Seasonal Anime
+          </Link>
+          <Link
+            href="/watch-order/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Watch Orders
+          </Link>
+          <Link
+            href="/best-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            All Best Anime Lists
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }

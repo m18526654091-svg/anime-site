@@ -56,6 +56,22 @@ function bestGenreEntry(genre?: string | null) {
   return null;
 }
 
+/** 基于 genre/score/year 生成安全的英文推荐句（不虚构剧情细节） */
+function whoShouldWatchText(a: { genre?: string; score?: number; year?: number | null }): string {
+  const genres = (a.genre || "")
+    .split(/[/，,、\s]+/)
+    .map((g) => g.trim())
+    .filter(Boolean);
+  const base = genres.length
+    ? `If you enjoy ${genres.slice(0, 3).join(", ")} anime`
+    : "If you are a fan of anime";
+  const scoreBit = a.score
+    ? ` — this title holds a ${Number(a.score).toFixed(1)}/10 fan rating`
+    : "";
+  const yearBit = a.year ? ` and first aired in ${a.year}` : "";
+  return `${base}${scoreBit}${yearBit}, this is a show worth checking out.`;
+}
+
 function currentSeason(): { season: string; year: number; label: string } {
   const now = new Date();
   const m = now.getMonth() + 1;
@@ -384,6 +400,15 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 </div>
               );
             })()}
+
+            {/* Phase 9：英文 SEO 内容区块（About / Who Should Watch，基于字段，不编造剧情） */}
+            <h2 className="mt-5 text-lg font-semibold text-white">About This Anime</h2>
+            <p className="mt-2 leading-relaxed text-slate-300">
+              {anime.seo_description || anime.description || "Synopsis coming soon."}
+            </p>
+
+            <h2 className="mt-5 text-lg font-semibold text-white">Who Should Watch This Anime</h2>
+            <p className="mt-2 leading-relaxed text-slate-300">{whoShouldWatchText(anime)}</p>
 
             {/* Meta list */}
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
