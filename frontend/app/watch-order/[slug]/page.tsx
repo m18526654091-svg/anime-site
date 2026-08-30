@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { fetchAnimePage } from "@/lib/api";
 import { animePath } from "@/lib/slug";
 import { FRANCHISES, WATCH_ORDER_FRANCHISES } from "@/lib/watchOrder";
+import { FRANCHISE_DEFS } from "@/lib/franchise";
 import type { Anime } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -170,6 +171,18 @@ export default async function WatchOrderPage({ params }: { params: { slug: strin
           ))}
         </div>
       </div>
+
+      {/* Phase 30：Franchise Hub 链接（watch order → franchise 目录页） */}
+      {FRANCHISE_DEFS[fr.slug] && (
+        <div className="mt-6">
+          <Link
+            href={`/anime-series/${fr.slug}/`}
+            className="inline-block rounded-xl border border-indigo-200 bg-indigo-50 px-5 py-3 text-sm text-indigo-700 transition hover:bg-indigo-100"
+          >
+            Browse the {FRANCHISE_DEFS[fr.slug].name} Franchise — every season &amp; movie →
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

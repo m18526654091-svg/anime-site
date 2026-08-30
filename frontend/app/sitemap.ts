@@ -10,6 +10,7 @@ import type { Anime } from "@/types";
 import { animePath, isNumericSlug } from "@/lib/slug";
 import { filterRedundantSeasons } from "@/lib/seasonIndex";
 import { fetchAllCharacters, fetchAllVoiceActors } from "@/lib/api";
+import { FRANCHISE_SLUGS } from "@/lib/franchise";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -108,8 +109,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteBase}/watch-order/monogatari/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteBase}/watch-order/bleach/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${siteBase}/watch-order/rezero/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
-    // Phase 9：Franchise + Historical
-    { url: `${siteBase}/anime-series/fate/`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    // Phase 9：Best Lists + 历史
     { url: `${siteBase}/best-anime/historical/`, lastModified, changeFrequency: "weekly", priority: 0.8 },
   ];
 
@@ -268,5 +268,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch character/voice-actor pages for sitemap:", error);
   }
 
-  return [...staticPages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...seasonSlugPages, ...animePages, ...similarPages, ...characterPages, ...voiceActorPages];
+  // Phase 30：Franchise Hub 页面（内容完整的 franchise 才进 sitemap）
+  const franchisePages: MetadataRoute.Sitemap = FRANCHISE_SLUGS.map((slug) => ({
+    url: `${siteBase}/anime-series/${slug}/`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...franchisePages, ...categoryPages, ...tagPages, ...yearPages, ...studioPages, ...seasonPages, ...seasonSlugPages, ...animePages, ...similarPages, ...characterPages, ...voiceActorPages];
 }

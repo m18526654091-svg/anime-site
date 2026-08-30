@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchAnimeBySlug, fetchSimilarAnime } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
+import { matchFranchise, FRANCHISE_DEFS } from "@/lib/franchise";
 import type { Anime } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -235,6 +236,28 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
           ← Back to {displayName(anime)}
         </Link>
       </div>
+
+      {/* Phase 30：Franchise discovery（similar → franchise 目录页） */}
+      {(() => {
+        const fs = matchFranchise(anime.title, anime.chinese_title);
+        if (!fs || !FRANCHISE_DEFS[fs]) return null;
+        return (
+          <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-5 text-center">
+            <h2 className="text-lg font-semibold text-slate-900">
+              More from the {FRANCHISE_DEFS[fs].name} Franchise
+            </h2>
+            <p className="mt-1 text-sm text-slate-500">
+              Explore every season, sequel, and movie of the {FRANCHISE_DEFS[fs].name} series.
+            </p>
+            <Link
+              href={`/anime-series/${fs}/`}
+              className="mt-3 inline-block rounded-full bg-indigo-600 px-6 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
+            >
+              {FRANCHISE_DEFS[fs].name} Franchise Hub →
+            </Link>
+          </div>
+        );
+      })()}
     </div>
   );
 }

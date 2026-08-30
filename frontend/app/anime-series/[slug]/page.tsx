@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { fetchAnimePage } from "@/lib/api";
 import { animePath } from "@/lib/slug";
 import { FRANCHISE_DEFS, FRANCHISE_SLUGS } from "@/lib/franchise";
+import { WATCH_ORDER_FRANCHISES } from "@/lib/watchOrder";
 import type { Anime } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -22,12 +23,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const def = FRANCHISE_DEFS[params.slug];
   if (!def) return { title: "Anime Series", robots: { index: false, follow: false } };
   const canonical = `${getSiteBase()}/anime-series/${def.slug}/`;
-  const title = `${def.name} Anime Series: Every Season, Movie & Timeline`;
+  const title = `${def.name} Franchise - Watch Order, Seasons & Anime List`;
   const description =
-    `The complete ${def.name} anime series guide — every season, movie, and spin-off in our ` +
-    `database, grouped by timeline, with release years and direct detail links.`;
+    `The complete ${def.name} franchise guide — every season, sequel, and movie in our database, ` +
+    `with watch order, release years, and direct anime links.`;
   return {
-    title: { absolute: title },
+    title: { absolute: title.slice(0, 68) },
     description: description.slice(0, 158),
     alternates: { canonical },
     openGraph: {
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       locale: "en_US",
       url: canonical,
       siteName: "AnimeHub",
-      title,
+      title: title.slice(0, 68),
       description: description.slice(0, 158),
     },
   };
@@ -87,7 +88,7 @@ export default async function AnimeSeriesPage({ params }: { params: { slug: stri
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: `${getSiteBase()}/` },
-              { "@type": "ListItem", position: 2, name: `${def.name} Anime Series`, item: canonical },
+              { "@type": "ListItem", position: 2, name: `${def.name} Franchise`, item: canonical },
             ],
           }),
         }}
@@ -99,7 +100,7 @@ export default async function AnimeSeriesPage({ params }: { params: { slug: stri
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "ItemList",
-              name: `${def.name} Anime Series`,
+              name: `${def.name} Franchise`,
               numberOfItems: all.length,
               itemListElement: itemList,
             }),
@@ -110,16 +111,50 @@ export default async function AnimeSeriesPage({ params }: { params: { slug: stri
       <nav className="mb-4 text-sm text-slate-500">
         <Link href="/" className="hover:text-blue-600">Home</Link>
         <span className="mx-2">›</span>
-        <span className="text-slate-700">{def.name} Anime Series</span>
+        <span className="text-slate-700">{def.name} Franchise</span>
       </nav>
 
-      <h1 className="text-3xl font-bold text-slate-900">{def.name} Anime Series</h1>
+      <h1 className="text-3xl font-bold text-slate-900">{def.name} Franchise</h1>
       <p className="mt-3 max-w-3xl text-slate-600">{def.intro}</p>
 
       {all.length === 0 && (
         <p className="mt-8 text-slate-500">
           Series entries are being collected. Check back soon.
         </p>
+      )}
+
+      {/* Franchise Overview（基于 DB 字段统计，不编造） */}
+      {all.length > 0 && (
+        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+          <span className="font-semibold text-slate-900">Franchise Overview: </span>
+          {all.length} entries in our database
+          {(() => {
+            const years = Array.from(new Set(all.map((a) => a.year).filter(Boolean))).sort() as number[];
+            return years.length ? ` · Released ${years[0]}–${years[years.length - 1]}` : "";
+          })()}
+          {(() => {
+            const genres: string[] = [];
+            for (const a of all) {
+              for (const g of (a.genre || "").split(/[/，,、\s]+/)) {
+                const t = g.trim();
+                if (t && !genres.includes(t)) genres.push(t);
+              }
+            }
+            return genres.length ? ` · Genres: ${genres.slice(0, 6).join(", ")}` : "";
+          })()}
+        </div>
+      )}
+
+      {/* Watch Order（若 franchise 有 watch-order 页） */}
+      {WATCH_ORDER_FRANCHISES.includes(def.slug) && (
+        <div className="mt-4">
+          <Link
+            href={`/watch-order/${def.slug}/`}
+            className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-500"
+          >
+            {def.name} Watch Order →
+          </Link>
+        </div>
       )}
 
       {buckets.map((group) => {
