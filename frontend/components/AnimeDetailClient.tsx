@@ -494,6 +494,19 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                       <dt className="inline font-semibold text-slate-200">Score: </dt>
                       <dd className="inline">★ {score.toFixed(1)} / 10</dd>
                     </div>
+                    {anime.studio && (
+                      <div>
+                        <dt className="inline font-semibold text-slate-200">Studio: </dt>
+                        <dd className="inline">
+                          <Link
+                            href={`/studio/${encodeURIComponent(anime.studio)}`}
+                            className="text-indigo-300 transition hover:text-white hover:underline"
+                          >
+                            {anime.studio}
+                          </Link>
+                        </dd>
+                      </div>
+                    )}
                   </dl>
                   {updated && (
                     <div className="mt-2 border-t border-white/10 pt-2 text-xs text-slate-500">
@@ -571,14 +584,6 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-300">
                   <span className="text-slate-500">Author:</span> {anime.author}
                 </div>
-              )}
-              {anime.studio && (
-                <Link
-                  href={`/studio/${encodeURIComponent(anime.studio)}`}
-                  className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-slate-300 transition hover:border-pink-500/40 hover:text-white"
-                >
-                  <span className="text-slate-500">Studio:</span> {anime.studio}
-                </Link>
               )}
             </div>
 

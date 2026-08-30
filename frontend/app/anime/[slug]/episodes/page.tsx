@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { fetchAnimeBySlug, fetchEpisodes } from "@/lib/api";
 import { animePath } from "@/lib/slug";
+import { matchFranchise, FRANCHISE_DEFS } from "@/lib/franchise";
+import { matchWatchOrderFranchise, FRANCHISES } from "@/lib/watchOrder";
 import type { Episode } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -123,6 +125,30 @@ export default async function EpisodesPage({ params }: { params: { slug: string 
         >
           Similar Anime
         </Link>
+        {(() => {
+          const fs = matchFranchise(anime.title, anime.chinese_title);
+          if (!fs) return null;
+          return (
+            <Link
+              href={`/anime-series/${fs}/`}
+              className="rounded-full border border-amber-500/50 bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-700 transition hover:bg-amber-100"
+            >
+              {FRANCHISE_DEFS[fs].name} Franchise
+            </Link>
+          );
+        })()}
+        {(() => {
+          const ws = matchWatchOrderFranchise(anime.title, anime.chinese_title);
+          if (!ws) return null;
+          return (
+            <Link
+              href={`/watch-order/${ws}/`}
+              className="rounded-full border border-amber-500/50 bg-amber-50 px-4 py-1.5 text-sm font-medium text-amber-700 transition hover:bg-amber-100"
+            >
+              {FRANCHISES[ws].name} Watch Order
+            </Link>
+          );
+        })()}
       </div>
 
       <section className="mt-8">

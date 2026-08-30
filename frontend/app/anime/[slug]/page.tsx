@@ -259,7 +259,7 @@ export default async function AnimeDetailPage({
         />
       )}
 
-      {/* FAQ — 基于真实字段生成，不虚构剧情 */}
+      {/* FAQ — 数据驱动英文 FAQ（仅当字段真实存在时生成，不虚构） */}
       {anime && (
         <script
           type="application/ld+json"
@@ -267,31 +267,59 @@ export default async function AnimeDetailPage({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: `${anime.chinese_title || anime.title}是什么动漫？`,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: [
-                      anime.chinese_title || anime.title,
-                      anime.year ? `${anime.year}年播出` : "",
-                      anime.genre ? `${anime.genre}题材动漫` : "动漫作品",
-                      anime.studio ? `由${anime.studio}制作` : "",
-                    ].filter(Boolean).join("，") + "。",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: `${anime.chinese_title || anime.title}一共有多少集？`,
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: anime.episodes
-                      ? `${anime.chinese_title || anime.title}共${anime.episodes}集，可在 AnimeHub 在线观看。`
-                      : `${anime.chinese_title || anime.title}的剧集信息可在 AnimeHub 在线查看。`,
-                  },
-                },
-              ],
+              mainEntity: (() => {
+                const name = anime.title || anime.chinese_title || "This anime";
+                const faq: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
+                // 1. What is — 仅当有 genre/year/studio 至少一个事实时
+                if (anime.genre || anime.year || anime.studio) {
+                  const parts = [
+                    `${name} is an anime`,
+                    anime.genre ? ` with genres ${anime.genre.split(/[/，,、\s]+/).map((g) => g.trim()).filter(Boolean).join(", ")}` : "",
+                    anime.year ? ` released in ${anime.year}` : "",
+                    anime.studio ? `, produced by ${anime.studio}` : "",
+                  ].filter(Boolean).join("");
+                  faq.push({
+                    "@type": "Question",
+                    name: `What is ${name}?`,
+                    acceptedAnswer: { "@type": "Answer", text: parts + "." },
+                  });
+                }
+                // 2. How many episodes — 仅当 episodes 字段存在
+                if (anime.episodes && anime.episodes > 0) {
+                  faq.push({
+                    "@type": "Question",
+                    name: `How many episodes does ${name} have?`,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: `${name} has ${anime.episodes} episode${anime.episodes > 1 ? "s" : ""}. See the full episode list on AnimeHub.`,
+                    },
+                  });
+                }
+                // 3. When released — 仅当 year 存在
+                if (anime.year) {
+                  faq.push({
+                    "@type": "Question",
+                    name: `When was ${name} released?`,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: `${name} was released in ${anime.year}.`,
+                    },
+                  });
+                }
+                // 4. Watch order — 仅当 franchise 有 watch-order 页
+                const wo = matchWatchOrderFranchise(anime.title, anime.chinese_title);
+                if (wo) {
+                  faq.push({
+                    "@type": "Question",
+                    name: `Where can I find the ${name} watch order?`,
+                    acceptedAnswer: {
+                      "@type": "Answer",
+                      text: `See the complete watch order guide for the ${name} franchise on AnimeHub.`,
+                    },
+                  });
+                }
+                return faq;
+              })(),
             }),
           }}
         />

@@ -212,20 +212,51 @@ export default async function AnimeSeriesPage({ params }: { params: { slug: stri
         );
       })}
 
-      <div className="mt-10 flex flex-wrap gap-2">
-        <Link
-          href="/watch-order/"
-          className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
-        >
-          View Watch Orders
-        </Link>
-        <Link
-          href="/best-anime/"
-          className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
-        >
-          Browse Best Anime
-        </Link>
-      </div>
+      {/* Phase 31：Related Anime / More to explore（真实页面链接，非空区块） */}
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Related Anime &amp; More to Explore</h2>
+        <p className="mt-1 text-sm text-slate-500">
+          If you enjoyed the {def.name} series, these pages help you discover more anime.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Link
+            href="/trending-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Trending Anime
+          </Link>
+          <Link
+            href="/discover-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Discover Anime
+          </Link>
+          <Link
+            href="/seasons/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Seasonal Anime
+          </Link>
+          <Link
+            href="/best-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            Best Anime Lists
+          </Link>
+          <Link
+            href="/new-anime/"
+            className="rounded-full border border-indigo-500/40 bg-indigo-500/10 px-4 py-1.5 text-sm font-medium text-indigo-700 transition hover:bg-indigo-500/20"
+          >
+            New Anime
+          </Link>
+          <Link
+            href="/watch-order/"
+            className="rounded-full border border-slate-300 px-4 py-1.5 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:text-indigo-600"
+          >
+            View Watch Orders
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
