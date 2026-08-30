@@ -56,7 +56,7 @@ const GENRE_TITLE_SUFFIX: Record<string, string> = {
   异世界: "Isekai Adventure, Plot & More",
 };
 
-/** 纯 ASCII 标题 → 生成英文 SEO title（含 "Anime" 词 + Watch Order 条件后缀，控制长度） */
+/** 纯 ASCII 标题 → 生成英文 SEO title（含 "Anime" 词 + Watch Order 条件后缀，三级长度控制） */
 function buildEnglishSeoTitle(anime: Anime): string | null {
   const title = (anime.title || "").trim();
   if (!title || !/^[\x20-\x7E]+$/.test(title)) return null;
@@ -65,9 +65,17 @@ function buildEnglishSeoTitle(anime: Anime): string | null {
   const watchBit = matchWatchOrderFranchise(anime.title, anime.chinese_title)
     ? ", Watch Order"
     : "";
-  const t = `${title} Anime: ${suffix}${watchBit}`;
-  // 超长时回退（去掉 Watch Order 后缀），避免 SERP 截断
-  return t.length > 68 ? `${title} Anime: ${suffix}` : t;
+  let t = `${title} Anime: ${suffix}${watchBit}`;
+  if (t.length > 68) {
+    // 第 2 级：去掉 Watch Order 后缀
+    t = `${title} Anime: ${suffix}`;
+  }
+  if (t.length > 68) {
+    // 第 3 级：超长标题（如 Re:ZERO 长系列名）用英文短 genre 压缩，避免 SERP 截断
+    const short = GENRE_EN[genre] || "Anime";
+    t = `${title} Anime: ${short}`;
+  }
+  return t;
 }
 
 /** 中文 genre 片段 → 英文（用于英文 meta description，避免中英混杂） */
