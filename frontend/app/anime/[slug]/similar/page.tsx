@@ -133,9 +133,12 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
 
       <h1 className="text-3xl font-bold text-slate-900">Anime Like {name}</h1>
       <p className="mt-3 max-w-3xl text-slate-600">
-        If you enjoyed <strong>{name}</strong>, these anime share similar themes, genres, and
-        tone. From {anime.genre ? anime.genre.replace(/\//g, " and ") : "action"} to gripping
-        storytelling, here are the best similar shows to watch next.
+        Discover anime similar to <strong>{name}</strong>. Recommendations are based on shared
+        genres, release period, and available anime metadata
+        {anime.genre
+          ? ` — from ${anime.genre.replace(/\//g, " and ")} to gripping storytelling`
+          : ""}
+        .
       </p>
 
       <div className="mt-8 space-y-6">
@@ -178,6 +181,44 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
                   </span>
                 ) : null}
               </div>
+              {(() => {
+                // Phase 17：基于字段计算 reason 徽章（不人工编造）
+                const baseGenres = new Set(
+                  (anime.genre || "").split(/[/，,、\s]+/).map((g) => g.trim()).filter(Boolean)
+                );
+                const sGenres = new Set(
+                  (s.genre || "").split(/[/，,、\s]+/).map((g) => g.trim()).filter(Boolean)
+                );
+                const badges: string[] = [];
+                if (Array.from(baseGenres).some((g) => sGenres.has(g))) badges.push("Shared genre");
+                if (
+                  anime.year &&
+                  s.year &&
+                  Math.abs((anime.year || 0) - (s.year || 0)) <= 2
+                ) {
+                  badges.push("Similar release period");
+                }
+                if (
+                  anime.score &&
+                  s.score &&
+                  Math.abs((anime.score || 0) - (s.score || 0)) <= 0.5
+                ) {
+                  badges.push("Similar score range");
+                }
+                if (!badges.length) return null;
+                return (
+                  <div className="mt-1 flex flex-wrap gap-1">
+                    {badges.map((b) => (
+                      <span
+                        key={b}
+                        className="rounded bg-emerald-50 px-1.5 py-0.5 text-xs text-emerald-700"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+                );
+              })()}
               <p className="mt-1 text-sm text-slate-600">
                 Why you may like it: {s.reason || (s.genre ? `It shares the ${s.genre.replace(/\//g, ", ")} vibe you enjoyed.` : "It shares similar themes and storytelling.")}
               </p>

@@ -311,6 +311,51 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 <h1 className="text-3xl font-black leading-tight text-white sm:text-4xl">
                   {anime.chinese_title || anime.title}
                 </h1>
+                {(() => {
+                  const gs = (anime.genre || "")
+                    .split(/[/，,、\s]+/)
+                    .map((g) => g.trim())
+                    .filter(Boolean);
+                  const genresEn = gs.map((g) => GENRE_EN[g] || g).join(", ") || "anime";
+                  const m = anime.month ?? null;
+                  const seasonEn = m
+                    ? m <= 2 || m === 12
+                      ? "Winter"
+                      : m <= 5
+                      ? "Spring"
+                      : m <= 8
+                      ? "Summer"
+                      : "Fall"
+                    : null;
+                  const release = anime.year
+                    ? seasonEn
+                      ? `${seasonEn} ${anime.year}`
+                      : String(anime.year)
+                    : "release date not announced";
+                  const eps = anime.episodes
+                    ? `${anime.episodes} episodes`
+                    : "episode count not announced";
+                  const statusEn =
+                    anime.status === "完结"
+                      ? "Completed"
+                      : anime.status === "连载" || anime.status === "连载中"
+                      ? "Airing"
+                      : anime.status === "未上映"
+                      ? "Not yet aired"
+                      : anime.status
+                      ? anime.status
+                      : "Unknown";
+                  const scoreText = anime.score
+                    ? `${Number(anime.score).toFixed(1)}/10`
+                    : "not rated";
+                  const name = anime.title || anime.chinese_title || "This anime";
+                  return (
+                    <p className="mt-2 text-sm leading-relaxed text-slate-300">
+                      {name} is a {genresEn} anime released in {release}. Episodes: {eps} ·
+                      Status: {statusEn} · Genres: {genresEn} · Score: {scoreText}.
+                    </p>
+                  );
+                })()}
                 {!loadingEpisodes && dbEpisodes.length > 0 && (
                   <div className="mt-2">
                     <Link
