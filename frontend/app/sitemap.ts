@@ -201,14 +201,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let studioPages: MetadataRoute.Sitemap = [];
   try {
     const studios = await fetchStudios();
-    studioPages = studios
-      .filter((s) => (s.studio || "").trim() && s.count >= 3) // Stage 10-B：<3 部不进 sitemap
-      .map((s) => ({
-        url: `${siteBase}/studio/${encodeURIComponent(s.studio)}/`,
-        lastModified,
-        changeFrequency: "weekly",
-        priority: 0.6,
-      }));
+    const seenStudio = new Set<string>();
+    for (const s of studios) {
+      if (!(s.studio || "").trim() || (s.count ?? 0) < 3) continue; // Stage 10-B：<3 部不进 sitemap
+      const url = `${siteBase}/studio/${encodeURIComponent(s.studio)}/`;
+      if (seenStudio.has(url)) continue; // 防御重复 studio 条目（生产实测曾出现重复 <loc>）
+      seenStudio.add(url);
+      studioPages.push({ url, lastModified, changeFrequency: "weekly", priority: 0.6 });
+    }
   } catch (error) {
     console.error("Failed to fetch studios for sitemap:", error);
   }
