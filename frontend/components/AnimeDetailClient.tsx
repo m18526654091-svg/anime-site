@@ -469,7 +469,14 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                     </div>
                     <div>
                       <dt className="inline font-semibold text-slate-200">Episodes: </dt>
-                      <dd className="inline">{epCount}</dd>
+                      <dd className="inline">
+                        <Link
+                          href={`/anime/${anime.slug || anime.id}/episodes/`}
+                          className="text-indigo-300 transition hover:text-white hover:underline"
+                        >
+                          {epCount}
+                        </Link>
+                      </dd>
                     </div>
                     <div>
                       <dt className="inline font-semibold text-slate-200">Status: </dt>
