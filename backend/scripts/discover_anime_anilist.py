@@ -33,27 +33,28 @@ MEDIA_FIELDS = '''
 '''
 
 # 拉取计划：(query_name, page_count, query_args)
-# Phase 35：扩大抓取范围（更多页 + 多年季番 + 更多排序维度）以提供 ≥500 新候选
+# Phase 36 Round 2：增量抓取 2018-2022 季番（Phase 35 未覆盖年份），merge 进现有 candidates
 PLAN = [
-    ('popularity', 5, 'sort: [POPULARITY_DESC]'),
-    ('score', 5, 'sort: [SCORE_DESC]'),
-    ('trending', 3, 'sort: [TRENDING_DESC]'),
-    ('favourites', 3, 'sort: [FAVOURITES_DESC]'),
-    ('season_2023_winter', 1, 'season: WINTER, seasonYear: 2023, sort: [POPULARITY_DESC]'),
-    ('season_2023_spring', 1, 'season: SPRING, seasonYear: 2023, sort: [POPULARITY_DESC]'),
-    ('season_2023_summer', 1, 'season: SUMMER, seasonYear: 2023, sort: [POPULARITY_DESC]'),
-    ('season_2023_fall', 1, 'season: FALL, seasonYear: 2023, sort: [POPULARITY_DESC]'),
-    ('season_2024_winter', 1, 'season: WINTER, seasonYear: 2024, sort: [POPULARITY_DESC]'),
-    ('season_2024_spring', 1, 'season: SPRING, seasonYear: 2024, sort: [POPULARITY_DESC]'),
-    ('season_2024_summer', 1, 'season: SUMMER, seasonYear: 2024, sort: [POPULARITY_DESC]'),
-    ('season_2024_fall', 1, 'season: FALL, seasonYear: 2024, sort: [POPULARITY_DESC]'),
-    ('season_2025_winter', 1, 'season: WINTER, seasonYear: 2025, sort: [POPULARITY_DESC]'),
-    ('season_2025_spring', 1, 'season: SPRING, seasonYear: 2025, sort: [POPULARITY_DESC]'),
-    ('season_2025_summer', 1, 'season: SUMMER, seasonYear: 2025, sort: [POPULARITY_DESC]'),
-    ('season_2025_fall', 1, 'season: FALL, seasonYear: 2025, sort: [POPULARITY_DESC]'),
-    ('season_2026_winter', 1, 'season: WINTER, seasonYear: 2026, sort: [POPULARITY_DESC]'),
-    ('season_2026_spring', 1, 'season: SPRING, seasonYear: 2026, sort: [POPULARITY_DESC]'),
-    ('season_2026_summer', 1, 'season: SUMMER, seasonYear: 2026, sort: [POPULARITY_DESC]'),
+    ('season_2018_winter', 1, 'season: WINTER, seasonYear: 2018, sort: [POPULARITY_DESC]'),
+    ('season_2018_spring', 1, 'season: SPRING, seasonYear: 2018, sort: [POPULARITY_DESC]'),
+    ('season_2018_summer', 1, 'season: SUMMER, seasonYear: 2018, sort: [POPULARITY_DESC]'),
+    ('season_2018_fall', 1, 'season: FALL, seasonYear: 2018, sort: [POPULARITY_DESC]'),
+    ('season_2019_winter', 1, 'season: WINTER, seasonYear: 2019, sort: [POPULARITY_DESC]'),
+    ('season_2019_spring', 1, 'season: SPRING, seasonYear: 2019, sort: [POPULARITY_DESC]'),
+    ('season_2019_summer', 1, 'season: SUMMER, seasonYear: 2019, sort: [POPULARITY_DESC]'),
+    ('season_2019_fall', 1, 'season: FALL, seasonYear: 2019, sort: [POPULARITY_DESC]'),
+    ('season_2020_winter', 1, 'season: WINTER, seasonYear: 2020, sort: [POPULARITY_DESC]'),
+    ('season_2020_spring', 1, 'season: SPRING, seasonYear: 2020, sort: [POPULARITY_DESC]'),
+    ('season_2020_summer', 1, 'season: SUMMER, seasonYear: 2020, sort: [POPULARITY_DESC]'),
+    ('season_2020_fall', 1, 'season: FALL, seasonYear: 2020, sort: [POPULARITY_DESC]'),
+    ('season_2021_winter', 1, 'season: WINTER, seasonYear: 2021, sort: [POPULARITY_DESC]'),
+    ('season_2021_spring', 1, 'season: SPRING, seasonYear: 2021, sort: [POPULARITY_DESC]'),
+    ('season_2021_summer', 1, 'season: SUMMER, seasonYear: 2021, sort: [POPULARITY_DESC]'),
+    ('season_2021_fall', 1, 'season: FALL, seasonYear: 2021, sort: [POPULARITY_DESC]'),
+    ('season_2022_winter', 1, 'season: WINTER, seasonYear: 2022, sort: [POPULARITY_DESC]'),
+    ('season_2022_spring', 1, 'season: SPRING, seasonYear: 2022, sort: [POPULARITY_DESC]'),
+    ('season_2022_summer', 1, 'season: SUMMER, seasonYear: 2022, sort: [POPULARITY_DESC]'),
+    ('season_2022_fall', 1, 'season: FALL, seasonYear: 2022, sort: [POPULARITY_DESC]'),
 ]
 
 
@@ -67,6 +68,18 @@ def fetch_page(args: str, page: int):
 def main():
     seen_ids = {}
     items = []
+    # Phase 36：merge 模式 — 加载现有 candidates，只增量追加（不丢已有数据）
+    if os.path.exists(OUT):
+        try:
+            old = json.load(open(OUT, encoding='utf-8'))
+            old_items = old.get('items') if isinstance(old, dict) else old
+            for m in old_items:
+                if m.get('id') not in seen_ids:
+                    seen_ids[m['id']] = 1
+                    items.append(m)
+            print('[merge] 已加载现有候选 %d 条，继续增量抓取' % len(items))
+        except Exception as e:
+            print('[merge] 加载现有候选失败: %s' % str(e)[:80])
     total_requests = 0
     start = time.time()
     for name, pages, args in PLAN:
@@ -87,6 +100,11 @@ def main():
                 items.append(m)
             # 每页后间隔
             time.sleep(1.0)
+            # Phase 36：每查询后增量写盘（进程被杀不丢已抓进度）
+            with open(OUT, 'w', encoding='utf-8') as f:
+                json.dump({'generated_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
+                           'source': 'anilist', 'total_requests': total_requests,
+                           'items': items}, f, ensure_ascii=False)
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump({'generated_at': time.strftime('%Y-%m-%dT%H:%M:%S'),
                    'source': 'anilist', 'total_requests': total_requests,
