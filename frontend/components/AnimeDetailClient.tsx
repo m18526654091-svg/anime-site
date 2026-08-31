@@ -25,6 +25,8 @@ interface Props {
   error: string;
   initialRelated?: Anime[];
   initialCharacters?: AnimeCharacter[];
+  /** Phase 34：同 franchise 兄弟条目（Season/Movie/OVA/Related），SSR 传入 */
+  franchiseEntries?: Anime[];
 }
 
 const SEASON_LABEL: Record<string, string> = {
@@ -96,7 +98,7 @@ function currentSeason(): { season: string; year: number; label: string } {
   return { season, year: y, label: `${SEASON_LABEL[season]} ${y}` };
 }
 
-export default function AnimeDetailClient({ anime, error, initialRelated = [], initialCharacters = [] }: Props) {
+export default function AnimeDetailClient({ anime, error, initialRelated = [], initialCharacters = [], franchiseEntries = [] }: Props) {
   const router = useRouter();
   const { isLoggedIn } = useAuth();
   const [related, setRelated] = useState<Anime[]>(initialRelated);
@@ -770,6 +772,72 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 )}
               </div>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* Phase 34：Seasons & Related Entries — 同 franchise 兄弟条目导航（SSR 数据，Season/Movie/OVA/Related） */}
+      {franchiseEntries.length > 1 && (
+        <section className="mt-10">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <h2 className="flex items-center gap-3 text-xl font-bold text-white">
+              <span className="h-6 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500" />
+              Seasons &amp; Related Entries
+            </h2>
+            {(() => {
+              const fs = matchFranchise(anime.title, anime.chinese_title);
+              if (!fs) return null;
+              return (
+                <Link
+                  href={`/anime-series/${fs}/`}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-indigo-500/40 bg-indigo-500/10 px-3 py-1.5 text-xs font-semibold text-indigo-300 transition hover:border-indigo-400 hover:bg-indigo-500/20 hover:text-white"
+                >
+                  {FRANCHISE_DEFS[fs].name} Franchise →
+                </Link>
+              );
+            })()}
+          </div>
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {franchiseEntries
+              .filter((e) => e.id !== anime.id)
+              .map((e) => {
+                const t = e.title || "";
+                const m = t.match(/season\s*(\d+)/i);
+                const type = m
+                  ? `Season ${m[1]}`
+                  : /movie|film|剧场版|劇場版/i.test(t)
+                  ? "Movie"
+                  : /ova|special|番外/i.test(t)
+                  ? "OVA / Special"
+                  : "Related entry";
+                return (
+                  <Link
+                    key={e.id}
+                    href={animePath(e)}
+                    className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg backdrop-blur transition duration-300 hover:-translate-y-1.5 hover:border-indigo-500/50 hover:shadow-glow"
+                  >
+                    <div className="relative h-40 w-full overflow-hidden">
+                      <AnimeCover
+                        anime={e}
+                        className="h-40 w-full object-cover transition duration-500 group-hover:scale-110"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
+                      <span className="absolute right-2 top-2 rounded-full bg-indigo-600/90 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur">
+                        {type}
+                      </span>
+                    </div>
+                    <div className="flex flex-1 flex-col p-3">
+                      <h3 className="line-clamp-2 text-sm font-bold text-white transition group-hover:text-indigo-300">
+                        {e.chinese_title || e.title}
+                      </h3>
+                      <p className="mt-1.5 text-xs text-slate-400">
+                        {e.year ? `${e.year} · ` : ""}
+                        {e.score ? `★ ${Number(e.score).toFixed(1)}` : "No rating"}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </section>
       )}

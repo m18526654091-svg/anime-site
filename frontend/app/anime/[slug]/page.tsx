@@ -2,12 +2,14 @@ import AnimeDetailClient from "@/components/AnimeDetailClient";
 import {
   fetchAnimeBySlug,
   fetchAnimeDetail,
+  fetchAnimePage,
   fetchRatings,
   fetchRelated,
   fetchCharactersByAnime,
 } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
 import { matchWatchOrderFranchise } from "@/lib/watchOrder";
+import { matchFranchise, FRANCHISE_DEFS } from "@/lib/franchise";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Anime, RatingsInfo } from "@/types";
 import type { AnimeCharacter } from "@/lib/api";
@@ -242,9 +244,32 @@ export default async function AnimeDetailPage({
     }
   }
 
+  // Phase 34：Seasons & Related Entries — 匹配 franchise 时拉取同系列兄弟条目（Season/Movie/OVA/Related）
+  // 数据全部来自 DB（franchise 关键词匹配现有条目），不建新 URL。
+  let franchiseEntries: Anime[] = [];
+  if (anime) {
+    const fslug = matchFranchise(anime.title, anime.chinese_title);
+    if (fslug && FRANCHISE_DEFS[fslug]) {
+      try {
+        const seen = new Map<number, Anime>();
+        for (const kw of FRANCHISE_DEFS[fslug].match) {
+          const page = await fetchAnimePage(kw, 1, 30);
+          for (const a of page.items) {
+            if (!seen.has(a.id)) seen.set(a.id, a);
+          }
+        }
+        franchiseEntries = Array.from(seen.values()).sort(
+          (x, y) => (x.year || 0) - (y.year || 0) || (x.id || 0) - (y.id || 0)
+        );
+      } catch {
+        franchiseEntries = [];
+      }
+    }
+  }
+
   return (
     <>
-      <AnimeDetailClient anime={anime} error={error} initialRelated={initialRelated} initialCharacters={initialCharacters} />
+      <AnimeDetailClient anime={anime} error={error} initialRelated={initialRelated} initialCharacters={initialCharacters} franchiseEntries={franchiseEntries} />
             {anime && (
         <script
           type="application/ld+json"
