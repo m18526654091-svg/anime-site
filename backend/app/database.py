@@ -141,6 +141,13 @@ def _ensure_sqlite_schema() -> None:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN anime_seo_priority INTEGER DEFAULT 0"))
             if "play_data" not in cols:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN play_data TEXT DEFAULT ''"))
+            # Phase 35：多语言实体标题列（幂等）
+            if "japanese_title" not in cols:
+                conn.execute(text("ALTER TABLE anime ADD COLUMN japanese_title TEXT DEFAULT ''"))
+            if "romaji_title" not in cols:
+                conn.execute(text("ALTER TABLE anime ADD COLUMN romaji_title TEXT DEFAULT ''"))
+            if "aliases" not in cols:
+                conn.execute(text("ALTER TABLE anime ADD COLUMN aliases TEXT DEFAULT ''"))
             if "updated_at" not in cols:
                 conn.execute(text("ALTER TABLE anime ADD COLUMN updated_at DATETIME"))
             if "episodes_list" not in [c for c in cols]:
@@ -183,6 +190,13 @@ def _ensure_postgres_schema() -> None:
             statements.append("ALTER TABLE anime ADD COLUMN anilist_id INTEGER")
         if "mal_id" not in cols:
             statements.append("ALTER TABLE anime ADD COLUMN mal_id INTEGER")
+        # Phase 35：多语言实体标题列（幂等）
+        if "japanese_title" not in cols:
+            statements.append("ALTER TABLE anime ADD COLUMN japanese_title TEXT DEFAULT ''")
+        if "romaji_title" not in cols:
+            statements.append("ALTER TABLE anime ADD COLUMN romaji_title TEXT DEFAULT ''")
+        if "aliases" not in cols:
+            statements.append("ALTER TABLE anime ADD COLUMN aliases TEXT DEFAULT ''")
         # ALTER ADD COLUMN 不会自动建索引，手动补齐（与 models.py index=True 一致，幂等）
         statements.append("CREATE INDEX IF NOT EXISTS ix_anime_anilist_id ON anime (anilist_id)")
         statements.append("CREATE INDEX IF NOT EXISTS ix_anime_mal_id ON anime (mal_id)")

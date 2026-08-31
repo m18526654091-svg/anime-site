@@ -74,6 +74,14 @@ def anilist_to_item(m: dict) -> dict:
     title = english or romaji or native
     # chinese_title：AniList 无中文；用日文原名（真实，非编造），无汉字时用英文
     chinese_title = native if _has_hanzi(native) else title
+    # Phase 35：多语言实体标题（AniList 已验证字段；无值保持空）
+    japanese_title = native
+    romaji_title = romaji
+    # aliases：已验证别名（english/romaji/native 去重，排除主 title），JSON 数组
+    aliases = json.dumps(
+        [a for a in dict.fromkeys(filter(None, [english, romaji, native])) if a != title],
+        ensure_ascii=False,
+    )
     sd = m.get('startDate') or {}
     genres = '/'.join(GENRE_CN.get(g, g) for g in (m.get('genres') or []))
     tags = '/'.join(x.get('name', '') for x in (m.get('tags') or []) if x.get('name'))[:300]
@@ -83,6 +91,9 @@ def anilist_to_item(m: dict) -> dict:
     item = {
         'title': title,
         'chinese_title': chinese_title,
+        'japanese_title': japanese_title,
+        'romaji_title': romaji_title,
+        'aliases': aliases,
         'description': _strip_html(m.get('description')),
         'genre': genres,
         'tags': tags,
@@ -203,6 +214,10 @@ def main():
                 anilist_id=int(item['anilist_id']) if str(item['anilist_id']).isdigit() else None,
                 mal_id=int(item['mal_id']) if str(item.get('mal_id') or '').isdigit() else None,
                 letter=compute_letter((norm.get('chinese_title') or item['title'])).upper(),
+                # Phase 35：多语言实体标题（AniList 已验证）
+                japanese_title=item.get('japanese_title') or '',
+                romaji_title=item.get('romaji_title') or '',
+                aliases=item.get('aliases') or '',
             )
             if item.get('cover'):
                 stats['cover_resolved'] += 1

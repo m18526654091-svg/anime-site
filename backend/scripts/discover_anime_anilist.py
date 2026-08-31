@@ -33,11 +33,20 @@ MEDIA_FIELDS = '''
 '''
 
 # 拉取计划：(query_name, page_count, query_args)
+# Phase 35：扩大抓取范围（更多页 + 多年季番 + 更多排序维度）以提供 ≥500 新候选
 PLAN = [
-    ('popularity', 2, 'sort: [POPULARITY_DESC]'),
-    ('score', 2, 'sort: [SCORE_DESC]'),
-    ('trending', 2, 'sort: [TRENDING_DESC]'),
-    ('favourites', 2, 'sort: [FAVOURITES_DESC]'),
+    ('popularity', 5, 'sort: [POPULARITY_DESC]'),
+    ('score', 5, 'sort: [SCORE_DESC]'),
+    ('trending', 3, 'sort: [TRENDING_DESC]'),
+    ('favourites', 3, 'sort: [FAVOURITES_DESC]'),
+    ('season_2023_winter', 1, 'season: WINTER, seasonYear: 2023, sort: [POPULARITY_DESC]'),
+    ('season_2023_spring', 1, 'season: SPRING, seasonYear: 2023, sort: [POPULARITY_DESC]'),
+    ('season_2023_summer', 1, 'season: SUMMER, seasonYear: 2023, sort: [POPULARITY_DESC]'),
+    ('season_2023_fall', 1, 'season: FALL, seasonYear: 2023, sort: [POPULARITY_DESC]'),
+    ('season_2024_winter', 1, 'season: WINTER, seasonYear: 2024, sort: [POPULARITY_DESC]'),
+    ('season_2024_spring', 1, 'season: SPRING, seasonYear: 2024, sort: [POPULARITY_DESC]'),
+    ('season_2024_summer', 1, 'season: SUMMER, seasonYear: 2024, sort: [POPULARITY_DESC]'),
+    ('season_2024_fall', 1, 'season: FALL, seasonYear: 2024, sort: [POPULARITY_DESC]'),
     ('season_2025_winter', 1, 'season: WINTER, seasonYear: 2025, sort: [POPULARITY_DESC]'),
     ('season_2025_spring', 1, 'season: SPRING, seasonYear: 2025, sort: [POPULARITY_DESC]'),
     ('season_2025_summer', 1, 'season: SUMMER, seasonYear: 2025, sort: [POPULARITY_DESC]'),

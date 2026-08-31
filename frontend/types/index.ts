@@ -24,6 +24,11 @@ export interface Anime {
   anime_seo_priority?: number;
   play_data?: string;
   updated_at?: string;
+  /** Phase 35：多语言实体标题（AniList 已验证） */
+  japanese_title?: string;
+  romaji_title?: string;
+  /** 已验证别名 JSON 数组（english/romaji/native 去重） */
+  aliases?: string;
 }
 
 export interface AnimePage {

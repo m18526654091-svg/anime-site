@@ -57,6 +57,10 @@ class Anime(Base):
     mal_id = Column(Integer, nullable=True, index=True)
     seo_title = Column(String(200), default="")
     seo_description = Column(String(500), default="")
+    # Phase 35：多语言实体标题（已验证外部来源，NULL=无数据不猜测）
+    japanese_title = Column(String(200), default="", nullable=True)  # AniList native（日文）
+    romaji_title = Column(String(200), default="", nullable=True)    # AniList romaji
+    aliases = Column(Text, default="", nullable=True)                # 已验证别名 JSON 数组
     quality_score = Column(Integer, default=100, index=True)  # 内容质量分 0-100
     is_indexable = Column(Integer, default=1, index=True)  # 1=进sitemap；0=不提交sitemap
     anime_seo_priority = Column(Integer, default=0, index=True)  # SEO 优先级 0-100（Phase 1-C）

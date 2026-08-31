@@ -279,9 +279,20 @@ export default async function AnimeDetailPage({
               "@type": schemaType,
               name: anime.chinese_title || anime.title,
               ...(() => {
-                const raw = [anime.title, anime.chinese_title]
+                const raw = [
+                  anime.title,
+                  anime.chinese_title,
+                  anime.japanese_title,
+                  anime.romaji_title,
+                ]
                   .map((n) => (n || "").trim())
                   .filter(Boolean);
+                try {
+                  const al = JSON.parse(anime.aliases || "[]");
+                  if (Array.isArray(al)) raw.push(...al.map((a) => String(a).trim()).filter(Boolean));
+                } catch {
+                  // 非 JSON 忽略
+                }
                 const unique = Array.from(new Set(raw));
                 return unique.length >= 2 ? { alternateName: unique } : {};
               })(),

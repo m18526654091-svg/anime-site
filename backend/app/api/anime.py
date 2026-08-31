@@ -69,12 +69,17 @@ def list_anime(
 ):
     query = db.query(Anime)
     if q:
-        # 中文名 / 原名 / slug 模糊匹配（支持"海贼"→海贼王、One Piece 等）
+        # 中文名 / 原名 / slug / 多语言标题 模糊匹配
+        # （Phase 35：新增 japanese_title / romaji_title / aliases 匹配，
+        #   实现"进击的巨人/Shingeki no Kyojin/Attack on Titan"解析到同一实体）
         query = query.filter(
             or_(
                 Anime.title.contains(q),
                 Anime.chinese_title.contains(q),
                 Anime.slug.contains(q),
+                Anime.japanese_title.contains(q),
+                Anime.romaji_title.contains(q),
+                Anime.aliases.contains(q),
             )
         )
     if category:

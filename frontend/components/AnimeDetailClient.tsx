@@ -363,12 +363,18 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                     </p>
                   );
                 })()}
-                {/* Phase 33：Also Known As — 仅显示 DB 已验证名称（title/chinese_title 去重），不伪造翻译 */}
+                {/* Phase 33/35：Also Known As — 仅显示 DB 已验证名称（title/chinese_title/japanese/romaji/aliases 去重），不伪造翻译 */}
                 {(() => {
-                  const raw = [anime.title, anime.chinese_title]
+                  const names = [anime.title, anime.chinese_title, anime.japanese_title, anime.romaji_title]
                     .map((n) => (n || "").trim())
                     .filter(Boolean);
-                  const unique = Array.from(new Set(raw));
+                  try {
+                    const al = JSON.parse(anime.aliases || "[]");
+                    if (Array.isArray(al)) names.push(...al.map((a) => String(a).trim()).filter(Boolean));
+                  } catch {
+                    // 非 JSON（历史数据）忽略
+                  }
+                  const unique = Array.from(new Set(names));
                   if (unique.length < 2) return null;
                   return (
                     <div className="mt-3 flex flex-wrap items-center gap-2">

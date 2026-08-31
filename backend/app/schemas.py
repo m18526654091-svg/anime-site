@@ -56,6 +56,10 @@ class AnimeBase(BaseModel):
     is_indexable: Optional[int] = 1
     anime_seo_priority: Optional[int] = 0
     updated_at: Optional[datetime] = None
+    # Phase 35：多语言实体标题（已验证外部来源）
+    japanese_title: Optional[str] = ""
+    romaji_title: Optional[str] = ""
+    aliases: Optional[str] = ""
 
 
 class AnimeCreate(AnimeBase):
