@@ -81,11 +81,16 @@ function buildEnglishSeoTitle(anime: Anime): string | null {
 /** 中文 genre 片段 → 英文（用于英文 meta description，避免中英混杂） */
 const GENRE_EN: Record<string, string> = {
   动作: "action", 热血: "action", 战斗: "action", 奇幻: "fantasy", 异世界: "isekai",
-  科幻: "sci-fi", 机甲: "mecha", 恋爱: "romance", 校园: "school", 日常: "slice of life",
-  治愈: "healing", 悬疑: "mystery", 推理: "mystery", 心理: "psychological",
-  恐怖: "horror", 惊悚: "thriller", 搞笑: "comedy", 喜剧: "comedy", 冒险: "adventure",
-  剧情: "drama", 历史: "historical", 时代剧: "historical", 运动: "sports", 音乐: "music",
-  青春: "youth", 战争: "war", 侦探: "detective", 黑暗: "dark", 魔法: "magic",
+  科幻: "sci-fi", 机甲: "mecha", 机战: "mecha", 恋爱: "romance", 校园: "school",
+  日常: "slice of life", 治愈: "healing", 悬疑: "mystery", 推理: "mystery",
+  心理: "psychological", 恐怖: "horror", 惊悚: "thriller", 搞笑: "comedy",
+  喜剧: "comedy", 冒险: "adventure", 剧情: "drama", 历史: "historical",
+  时代剧: "historical", 运动: "sports", 音乐: "music", 青春: "youth",
+  战争: "war", 侦探: "detective", 黑暗: "dark", 魔法: "magic",
+  超自然: "supernatural", 异能: "super power", 超能力: "super power",
+  偶像: "idol", 博弈: "gambling", 生存: "survival", 竞技: "competitive",
+  美食: "cooking", 格斗: "martial arts", 军事: "military", 魔法少女: "magical girl",
+  黑帮: "mafia", 职场: "workplace", 福利: "ecchi",
 };
 
 /** 生成 150 字符内英文 meta description（含 episodes/characters/release/watch order 关键词，不超长截断） */
@@ -101,8 +106,13 @@ function buildEnglishSeoDescription(anime: Anime): string | null {
   const epsBit = anime.episodes ? `, ${anime.episodes} eps` : "";
   const watchOrder = matchWatchOrderFranchise(anime.title, anime.chinese_title);
   const watchText = watchOrder ? " + watch order" : "";
+  // Phase 33：自然嵌入已验证别名（chinese_title 可能是日文原生名/中文名），便于多语言搜索者识别同一实体
+  const altName =
+    anime.chinese_title && anime.chinese_title.trim() !== title
+      ? ` (${anime.chinese_title.trim()})`
+      : "";
   const desc =
-    `${title}: ${genreEn} anime${yearBit}${epsBit}${anime.year ? ")" : ""}. ` +
+    `${title}${altName}: ${genreEn} anime${yearBit}${epsBit}${anime.year ? ")" : ""}. ` +
     `Episodes, characters, release date & watch info${watchText} on AnimeHub.`;
   return desc.length > 160 ? `${desc.slice(0, 157)}...` : desc;
 }
@@ -243,6 +253,13 @@ export default async function AnimeDetailPage({
               "@context": "https://schema.org",
               "@type": schemaType,
               name: anime.chinese_title || anime.title,
+              ...(() => {
+                const raw = [anime.title, anime.chinese_title]
+                  .map((n) => (n || "").trim())
+                  .filter(Boolean);
+                const unique = Array.from(new Set(raw));
+                return unique.length >= 2 ? { alternateName: unique } : {};
+              })(),
               description: anime.seo_description || anime.description,
               ...(anime.cover ? { image: anime.cover } : {}),
               ...(anime.genre ? { genre: anime.genre } : {}),

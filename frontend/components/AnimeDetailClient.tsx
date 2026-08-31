@@ -37,11 +37,16 @@ const SEASON_LABEL: Record<string, string> = {
 /** 中文 genre 片段 → 英文（detail 正文 Genres 区块） */
 const GENRE_EN: Record<string, string> = {
   动作: "Action", 热血: "Action", 战斗: "Action", 奇幻: "Fantasy", 异世界: "Isekai",
-  科幻: "Sci-Fi", 机甲: "Mecha", 恋爱: "Romance", 校园: "School", 日常: "Slice of Life",
-  治愈: "Healing", 悬疑: "Mystery", 推理: "Mystery", 心理: "Psychological",
-  恐怖: "Horror", 惊悚: "Thriller", 搞笑: "Comedy", 喜剧: "Comedy", 冒险: "Adventure",
-  剧情: "Drama", 历史: "Historical", 时代剧: "Historical", 运动: "Sports", 音乐: "Music",
-  青春: "Youth", 战争: "War", 侦探: "Detective", 黑暗: "Dark", 魔法: "Magic",
+  科幻: "Sci-Fi", 机甲: "Mecha", 机战: "Mecha", 恋爱: "Romance", 校园: "School",
+  日常: "Slice of Life", 治愈: "Healing", 悬疑: "Mystery", 推理: "Mystery",
+  心理: "Psychological", 恐怖: "Horror", 惊悚: "Thriller", 搞笑: "Comedy",
+  喜剧: "Comedy", 冒险: "Adventure", 剧情: "Drama", 历史: "Historical",
+  时代剧: "Historical", 运动: "Sports", 音乐: "Music", 青春: "Youth",
+  战争: "War", 侦探: "Detective", 黑暗: "Dark", 魔法: "Magic",
+  超自然: "Supernatural", 异能: "Super Power", 超能力: "Super Power",
+  偶像: "Idol", 博弈: "Gambling", 生存: "Survival", 竞技: "Competitive",
+  美食: "Cooking", 格斗: "Martial Arts", 军事: "Military", 魔法少女: "Magical Girl",
+  黑帮: "Mafia", 职场: "Workplace", 福利: "Ecchi",
 };
 
 /** anime genre（中文）→ best-anime 分类 slug + 英文 label（条件内链，只基于可靠 genre 字段） */
@@ -354,6 +359,29 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                       {name} is a {genresEn} anime released in {release}. Episodes: {eps} ·
                       Status: {statusEn} · Genres: {genresEn} · Score: {scoreText}.
                     </p>
+                  );
+                })()}
+                {/* Phase 33：Also Known As — 仅显示 DB 已验证名称（title/chinese_title 去重），不伪造翻译 */}
+                {(() => {
+                  const raw = [anime.title, anime.chinese_title]
+                    .map((n) => (n || "").trim())
+                    .filter(Boolean);
+                  const unique = Array.from(new Set(raw));
+                  if (unique.length < 2) return null;
+                  return (
+                    <div className="mt-3 flex flex-wrap items-center gap-2">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Also Known As:
+                      </span>
+                      {unique.map((n) => (
+                        <span
+                          key={n}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300"
+                        >
+                          {n}
+                        </span>
+                      ))}
+                    </div>
                   );
                 })()}
                 {!loadingEpisodes && dbEpisodes.length > 0 && (
