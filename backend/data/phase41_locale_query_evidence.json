@@ -1,0 +1,48 @@
+{
+  "phase": "41",
+  "status": "RESEARCH_FRAMEWORK_NO_EVIDENCE",
+  "note": "No real SERP/GSC evidence for any locale. All seeds are Candidate. Framework ready for observed data.",
+  "locales": {
+    "en-US": {
+      "priority": 1,
+      "intents": [
+        {"intent": "episodes", "seeds_candidate": ["{anime} episodes", "how many episodes does {anime} have"], "page": "/anime/{slug}/", "evidence": null},
+        {"intent": "characters", "seeds_candidate": ["{anime} characters"], "page": "/anime/{slug}/ + /character/{slug}/", "evidence": null},
+        {"intent": "watch_order", "seeds_candidate": ["{anime} watch order"], "page": "/watch-order/{slug}/", "evidence": null},
+        {"intent": "release_season", "seeds_candidate": ["{anime} season 2", "{anime} release date"], "page": "/anime/{slug}/", "evidence": null},
+        {"intent": "franchise", "seeds_candidate": ["{anime} series list"], "page": "/anime-series/{slug}/", "evidence": null},
+        {"intent": "voice_actors", "seeds_candidate": ["{anime} voice actors"], "page": "/voice-actor/{slug}/", "evidence": null},
+        {"intent": "similar", "seeds_candidate": ["anime like {anime}"], "page": "/anime/{slug}/similar/", "evidence": null},
+        {"intent": "genre_discovery", "seeds_candidate": ["best {genre} anime"], "page": "/best-anime/{category}/", "evidence": null}
+      ]
+    },
+    "es": {
+      "priority": 2,
+      "market": "unknown",
+      "intents": [
+        {"intent": "episodes", "seeds_candidate": ["{anime} episodios", "cuantos episodios tiene {anime}"], "page": null, "evidence": null},
+        {"intent": "characters", "seeds_candidate": ["{anime} personajes"], "page": null, "evidence": null},
+        {"intent": "watch_order", "seeds_candidate": ["{anime} orden para ver"], "page": null, "evidence": null},
+        {"intent": "release", "seeds_candidate": ["{anime} fecha de estreno"], "page": null, "evidence": null},
+        {"intent": "season", "seeds_candidate": ["{anime} temporada 2"], "page": null, "evidence": null}
+      ]
+    },
+    "ja-JP": {
+      "priority": 3,
+      "intents": [
+        {"intent": "episodes", "seeds_candidate": ["{anime} 話数", "{anime} 何話"], "page": null, "evidence": null},
+        {"intent": "characters", "seeds_candidate": ["{anime} キャラクター"], "page": null, "evidence": null},
+        {"intent": "watch_order", "seeds_candidate": ["{anime} 見る順番"], "page": null, "evidence": null},
+        {"intent": "release", "seeds_candidate": ["{anime} 放送日", "{anime} 2期"], "page": null, "evidence": null},
+        {"intent": "voice_actors", "seeds_candidate": ["{anime} 声優"], "page": null, "evidence": null}
+      ]
+    }
+  },
+  "evidence_format": {
+    "example_en": {"locale": "en-US", "query": "...", "evidence_type": "Observed", "intent": "...", "page_type": "...", "serp_status": "Observed"},
+    "example_es": {"locale": "es", "query": "...", "market": "unknown", "evidence_type": "Observed"},
+    "example_ja": {"locale": "ja-JP", "query": "...", "evidence_type": "Observed"}
+  },
+  "prohibitions_respected": true,
+  "no_search_volume_claim": true
+}
