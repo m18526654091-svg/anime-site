@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-09-01",
+  "phase": "40-B",
+  "data_source_note": "No GSC query dataset available in repository. SERP data = Bing English result set with limitation (NOT guaranteed Google US geo SERP).",
+  "queries": [
+    {
+      "query": "best isekai anime",
+      "data_type": "SERP observed (Bing EN, with limitation)",
+      "search_intent": "curated recommendation list",
+      "animehub_url": "/best-anime/isekai/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "top_sites": ["Ranker", "FandomSpot", "GameRant", "AniGround", "Fiction Horizon", "CBR", "MyAnimeList", "MyAnimePulse", "AnimeFacts101", "Comic Basics"],
+      "serp_observed_terms": ["best isekai anime", "of all time", "ranked", "top recommendations", "what is isekai"],
+      "paa": null,
+      "related_searches": null,
+      "competitor_structure": "9 editorial listicles + 1 database genre page (MAL); each entry 1-2 sentence reason",
+      "content_gaps": ["Gap A: thin per-title reasoning (why watch + who it suits)", "Gap C: no need for definition paragraphs per title"],
+      "animehub_coverage": "/best-anime/isekai/ with score sorting + detail links (database-driven advantage)",
+      "animehub_missing": "data-driven one-line reason per entry (shared genre/year/score signal)",
+      "recommended_change": "Candidate: add DB-driven one-line reason to best-anime entries (no new URL)",
+      "confidence": "Candidate"
+    },
+    {
+      "query": "jujutsu kaisen characters",
+      "data_type": "SERP observed (Bing EN, with limitation)",
+      "search_intent": "character list / profiles",
+      "animehub_url": "/anime/jujutsu-kaisen/ + /character/{slug}/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "top_sites": ["Fandom Wiki", "jjk.guide", "Fandom Wiki", "Wikipedia", "AniBase", "jjkdle.net", "Otaku-Senpai", "Oricon", "jjkppdb.com", "MyAnimeList"],
+      "serp_observed_terms": ["jujutsu kaisen characters", "list of characters", "all 140 characters", "character guide", "voice actors"],
+      "paa": null,
+      "related_searches": null,
+      "competitor_structure": "wiki lists + game databases + editorial guides; structured data (name/role/status) not long-form",
+      "content_gaps": ["Gap A: character cross-season/episode presence rare", "Gap B: voice-actor reverse network only on MAL/AniBase"],
+      "animehub_coverage": "detail Characters section + character entity pages + voice-actor pages (SSR internal links)",
+      "animehub_missing": "character data volume (DB coverage limited), no full-character aggregate list",
+      "recommended_change": "Candidate: increase character data coverage for popular anime (data task, not template)",
+      "confidence": "Candidate"
+    },
+    {
+      "query": "attack on titan watch order",
+      "data_type": "SERP fetch failed (Bing returned dictionary results)",
+      "search_intent": "watch order",
+      "animehub_url": "/watch-order/attack-on-titan/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "competitor_structure": "Inferred from Phase 38 benchmark (franchise guides carry watch-order intent)",
+      "recommended_change": "none this round (no SERP evidence)",
+      "confidence": "Inferred"
+    },
+    {
+      "query": "anime like attack on titan",
+      "data_type": "SERP fetch failed (Bing returned streaming homepages)",
+      "search_intent": "similar anime",
+      "animehub_url": "/anime/attack-on-titan/similar/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "recommended_change": "none this round (no SERP evidence)",
+      "confidence": "Inferred"
+    },
+    {
+      "query": "how many episodes does attack on titan have",
+      "data_type": "SERP fetch failed (Bing returned dictionary results)",
+      "search_intent": "episode count",
+      "animehub_url": "/anime/attack-on-titan/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "recommended_change": "none this round (no SERP evidence)",
+      "confidence": "Inferred"
+    },
+    {
+      "query": "rezero watch order",
+      "data_type": "SERP fetch failed (Bing returned unrelated results)",
+      "search_intent": "watch order",
+      "animehub_url": "/watch-order/rezero/",
+      "gsc_impressions": null,
+      "gsc_clicks": null,
+      "recommended_change": "none this round (no SERP evidence)",
+      "confidence": "Inferred"
+    }
+  ],
+  "canonical_mapping": {
+    "entity": "/anime/{slug}/",
+    "episodes": "/anime/{slug}/",
+    "characters": "/anime/{slug}/ + /character/{slug}/",
+    "voice_actors": "/anime/{slug}/ + /voice-actor/{slug}/",
+    "watch_order": "/watch-order/{slug}/",
+    "franchise": "/anime-series/{slug}/",
+    "best_genre": "/best-anime/{category}/",
+    "similar": "/anime/{slug}/similar/",
+    "year": "/years/{year}/"
+  },
+  "prohibitions_respected": true
+}
