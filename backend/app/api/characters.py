@@ -39,6 +39,8 @@ class CharacterLite(BaseModel):
     name: str
     slug: str
     anime_slug: Optional[str] = None
+    # Sprint 6-D：按 anime_id 查询时附带该角色的配音声优（供详情页 SSR 实体内链）
+    voice_actors: List[VoiceActorLite] = []
 
 
 router = APIRouter(prefix="/api/characters", tags=["characters"])
@@ -66,7 +68,34 @@ def get_character(slug: str, db: Session = Depends(get_db)):
 
 
 @router.get("", response_model=List[CharacterLite])
-def list_characters(db: Session = Depends(get_db)):
-    rows = db.query(Character, Anime.slug).join(Anime, Anime.id == Character.anime_id).all()
-    return [CharacterLite(id=c.id, name=c.name, slug=c.slug, anime_slug=a_slug)
-            for c, a_slug in rows]
+def list_characters(
+    anime_id: Optional[int] = None,
+    db: Session = Depends(get_db),
+):
+    """角色列表。
+
+    - 无参数：返回全部角色（sitemap 使用，行为与之前一致）。
+    - anime_id=X：仅返回该动漫的角色，并附带每位角色的配音声优
+      （Sprint 6-D：anime 详情页 SSR 实体内链使用）。
+    """
+    query = db.query(Character, Anime.slug).join(Anime, Anime.id == Character.anime_id)
+    if anime_id is not None:
+        query = query.filter(Character.anime_id == anime_id)
+    rows = query.all()
+    result: list[CharacterLite] = []
+    for c, a_slug in rows:
+        vas: list[VoiceActorLite] = []
+        if anime_id is not None:
+            va_rows = (
+                db.query(VoiceActor)
+                .join(CharacterVoice, CharacterVoice.voice_actor_id == VoiceActor.id)
+                .filter(CharacterVoice.character_id == c.id)
+                .all()
+            )
+            vas = [VoiceActorLite(id=v.id, name=v.name, slug=v.slug) for v in va_rows]
+        result.append(
+            CharacterLite(
+                id=c.id, name=c.name, slug=c.slug, anime_slug=a_slug, voice_actors=vas,
+            )
+        )
+    return result
