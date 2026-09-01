@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { fetchAnimeBySlug, fetchSimilarAnime } from "@/lib/api";
 import { animePath, isNumericSlug } from "@/lib/slug";
 import { matchFranchise, FRANCHISE_DEFS } from "@/lib/franchise";
+import { formatGenres } from "@/lib/genreLabels";
+import { buildLedeIntro, buildReasonFallback, diversifyFranchises } from "@/lib/similarCopy";
 import type { Anime } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -24,9 +26,10 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const name = anime.title || anime.chinese_title || "Anime";
     const canonical = `${getSiteBase()}/anime/${anime.slug || anime.id}/similar/`;
     const title = `Anime Like ${name}: Best Similar Shows To Watch`;
+    const genreLabel = formatGenres(anime.genre, "", 3);
     const description =
-      `Looking for anime like ${name}? We found the best similar shows with the same genre, themes, and vibe — ` +
-      `from ${anime.genre || "action"} hits to hidden gems.`;
+      `Looking for anime like ${name}? We found the best similar shows matched by genre, release period, and score` +
+      (genreLabel ? ` — spanning ${genreLabel} and more.` : ".");
     return {
       title: { absolute: title },
       description: description.slice(0, 158),
@@ -73,7 +76,11 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
 
   let similar: Awaited<ReturnType<typeof fetchSimilarAnime>> = [];
   try {
-    similar = await fetchSimilarAnime(anime.id, 8);
+    // Phase 44.1: fetch more candidates than we show, so a presentation-level
+    // franchise diversity rule can drop repetitive same-franchise entries
+    // without touching the recommendation algorithm or stored scores.
+    const candidates = await fetchSimilarAnime(anime.id, 24);
+    similar = diversifyFranchises(candidates, 8);
   } catch {
     similar = [];
   }
@@ -134,12 +141,16 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
 
       <h1 className="text-3xl font-bold text-slate-900">Anime Like {name}</h1>
       <p className="mt-3 max-w-3xl text-slate-600">
-        Discover anime similar to <strong>{name}</strong>. Recommendations are based on shared
-        genres, release period, and available anime metadata
-        {anime.genre
-          ? ` — from ${anime.genre.replace(/\//g, " and ")} to gripping storytelling`
-          : ""}
-        .
+        {(() => {
+          const lead = buildLedeIntro(anime);
+          return (
+            <>
+              {lead}. These similar anime are matched by genre, release period, and
+              score, then ranked by how closely they overlap — starting with the
+              closest match below.
+            </>
+          );
+        })()}
       </p>
 
       <div className="mt-8 space-y-6">
@@ -173,9 +184,15 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
                 <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs text-blue-700">
                   {Math.round(s.similarity_score)}% similar
                 </span>
-                <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
-                  {s.genre || "Anime"}
-                </span>
+                {(() => {
+                  const genreEn = formatGenres(s.genre, "", 3);
+                  if (!genreEn) return null;
+                  return (
+                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
+                      {genreEn}
+                    </span>
+                  );
+                })()}
                 {s.year ? (
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-600">
                     {s.year}
@@ -221,7 +238,7 @@ export default async function SimilarAnimePage({ params }: { params: { slug: str
                 );
               })()}
               <p className="mt-1 text-sm text-slate-600">
-                Why you may like it: {s.reason || (s.genre ? `It shares the ${s.genre.replace(/\//g, ", ")} vibe you enjoyed.` : "It shares similar themes and storytelling.")}
+                {s.reason || buildReasonFallback(s.genre)}
               </p>
             </div>
           </div>

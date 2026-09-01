@@ -250,6 +250,8 @@ def list_seasons(db: Session = Depends(get_db)):
 
 
 # 共享 genre 的英文描述（用于 similar 页面 reason，符合英文搜索表达）
+# Phase 44.1：补全高频 genre（对齐前端 GENRE_EN 词条），并确保未映射 genre
+# 永不拼出中文——英文页面 reason 不允许出现 raw Chinese。
 _GENRE_REASON = {
     "热血": "intense battles and determined protagonists",
     "战斗": "high-octane fight scenes and skilled warriors",
@@ -275,8 +277,25 @@ _GENRE_REASON = {
     "偶像": "idol performances and dreams of stardom",
     "历史": "epic historical settings and sweeping drama",
     "美食": "mouth-watering food and culinary passion",
-    "推理": "clever mysteries and psychological twists",
     "心理": "deep psychological drama and mind games",
+    "剧情": "character-driven drama and emotional depth",
+    "超自然": "supernatural forces and otherworldly powers",
+    "惊悚": "tense suspense and psychological twists",
+    "时代剧": "historical settings and period drama",
+    "青春": "youthful coming-of-age stories",
+    "战争": "large-scale conflict and wartime stakes",
+    "侦探": "clever detective work and unraveling mysteries",
+    "异能": "extraordinary abilities and superhuman fights",
+    "超能力": "extraordinary abilities and superhuman fights",
+    "博弈": "high-stakes games and strategic mind games",
+    "生存": "survival stakes and life-or-death decisions",
+    "竞技": "competitive rivalries and tournament stakes",
+    "格斗": "martial arts duels and hand-to-hand combat",
+    "军事": "military operations and tactical warfare",
+    "魔法少女": "magical girl transformations and heartfelt battles",
+    "黑帮": "mafia underworld and organized crime",
+    "职场": "workplace dynamics and office life",
+    "福利": "playful, fanservice-driven tone",
 }
 
 
@@ -301,10 +320,11 @@ def _similarity_reason(shared_genres: set[str]) -> str:
     for g in sorted(shared_genres):
         if g in _GENRE_REASON:
             reasons.append(_GENRE_REASON[g])
-        elif len(reasons) < 2:
-            reasons.append(f"strong {g} themes")
         if len(reasons) >= 2:
             break
+    # Never emit an unmapped (potentially Chinese) genre token as copy.
+    if not reasons:
+        return "shared themes, tone, and storytelling style"
     return "Both feature " + " and ".join(reasons[:2])
 
 

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "tsc tests/similarCopy.test.ts --outDir .test-gen --module commonjs --moduleResolution node --target es2020 --esModuleInterop --skipLibCheck --strict false --noEmit false && node --test .test-gen/tests/similarCopy.test.js"
   },
   "dependencies": {
     "axios": "^1.7.7",
