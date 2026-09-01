@@ -26,6 +26,7 @@ class CharacterOut(BaseModel):
     id: int
     name: str
     name_en: str
+    native_name: Optional[str] = None
     slug: str
     description: str
     aliases: str
@@ -39,6 +40,9 @@ class CharacterLite(BaseModel):
     name: str
     slug: str
     anime_slug: Optional[str] = None
+    # Phase 40-A：暴露本地化名称（英文主显示 + 日文原生辅助），兼容旧响应
+    name_en: Optional[str] = None
+    native_name: Optional[str] = None
     # Sprint 6-D：按 anime_id 查询时附带该角色的配音声优（供详情页 SSR 实体内链）
     voice_actors: List[VoiceActorLite] = []
 
@@ -59,7 +63,8 @@ def get_character(slug: str, db: Session = Depends(get_db)):
         .all()
     )
     return CharacterOut(
-        id=ch.id, name=ch.name, name_en=ch.name_en or "", slug=ch.slug,
+        id=ch.id, name=ch.name, name_en=ch.name_en or "", native_name=ch.native_name or None,
+        slug=ch.slug,
         description=ch.description or "", aliases=ch.aliases or "", image=ch.image or "",
         anime=AnimeLite(id=anime.id, title=anime.title, chinese_title=anime.chinese_title or "",
                         slug=anime.slug) if anime else None,
@@ -95,7 +100,9 @@ def list_characters(
             vas = [VoiceActorLite(id=v.id, name=v.name, slug=v.slug) for v in va_rows]
         result.append(
             CharacterLite(
-                id=c.id, name=c.name, slug=c.slug, anime_slug=a_slug, voice_actors=vas,
+                id=c.id, name=c.name, slug=c.slug, anime_slug=a_slug,
+                name_en=c.name_en or None, native_name=c.native_name or None,
+                voice_actors=vas,
             )
         )
     return result

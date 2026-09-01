@@ -757,9 +757,13 @@ export default function AnimeDetailClient({ anime, error, initialRelated = [], i
                 <Link
                   href={`/character/${ch.slug}/`}
                   className="truncate font-bold text-white transition hover:text-pink-300"
+                  title={ch.name || undefined}
                 >
-                  {ch.name}
+                  {ch.name_en || ch.name}
                 </Link>
+                {ch.native_name && ch.native_name !== (ch.name_en || ch.name) && (
+                  <p className="mt-0.5 truncate text-xs text-slate-500">{ch.native_name}</p>
+                )}
                 {Array.isArray(ch.voice_actors) && ch.voice_actors.length > 0 && (
                   <p className="mt-2 text-xs leading-relaxed text-slate-400">
                     Voiced by: 

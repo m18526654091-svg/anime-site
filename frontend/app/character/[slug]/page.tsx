@@ -12,6 +12,11 @@ function trimText(s: string, max = 150): string {
   return s.length > max ? s.slice(0, max) + "…" : s;
 }
 
+/** Phase 40-A：英文优先主显示名（name_en || name，不伪造翻译） */
+function primaryName(ch: { name: string; name_en?: string | null }): string {
+  return ch.name_en || ch.name;
+}
+
 /** 拆分别名并去重，去除与主名/英文名重复的项 */
 function parseAliases(name: string, nameEn: string, aliases: string): string[] {
   return Array.from(
@@ -25,20 +30,19 @@ function parseAliases(name: string, nameEn: string, aliases: string): string[] {
 }
 
 /**
- * 组装 title 补充名（别名 / 英文名 / 日文名）。
- * 说明：当前角色 API（CharacterOut）未暴露 native_name/source_id，
- * 故日文名仅在接口未来返回时生效；现用 name_en + aliases 兜底。
+ * 组装 title 补充名（别名 / 日文名）。
+ * Phase 40-A：主名改为英文优先，补充名排除与主名重复的项（name_en/native）。
  */
 function buildExtraNames(ch: {
   name: string;
-  name_en?: string;
+  name_en?: string | null;
   aliases?: string;
-  native_name?: string;
+  native_name?: string | null;
 }): string[] {
+  const primary = primaryName(ch);
   const extra: string[] = [];
-  const nativeName = (ch as { native_name?: string }).native_name;
-  if (ch.name_en) extra.push(ch.name_en);
-  if (nativeName && nativeName !== ch.name) extra.push(nativeName);
+  if (ch.name_en && ch.name_en !== primary) extra.push(ch.name_en);
+  if (ch.native_name && ch.native_name !== primary) extra.push(ch.native_name);
   extra.push(...parseAliases(ch.name, ch.name_en || "", ch.aliases || ""));
   return Array.from(new Set(extra)).filter(Boolean);
 }
@@ -66,11 +70,13 @@ export async function generateMetadata({
       .filter(Boolean)
       .join("、");
     const extra = buildExtraNames(ch).join(" / ");
-    const pageTitle = `${ch.name}${extra ? `（${extra}）` : ""}${
+    // Phase 40-A：只替换 name 来源为英文优先（保留现有模板结构，不发明新模板）
+    const primary = primaryName(ch);
+    const pageTitle = `${primary}${extra ? `（${extra}）` : ""}${
       animeName ? ` - ${animeName}角色` : ""
     } | AnimeHub`;
     const description = trimText(
-      `${ch.name}${animeName ? `是${animeName}的角色` : "角色"}${
+      `${primary}${animeName ? `是${animeName}的角色` : "角色"}${
         vaNames ? `，由声优${vaNames}配音` : ""
       }。${extra ? `别称：${extra}。` : ""}${ch.description || ""}`,
     );
@@ -103,14 +109,15 @@ export default async function CharacterPage({ params }: { params: { slug: string
     }
   }
 
+  const primary = primaryName(ch);
   const extraNames = buildExtraNames(ch);
   const sameAs = buildSameAs(ch);
 
   const ld = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: ch.name,
-    ...(ch.name_en ? { additionalName: ch.name_en } : {}),
+    name: primary,
+    ...(ch.native_name && ch.native_name !== primary ? { additionalName: ch.native_name } : {}),
     ...(extraNames.length ? { alternateName: extraNames } : {}),
     ...(ch.description ? { description: ch.description } : {}),
     ...(ch.image ? { image: ch.image } : {}),
@@ -133,10 +140,10 @@ export default async function CharacterPage({ params }: { params: { slug: string
             <span className="mx-2">/</span>
           </>
         )}
-        <span>{ch.name}</span>
+        <span>{primary}</span>
       </nav>
 
-      <h1 className="text-3xl font-black text-white">{ch.name}</h1>
+      <h1 className="text-3xl font-black text-white">{primary}</h1>
       {extraNames.length > 0 && (
         <p className="mt-1 text-sm text-slate-400">{extraNames.join(" / ")}</p>
       )}

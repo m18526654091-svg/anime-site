@@ -10,6 +10,8 @@ export interface CharacterDetail {
   id: number;
   name: string;
   name_en: string;
+  // Phase 40-A：日文原生名辅助显示；旧后端可能缺失
+  native_name?: string | null;
   slug: string;
   description: string;
   aliases: string;
@@ -39,6 +41,9 @@ export interface AnimeCharacter {
   name: string;
   slug: string;
   anime_slug?: string;
+  // Phase 40-A：本地化名称（英文主显示 + 日文原生辅助）；旧后端可能缺失，可选
+  name_en?: string | null;
+  native_name?: string | null;
   voice_actors?: { id: number; name: string; slug: string }[];
 }
 
