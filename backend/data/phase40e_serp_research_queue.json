@@ -1,0 +1,16 @@
+{
+  "phase": "40-E",
+  "status": "STOP_INSUFFICIENT_EVIDENCE",
+  "reason": "No real Google Search Console US export exists in repository. Template CSV (128/5 example) explicitly excluded. US scope cannot be verified.",
+  "input_file": null,
+  "us_scope": "UNKNOWN",
+  "date_range": null,
+  "search_type": null,
+  "research_queue": [],
+  "queue_note": "Empty queue - no GSC evidence, per rules DO NOT force 5-10 queries.",
+  "next_action": {
+    "user": "Export GSC US CSV (US + Query + Page + Web + Last 28 days) per backend/data/phase40c_gsc_data_requirements.md; place at backend/data/gsc_us_export_<date>.csv",
+    "then": "python backend/scripts/analyze_gsc_us.py --input <real.csv> --out backend/data/phase40e_gsc/"
+  },
+  "prohibitions_respected": true
+}
