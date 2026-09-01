@@ -1,0 +1,1383 @@
+[
+ {
+  "anime_id": 1002,
+  "title": "進撃の巨人",
+  "slug": "attack-on-titan",
+  "page_url": "/anime/attack-on-titan/similar/",
+  "similarity_priority": 81,
+  "selection_criteria": "franchise / high priority / action",
+  "genres_zh": [
+   "动作",
+   "剧情",
+   "奇幻",
+   "悬疑"
+  ],
+  "genres_en": [
+   "Action",
+   "Drama",
+   "Fantasy",
+   "Mystery"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 1011,
+    "title": "進撃の巨人 Season２",
+    "similarity_score": 84.5,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 20,
+    "era_diff_years": 4,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 1017,
+    "title": "進撃の巨人 Season３",
+    "similarity_score": 78.2,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 16,
+    "era_diff_years": 5,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 1025,
+    "title": "進撃の巨人 Season３ Part.2",
+    "similarity_score": 77.8,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 18,
+    "era_diff_years": 6,
+    "score_diff": 0.5,
+    "class": "strong"
+   },
+   {
+    "id": 2850,
+    "title": "進撃の巨人 OVA",
+    "similarity_score": 81.2,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 12,
+    "era_diff_years": 0,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 2360,
+    "title": "進撃の巨人 〜クロニクル〜",
+    "similarity_score": 76.6,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 16,
+    "era_diff_years": 7,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 1993,
+    "title": "劇場版「進撃の巨人」Season 2～覚醒の咆哮～",
+    "similarity_score": 75.1,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 10,
+    "era_diff_years": 5,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 3463,
+    "title": "進撃の巨人 LOST GIRLS",
+    "similarity_score": 73.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 9,
+    "era_diff_years": 4,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 1059,
+    "title": "進撃の巨人 The Final Season Part 2",
+    "similarity_score": 63.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "奇幻",
+     "悬疑"
+    ],
+    "shared_tag_count": 15,
+    "era_diff_years": 9,
+    "score_diff": 0.2,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 1028,
+  "title": "Steins;Gate",
+  "slug": "steins-gate",
+  "page_url": "/anime/steins-gate/similar/",
+  "similarity_priority": 82,
+  "selection_criteria": "standalone / high priority / sci-fi thriller",
+  "genres_zh": [
+   "剧情",
+   "心理",
+   "科幻",
+   "惊悚"
+  ],
+  "genres_en": [
+   "Drama",
+   "Psychological",
+   "Sci-Fi",
+   "Thriller"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 3164,
+    "title": "シュタインズ・ゲート 境界面上のミッシングリンク -Divide By Zero-",
+    "similarity_score": 72.5,
+    "reason": "Both feature strong 剧情 themes and deep psychological drama and mind games",
+    "shared_genres": [
+     "剧情",
+     "心理",
+     "惊悚",
+     "科幻"
+    ],
+    "shared_tag_count": 5,
+    "era_diff_years": 4,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 1113,
+    "title": "タコピーの原罪",
+    "similarity_score": 55.8,
+    "reason": "Both feature strong 剧情 themes and deep psychological drama and mind games",
+    "shared_genres": [
+     "剧情",
+     "心理",
+     "科幻"
+    ],
+    "shared_tag_count": 8,
+    "era_diff_years": 14,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 1200,
+    "title": "魔法少女まどか☆マギカ",
+    "similarity_score": 53.2,
+    "reason": "Both feature strong 剧情 themes and deep psychological drama and mind games",
+    "shared_genres": [
+     "剧情",
+     "心理",
+     "惊悚"
+    ],
+    "shared_tag_count": 10,
+    "era_diff_years": 0,
+    "score_diff": 0.6,
+    "class": "strong"
+   },
+   {
+    "id": 2768,
+    "title": "劇場版 シュタインズゲート 負荷領域のデジャヴ",
+    "similarity_score": 61.6,
+    "reason": "Both feature strong 剧情 themes and strong 惊悚 themes",
+    "shared_genres": [
+     "剧情",
+     "惊悚",
+     "科幻"
+    ],
+    "shared_tag_count": 11,
+    "era_diff_years": 2,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 1104,
+    "title": "コードギアス 反逆のルルーシュ R2",
+    "similarity_score": 52.1,
+    "reason": "Both feature strong 剧情 themes and strong 惊悚 themes",
+    "shared_genres": [
+     "剧情",
+     "惊悚",
+     "科幻"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 3,
+    "score_diff": 0.2,
+    "class": "strong"
+   },
+   {
+    "id": 1071,
+    "title": "Cyberpunk: Edgerunners",
+    "similarity_score": 48.2,
+    "reason": "Both feature strong 剧情 themes and deep psychological drama and mind games",
+    "shared_genres": [
+     "剧情",
+     "心理",
+     "科幻"
+    ],
+    "shared_tag_count": 8,
+    "era_diff_years": 11,
+    "score_diff": 0.4,
+    "class": "strong"
+   },
+   {
+    "id": 1043,
+    "title": "コードギアス 反逆のルルーシュ",
+    "similarity_score": 49.1,
+    "reason": "Both feature strong 剧情 themes and strong 惊悚 themes",
+    "shared_genres": [
+     "剧情",
+     "惊悚",
+     "科幻"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 5,
+    "score_diff": 0.4,
+    "class": "strong"
+   },
+   {
+    "id": 1484,
+    "title": "PSYCHO-PASS",
+    "similarity_score": 57.1,
+    "reason": "Both feature deep psychological drama and mind games and strong 惊悚 themes",
+    "shared_genres": [
+     "心理",
+     "惊悚",
+     "科幻"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 1,
+    "score_diff": 0.8,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 555,
+  "title": "怪兽8号",
+  "slug": "kaiju-no-8",
+  "page_url": "/anime/kaiju-no-8/similar/",
+  "similarity_priority": 71,
+  "selection_criteria": "recent (2024) / medium-high priority / action",
+  "genres_zh": [
+   "热血",
+   "动作"
+  ],
+  "genres_en": [
+   "Shonen",
+   "Action"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 556,
+    "title": "怪兽8号第二季",
+    "similarity_score": 98.1,
+    "reason": "Both feature fast-paced action and adrenaline-fueled moments and intense battles and determined protagonists",
+    "shared_genres": [
+     "动作",
+     "热血"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 1,
+    "score_diff": 0.2,
+    "class": "strong"
+   },
+   {
+    "id": 833,
+    "title": "怪兽8号第三季",
+    "similarity_score": 97.6,
+    "reason": "Both feature fast-paced action and adrenaline-fueled moments and intense battles and determined protagonists",
+    "shared_genres": [
+     "动作",
+     "热血"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 2,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 211,
+    "title": "爆炸头武士",
+    "similarity_score": 87.6,
+    "reason": "Both feature fast-paced action and adrenaline-fueled moments and intense battles and determined protagonists",
+    "shared_genres": [
+     "动作",
+     "热血"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 17,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 433,
+    "title": "我独自升级",
+    "similarity_score": 51.5,
+    "reason": "Both feature fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "动作"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 0,
+    "score_diff": 0.5,
+    "class": "reasonable"
+   },
+   {
+    "id": 780,
+    "title": "一拳超人第三季",
+    "similarity_score": 51.4,
+    "reason": "Both feature intense battles and determined protagonists",
+    "shared_genres": [
+     "热血"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 1,
+    "score_diff": 0.2,
+    "class": "reasonable"
+   },
+   {
+    "id": 831,
+    "title": "海贼王粉丝来信",
+    "similarity_score": 51.5,
+    "reason": "Both feature intense battles and determined protagonists",
+    "shared_genres": [
+     "热血"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 0,
+    "score_diff": 0.5,
+    "class": "reasonable"
+   },
+   {
+    "id": 743,
+    "title": "龙珠DAIMA",
+    "similarity_score": 53.0,
+    "reason": "Both feature intense battles and determined protagonists",
+    "shared_genres": [
+     "热血"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 0,
+    "score_diff": 0.1,
+    "class": "reasonable"
+   },
+   {
+    "id": 385,
+    "title": "蓝色监狱剧场版",
+    "similarity_score": 52.6,
+    "reason": "Both feature intense battles and determined protagonists",
+    "shared_genres": [
+     "热血"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 0,
+    "score_diff": 0.2,
+    "class": "reasonable"
+   }
+  ]
+ },
+ {
+  "anime_id": 214,
+  "title": "银魂第二季",
+  "slug": "gintama-season-2",
+  "page_url": "/anime/gintama-season-2/similar/",
+  "similarity_priority": 100,
+  "selection_criteria": "franchise-heavy / top priority / comedy",
+  "genres_zh": [
+   "搞笑",
+   "时代剧"
+  ],
+  "genres_en": [
+   "Comedy",
+   "Period"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 57,
+    "title": "日常",
+    "similarity_score": 53.0,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 0,
+    "score_diff": 0.1,
+    "class": "reasonable"
+   },
+   {
+    "id": 134,
+    "title": "游戏人生",
+    "similarity_score": 47.6,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 3,
+    "score_diff": 0.6,
+    "class": "reasonable"
+   },
+   {
+    "id": 58,
+    "title": "男子高中生的日常",
+    "similarity_score": 49.7,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 1,
+    "score_diff": 0.1,
+    "class": "reasonable"
+   },
+   {
+    "id": 809,
+    "title": "打工吧魔王大人",
+    "similarity_score": 48.1,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 2,
+    "score_diff": 0.8,
+    "class": "reasonable"
+   },
+   {
+    "id": 776,
+    "title": "灵能百分百第二季",
+    "similarity_score": 43.7,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 8,
+    "score_diff": 0.0,
+    "class": "reasonable"
+   },
+   {
+    "id": 91,
+    "title": "阿松",
+    "similarity_score": 47.1,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 4,
+    "score_diff": 0.4,
+    "class": "reasonable"
+   },
+   {
+    "id": 587,
+    "title": "荒川爆笑团",
+    "similarity_score": 49.3,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 1,
+    "score_diff": 0.8,
+    "class": "reasonable"
+   },
+   {
+    "id": 16,
+    "title": "一拳超人",
+    "similarity_score": 46.1,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters",
+    "shared_genres": [
+     "搞笑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 4,
+    "score_diff": 0.1,
+    "class": "reasonable"
+   }
+  ]
+ },
+ {
+  "anime_id": 1004,
+  "title": "呪術廻戦",
+  "slug": "jujutsu-kaisen",
+  "page_url": "/anime/jujutsu-kaisen/similar/",
+  "similarity_priority": 81,
+  "selection_criteria": "franchise / high priority / action-supernatural",
+  "genres_zh": [
+   "动作",
+   "剧情",
+   "超自然"
+  ],
+  "genres_en": [
+   "Action",
+   "Drama",
+   "Supernatural"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 1045,
+    "title": "呪術廻戦 第2期",
+    "similarity_score": 84.3,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 19,
+    "era_diff_years": 3,
+    "score_diff": 0.2,
+    "class": "strong"
+   },
+   {
+    "id": 1128,
+    "title": "呪術廻戦 死滅回游 前編",
+    "similarity_score": 77.6,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 16,
+    "era_diff_years": 6,
+    "score_diff": 0.2,
+    "class": "strong"
+   },
+   {
+    "id": 1282,
+    "title": "呪術廻戦 懐玉・玉折",
+    "similarity_score": 75.0,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 5,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 1379,
+    "title": "呪術廻戦『渋谷事変 特別編集版』×『死滅回游 先行上映』",
+    "similarity_score": 74.5,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 9,
+    "era_diff_years": 5,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 1020,
+    "title": "Chainsaw Man",
+    "similarity_score": 66.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 10,
+    "era_diff_years": 2,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 1057,
+    "title": "東京リベンジャーズ",
+    "similarity_score": 64.6,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 8,
+    "era_diff_years": 1,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 1003,
+    "title": "鬼滅の刃",
+    "similarity_score": 63.8,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 13,
+    "era_diff_years": 1,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 2498,
+    "title": "出会って5秒でバトル",
+    "similarity_score": 71.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 1,
+    "score_diff": 1.8,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 1020,
+  "title": "Chainsaw Man",
+  "slug": "chainsaw-man",
+  "page_url": "/anime/chainsaw-man/similar/",
+  "similarity_priority": 93,
+  "selection_criteria": "horror-action / high priority",
+  "genres_zh": [
+   "动作",
+   "剧情",
+   "恐怖",
+   "超自然"
+  ],
+  "genres_en": [
+   "Action",
+   "Drama",
+   "Horror",
+   "Supernatural"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 1082,
+    "title": "チェンソーマン レゼ篇",
+    "similarity_score": 70.8,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "恐怖",
+     "超自然"
+    ],
+    "shared_tag_count": 17,
+    "era_diff_years": 3,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 1045,
+    "title": "呪術廻戦 第2期",
+    "similarity_score": 66.9,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 10,
+    "era_diff_years": 1,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 1205,
+    "title": "Devilman Crybaby",
+    "similarity_score": 66.8,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "恐怖",
+     "超自然"
+    ],
+    "shared_tag_count": 14,
+    "era_diff_years": 4,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 1004,
+    "title": "呪術廻戦",
+    "similarity_score": 66.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 10,
+    "era_diff_years": 2,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 1128,
+    "title": "呪術廻戦 死滅回游 前編",
+    "similarity_score": 61.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 4,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 1282,
+    "title": "呪術廻戦 懐玉・玉折",
+    "similarity_score": 63.6,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 5,
+    "era_diff_years": 3,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 1379,
+    "title": "呪術廻戦『渋谷事変 特別編集版』×『死滅回游 先行上映』",
+    "similarity_score": 61.4,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 5,
+    "era_diff_years": 3,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 1057,
+    "title": "東京リベンジャーズ",
+    "similarity_score": 58.0,
+    "reason": "Both feature strong 剧情 themes and fast-paced action and adrenaline-fueled moments",
+    "shared_genres": [
+     "剧情",
+     "动作",
+     "超自然"
+    ],
+    "shared_tag_count": 8,
+    "era_diff_years": 1,
+    "score_diff": 0.6,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 1049,
+  "title": "葬送のフリーレン",
+  "slug": "frieren-beyond-journey-s-end-2",
+  "page_url": "/anime/frieren-beyond-journey-s-end-2/similar/",
+  "similarity_priority": 100,
+  "selection_criteria": "top priority / fantasy / recent (2023)",
+  "genres_zh": [
+   "冒险",
+   "剧情",
+   "奇幻"
+  ],
+  "genres_en": [
+   "Adventure",
+   "Drama",
+   "Fantasy"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 1093,
+    "title": "葬送のフリーレン 第2期",
+    "similarity_score": 81.4,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 16,
+    "era_diff_years": 3,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 1139,
+    "title": "とんがり帽子のアトリエ",
+    "similarity_score": 73.5,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 8,
+    "era_diff_years": 3,
+    "score_diff": 0.6,
+    "class": "strong"
+   },
+   {
+    "id": 1281,
+    "title": "ある魔女が死ぬまで",
+    "similarity_score": 69.2,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 2,
+    "score_diff": 2.0,
+    "class": "strong"
+   },
+   {
+    "id": 2570,
+    "title": "無職転生 ～異世界行ったら本気だす～ 第2クール エリスのゴブリン討伐",
+    "similarity_score": 72.5,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 5,
+    "era_diff_years": 1,
+    "score_diff": 1.3,
+    "class": "strong"
+   },
+   {
+    "id": 1196,
+    "title": "無職転生 ～異世界行ったら本気だす～ 第2クール",
+    "similarity_score": 62.5,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 2,
+    "score_diff": 0.6,
+    "class": "strong"
+   },
+   {
+    "id": 1436,
+    "title": "杖と剣のウィストリア Season2",
+    "similarity_score": 60.7,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 3,
+    "score_diff": 0.9,
+    "class": "strong"
+   },
+   {
+    "id": 1055,
+    "title": "無職転生 ～異世界行ったら本気だす～",
+    "similarity_score": 61.1,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 2,
+    "score_diff": 0.9,
+    "class": "strong"
+   },
+   {
+    "id": 1142,
+    "title": "無職転生Ⅲ ～異世界行ったら本気だす～",
+    "similarity_score": 60.6,
+    "reason": "Both feature grand adventures across unknown lands and strong 剧情 themes",
+    "shared_genres": [
+     "冒险",
+     "剧情",
+     "奇幻"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 3,
+    "score_diff": 0.7,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 1034,
+  "title": "Violet Evergarden",
+  "slug": "violet-evergarden",
+  "page_url": "/anime/violet-evergarden/similar/",
+  "similarity_priority": 81,
+  "selection_criteria": "drama / high priority / Kyoto Animation",
+  "genres_zh": [
+   "剧情",
+   "奇幻",
+   "日常"
+  ],
+  "genres_en": [
+   "Drama",
+   "Fantasy",
+   "Slice of Life"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 1105,
+    "title": "劇場版 ヴァイオレット・エヴァーガーデン",
+    "similarity_score": 85.3,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 15,
+    "era_diff_years": 2,
+    "score_diff": 0.2,
+    "class": "strong"
+   },
+   {
+    "id": 1596,
+    "title": "ヴァイオレット・エヴァーガーデン 外伝~永遠と自動手記人形~",
+    "similarity_score": 82.8,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 12,
+    "era_diff_years": 1,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 2046,
+    "title": "ヴァイオレット・エヴァーガーデン きっと\"愛\"を知る日が来るのだろう",
+    "similarity_score": 75.2,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 12,
+    "era_diff_years": 0,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 1186,
+    "title": "本好きの下剋上 領主の養女",
+    "similarity_score": 66.0,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 8,
+    "score_diff": 0.9,
+    "class": "strong"
+   },
+   {
+    "id": 2620,
+    "title": "本好きの下剋上 司書になるためには手段を選んでいられません 第3期",
+    "similarity_score": 71.2,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 5,
+    "era_diff_years": 4,
+    "score_diff": 0.6,
+    "class": "strong"
+   },
+   {
+    "id": 1086,
+    "title": "３月のライオン 第2シリーズ",
+    "similarity_score": 62.2,
+    "reason": "Both feature strong 剧情 themes and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "剧情",
+     "日常"
+    ],
+    "shared_tag_count": 7,
+    "era_diff_years": 1,
+    "score_diff": 0.4,
+    "class": "strong"
+   },
+   {
+    "id": 1123,
+    "title": "LOOK BACK",
+    "similarity_score": 56.9,
+    "reason": "Both feature strong 剧情 themes and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "剧情",
+     "日常"
+    ],
+    "shared_tag_count": 6,
+    "era_diff_years": 6,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 3030,
+    "title": "天体のメソッド",
+    "similarity_score": 64.2,
+    "reason": "Both feature strong 剧情 themes and immersive fantasy worlds and epic quests",
+    "shared_genres": [
+     "剧情",
+     "奇幻",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 4,
+    "score_diff": 2.1,
+    "class": "strong"
+   }
+  ]
+ },
+ {
+  "anime_id": 700,
+  "title": "怪物",
+  "slug": "monster",
+  "page_url": "/anime/monster/similar/",
+  "similarity_priority": 100,
+  "selection_criteria": "old (2004) / top priority / psychological",
+  "genres_zh": [
+   "悬疑",
+   "心理"
+  ],
+  "genres_en": [
+   "Mystery",
+   "Psychological"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 955,
+    "title": "怪物剧场版",
+    "similarity_score": 98.9,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 0,
+    "score_diff": 0.3,
+    "class": "strong"
+   },
+   {
+    "id": 699,
+    "title": "妄想代理人",
+    "similarity_score": 98.2,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 0,
+    "score_diff": 0.5,
+    "class": "strong"
+   },
+   {
+    "id": 954,
+    "title": "妄想代理人剧场版",
+    "similarity_score": 97.5,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 0,
+    "score_diff": 0.7,
+    "class": "strong"
+   },
+   {
+    "id": 621,
+    "title": "未麻的部屋",
+    "similarity_score": 91.6,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 7,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 698,
+    "title": "幻影死神",
+    "similarity_score": 91.6,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 4,
+    "score_diff": 1.0,
+    "class": "strong"
+   },
+   {
+    "id": 986,
+    "title": "妄想代理人重制",
+    "similarity_score": 85.1,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 21,
+    "score_diff": 0.8,
+    "class": "strong"
+   },
+   {
+    "id": 987,
+    "title": "幻影死神第二季",
+    "similarity_score": 84.0,
+    "reason": "Both feature deep psychological drama and mind games and mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "心理",
+     "悬疑"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 15,
+    "score_diff": 1.1,
+    "class": "strong"
+   },
+   {
+    "id": 716,
+    "title": "死亡笔记重制版",
+    "similarity_score": 50.6,
+    "reason": "Both feature mysteries that keep you guessing until the end",
+    "shared_genres": [
+     "悬疑"
+    ],
+    "shared_tag_count": 1,
+    "era_diff_years": 2,
+    "score_diff": 0.1,
+    "class": "reasonable"
+   }
+  ]
+ },
+ {
+  "anime_id": 830,
+  "title": "间谍过家家剧场版",
+  "slug": "spy-x-family-code-white",
+  "page_url": "/anime/spy-x-family-code-white/similar/",
+  "similarity_priority": 69,
+  "selection_criteria": "movie / medium priority (69) / family comedy",
+  "genres_zh": [
+   "搞笑",
+   "日常"
+  ],
+  "genres_en": [
+   "Comedy",
+   "Slice of Life"
+  ],
+  "total_recommendations_available": 24,
+  "recommendations_reviewed": 8,
+  "recommendations": [
+   {
+    "id": 172,
+    "title": "间谍过家家第二季",
+    "similarity_score": 100.0,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 0,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 333,
+    "title": "小林家的龙女仆S",
+    "similarity_score": 97.2,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 2,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 91,
+    "title": "阿松",
+    "similarity_score": 90.0,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 8,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 332,
+    "title": "干物妹小埋R",
+    "similarity_score": 91.4,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 6,
+    "score_diff": 0.4,
+    "class": "strong"
+   },
+   {
+    "id": 77,
+    "title": "蜡笔小新",
+    "similarity_score": 88.0,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 31,
+    "score_diff": 0.0,
+    "class": "strong"
+   },
+   {
+    "id": 78,
+    "title": "樱桃小丸子",
+    "similarity_score": 87.6,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 33,
+    "score_diff": 0.1,
+    "class": "strong"
+   },
+   {
+    "id": 330,
+    "title": "田中君总是如此慵懒",
+    "similarity_score": 90.2,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 7,
+    "score_diff": 0.4,
+    "class": "strong"
+   },
+   {
+    "id": 592,
+    "title": "只要有妹妹就好了",
+    "similarity_score": 89.9,
+    "reason": "Both feature sharp comedy and hilariously over-the-top characters and slice-of-life warmth and everyday charm",
+    "shared_genres": [
+     "搞笑",
+     "日常"
+    ],
+    "shared_tag_count": 2,
+    "era_diff_years": 6,
+    "score_diff": 0.8,
+    "class": "strong"
+   }
+  ]
+ }
+]
