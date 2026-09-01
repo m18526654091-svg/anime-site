@@ -1,0 +1,139 @@
+{
+  "phase": "43",
+  "type": "research_planning_only",
+  "audit_date": "2026-09-01",
+  "evidence_policy": "No Google US SERP (429); no GSC US data provided; zero Observed search evidence -> all recommendations Inferred/Candidate",
+  "existing_assets": {
+    "anime_detail": {"route": "/anime/{slug}/", "indexable": 3607, "sub_routes": ["episodes", "similar"]},
+    "character_entities": {"route": "/character/{slug}/", "indexable": 476, "coverage_anime": 119},
+    "voice_actor_entities": {"route": "/voice-actor/{slug}/", "indexable": 341},
+    "studio_entities": {"route": "/studio/{studio}/", "indexable": 194},
+    "franchise_hubs": {"route": "/anime-series/{slug}/", "indexable": 18},
+    "watch_order": {"route": "/watch-order/{slug}/ + /watch-order/", "indexable": 9},
+    "similar_pages": {"route": "/anime/{slug}/similar/", "indexable": 690, "policy": "anime_seo_priority >= 60"},
+    "best_anime_english": {"route": "/best-anime/{category}/", "indexable": 18, "categories": "17 static English intent pages"},
+    "category_chinese": {"route": "/categories/{genre}/", "indexable": 175, "policy": "exact genre combo >= 5"},
+    "tags": {"route": "/tags/{tag}/", "indexable": 0, "policy": "all noindex (genre overlap)"},
+    "years": {"route": "/years/{year}/", "indexable": 49},
+    "seasons": {"route": "/season/{y}/{s}/ + /season/{s}-{y}-anime/", "indexable": "deduped", "policy": "redundant quarters noindex"},
+    "top_list_hubs": ["/top-anime/", "/high-score/", "/ranking/", "/latest-anime/", "/new-anime/", "/trending-anime/", "/upcoming-anime/", "/discover-anime/"]
+  },
+  "data_capability": {
+    "total_anime": 3607,
+    "all_have_slug": true,
+    "quality_below_50_noindex": 0,
+    "genre_combos": 883,
+    "genre_combos_single_anime": 434,
+    "genre_combos_2to4": 274,
+    "genre_combos_indexable_ge5": 175,
+    "genre_combo_max_len": 115,
+    "tags_nonempty": "3607/3607",
+    "tags_indexed": 0,
+    "years_with_data": 49,
+    "years_single_anime": 9,
+    "month_coverage": "2730/3607 (75.7%)",
+    "status_distribution": {"finished": 3526, "airing": 77, "not_released": 4},
+    "characters": 476,
+    "voice_actors": 341,
+    "studios_ge3": 194,
+    "anime_seo_priority": {"0-19": 2128, "20-39": 372, "40-59": 414, "60-79": 464, "80+": 229}
+  },
+  "intent_gaps": [
+    {
+      "intent_group": "B_similarity",
+      "status": "partial",
+      "evidence_type": "inferred",
+      "gap": "similar pages exist for 690 anime (priority>=60) but 2128 anime have priority<20 (no similar page); quality of existing 690 similar pages unaudited",
+      "candidate_action": "Audit similar page content specificity; evaluate coverage extension to priority 40+ with sample validation"
+    },
+    {
+      "intent_group": "C_franchise_navigation",
+      "status": "structural_mismatch",
+      "evidence_type": "inferred",
+      "gap": "18 franchise hubs but only 8 watch-order pages; 10 franchises lack watch-order despite hub existing",
+      "candidate_action": "Watch-order coverage matrix for 18 franchises; build only for franchises with genuine ordering complexity"
+    },
+    {
+      "intent_group": "E_seasonal_discovery",
+      "status": "partial",
+      "evidence_type": "inferred",
+      "gap": "upcoming-anime page backed by only 4 not-released records; current-season freshness depends on monthly coverage (75.7%)",
+      "candidate_action": "Season freshness improvements after GSC evidence"
+    },
+    {
+      "intent_group": "A_recommendation",
+      "status": "cannibalization_risk",
+      "evidence_type": "inferred",
+      "gap": "/top-anime /high-score /ranking overlap semantically; best-anime categories static at 17",
+      "candidate_action": "Do NOT merge without GSC proof of harm; extend categories only with real search evidence"
+    }
+  ],
+  "priority_roadmap": {
+    "P1": [
+      {
+        "page_type": "Similar pages quality audit + coverage evaluation",
+        "why": "Largest under-utilized built asset (690 indexed); 'anime like X' is a clear similarity intent; entity-specific value testable",
+        "data": "genre set + score + existing similar logic",
+        "implementation_difficulty": "low (read-only audit first)",
+        "risk": "medium (existing pages may be generic template content)"
+      },
+      {
+        "page_type": "Franchise watch-order completion (10 gaps)",
+        "why": "18 franchise hubs vs 8 watch-order pages is a structural inconsistency; franchise navigation is a known high-value intent family",
+        "data": "franchise ordering definitions (Phase 30) + validated watch-order template",
+        "implementation_difficulty": "medium",
+        "risk": "low-medium (requires sample validation 5-10 franchises first)"
+      }
+    ],
+    "P2": [
+      {
+        "page_type": "English best-anime category extension",
+        "why": "17 static categories are the strongest English collection pages",
+        "data": "score + genre sets",
+        "implementation_difficulty": "low",
+        "risk": "medium (needs real SERP evidence per category before adding)"
+      },
+      {
+        "page_type": "Current-season freshness (autumn 2026)",
+        "why": "Seasonal discovery is time-sensitive; 166 anime in 2026",
+        "data": "month coverage 75.7% + season pages",
+        "implementation_difficulty": "medium",
+        "risk": "low"
+      },
+      {
+        "page_type": "Character/VA entity expansion",
+        "why": "Entity pages proven valuable; coverage limited to 119/3607 anime",
+        "data": "AniList character data (import)",
+        "implementation_difficulty": "high (data import)",
+        "risk": "low-medium"
+      }
+    ],
+    "P3_avoid": [
+      "Restore tag pages index (genre overlap confirmed)",
+      "Index single-anime genre combos (434) or thin years (9)",
+      "Editorial pages like 'strongest anime characters' (no power-level data)",
+      "URL variants for title/franchise/series duplicates",
+      "Merging top/high-score/ranking without GSC evidence",
+      "Any /es/ /ja/ translated pages"
+    ]
+  },
+  "multilingual_roadmap": {
+    "order": ["English", "Spanish", "Japanese"],
+    "principle": "Each language needs independent SERP research, intent analysis, naming strategy. No translation-led SEO. No /es/ /ja/ pages this phase."
+  },
+  "definition_of_done_checklist": {
+    "existing_assets_inventoried": true,
+    "discovery_opportunities_identified": true,
+    "existing_collections_evaluated": true,
+    "tag_risks_evaluated": true,
+    "intent_gaps_identified": true,
+    "data_capability_checked": true,
+    "programmatic_seo_risks_checked": true,
+    "serp_evidence_separated": true,
+    "no_fake_search_volume": true,
+    "no_fake_google_data": true,
+    "no_production_changes": true,
+    "final_P1_P2_P3_roadmap": true
+  }
+}
+
