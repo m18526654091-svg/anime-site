@@ -1,0 +1,109 @@
+{
+  "phase": "42",
+  "scope": "anime_detail_search_intent",
+  "audit_date": "2026-09-01",
+  "audit_method": "SSR inspection of 8 representative anime detail pages (franchise/standalone/multi-season/movie/classic/current/big-cast)",
+  "primary_track": "en-US (English-first)",
+  "evidence_policy": "No real GSC US data; no fabricated US search volume; Google US SERP unavailable -> all recommendations are Inferred/Candidate only",
+  "intents": [
+    {
+      "intent": "episodes",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime/{slug}/",
+      "data_available": "episodes table (119 titles), anime.episodes field, episode titles",
+      "recommended_destination": "existing anime detail page (Anime Information Episodes row + /anime/{slug}/episodes/)",
+      "notes": "No change needed. FAQ already answers 'How many episodes'."
+    },
+    {
+      "intent": "season_release",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime/{slug}/",
+      "data_available": "year, month, season, status fields",
+      "recommended_destination": "existing anime detail page (Anime Information Release period)",
+      "notes": "Data-driven only; no speculative season content generated."
+    },
+    {
+      "intent": "watch_order",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/watch-order/{franchise}/ for 8 franchises; conditional link + FAQ on detail",
+      "data_available": "18 franchise definitions, 8 with watch-order pages",
+      "recommended_destination": "watch-order page for complex franchises; no page for standalone anime",
+      "notes": "Correct: simple standalone anime have no watch-order block."
+    },
+    {
+      "intent": "characters",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime/{slug}/#characters + /character/{slug}/",
+      "data_available": "characters (476), name_en, native_name, roles",
+      "recommended_destination": "existing character block + canonical character pages",
+      "notes": "English-first display (Phase 40-A) verified."
+    },
+    {
+      "intent": "voice_actors",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime/{slug}/#characters -> /voice-actor/{slug}/",
+      "data_available": "Japanese VA data (AniList JAPANESE voiceActors)",
+      "recommended_destination": "existing voice-actor links",
+      "notes": "Explicitly Japanese cast data; no English-cast claims."
+    },
+    {
+      "intent": "franchise_series",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime-series/ + detail Seasons & Related Entries",
+      "data_available": "18 franchise clusters",
+      "recommended_destination": "franchise hub for cluster-level intent; detail page for entity-level",
+      "notes": "No duplicate URLs for title/franchise/series variants."
+    },
+    {
+      "intent": "similar_discovery",
+      "status": "covered",
+      "evidence_type": "inferred",
+      "current_page": "/anime/{slug}/similar/ + Related Anime section",
+      "data_available": "genre-based recommendations",
+      "recommended_destination": "existing similar page",
+      "notes": "Single strong destination; no per-wording-variation pages."
+    }
+  ],
+  "coverage_summary": {
+    "8_representative_pages_tested": true,
+    "entity_summary": "8/8",
+    "anime_information": "8/8",
+    "episodes_link": "8/8",
+    "genres": "8/8",
+    "about": "8/8",
+    "faq": "8/8",
+    "seasons_related": "3/8 (conditional on franchise match - correct)",
+    "characters": "8/8",
+    "voice_actor_links": "8/8",
+    "watch_order_conditional": "correct (AoT only; movie gets no conditional link)",
+    "franchise_conditional": "3/8 (correct)",
+    "similar": "8/8",
+    "studio": "8/8",
+    "explore_more": "8/8",
+    "empty_sections": "none detected",
+    "duplicate_urls": "none"
+  },
+  "high_confidence_changes": [],
+  "candidate_changes": [
+    {
+      "change": "Re-evaluate title/meta wording per intent family once real GSC CTR data arrives",
+      "evidence_type": "candidate",
+      "reason": "Current pages satisfy intents structurally; optimization without evidence risks keyword-stuffing"
+    }
+  ],
+  "prohibitions_observed": [
+    "no new URLs",
+    "no /es/ /ja/ /en/",
+    "no translated keywords",
+    "no fabricated volume",
+    "no importer rerun",
+    "no DB schema change",
+    "no production deployment"
+  ]
+}
