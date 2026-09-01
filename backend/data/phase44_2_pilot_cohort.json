@@ -1,0 +1,4431 @@
+[
+ {
+  "anime_id": 36,
+  "title": "OVERLORD",
+  "chinese_title": "不死者之王",
+  "slug": "overlord",
+  "page_url": "/anime/overlord/similar/",
+  "priority_band": "p100",
+  "priority": 100,
+  "score": 8.2,
+  "year": 2015,
+  "genres": [
+   "奇幻",
+   "黑暗"
+  ],
+  "studio": "MADHOUSE",
+  "episodes": 12,
+  "franchise": "overlord",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 120,
+    "title": "东京喰种",
+    "score": 78.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 426,
+    "title": "不死者之王剧场版",
+    "score": 78.1,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 463,
+    "title": "剑风传奇2016",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 168,
+    "title": "不死者之王第四季",
+    "score": 72.1,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 427,
+    "title": "不死者之王圣王国篇",
+    "score": 70.5,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 841,
+    "title": "不死者之王圣王国篇2",
+    "score": 68.9,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 464,
+    "title": "大剑",
+    "score": 71.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 462,
+    "title": "剑风传奇",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 120,
+    "title": "东京喰种",
+    "score": 78.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 426,
+    "title": "不死者之王剧场版",
+    "score": 78.1,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 463,
+    "title": "剑风传奇2016",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 168,
+    "title": "不死者之王第四季",
+    "score": 72.1,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 464,
+    "title": "大剑",
+    "score": 71.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 462,
+    "title": "剑风传奇",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 648,
+    "title": "月姬重制",
+    "score": 68.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 885,
+    "title": "月姬重制版",
+    "score": 68.2,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 427,
+    "title": "不死者之王圣王国篇",
+    "score": 70.5,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 841,
+    "title": "不死者之王圣王国篇2",
+    "score": 68.9,
+    "class": "strong",
+    "franchise": "overlord"
+   },
+   {
+    "id": 132,
+    "title": "命运之夜",
+    "score": 59.7,
+    "class": "reasonable",
+    "franchise": "fate"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 122,
+  "title": "Bleach",
+  "chinese_title": "死神",
+  "slug": "bleach",
+  "page_url": "/anime/bleach/similar/",
+  "priority_band": "p100",
+  "priority": 100,
+  "score": 8.2,
+  "year": 2004,
+  "genres": [
+   "热血",
+   "战斗"
+  ],
+  "studio": "Pierrot",
+  "episodes": 12,
+  "franchise": "bleach",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 456,
+    "title": "金色的卡修",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 747,
+    "title": "家庭教师",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 748,
+    "title": "家庭教师REBORN",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 457,
+    "title": "通灵王",
+    "score": 95.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 89.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 742,
+    "title": "龙珠Z改",
+    "score": 93.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 123,
+    "title": "龙珠Z",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 739,
+    "title": "死神千年血战篇",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "bleach"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 456,
+    "title": "金色的卡修",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 747,
+    "title": "家庭教师",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 748,
+    "title": "家庭教师REBORN",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 457,
+    "title": "通灵王",
+    "score": 95.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 89.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 742,
+    "title": "龙珠Z改",
+    "score": 93.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 123,
+    "title": "龙珠Z",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 739,
+    "title": "死神千年血战篇",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "bleach"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 159,
+    "title": "炎炎消防队",
+    "score": 87.3,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 782,
+    "title": "炎炎消防队第三季",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 740,
+    "title": "死神千年血战篇第二季",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 741,
+    "title": "死神千年血战篇第三季",
+    "score": 85.1,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 969,
+    "title": "死神千年血战篇第四季",
+    "score": 85.1,
+    "class": "strong",
+    "franchise": "bleach"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 123,
+  "title": "Dragon Ball Z",
+  "chinese_title": "龙珠Z",
+  "slug": "dragon-ball-z",
+  "page_url": "/anime/dragon-ball-z/similar/",
+  "priority_band": "p100",
+  "priority": 100,
+  "score": 8.8,
+  "year": 1989,
+  "genres": [
+   "热血",
+   "战斗"
+  ],
+  "studio": "东映动画",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 446,
+    "title": "龙珠",
+    "score": 95.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 739,
+    "title": "死神千年血战篇",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 122,
+    "title": "死神",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 447,
+    "title": "龙珠GT",
+    "score": 88.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 741,
+    "title": "死神千年血战篇第三季",
+    "score": 87.3,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 969,
+    "title": "死神千年血战篇第四季",
+    "score": 87.3,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 740,
+    "title": "死神千年血战篇第二季",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "bleach"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 446,
+    "title": "龙珠",
+    "score": 95.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 739,
+    "title": "死神千年血战篇",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 122,
+    "title": "死神",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 85.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 447,
+    "title": "龙珠GT",
+    "score": 88.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 159,
+    "title": "炎炎消防队",
+    "score": 85.1,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 743,
+    "title": "龙珠DAIMA",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 970,
+    "title": "龙珠超第二季",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 741,
+    "title": "死神千年血战篇第三季",
+    "score": 87.3,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 969,
+    "title": "死神千年血战篇第四季",
+    "score": 87.3,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 740,
+    "title": "死神千年血战篇第二季",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 782,
+    "title": "炎炎消防队第三季",
+    "score": 85.5,
+    "class": "strong",
+    "franchise": "fire-force"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 130,
+  "title": "Vinland Saga",
+  "chinese_title": "冰海战记",
+  "slug": "vinland-saga",
+  "page_url": "/anime/vinland-saga/similar/",
+  "priority_band": "p100",
+  "priority": 100,
+  "score": 8.9,
+  "year": 2019,
+  "genres": [
+   "历史",
+   "战争"
+  ],
+  "studio": "WIT STUDIO",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 170,
+    "title": "冰海战记第二季",
+    "score": 95.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 817,
+    "title": "平家物语",
+    "score": 95.8,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 131,
+    "title": "多罗罗",
+    "score": 51.2,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 680,
+    "title": "银河英雄传说新作",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 939,
+    "title": "黄金神威第三季",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 938,
+    "title": "黄金神威第二季",
+    "score": 51.1,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 72,
+    "title": "黄金神威",
+    "score": 49.7,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 940,
+    "title": "黄金神威第四季",
+    "score": 48.7,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 170,
+    "title": "冰海战记第二季",
+    "score": 95.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 817,
+    "title": "平家物语",
+    "score": 95.8,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 131,
+    "title": "多罗罗",
+    "score": 51.2,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 680,
+    "title": "银河英雄传说新作",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 939,
+    "title": "黄金神威第三季",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 938,
+    "title": "黄金神威第二季",
+    "score": 51.1,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 982,
+    "title": "多罗罗第二季",
+    "score": 50.8,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 981,
+    "title": "剑豪生死斗",
+    "score": 50.5,
+    "class": "reasonable",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 72,
+    "title": "黄金神威",
+    "score": 49.7,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 940,
+    "title": "黄金神威第四季",
+    "score": 48.7,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 941,
+    "title": "黄金神威最终章",
+    "score": 45.1,
+    "class": "reasonable",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 164,
+    "title": "进击的巨人最终季",
+    "score": 28.4,
+    "class": "weak",
+    "franchise": "attack-on-titan"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 133,
+  "title": "Akame ga Kill!",
+  "chinese_title": "斩·赤红之瞳",
+  "slug": "akame-ga-kill",
+  "page_url": "/anime/akame-ga-kill/similar/",
+  "priority_band": "p100",
+  "priority": 100,
+  "score": 8.0,
+  "year": 2014,
+  "genres": [
+   "热血",
+   "黑暗"
+  ],
+  "studio": "White Fox",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 752,
+    "title": "驱魔少年HALLOW",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 751,
+    "title": "驱魔少年",
+    "score": 90.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 976,
+    "title": "驱魔少年第二季",
+    "score": 88.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 83,
+    "title": "七大罪",
+    "score": 51.2,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 124,
+    "title": "龙珠超",
+    "score": 52.1,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 160,
+    "title": "黑色四叶草",
+    "score": 49.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 779,
+    "title": "一拳超人第二季",
+    "score": 46.6,
+    "class": "reasonable",
+    "franchise": "one-punch-man"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 752,
+    "title": "驱魔少年HALLOW",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 751,
+    "title": "驱魔少年",
+    "score": 90.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 976,
+    "title": "驱魔少年第二季",
+    "score": 88.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 143,
+    "title": "斩服少女",
+    "score": 51.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 83,
+    "title": "七大罪",
+    "score": 51.2,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 124,
+    "title": "龙珠超",
+    "score": 52.1,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 160,
+    "title": "黑色四叶草",
+    "score": 49.4,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 779,
+    "title": "一拳超人第二季",
+    "score": 46.6,
+    "class": "reasonable",
+    "franchise": "one-punch-man"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 759,
+    "title": "排球少年第二季",
+    "score": 49.3,
+    "class": "reasonable",
+    "franchise": "haikyuu"
+   },
+   {
+    "id": 159,
+    "title": "炎炎消防队",
+    "score": 47.3,
+    "class": "reasonable",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 652,
+    "title": "魔法少女小圆叛逆的物语",
+    "score": 49.6,
+    "class": "reasonable",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 426,
+    "title": "不死者之王剧场版",
+    "score": 49.7,
+    "class": "reasonable",
+    "franchise": "overlord"
+   },
+   {
+    "id": 18,
+    "title": "排球少年！！",
+    "score": 48.4,
+    "class": "reasonable",
+    "franchise": "haikyuu"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 831,
+  "title": "One Piece Fan Letter",
+  "chinese_title": "海贼王粉丝来信",
+  "slug": "one-piece-fan-letter",
+  "page_url": "/anime/one-piece-fan-letter/similar/",
+  "priority_band": "p90",
+  "priority": 99,
+  "score": 8.5,
+  "year": 2024,
+  "genres": [
+   "冒险",
+   "热血"
+  ],
+  "studio": "东映动画",
+  "episodes": 12,
+  "franchise": "one-piece",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 738,
+    "title": "海贼王蛋头岛篇",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 968,
+    "title": "海贼王重制版",
+    "score": 98.1,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 972,
+    "title": "妖精的尾巴百年任务",
+    "score": 98.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 165,
+    "title": "海贼王剧场版RED",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 732,
+    "title": "黑色四叶草剧场版",
+    "score": 97.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 967,
+    "title": "黑色四叶草第二季",
+    "score": 97.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 966,
+    "title": "博人传第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 737,
+    "title": "海贼王和之国篇",
+    "score": 93.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 738,
+    "title": "海贼王蛋头岛篇",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 968,
+    "title": "海贼王重制版",
+    "score": 98.1,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 972,
+    "title": "妖精的尾巴百年任务",
+    "score": 98.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 732,
+    "title": "黑色四叶草剧场版",
+    "score": 97.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 967,
+    "title": "黑色四叶草第二季",
+    "score": 97.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 966,
+    "title": "博人传第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 733,
+    "title": "火影忍者疾风传",
+    "score": 87.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 161,
+    "title": "七大罪续篇",
+    "score": 90.3,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 165,
+    "title": "海贼王剧场版RED",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 737,
+    "title": "海贼王和之国篇",
+    "score": 93.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 736,
+    "title": "海贼王东海篇",
+    "score": 86.2,
+    "class": "strong",
+    "franchise": "one-piece"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1062,
+  "title": "Bungo Stray Dogs",
+  "chinese_title": "文豪ストレイドッグス",
+  "slug": "bungo-stray-dogs",
+  "page_url": "/anime/bungo-stray-dogs/similar/",
+  "priority_band": "p90",
+  "priority": 99,
+  "score": 7.7,
+  "year": 2016,
+  "genres": [
+   "动作",
+   "喜剧",
+   "悬疑",
+   "超自然"
+  ],
+  "studio": "bones",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1551,
+    "title": "文豪ストレイドッグス 第2シーズン",
+    "score": 87.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2152,
+    "title": "文豪ストレイドッグス 第3シーズン",
+    "score": 85.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1975,
+    "title": "文豪ストレイドッグス DEAD APPLE",
+    "score": 81.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3432,
+    "title": "文豪ストレイドッグス 『独り歩む』;",
+    "score": 80.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1593,
+    "title": "文豪ストレイドッグス 第4シーズン",
+    "score": 76.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1573,
+    "title": "文豪ストレイドッグス 第5シーズン",
+    "score": 74.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2742,
+    "title": "キューティクル探偵因幡",
+    "score": 72.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3583,
+    "title": "バッカーノ! 番外編",
+    "score": 71.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1551,
+    "title": "文豪ストレイドッグス 第2シーズン",
+    "score": 87.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2152,
+    "title": "文豪ストレイドッグス 第3シーズン",
+    "score": 85.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1975,
+    "title": "文豪ストレイドッグス DEAD APPLE",
+    "score": 81.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3432,
+    "title": "文豪ストレイドッグス 『独り歩む』;",
+    "score": 80.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1593,
+    "title": "文豪ストレイドッグス 第4シーズン",
+    "score": 76.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1573,
+    "title": "文豪ストレイドッグス 第5シーズン",
+    "score": 74.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2742,
+    "title": "キューティクル探偵因幡",
+    "score": 72.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3583,
+    "title": "バッカーノ! 番外編",
+    "score": 71.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1051,
+    "title": "One-Punch Man Season 2",
+    "score": 58.7,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1008,
+    "title": "One-Punch Man",
+    "score": 57.6,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   }
+  ],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1068,
+  "title": "The Devil is a Part-Timer!",
+  "chinese_title": "はたらく魔王さま!",
+  "slug": "the-devil-is-a-part-timer",
+  "page_url": "/anime/the-devil-is-a-part-timer/similar/",
+  "priority_band": "p90",
+  "priority": 99,
+  "score": 7.5,
+  "year": 2013,
+  "genres": [
+   "喜剧",
+   "奇幻",
+   "恋爱",
+   "日常"
+  ],
+  "studio": "Funimation",
+  "episodes": 13,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 2648,
+    "title": "はたらく魔王さま！！",
+    "score": 76.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1224,
+    "title": "日本へようこそエルフさん。",
+    "score": 67.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3474,
+    "title": "ネト充のススメ OVA",
+    "score": 74.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3427,
+    "title": "小林さんちのメイドラゴン バレンタイン, そして温泉! (あまり期待しないでください)",
+    "score": 72.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1458,
+    "title": "自称悪役令嬢な婚約者の観察記録。",
+    "score": 64.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1073,
+    "title": "やはり俺の青春ラブコメはまちがっている。",
+    "score": 60.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2312,
+    "title": "乙女ゲームの破滅フラグしかない悪役令嬢に転生してしまった…",
+    "score": 68.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1779,
+    "title": "婚約破棄された令嬢を拾った俺が、イケナイことを教え込む",
+    "score": 67.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 2648,
+    "title": "はたらく魔王さま！！",
+    "score": 76.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1224,
+    "title": "日本へようこそエルフさん。",
+    "score": 67.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3474,
+    "title": "ネト充のススメ OVA",
+    "score": 74.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3427,
+    "title": "小林さんちのメイドラゴン バレンタイン, そして温泉! (あまり期待しないでください)",
+    "score": 72.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1458,
+    "title": "自称悪役令嬢な婚約者の観察記録。",
+    "score": 64.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1073,
+    "title": "やはり俺の青春ラブコメはまちがっている。",
+    "score": 60.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2312,
+    "title": "乙女ゲームの破滅フラグしかない悪役令嬢に転生してしまった…",
+    "score": 68.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1779,
+    "title": "婚約破棄された令嬢を拾った俺が、イケナイことを教え込む",
+    "score": 67.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1042,
+  "title": "DARLING in the FRANXX",
+  "chinese_title": "DARLING in the FRANXX",
+  "slug": "darling-in-the-franxx",
+  "page_url": "/anime/darling-in-the-franxx/similar/",
+  "priority_band": "p90",
+  "priority": 98,
+  "score": 7.0,
+  "year": 2018,
+  "genres": [
+   "动作",
+   "剧情",
+   "机战",
+   "心理",
+   "恋爱",
+   "科幻"
+  ],
+  "studio": "TRIGGER",
+  "episodes": 24,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1134,
+    "title": "新世紀エヴァンゲリオン劇場版 Air/まごころを、君に",
+    "score": 56.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 54.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1071,
+    "title": "Cyberpunk: Edgerunners",
+    "score": 53.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 62.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1044,
+    "title": "新世紀エヴァンゲリオン",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1276,
+    "title": "機動戦士Gundam GQuuuuuuX",
+    "score": 55.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3459,
+    "title": "INUYASHIKI LAST HERO",
+    "score": 61.1,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1134,
+    "title": "新世紀エヴァンゲリオン劇場版 Air/まごころを、君に",
+    "score": 56.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 54.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1071,
+    "title": "Cyberpunk: Edgerunners",
+    "score": 53.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 62.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1044,
+    "title": "新世紀エヴァンゲリオン",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1276,
+    "title": "機動戦士Gundam GQuuuuuuX",
+    "score": 55.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3459,
+    "title": "INUYASHIKI LAST HERO",
+    "score": 61.1,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1080,
+  "title": "Re:ZERO -Starting Life in Another World- Season 4",
+  "chinese_title": "Re:ゼロから始める異世界生活 4th season",
+  "slug": "re-zero-starting-life-in-another-world-season-4",
+  "page_url": "/anime/re-zero-starting-life-in-another-world-season-4/similar/",
+  "priority_band": "p90",
+  "priority": 98,
+  "score": 9.0,
+  "year": 2026,
+  "genres": [
+   "动作",
+   "冒险",
+   "剧情",
+   "奇幻",
+   "心理",
+   "恋爱",
+   "惊悚"
+  ],
+  "studio": "KADOKAWA",
+  "episodes": 19,
+  "franchise": "rezero",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1197,
+    "title": "Re:ゼロから始める異世界生活 2nd Season Part 2",
+    "score": 74.8,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1591,
+    "title": "Re:ゼロから始める異世界生活 3rd season",
+    "score": 80.4,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1023,
+    "title": "Re:ゼロから始める異世界生活",
+    "score": 68.5,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1075,
+    "title": "Re:ゼロから始める異世界生活 2nd Season",
+    "score": 68.2,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1102,
+    "title": "進撃の巨人 The Final Season完結編 後編",
+    "score": 59.4,
+    "class": "strong",
+    "franchise": "attack-on-titan"
+   },
+   {
+    "id": 1436,
+    "title": "杖と剣のウィストリア Season2",
+    "score": 58.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1399,
+    "title": "魔都精兵のスレイブ2",
+    "score": 56.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1093,
+    "title": "葬送のフリーレン 第2期",
+    "score": 53.1,
+    "class": "strong",
+    "franchise": "frieren"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1197,
+    "title": "Re:ゼロから始める異世界生活 2nd Season Part 2",
+    "score": 74.8,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1591,
+    "title": "Re:ゼロから始める異世界生活 3rd season",
+    "score": 80.4,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1102,
+    "title": "進撃の巨人 The Final Season完結編 後編",
+    "score": 59.4,
+    "class": "strong",
+    "franchise": "attack-on-titan"
+   },
+   {
+    "id": 1436,
+    "title": "杖と剣のウィストリア Season2",
+    "score": 58.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1399,
+    "title": "魔都精兵のスレイブ2",
+    "score": 56.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1093,
+    "title": "葬送のフリーレン 第2期",
+    "score": 53.1,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1114,
+    "title": "劇場版「鬼滅の刃」無限城編 第一章 猗窩座再来",
+    "score": 52.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1139,
+    "title": "とんがり帽子のアトリエ",
+    "score": 52.4,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1023,
+    "title": "Re:ゼロから始める異世界生活",
+    "score": 68.5,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1075,
+    "title": "Re:ゼロから始める異世界生活 2nd Season",
+    "score": 68.2,
+    "class": "strong",
+    "franchise": "rezero"
+   },
+   {
+    "id": 1103,
+    "title": "進撃の巨人 The Final Season完結編 前編",
+    "score": 50.8,
+    "class": "strong",
+    "franchise": "attack-on-titan"
+   },
+   {
+    "id": 1142,
+    "title": "無職転生Ⅲ ～異世界行ったら本気だす～",
+    "score": 50.1,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 1049,
+    "title": "葬送のフリーレン",
+    "score": 49.5,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1262,
+    "title": "ヴィジランテ -僕のヒーローアカデミア ILLEGALS-",
+    "score": 50.1,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   }
+  ],
+  "before_unique_franchises": 4,
+  "after_unique_franchises": 4,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1044,
+  "title": "Neon Genesis Evangelion",
+  "chinese_title": "新世紀エヴァンゲリオン",
+  "slug": "neon-genesis-evangelion",
+  "page_url": "/anime/neon-genesis-evangelion/similar/",
+  "priority_band": "p80",
+  "priority": 89,
+  "score": 8.3,
+  "year": 1995,
+  "genres": [
+   "动作",
+   "剧情",
+   "机战",
+   "悬疑",
+   "心理",
+   "科幻"
+  ],
+  "studio": "Gainax",
+  "episodes": 26,
+  "franchise": "none",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1134,
+    "title": "新世紀エヴァンゲリオン劇場版 Air/まごころを、君に",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 62.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3517,
+    "title": "新世紀エヴァンゲリオン劇場版 シト新生",
+    "score": 64.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3502,
+    "title": "ヱヴァンゲリヲン新劇場版:破",
+    "score": 64.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1042,
+    "title": "DARLING in the FRANXX",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3501,
+    "title": "ヱヴァンゲリヲン新劇場版:序",
+    "score": 61.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 52.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 60.9,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1134,
+    "title": "新世紀エヴァンゲリオン劇場版 Air/まごころを、君に",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 62.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3517,
+    "title": "新世紀エヴァンゲリオン劇場版 シト新生",
+    "score": 64.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3502,
+    "title": "ヱヴァンゲリヲン新劇場版:破",
+    "score": 64.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1042,
+    "title": "DARLING in the FRANXX",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3501,
+    "title": "ヱヴァンゲリヲン新劇場版:序",
+    "score": 61.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 52.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 60.9,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1103,
+    "title": "進撃の巨人 The Final Season完結編 前編",
+    "score": 46.4,
+    "class": "strong",
+    "franchise": "attack-on-titan"
+   },
+   {
+    "id": 1059,
+    "title": "進撃の巨人 The Final Season Part 2",
+    "score": 45.2,
+    "class": "strong",
+    "franchise": "attack-on-titan"
+   }
+  ],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1081,
+  "title": "BLEACH: Thousand-Year Blood War - The Calamity",
+  "chinese_title": "BLEACH 千年血戦篇-禍進譚-",
+  "slug": "bleach-thousand-year-blood-war-the-calamity",
+  "page_url": "/anime/bleach-thousand-year-blood-war-the-calamity/similar/",
+  "priority_band": "p80",
+  "priority": 89,
+  "score": 9.0,
+  "year": 2026,
+  "genres": [
+   "动作",
+   "冒险",
+   "超自然"
+  ],
+  "studio": "Studio Pierrot",
+  "episodes": 10,
+  "franchise": "bleach",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1115,
+    "title": "BLEACH 千年血戦篇-相剋譚-",
+    "score": 85.9,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1125,
+    "title": "BLEACH 千年血戦篇-訣別譚-",
+    "score": 77.6,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1091,
+    "title": "BLEACH 千年血戦篇",
+    "score": 76.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1393,
+    "title": "地獄楽 第二期",
+    "score": 66.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1098,
+    "title": "僕のヒーローアカデミア FINAL SEASON",
+    "score": 65.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1891,
+    "title": "逃げ上手の若君",
+    "score": 74.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1114,
+    "title": "劇場版「鬼滅の刃」無限城編 第一章 猗窩座再来",
+    "score": 60.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1048,
+    "title": "ジョジョの奇妙な冒険 (TV)",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1115,
+    "title": "BLEACH 千年血戦篇-相剋譚-",
+    "score": 85.9,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1125,
+    "title": "BLEACH 千年血戦篇-訣別譚-",
+    "score": 77.6,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1393,
+    "title": "地獄楽 第二期",
+    "score": 66.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1098,
+    "title": "僕のヒーローアカデミア FINAL SEASON",
+    "score": 65.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1891,
+    "title": "逃げ上手の若君",
+    "score": 74.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1114,
+    "title": "劇場版「鬼滅の刃」無限城編 第一章 猗窩座再来",
+    "score": 60.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1048,
+    "title": "ジョジョの奇妙な冒険 (TV)",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1046,
+    "title": "鬼滅の刃 遊郭編",
+    "score": 60.5,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1091,
+    "title": "BLEACH 千年血戦篇",
+    "score": 76.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1452,
+    "title": "僕のヒーローアカデミア No. 170+1 「More」",
+    "score": 61.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1128,
+    "title": "呪術廻戦 死滅回游 前編",
+    "score": 56.5,
+    "class": "strong",
+    "franchise": "jujutsu-kaisen"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1134,
+  "title": "Neon Genesis Evangelion: The End of Evangelion",
+  "chinese_title": "新世紀エヴァンゲリオン劇場版 Air/まごころを、君に",
+  "slug": "neon-genesis-evangelion-the-end-of-evangelion",
+  "page_url": "/anime/neon-genesis-evangelion-the-end-of-evangelion/similar/",
+  "priority_band": "p80",
+  "priority": 89,
+  "score": 8.5,
+  "year": 1997,
+  "genres": [
+   "动作",
+   "剧情",
+   "机战",
+   "心理",
+   "科幻"
+  ],
+  "studio": "Gainax",
+  "episodes": 1,
+  "franchise": "none",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1044,
+    "title": "新世紀エヴァンゲリオン",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 72.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3517,
+    "title": "新世紀エヴァンゲリオン劇場版 シト新生",
+    "score": 71.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3502,
+    "title": "ヱヴァンゲリヲン新劇場版:破",
+    "score": 69.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 58.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1071,
+    "title": "Cyberpunk: Edgerunners",
+    "score": 58.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3501,
+    "title": "ヱヴァンゲリヲン新劇場版:序",
+    "score": 66.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1044,
+    "title": "新世紀エヴァンゲリオン",
+    "score": 77.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1135,
+    "title": "シン・エヴァンゲリオン劇場版:||",
+    "score": 72.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3517,
+    "title": "新世紀エヴァンゲリオン劇場版 シト新生",
+    "score": 71.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3502,
+    "title": "ヱヴァンゲリヲン新劇場版:破",
+    "score": 69.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1108,
+    "title": "86－エイティシックス－ 第2クール",
+    "score": 58.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1071,
+    "title": "Cyberpunk: Edgerunners",
+    "score": 58.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3504,
+    "title": "ヱヴァンゲリヲン新劇場版:Q",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3501,
+    "title": "ヱヴァンゲリヲン新劇場版:序",
+    "score": 66.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1201,
+  "title": "Howl‘s Moving Castle",
+  "chinese_title": "ハウルの動く城",
+  "slug": "howl-s-moving-castle",
+  "page_url": "/anime/howl-s-moving-castle/similar/",
+  "priority_band": "p80",
+  "priority": 89,
+  "score": 8.5,
+  "year": 2004,
+  "genres": [
+   "冒险",
+   "剧情",
+   "奇幻",
+   "恋爱"
+  ],
+  "studio": "Studio Ghibli",
+  "episodes": 1,
+  "franchise": "none",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1047,
+    "title": "千と千尋の神隠し",
+    "score": 57.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1139,
+    "title": "とんがり帽子のアトリエ",
+    "score": 57.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3524,
+    "title": "星を追う子ども",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1093,
+    "title": "葬送のフリーレン 第2期",
+    "score": 55.5,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1049,
+    "title": "葬送のフリーレン",
+    "score": 54.7,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1012,
+    "title": "鋼の錬金術師 FULLMETAL ALCHEMIST",
+    "score": 52.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1167,
+    "title": "Goodbye, Lara",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1142,
+    "title": "無職転生Ⅲ ～異世界行ったら本気だす～",
+    "score": 49.8,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1047,
+    "title": "千と千尋の神隠し",
+    "score": 57.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1139,
+    "title": "とんがり帽子のアトリエ",
+    "score": 57.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3524,
+    "title": "星を追う子ども",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1093,
+    "title": "葬送のフリーレン 第2期",
+    "score": 55.5,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1049,
+    "title": "葬送のフリーレン",
+    "score": 54.7,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 1012,
+    "title": "鋼の錬金術師 FULLMETAL ALCHEMIST",
+    "score": 52.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1167,
+    "title": "Goodbye, Lara",
+    "score": 53.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1142,
+    "title": "無職転生Ⅲ ～異世界行ったら本気だす～",
+    "score": 49.8,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1009,
+    "title": "ONE PIECE",
+    "score": 50.0,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 1196,
+    "title": "無職転生 ～異世界行ったら本気だす～ 第2クール",
+    "score": 47.9,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 1197,
+    "title": "Re:ゼロから始める異世界生活 2nd Season Part 2",
+    "score": 47.6,
+    "class": "strong",
+    "franchise": "rezero"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1347,
+  "title": "One-Punch Man Season 3",
+  "chinese_title": "One-Punch Man Season 3",
+  "slug": "one-punch-man-season-3",
+  "page_url": "/anime/one-punch-man-season-3/similar/",
+  "priority_band": "p80",
+  "priority": 88,
+  "score": 5.0,
+  "year": 2025,
+  "genres": [
+   "动作",
+   "喜剧",
+   "科幻",
+   "超自然"
+  ],
+  "studio": "J.C.STAFF",
+  "episodes": 12,
+  "franchise": "one-punch-man",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1051,
+    "title": "One-Punch Man Season 2",
+    "score": 74.5,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1381,
+    "title": "アンデッドアンラック Winter編",
+    "score": 69.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1008,
+    "title": "One-Punch Man",
+    "score": 64.1,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 2245,
+    "title": "One-Punch Man Season 2 OVA",
+    "score": 68.9,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1765,
+    "title": "Undead Unluck",
+    "score": 66.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3209,
+    "title": "One-Punch Man OVA",
+    "score": 64.2,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1255,
+    "title": "炎炎ノ消防隊 参ノ章",
+    "score": 53.8,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 3162,
+    "title": "One-Punch Man: Road to Hero",
+    "score": 62.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1051,
+    "title": "One-Punch Man Season 2",
+    "score": 74.5,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1381,
+    "title": "アンデッドアンラック Winter編",
+    "score": 69.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1008,
+    "title": "One-Punch Man",
+    "score": 64.1,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1765,
+    "title": "Undead Unluck",
+    "score": 66.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1255,
+    "title": "炎炎ノ消防隊 参ノ章",
+    "score": 53.8,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 1464,
+    "title": "Rooster Fighter",
+    "score": 55.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1278,
+    "title": "戦隊大失格 2nd season",
+    "score": 54.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1302,
+    "title": "ダンダダン 第2期",
+    "score": 51.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 2245,
+    "title": "One-Punch Man Season 2 OVA",
+    "score": 68.9,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3209,
+    "title": "One-Punch Man OVA",
+    "score": 64.2,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3162,
+    "title": "One-Punch Man: Road to Hero",
+    "score": 62.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1395,
+    "title": "炎炎ノ消防隊 参ノ章 第2クール",
+    "score": 50.5,
+    "class": "strong",
+    "franchise": "fire-force"
+   },
+   {
+    "id": 1063,
+    "title": "僕のヒーローアカデミア５",
+    "score": 50.3,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1348,
+    "title": "SPY x FAMILY Season 3",
+    "score": 49.6,
+    "class": "strong",
+    "franchise": "spy-family"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1006,
+  "title": "My Hero Academia",
+  "chinese_title": "僕のヒーローアカデミア",
+  "slug": "my-hero-academia",
+  "page_url": "/anime/my-hero-academia/similar/",
+  "priority_band": "p70",
+  "priority": 79,
+  "score": 7.7,
+  "year": 2016,
+  "genres": [
+   "动作",
+   "冒险",
+   "喜剧"
+  ],
+  "studio": "bones",
+  "episodes": 13,
+  "franchise": "my-hero-academia",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1018,
+    "title": "僕のヒーローアカデミア２",
+    "score": 88.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 2356,
+    "title": "僕のヒーローアカデミア 生き残れ！決死のサバイバル訓練",
+    "score": 82.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 2941,
+    "title": "ドラゴンボール改 (2014)",
+    "score": 79.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1027,
+    "title": "僕のヒーローアカデミア３",
+    "score": 70.2,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1063,
+    "title": "僕のヒーローアカデミア５",
+    "score": 68.3,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 3157,
+    "title": "ルパン三世 PART IV",
+    "score": 75.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2006,
+    "title": "Golden Kamuy",
+    "score": 75.3,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 2034,
+    "title": "ルパン三世 PART5",
+    "score": 73.9,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1018,
+    "title": "僕のヒーローアカデミア２",
+    "score": 88.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 2356,
+    "title": "僕のヒーローアカデミア 生き残れ！決死のサバイバル訓練",
+    "score": 82.7,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 2941,
+    "title": "ドラゴンボール改 (2014)",
+    "score": 79.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3157,
+    "title": "ルパン三世 PART IV",
+    "score": 75.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2006,
+    "title": "Golden Kamuy",
+    "score": 75.3,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 2034,
+    "title": "ルパン三世 PART5",
+    "score": 73.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2088,
+    "title": "ゴールデンカムイ 第二期",
+    "score": 73.9,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 1033,
+    "title": "Dr. STONE",
+    "score": 64.7,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1027,
+    "title": "僕のヒーローアカデミア３",
+    "score": 70.2,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1063,
+    "title": "僕のヒーローアカデミア５",
+    "score": 68.3,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 3391,
+    "title": "僕のヒーローアカデミア救え!救助訓練!",
+    "score": 73.4,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 2148,
+    "title": "ゴールデンカムイ 第二期 OVA",
+    "score": 72.5,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 1053,
+    "title": "転生したらスライムだった件",
+    "score": 63.0,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 1602,
+    "title": "ゴールデンカムイ 第三期",
+    "score": 70.7,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   },
+   {
+    "id": 1037,
+    "title": "僕のヒーローアカデミア４",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1428,
+    "title": "ゴールデンカムイ 最終章",
+    "score": 62.8,
+    "class": "strong",
+    "franchise": "golden-kamuy"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1010,
+  "title": "Tokyo Ghoul",
+  "chinese_title": "東京喰種 トーキョーグール",
+  "slug": "tokyo-ghoul",
+  "page_url": "/anime/tokyo-ghoul/similar/",
+  "priority_band": "p70",
+  "priority": 79,
+  "score": 7.6,
+  "year": 2014,
+  "genres": [
+   "动作",
+   "剧情",
+   "恐怖",
+   "悬疑",
+   "心理",
+   "超自然"
+  ],
+  "studio": "Studio Pierrot",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1064,
+    "title": "東京喰種[トーキョーグール]√A",
+    "score": 83.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1205,
+    "title": "Devilman Crybaby",
+    "score": 69.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1041,
+    "title": "寄生獣 セイの格率",
+    "score": 62.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1061,
+    "title": "未来日記",
+    "score": 62.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1100,
+    "title": "傷物語〈Ⅲ冷血篇〉",
+    "score": 59.4,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 1020,
+    "title": "Chainsaw Man",
+    "score": 57.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1499,
+    "title": "東京喰種-トーキョーグール-:re",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1554,
+    "title": "東京喰種-トーキョーグール-:re 2",
+    "score": 65.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1064,
+    "title": "東京喰種[トーキョーグール]√A",
+    "score": 83.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1205,
+    "title": "Devilman Crybaby",
+    "score": 69.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1041,
+    "title": "寄生獣 セイの格率",
+    "score": 62.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1061,
+    "title": "未来日記",
+    "score": 62.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1100,
+    "title": "傷物語〈Ⅲ冷血篇〉",
+    "score": 59.4,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 1020,
+    "title": "Chainsaw Man",
+    "score": 57.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1499,
+    "title": "東京喰種-トーキョーグール-:re",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1554,
+    "title": "東京喰種-トーキョーグール-:re 2",
+    "score": 65.6,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1628,
+    "title": "傷物語〈Ⅰ鉄血篇〉",
+    "score": 61.8,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 2969,
+    "title": "花物語",
+    "score": 61.8,
+    "class": "strong",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 1576,
+    "title": "傷物語〈Ⅱ熱血篇〉",
+    "score": 61.5,
+    "class": "strong",
+    "franchise": "monogatari"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1036,
+  "title": "No Game, No Life",
+  "chinese_title": "No Game, No Life",
+  "slug": "no-game-no-life-2",
+  "page_url": "/anime/no-game-no-life-2/similar/",
+  "priority_band": "p70",
+  "priority": 79,
+  "score": 7.7,
+  "year": 2014,
+  "genres": [
+   "冒险",
+   "喜剧",
+   "福利",
+   "奇幻"
+  ],
+  "studio": "MADHOUSE",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1039,
+    "title": "この素晴らしい世界に祝福を！",
+    "score": 77.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1076,
+    "title": "この素晴らしい世界に祝福を！2",
+    "score": 75.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1038,
+    "title": "七つの大罪",
+    "score": 60.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3239,
+    "title": "この素晴らしい世界に祝福を！ この素晴らしいチョーカーに祝福を!",
+    "score": 67.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3317,
+    "title": "ダンジョンに出会いを求めるのは間違っているだろうか ダンジョンに温泉を求めるのは 間違っているだろうか",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1067,
+    "title": "ダンジョンに出会いを求めるのは間違っているだろうか",
+    "score": 56.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2978,
+    "title": "No Game No Life Specials",
+    "score": 64.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1271,
+    "title": "この素晴らしい世界に祝福を！３ーBONUS STAGEー",
+    "score": 56.8,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1039,
+    "title": "この素晴らしい世界に祝福を！",
+    "score": 77.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1076,
+    "title": "この素晴らしい世界に祝福を！2",
+    "score": 75.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1038,
+    "title": "七つの大罪",
+    "score": 60.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3239,
+    "title": "この素晴らしい世界に祝福を！ この素晴らしいチョーカーに祝福を!",
+    "score": 67.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3317,
+    "title": "ダンジョンに出会いを求めるのは間違っているだろうか ダンジョンに温泉を求めるのは 間違っているだろうか",
+    "score": 66.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1067,
+    "title": "ダンジョンに出会いを求めるのは間違っているだろうか",
+    "score": 56.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 2978,
+    "title": "No Game No Life Specials",
+    "score": 64.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1271,
+    "title": "この素晴らしい世界に祝福を！３ーBONUS STAGEー",
+    "score": 56.8,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1053,
+    "title": "転生したらスライムだった件",
+    "score": 55.4,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 2196,
+    "title": "転生したらスライムだった件 OVA",
+    "score": 62.3,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 1196,
+    "title": "無職転生 ～異世界行ったら本気だす～ 第2クール",
+    "score": 51.4,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 1377,
+    "title": "結婚指輪物語Ⅱ",
+    "score": 54.7,
+    "class": "strong",
+    "franchise": "monogatari"
+   }
+  ],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1048,
+  "title": "JoJo's Bizarre Adventure (TV)",
+  "chinese_title": "ジョジョの奇妙な冒険 (TV)",
+  "slug": "jojo-s-bizarre-adventure-tv",
+  "page_url": "/anime/jojo-s-bizarre-adventure-tv/similar/",
+  "priority_band": "p70",
+  "priority": 79,
+  "score": 7.7,
+  "year": 2012,
+  "genres": [
+   "动作",
+   "冒险",
+   "超自然"
+  ],
+  "studio": "david production",
+  "episodes": 26,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1488,
+    "title": "ジョジョの奇妙な冒険 スターダストクルセイダース",
+    "score": 80.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1115,
+    "title": "BLEACH 千年血戦篇-相剋譚-",
+    "score": 66.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1091,
+    "title": "BLEACH 千年血戦篇",
+    "score": 65.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1125,
+    "title": "BLEACH 千年血戦篇-訣別譚-",
+    "score": 63.8,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1081,
+    "title": "BLEACH 千年血戦篇-禍進譚-",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 2252,
+    "title": "無限の住人-IMMORTAL-",
+    "score": 69.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1891,
+    "title": "逃げ上手の若君",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1046,
+    "title": "鬼滅の刃 遊郭編",
+    "score": 58.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1488,
+    "title": "ジョジョの奇妙な冒険 スターダストクルセイダース",
+    "score": 80.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1115,
+    "title": "BLEACH 千年血戦篇-相剋譚-",
+    "score": 66.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1091,
+    "title": "BLEACH 千年血戦篇",
+    "score": 65.0,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 2252,
+    "title": "無限の住人-IMMORTAL-",
+    "score": 69.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1891,
+    "title": "逃げ上手の若君",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1046,
+    "title": "鬼滅の刃 遊郭編",
+    "score": 58.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1504,
+    "title": "ジョジョの奇妙な冒険 スターダストクルセイダース エジプト編",
+    "score": 66.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1070,
+    "title": "Soul Eater",
+    "score": 57.3,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1125,
+    "title": "BLEACH 千年血戦篇-訣別譚-",
+    "score": 63.8,
+    "class": "strong",
+    "franchise": "bleach"
+   },
+   {
+    "id": 1081,
+    "title": "BLEACH 千年血戦篇-禍進譚-",
+    "score": 62.2,
+    "class": "strong",
+    "franchise": "bleach"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 1051,
+  "title": "One-Punch Man Season 2",
+  "chinese_title": "One-Punch Man Season 2",
+  "slug": "one-punch-man-season-2",
+  "page_url": "/anime/one-punch-man-season-2/similar/",
+  "priority_band": "p70",
+  "priority": 78,
+  "score": 7.4,
+  "year": 2019,
+  "genres": [
+   "动作",
+   "喜剧",
+   "科幻",
+   "超自然"
+  ],
+  "studio": "J.C.STAFF",
+  "episodes": 12,
+  "franchise": "one-punch-man",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 1008,
+    "title": "One-Punch Man",
+    "score": 82.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 2245,
+    "title": "One-Punch Man Season 2 OVA",
+    "score": 85.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1347,
+    "title": "One-Punch Man Season 3",
+    "score": 74.5,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3209,
+    "title": "One-Punch Man OVA",
+    "score": 80.3,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3162,
+    "title": "One-Punch Man: Road to Hero",
+    "score": 79.4,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1381,
+    "title": "アンデッドアンラック Winter編",
+    "score": 72.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1765,
+    "title": "Undead Unluck",
+    "score": 73.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3142,
+    "title": "終わりのセラフ「終わらないセラフ」",
+    "score": 71.9,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 1008,
+    "title": "One-Punch Man",
+    "score": 82.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 2245,
+    "title": "One-Punch Man Season 2 OVA",
+    "score": 85.0,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 1381,
+    "title": "アンデッドアンラック Winter編",
+    "score": 72.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1765,
+    "title": "Undead Unluck",
+    "score": 73.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 3142,
+    "title": "終わりのセラフ「終わらないセラフ」",
+    "score": 71.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1063,
+    "title": "僕のヒーローアカデミア５",
+    "score": 62.6,
+    "class": "strong",
+    "franchise": "my-hero-academia"
+   },
+   {
+    "id": 1062,
+    "title": "文豪ストレイドッグス",
+    "score": 58.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 1986,
+    "title": "モブサイコ100 REIGEN ～知られざる奇跡の霊能力者～",
+    "score": 67.5,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 1347,
+    "title": "One-Punch Man Season 3",
+    "score": 74.5,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3209,
+    "title": "One-Punch Man OVA",
+    "score": 80.3,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   },
+   {
+    "id": 3162,
+    "title": "One-Punch Man: Road to Hero",
+    "score": 79.4,
+    "class": "strong",
+    "franchise": "one-punch-man"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 5,
+  "title": "火影忍者",
+  "chinese_title": "火影忍者",
+  "slug": "火影忍者",
+  "page_url": "/anime/火影忍者/similar/",
+  "priority_band": "p60",
+  "priority": 69,
+  "score": 8.5,
+  "year": 2002,
+  "genres": [
+   "热血",
+   "冒险"
+  ],
+  "studio": "Pierrot",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "old",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 4,
+    "title": "海贼王",
+    "score": 93.9,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 733,
+    "title": "火影忍者疾风传",
+    "score": 85.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 84,
+    "title": "全职猎人",
+    "score": 86.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 736,
+    "title": "海贼王东海篇",
+    "score": 86.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 734,
+    "title": "火影忍者剧场版",
+    "score": 86.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 831,
+    "title": "海贼王粉丝来信",
+    "score": 79.7,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 25,
+    "title": "钢之炼金术师FA",
+    "score": 81.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 738,
+    "title": "海贼王蛋头岛篇",
+    "score": 79.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 4,
+    "title": "海贼王",
+    "score": 93.9,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 733,
+    "title": "火影忍者疾风传",
+    "score": 85.3,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 84,
+    "title": "全职猎人",
+    "score": 86.7,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 736,
+    "title": "海贼王东海篇",
+    "score": 86.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 734,
+    "title": "火影忍者剧场版",
+    "score": 86.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 25,
+    "title": "钢之炼金术师FA",
+    "score": 81.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 160,
+    "title": "黑色四叶草",
+    "score": 77.5,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 161,
+    "title": "七大罪续篇",
+    "score": 77.1,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 831,
+    "title": "海贼王粉丝来信",
+    "score": 79.7,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 738,
+    "title": "海贼王蛋头岛篇",
+    "score": 79.3,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 968,
+    "title": "海贼王重制版",
+    "score": 78.9,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 165,
+    "title": "海贼王剧场版RED",
+    "score": 78.2,
+    "class": "strong",
+    "franchise": "one-piece"
+   },
+   {
+    "id": 737,
+    "title": "海贼王和之国篇",
+    "score": 78.9,
+    "class": "strong",
+    "franchise": "one-piece"
+   }
+  ],
+  "before_unique_franchises": 2,
+  "after_unique_franchises": 2,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 173,
+  "title": "Frieren Season 2",
+  "chinese_title": "葬送的芙莉莲第二季",
+  "slug": "frieren-season-2",
+  "page_url": "/anime/frieren-season-2/similar/",
+  "priority_band": "p60",
+  "priority": 69,
+  "score": 8.8,
+  "year": 2024,
+  "genres": [
+   "奇幻",
+   "冒险"
+  ],
+  "studio": "MADHOUSE",
+  "episodes": 12,
+  "franchise": "frieren",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 99.3,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 445,
+    "title": "葬送的芙莉莲剧场版",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 999,
+    "title": "来自深渊第三季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 834,
+    "title": "葬送的芙莉莲第三季",
+    "score": 97.6,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 169,
+    "title": "无职转生第二季",
+    "score": 97.4,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 997,
+    "title": "来自深渊第二季",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 612,
+    "title": "铃芽之旅",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 99.3,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 999,
+    "title": "来自深渊第三季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 169,
+    "title": "无职转生第二季",
+    "score": 97.4,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 997,
+    "title": "来自深渊第二季",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 612,
+    "title": "铃芽之旅",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 178,
+    "title": "转生成史莱姆第三季",
+    "score": 97.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 137,
+    "title": "来自深渊",
+    "score": 91.2,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 445,
+    "title": "葬送的芙莉莲剧场版",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 834,
+    "title": "葬送的芙莉莲第三季",
+    "score": 97.6,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 293,
+    "title": "转生成史莱姆剧场版",
+    "score": 94.4,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 177,
+    "title": "转生成史莱姆第二季",
+    "score": 94.2,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 8,
+    "title": "葬送的芙莉莲",
+    "score": 89.4,
+    "class": "strong",
+    "franchise": "frieren"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 442,
+  "title": "Dungeon Meshi",
+  "chinese_title": "迷宫饭",
+  "slug": "dungeon-meshi",
+  "page_url": "/anime/dungeon-meshi/similar/",
+  "priority_band": "p60",
+  "priority": 69,
+  "score": 8.7,
+  "year": 2024,
+  "genres": [
+   "奇幻",
+   "美食"
+  ],
+  "studio": "TRIGGER",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 518,
+    "title": "甜点转生",
+    "score": 94.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 327,
+    "title": "异世界居酒屋",
+    "score": 89.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 433,
+    "title": "我独自升级",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 52.3,
+    "class": "reasonable",
+    "franchise": "frieren"
+   },
+   {
+    "id": 557,
+    "title": "当哒当",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 487,
+    "title": "命运之夜奇异赝品",
+    "score": 50.7,
+    "class": "reasonable",
+    "franchise": "fate"
+   },
+   {
+    "id": 829,
+    "title": "鬼灭之刃柱训练篇",
+    "score": 53.0,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "frieren"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 518,
+    "title": "甜点转生",
+    "score": 94.1,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 327,
+    "title": "异世界居酒屋",
+    "score": 89.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 433,
+    "title": "我独自升级",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 52.3,
+    "class": "reasonable",
+    "franchise": "frieren"
+   },
+   {
+    "id": 557,
+    "title": "当哒当",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 487,
+    "title": "命运之夜奇异赝品",
+    "score": 50.7,
+    "class": "reasonable",
+    "franchise": "fate"
+   },
+   {
+    "id": 829,
+    "title": "鬼灭之刃柱训练篇",
+    "score": 53.0,
+    "class": "reasonable",
+    "franchise": "none"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 52.6,
+    "class": "reasonable",
+    "franchise": "frieren"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 173,
+    "title": "葬送的芙莉莲第二季",
+    "score": 53.0,
+    "class": "reasonable",
+    "franchise": "frieren"
+   },
+   {
+    "id": 989,
+    "title": "怪物物语",
+    "score": 52.3,
+    "class": "reasonable",
+    "franchise": "monogatari"
+   },
+   {
+    "id": 445,
+    "title": "葬送的芙莉莲剧场版",
+    "score": 51.8,
+    "class": "reasonable",
+    "franchise": "frieren"
+   },
+   {
+    "id": 440,
+    "title": "咒术回战涩谷事变",
+    "score": 51.8,
+    "class": "reasonable",
+    "franchise": "jujutsu-kaisen"
+   },
+   {
+    "id": 834,
+    "title": "葬送的芙莉莲第三季",
+    "score": 50.6,
+    "class": "reasonable",
+    "franchise": "frieren"
+   },
+   {
+    "id": 163,
+    "title": "咒术回战0剧场版",
+    "score": 48.3,
+    "class": "reasonable",
+    "franchise": "jujutsu-kaisen"
+   },
+   {
+    "id": 427,
+    "title": "不死者之王圣王国篇",
+    "score": 51.5,
+    "class": "reasonable",
+    "franchise": "overlord"
+   },
+   {
+    "id": 828,
+    "title": "咒术回战剧场版2",
+    "score": 50.7,
+    "class": "reasonable",
+    "franchise": "jujutsu-kaisen"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 445,
+  "title": "Frieren Movie",
+  "chinese_title": "葬送的芙莉莲剧场版",
+  "slug": "frieren-movie",
+  "page_url": "/anime/frieren-movie/similar/",
+  "priority_band": "p60",
+  "priority": 69,
+  "score": 8.8,
+  "year": 2025,
+  "genres": [
+   "奇幻",
+   "冒险"
+  ],
+  "studio": "MADHOUSE",
+  "episodes": 12,
+  "franchise": "frieren",
+  "era": "recent",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 98.1,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 999,
+    "title": "来自深渊第三季",
+    "score": 100.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 834,
+    "title": "葬送的芙莉莲第三季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 173,
+    "title": "葬送的芙莉莲第二季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 98.4,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 169,
+    "title": "无职转生第二季",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 997,
+    "title": "来自深渊第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 612,
+    "title": "铃芽之旅",
+    "score": 95.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 441,
+    "title": "葬送的芙莉莲2",
+    "score": 98.1,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 999,
+    "title": "来自深渊第三季",
+    "score": 100.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 834,
+    "title": "葬送的芙莉莲第三季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 169,
+    "title": "无职转生第二季",
+    "score": 96.2,
+    "class": "strong",
+    "franchise": "mushoku-tensei"
+   },
+   {
+    "id": 997,
+    "title": "来自深渊第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 612,
+    "title": "铃芽之旅",
+    "score": 95.0,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 178,
+    "title": "转生成史莱姆第三季",
+    "score": 95.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 137,
+    "title": "来自深渊",
+    "score": 90.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [
+   {
+    "id": 173,
+    "title": "葬送的芙莉莲第二季",
+    "score": 98.8,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 552,
+    "title": "葬送的芙莉莲特辑",
+    "score": 98.4,
+    "class": "strong",
+    "franchise": "frieren"
+   },
+   {
+    "id": 293,
+    "title": "转生成史莱姆剧场版",
+    "score": 93.2,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 177,
+    "title": "转生成史莱姆第二季",
+    "score": 93.0,
+    "class": "strong",
+    "franchise": "slime"
+   },
+   {
+    "id": 8,
+    "title": "葬送的芙莉莲",
+    "score": 88.2,
+    "class": "strong",
+    "franchise": "frieren"
+   }
+  ],
+  "before_unique_franchises": 3,
+  "after_unique_franchises": 3,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ },
+ {
+  "anime_id": 808,
+  "title": "Kaguya-sama Love is War OVA",
+  "chinese_title": "辉夜大小姐OVA",
+  "slug": "kaguya-sama-love-is-war-ova",
+  "page_url": "/anime/kaguya-sama-love-is-war-ova/similar/",
+  "priority_band": "p60",
+  "priority": 69,
+  "score": 8.4,
+  "year": 2021,
+  "genres": [
+   "恋爱",
+   "校园"
+  ],
+  "studio": "A-1 Pictures",
+  "episodes": 12,
+  "franchise": "none",
+  "era": "mid",
+  "total_candidates": 24,
+  "before_cap": [
+   {
+    "id": 179,
+    "title": "堀与宫村",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 187,
+    "title": "五等分的新娘第二季",
+    "score": 98.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 537,
+    "title": "擅长捉弄的高木同学第三季",
+    "score": 98.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 204,
+    "title": "辉夜大小姐最终季",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 203,
+    "title": "辉夜大小姐第三季",
+    "score": 97.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 542,
+    "title": "我心里危险的东西",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 579,
+    "title": "青春猪头少年不会梦到怀梦美少女",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 543,
+    "title": "我心里危险的东西第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "after_cap": [
+   {
+    "id": 179,
+    "title": "堀与宫村",
+    "score": 99.6,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 187,
+    "title": "五等分的新娘第二季",
+    "score": 98.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 537,
+    "title": "擅长捉弄的高木同学第三季",
+    "score": 98.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 204,
+    "title": "辉夜大小姐最终季",
+    "score": 96.9,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 203,
+    "title": "辉夜大小姐第三季",
+    "score": 97.4,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 542,
+    "title": "我心里危险的东西",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 579,
+    "title": "青春猪头少年不会梦到怀梦美少女",
+    "score": 97.2,
+    "class": "strong",
+    "franchise": "none"
+   },
+   {
+    "id": 543,
+    "title": "我心里危险的东西第二季",
+    "score": 96.0,
+    "class": "strong",
+    "franchise": "none"
+   }
+  ],
+  "skipped_by_cap": [],
+  "before_unique_franchises": 1,
+  "after_unique_franchises": 1,
+  "tech": {
+   "status": 200,
+   "zh_reason_leak": false,
+   "zh_badge_leak": false,
+   "robots_index": true,
+   "title_ok": true,
+   "h1_ok": true,
+   "desc_ok": true,
+   "jsonld_blocks": 4,
+   "internal_links": 9
+  }
+ }
+]

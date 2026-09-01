@@ -63,6 +63,14 @@ test("buildLedeIntro omits missing fields", () => {
   assert.equal(lede, "AoT is a Action title from 2013");
 });
 
+test("buildLedeIntro never leaks non-ASCII studio names", () => {
+  const zh = buildLedeIntro({ title: "DBZ", genre: "动作", studio: "东映动画" });
+  assert.ok(!/[\u4e00-\u9fff]/.test(zh), "Chinese studio dropped");
+  assert.equal(zh, "DBZ is a Action title");
+  const en = buildLedeIntro({ title: "Monster", genre: "心理", studio: "MADHOUSE" });
+  assert.ok(en.endsWith("by MADHOUSE"), "ASCII studio kept");
+});
+
 test("buildLedeIntro falls back without inventing facts when nothing is available", () => {
   assert.equal(buildLedeIntro({ title: "X" }), "If you enjoyed X");
   // unknown genres are dropped; only real episode count is used; no Chinese

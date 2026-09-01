@@ -33,7 +33,8 @@ export function buildLedeIntro(anime: LedeSource): string {
   }
   if (anime.year) bits.push(`from ${anime.year}`);
   const studio = (anime.studio || "").trim();
-  if (studio) bits.push(`by ${studio}`);
+  // Studio names may be raw Chinese in the DB; never leak CJK into English copy.
+  if (studio && /^[\x00-\x7F]+$/.test(studio)) bits.push(`by ${studio}`);
   if (!bits.length) return `If you enjoyed ${name}`;
   return `${name} is ${bits.join(" ")}`;
 }
