@@ -84,11 +84,17 @@ def main():
     # ---- 4. 全局角色去重风险：同 source_id 跨 anime ----
     print("\n[4] 同 source_id 跨 anime 的角色（合法=同 franchise 多作品；异常=无关作品）:")
     from sqlalchemy import text
+    from app.database import engine as _engine
+    # 兼容 SQLite（GROUP_CONCAT）与 PostgreSQL（STRING_AGG）
+    if _engine.dialect.name == "postgresql":
+        agg = "STRING_AGG(DISTINCT a.title, '|')", "STRING_AGG(DISTINCT a.slug, '|')"
+    else:
+        agg = "GROUP_CONCAT(DISTINCT a.title)", "GROUP_CONCAT(DISTINCT a.slug)"
     rows = db.execute(text(
-        "SELECT c.source_id, COUNT(DISTINCT c.anime_id) n_anime, "
-        "GROUP_CONCAT(DISTINCT a.title) titles, GROUP_CONCAT(DISTINCT a.slug) slugs "
-        "FROM characters c JOIN anime a ON a.id=c.anime_id "
-        "WHERE c.source_id != '' GROUP BY c.source_id HAVING n_anime > 1")).fetchall()
+        f"SELECT c.source_id, COUNT(DISTINCT c.anime_id) n_anime, "
+        f"{agg[0]} titles, {agg[1]} slugs "
+        f"FROM characters c JOIN anime a ON a.id=c.anime_id "
+        f"WHERE c.source_id != '' GROUP BY c.source_id HAVING n_anime > 1")).fetchall()
     if not rows:
         print("    无（每个角色只绑定一个 anime）")
     for r in rows[:20]:
