@@ -75,16 +75,51 @@ print('japanese_title' in cols, 'romaji_title' in cols, 'aliases' in cols)
 ```bash
 # ④ dry-run（只统计不写库）
 docker compose exec backend python scripts/import_anime_anilist.py --dry-run
-# 预期（本地实测口径）：
+# 预期（数学推导，生产 1479 起点）：
 #   source_total=2981
-#   new≈2128      ← Phase 35-37 累计新增
-#   duplicate≈853（478 旧外部 ID + 125 标题 + 候选内互重）
-#   invalid≈223   ← 格式非 TV/MOVIE/ONA/OVA/SPECIAL
+#   new≈2128      ← 精确值（推导见下）
+#   duplicate≈853
+#   invalid≈223   ← 格式非 TV/MOVIE/ONA/OVA/SPECIAL（19+72+132 累计）
 #   updated=0 / skipped=0 / failed=0
-# 若 new 远小于 2128：停止，检查 candidates 是否 2981 条、DB 是否已被部分导入
+# 若 new 显著偏离 2128（如 0 或 <500）：停止，检查 candidates 是否 2981 条、DB 初始库是否 1479
+```
 
-# ⑤ 检查通过后正式导入（幂等，可重跑）
+### dry-run new=2128 的数学推导（为什么生产起点 1479 时精确成立）
+
+```
+前提：
+- 本地 Phase 37 库 = 2723 = 1479（原始）+ 485（P35）+ 759（P36）[生产 = 1479，即本地原始子集]
+- 本地从 2723 导入 2981 候选 → new_local = 884（实测）
+- 生产 1479 ⊆ 本地 2723；本地比生产多的 1244 条（485+759）全部来自候选
+
+推导：
+new_prod = 候选 2981 中不在生产 1479 的
+        = (不在本地 2723 的 884) + (在本地 2723 但不在生产 1479 的 1244)
+        = 884 + 1244
+        = 2128
+
+即：生产一次导入 2981 候选，会得到 485(P35) + 759(P36) + 884(P37) = 2128 全部新增。
+```
+
+> 验证：`duplicate_prod` = 2981 − 2128 − 223(invalid) = 630（生产 1479 中与候选匹配的 + 候选内部 title 重复），合理范围 600-900。
+
+### dry-run 通过标准
+- [ ] `new` 在 2000–2250 区间
+- [ ] `failed=0`、`updated=0`
+- [ ] `invalid` ≈ 223（±10）
+- [ ] 3 列已验证存在（True True True）
+
+### ⑤ 检查通过后正式导入（幂等，可重跑，不会覆盖已有数据）
+
+```bash
 docker compose exec backend python scripts/import_anime_anilist.py
+# 预期：new≈2128（与 dry-run 一致）
+# 导入完成后验证：
+docker compose exec backend python -c "
+from app.database import SessionLocal
+from app.models import Anime
+print('anime count:', SessionLocal().query(Anime).count())   # 预期 3607
+print('localized:', SessionLocal().query(Anime).filter(Anime.japanese_title != '').count())  # 预期 2607"
 ```
 
 ## 5. 多语言回填（可选但推荐，479 条旧数据）
@@ -124,7 +159,7 @@ docker compose exec backend python scripts/phase15_quality_scan.py   # 若存在
 
 - [ ] `git log -1` = 0c75a52
 - [ ] candidates records = **2981**
-- [ ] dry-run `new` ≈ **2128**（±50 合理，因为生产初始库可能是 1479 而非本地 2723 起点——生产从 1479 导入 2981 候选时 new 可能更高；以实际为准，但不应为 0）
+- [ ] dry-run `new` = **2128**（数学推导：884 不在本地2723 + 1244 本地多出且来自候选；±50 内均视为通过，若生产初始库非 1479 则按实际，但不应为 0）
 - [ ] dry-run `failed=0`、`updated=0`
 - [ ] duplicate/invalid 比率合理（≠100%）
 - [ ] 3 列已验证存在（True True True）
