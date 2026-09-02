@@ -1,0 +1,68 @@
+{
+  "phase": "44.3",
+  "type": "production_parity + english_entity_data_gap_audit",
+  "date": "2026-09-01",
+  "read_only": true,
+  "evidence_policy": "Local DB/API/SSR measured (Observed); production runtime measured via public endpoints; no GSC data; no SERP claims",
+  "repository": {
+    "local_head": "e779730",
+    "origin_main": "e779730",
+    "phase_40a_commit": "55c9e88"
+  },
+  "production": {
+    "domain": "https://bunivoa.com",
+    "backend_version": "1.7.0",
+    "phase_40a_deployed": false,
+    "runtime_evidence": [
+      "GET /api/characters -> 480 items, keys=[anime_slug,id,name,slug,voice_actors], NO name_en/native_name",
+      "GET /api/characters/gojo-satoru -> {name:'五条悟', name_en:'Satoru Gojo', native_name:null} (native_name is the 40-A addition -> missing)",
+      "/anime/kaiju-no-8/ character card shows 日比野卡夫卡 (not English-first Kafka Hibino)",
+      "/character/gojo-satoru/ H1 = 五条悟 (not Satoru Gojo)"
+    ],
+    "deployment_command": "git pull && docker compose build backend frontend && docker compose up -d backend frontend (on production host; requires repo containing 55c9e88)"
+  },
+  "english_entity_audit": {
+    "total_anime": 3607,
+    "fields": ["title", "chinese_title", "japanese_title", "romaji_title", "aliases"],
+    "has_english_title_column": false,
+    "class_A_english_usable": 3492,
+    "class_E_chinese_title_legacy": 115,
+    "class_E_indexable": 115,
+    "class_E_priority_ge_60": 58,
+    "class_E_chinese_slug": 112,
+    "class_E_with_external_id": 0,
+    "class_E_verified_counterpart": 53,
+    "class_E_reverse_verified_counterpart": "~all remaining (chinese_title inconsistency on English entities)",
+    "backfill_candidates": 0,
+    "manual_review": "~5-10 (e.g. Mushishi id40, Yuri on Ice id21)"
+  },
+  "key_finding": "The 115 Chinese-title entities are Phase-35-era legacy records duplicating the same works as the English entities added in Phase 35-37 (which carry anilist_ids). They are NOT backfill candidates; adding English titles would worsen the duplicate-name confusion. Correct path = separate data-governance phase (legacy->canonical mapping + redirect risk assessment), which is out of scope here.",
+  "seo_surface_impact": {
+    "class_A_3492": "no impact - English titles throughout",
+    "class_E_115": [
+      "title/H1/meta/OG use Chinese entity name",
+      "sitemap contains 115 Chinese-slug URLs",
+      "displayName (cards) shows Chinese",
+      "duplicate-content risk vs English counterpart pages",
+      "note: Chinese here is entity name, not template leak (template verified clean in 44.1/44.2)"
+    ]
+  },
+  "blockers": [
+    "real GSC US CSV not provided",
+    "Google US/ES/JP SERP unavailable",
+    "Phase 40-A not deployed to production (confirmed, needs host execution)",
+    "115 legacy Chinese entities duplicate English entities (governance decision needed)",
+    "minor manual-review cases (Mushishi etc.)"
+  ],
+  "recommended_next_phase": "Fix data-source issues first (deploy 40-A; design legacy-entity governance)",
+  "tests": {
+    "backend_pytest": "44 passed",
+    "frontend_test": "14 passed",
+    "typecheck": "pass",
+    "no_code_changes": true
+  },
+  "prohibitions_observed": [
+    "no SEO expansion", "no guessed keywords", "no merge/delete/slug changes",
+    "no DB write", "no importer rerun", "no backfill executed", "no production deployment"
+  ]
+}
