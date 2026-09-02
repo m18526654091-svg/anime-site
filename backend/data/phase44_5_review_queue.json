@@ -1,0 +1,2861 @@
+{
+ "queue_size": 54,
+ "items": [
+  {
+   "legacy_anime_id": 1,
+   "legacy_title": "进击的巨人",
+   "legacy_slug": "进击的巨人",
+   "legacy_year": 2013,
+   "legacy_episodes": 87,
+   "legacy_chinese_title": "进击的巨人",
+   "legacy_status": "完结",
+   "franchise": "attack-on-titan",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 164,
+     "title": "Attack on Titan Final Season",
+     "slug": "attack-on-titan-final-season",
+     "year": 2020,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "164": {
+     "status": "ok",
+     "anilist_id": 110277,
+     "mal_id": 40028,
+     "english": "Attack on Titan Final Season",
+     "native": "進撃の巨人 The Final Season",
+     "year": 2020,
+     "episodes": 16,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2020 vs legacy 2013"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 2,
+   "legacy_title": "鬼灭之刃",
+   "legacy_slug": "鬼灭之刃",
+   "legacy_year": 2019,
+   "legacy_episodes": 26,
+   "legacy_chinese_title": "鬼灭之刃",
+   "legacy_status": "连载中",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 162,
+     "title": "Demon Slayer Mugen Train",
+     "slug": "demon-slayer-mugen-train",
+     "year": 2020,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 171,
+     "title": "Demon Slayer Swordsmith Village",
+     "slug": "demon-slayer-swordsmith-village",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 439,
+     "title": "Demon Slayer Infinity Castle",
+     "slug": "demon-slayer-infinity-castle",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 829,
+     "title": "Demon Slayer Hashira",
+     "slug": "demon-slayer-hashira",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "162": {
+     "status": "ok",
+     "anilist_id": 112151,
+     "mal_id": 40456,
+     "english": "Demon Slayer -Kimetsu no Yaiba- The Movie: Mugen Train",
+     "native": "鬼滅の刃 無限列車編",
+     "year": 2020,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "4 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 3,
+   "legacy_title": "咒术回战",
+   "legacy_slug": "咒术回战",
+   "legacy_year": 2020,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "咒术回战",
+   "legacy_status": "连载",
+   "franchise": "jujutsu-kaisen",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 163,
+     "title": "Jujutsu Kaisen 0",
+     "slug": "jujutsu-kaisen-0",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 440,
+     "title": "Jujutsu Kaisen Shibuya",
+     "slug": "jujutsu-kaisen-shibuya",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 828,
+     "title": "Jujutsu Kaisen Movie 2",
+     "slug": "jujutsu-kaisen-movie-2",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "163": {
+     "status": "ok",
+     "anilist_id": 131573,
+     "mal_id": 48561,
+     "english": "JUJUTSU KAISEN 0",
+     "native": "呪術廻戦 0",
+     "year": 2021,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 4,
+   "legacy_title": "海贼王",
+   "legacy_slug": "海贼王",
+   "legacy_year": 1999,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "海贼王",
+   "legacy_status": "连载",
+   "franchise": "one-piece",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 165,
+     "title": "One Piece Film Red",
+     "slug": "one-piece-film-red",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 736,
+     "title": "One Piece East Blue",
+     "slug": "one-piece-east-blue",
+     "year": 1999,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 737,
+     "title": "One Piece Wano",
+     "slug": "one-piece-wano",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 738,
+     "title": "One Piece Egghead",
+     "slug": "one-piece-egghead",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 831,
+     "title": "One Piece Fan Letter",
+     "slug": "one-piece-fan-letter",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 968,
+     "title": "One Piece Remake",
+     "slug": "one-piece-remake",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "165": {
+     "status": "ok",
+     "anilist_id": 141902,
+     "mal_id": 50410,
+     "english": "One Piece Film: Red",
+     "native": "ONE PIECE FILM RED",
+     "year": 2022,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "6 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 5,
+   "legacy_title": "火影忍者",
+   "legacy_slug": "火影忍者",
+   "legacy_year": 2002,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "火影忍者",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 733,
+     "title": "Naruto Shippuden",
+     "slug": "naruto-shippuden",
+     "year": 2007,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 734,
+     "title": "Naruto Movie 1",
+     "slug": "naruto-movie-1",
+     "year": 2004,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "733": {
+     "status": "ok",
+     "anilist_id": 1735,
+     "mal_id": 1735,
+     "english": "Naruto: Shippuden",
+     "native": "NARUTO -ナルト- 疾風伝",
+     "year": 2007,
+     "episodes": 500,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2007 vs legacy 2002",
+    "type movie vs legacy tv"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 6,
+   "legacy_title": "间谍过家家",
+   "legacy_slug": "间谍过家家",
+   "legacy_year": 2022,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "间谍过家家",
+   "legacy_status": "连载",
+   "franchise": "spy-family",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 172,
+     "title": "Spy x Family Season 2",
+     "slug": "spy-x-family-season-2",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 830,
+     "title": "Spy x Family Code White",
+     "slug": "spy-x-family-code-white",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "172": {
+     "status": "ok",
+     "anilist_id": 158927,
+     "mal_id": 53887,
+     "english": "SPY x FAMILY Season 2",
+     "native": "SPY×FAMILY Season 2",
+     "year": 2023,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 7,
+   "legacy_title": "电锯人",
+   "legacy_slug": "电锯人",
+   "legacy_year": 2022,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "电锯人",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 827,
+     "title": "Chainsaw Man Movie",
+     "slug": "chainsaw-man-movie",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "827": {
+     "status": "ok",
+     "anilist_id": 171627,
+     "mal_id": 57555,
+     "english": "Chainsaw Man – The Movie: Reze Arc",
+     "native": "チェンソーマン レゼ篇",
+     "year": 2025,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2025 vs legacy 2022",
+    "type movie vs legacy tv"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 8,
+   "legacy_title": "葬送的芙莉莲",
+   "legacy_slug": "葬送的芙莉莲",
+   "legacy_year": 2023,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "葬送的芙莉莲",
+   "legacy_status": "完结",
+   "franchise": "frieren",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 173,
+     "title": "Frieren Season 2",
+     "slug": "frieren-season-2",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 441,
+     "title": "Frieren Beyond Journey's End",
+     "slug": "frieren-beyond-journey-s-end",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 445,
+     "title": "Frieren Movie",
+     "slug": "frieren-movie",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 552,
+     "title": "Frieren Beyond Journey",
+     "slug": "frieren-beyond-journey",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 834,
+     "title": "Frieren 3",
+     "slug": "frieren-3",
+     "year": 2026,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "173": {
+     "status": "ok",
+     "anilist_id": 182255,
+     "mal_id": 59978,
+     "english": "Frieren: Beyond Journey’s End Season 2",
+     "native": "葬送のフリーレン 第2期",
+     "year": 2026,
+     "episodes": 10,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "5 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 9,
+   "legacy_title": "我推的孩子",
+   "legacy_slug": "我推的孩子",
+   "legacy_year": 2023,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "我推的孩子",
+   "legacy_status": "连载",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 174,
+     "title": "Oshi no Ko Season 2",
+     "slug": "oshi-no-ko-season-2",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "174": {
+     "status": "ok",
+     "anilist_id": 166531,
+     "mal_id": 55791,
+     "english": "OSHI NO KO Season 2",
+     "native": "【推しの子】第2期",
+     "year": 2024,
+     "episodes": 13,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 10,
+   "legacy_title": "孤独摇滚！",
+   "legacy_slug": "孤独摇滚",
+   "legacy_year": 2022,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "孤独摇滚！",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 373,
+     "title": "Bocchi the Rock Movie",
+     "slug": "bocchi-the-rock-movie",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 507,
+     "title": "Bocchi the Rock! Live",
+     "slug": "bocchi-the-rock-live",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 826,
+     "title": "Bocchi the Rock 2",
+     "slug": "bocchi-the-rock-2",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "373": {
+     "status": "ok",
+     "anilist_id": 165253,
+     "mal_id": 55357,
+     "english": "BOCCHI THE ROCK! Recap Part 1",
+     "native": "ぼっち・ざ・ろっく！Re:",
+     "year": 2024,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 12,
+   "legacy_title": "石纪元",
+   "legacy_slug": "石纪元",
+   "legacy_year": 2019,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "石纪元",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 936,
+     "title": "Dr. Stone 4",
+     "slug": "dr-stone-4",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 937,
+     "title": "Dr. Stone Science Future",
+     "slug": "dr-stone-science-future",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "936": {
+     "status": "ok",
+     "anilist_id": 172019,
+     "mal_id": 57592,
+     "english": "Dr. STONE SCIENCE FUTURE",
+     "native": "Dr.STONE SCIENCE FUTURE",
+     "year": 2025,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2025 vs legacy 2019",
+    "year 2025 vs legacy 2019"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 13,
+   "legacy_title": "约定的梦幻岛",
+   "legacy_slug": "约定的梦幻岛",
+   "legacy_year": 2019,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "约定的梦幻岛",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 985,
+     "title": "The Promised Neverland 2",
+     "slug": "the-promised-neverland-2",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "985": {
+     "status": "ok",
+     "anilist_id": 108725,
+     "mal_id": 39617,
+     "english": "The Promised Neverland Season 2",
+     "native": "約束のネバーランド2",
+     "year": 2021,
+     "episodes": 11,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 14,
+   "legacy_title": "五等分的新娘",
+   "legacy_slug": "五等分的新娘",
+   "legacy_year": 2019,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "五等分的新娘",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 187,
+     "title": "Quintessential Quintuplets S2",
+     "slug": "quintessential-quintuplets-s2",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "187": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 15,
+   "legacy_title": "刀剑神域",
+   "legacy_slug": "刀剑神域",
+   "legacy_year": 2012,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "刀剑神域",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 166,
+     "title": "Sword Art Online Alicization",
+     "slug": "sword-art-online-alicization",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "166": {
+     "status": "ok",
+     "anilist_id": 100182,
+     "mal_id": 36474,
+     "english": "Sword Art Online: Alicization",
+     "native": "ソードアート・オンライン アリシゼーション",
+     "year": 2018,
+     "episodes": 24,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2018 vs legacy 2012"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 16,
+   "legacy_title": "一拳超人",
+   "legacy_slug": "一拳超人",
+   "legacy_year": 2015,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "一拳超人",
+   "legacy_status": "完结",
+   "franchise": "one-punch-man",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 779,
+     "title": "One Punch Man 2",
+     "slug": "one-punch-man-2",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 780,
+     "title": "One Punch Man 3",
+     "slug": "one-punch-man-3",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "779": {
+     "status": "ok",
+     "anilist_id": 97668,
+     "mal_id": 34134,
+     "english": "One-Punch Man Season 2",
+     "native": "ワンパンマン 2",
+     "year": 2019,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2019 vs legacy 2015",
+    "year 2025 vs legacy 2015"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 18,
+   "legacy_title": "排球少年！！",
+   "legacy_slug": "排球少年",
+   "legacy_year": 2014,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "排球少年！！",
+   "legacy_status": "完结",
+   "franchise": "haikyuu",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 157,
+     "title": "Haikyu To the Top",
+     "slug": "haikyu-to-the-top",
+     "year": 2020,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 382,
+     "title": "Haikyuu Movie",
+     "slug": "haikyuu-movie",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 759,
+     "title": "Haikyuu Season 2",
+     "slug": "haikyuu-season-2",
+     "year": 2015,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 760,
+     "title": "Haikyuu Season 3",
+     "slug": "haikyuu-season-3",
+     "year": 2016,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 852,
+     "title": "Haikyuu Final",
+     "slug": "haikyuu-final",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 853,
+     "title": "Haikyuu Final 2",
+     "slug": "haikyuu-final-2",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "157": {
+     "status": "ok",
+     "anilist_id": 106625,
+     "mal_id": 38883,
+     "english": "HAIKYU!! TO THE TOP",
+     "native": "ハイキュー!! TO THE TOP",
+     "year": 2020,
+     "episodes": 13,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "6 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 20,
+   "legacy_title": "黑子的篮球",
+   "legacy_slug": "黑子的篮球",
+   "legacy_year": 2012,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "黑子的篮球",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 158,
+     "title": "Kuroko's Basketball Last Game",
+     "slug": "kuroko-s-basketball-last-game",
+     "year": 2017,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "158": {
+     "status": "ok",
+     "anilist_id": 21377,
+     "mal_id": 31658,
+     "english": "Kuroko's Basketball: Last Game",
+     "native": "劇場版 黒子のバスケ Last Game",
+     "year": 2017,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2017 vs legacy 2012"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 22,
+   "legacy_title": "名侦探柯南",
+   "legacy_slug": "名侦探柯南",
+   "legacy_year": 1996,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "名侦探柯南",
+   "legacy_status": "连载",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 220,
+     "title": "Case Closed Movie 25",
+     "slug": "case-closed-movie-25",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 709,
+     "title": "Detective Conan Movie 26",
+     "slug": "detective-conan-movie-26",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 710,
+     "title": "Detective Conan Zero's Tea Time",
+     "slug": "detective-conan-zero-s-tea-time",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 711,
+     "title": "Detective Conan: The Culprit Hanzawa",
+     "slug": "detective-conan-the-culprit-hanzawa",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "220": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "4 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 23,
+   "legacy_title": "死亡笔记",
+   "legacy_slug": "死亡笔记",
+   "legacy_year": 2006,
+   "legacy_episodes": 37,
+   "legacy_chinese_title": "死亡笔记",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 716,
+     "title": "Death Note 2",
+     "slug": "death-note-2",
+     "year": 2006,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 953,
+     "title": "Death Note 3",
+     "slug": "death-note-3",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "716": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2025 vs legacy 2006"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 24,
+   "legacy_title": "命运石之门",
+   "legacy_slug": "命运石之门",
+   "legacy_year": 2011,
+   "legacy_episodes": 24,
+   "legacy_chinese_title": "命运石之门",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 942,
+     "title": "Steins;Gate 0",
+     "slug": "steins-gate-0",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 943,
+     "title": "Steins;Gate Movie",
+     "slug": "steins-gate-movie",
+     "year": 2013,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 947,
+     "title": "Steins Gate 0 2",
+     "slug": "steins-gate-0-2",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "942": {
+     "status": "ok",
+     "anilist_id": 21127,
+     "mal_id": 30484,
+     "english": "Steins;Gate 0",
+     "native": "シュタインズ・ゲート ゼロ",
+     "year": 2018,
+     "episodes": 23,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 32,
+   "legacy_title": "无职转生",
+   "legacy_slug": "无职转生",
+   "legacy_year": 2021,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "无职转生",
+   "legacy_status": "完结",
+   "franchise": "mushoku-tensei",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 169,
+     "title": "Mushoku Tensei Season 2",
+     "slug": "mushoku-tensei-season-2",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "169": {
+     "status": "ok",
+     "anilist_id": 146065,
+     "mal_id": 51179,
+     "english": "Mushoku Tensei: Jobless Reincarnation Season 2",
+     "native": "無職転生Ⅱ ～異世界行ったら本気だす～",
+     "year": 2023,
+     "episodes": 13,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 33,
+   "legacy_title": "转生恶役只好拔除破灭旗标",
+   "legacy_slug": "转生恶役只好拔除破灭旗标",
+   "legacy_year": 2020,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "转生恶役只好拔除破灭旗标",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 416,
+     "title": "Villainess 2",
+     "slug": "villainess-2",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "416": {
+     "status": "error",
+     "detail": "URLError"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 51,
+   "legacy_title": "声之形",
+   "legacy_slug": "声之形",
+   "legacy_year": 2016,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "声之形",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 607,
+     "title": "A Silent Voice Movie",
+     "slug": "a-silent-voice-movie",
+     "year": 2016,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "607": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "type movie vs legacy tv"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 54,
+   "legacy_title": "龙与虎",
+   "legacy_slug": "龙与虎",
+   "legacy_year": 2008,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "龙与虎",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 232,
+     "title": "Toradora Final",
+     "slug": "toradora-final",
+     "year": 2008,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "232": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 56,
+   "legacy_title": "轻音少女",
+   "legacy_slug": "轻音少女",
+   "legacy_year": 2009,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "轻音少女",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 251,
+     "title": "K-ON! Movie",
+     "slug": "k-on-movie",
+     "year": 2011,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 374,
+     "title": "K-On!!",
+     "slug": "k-on",
+     "year": 2010,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "251": {
+     "status": "ok",
+     "anilist_id": 9617,
+     "mal_id": 9617,
+     "english": "K-ON!: The Movie",
+     "native": "映画けいおん！",
+     "year": 2011,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "type movie vs legacy tv"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 59,
+   "legacy_title": "银魂",
+   "legacy_slug": "银魂",
+   "legacy_year": 2006,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "银魂",
+   "legacy_status": "完结",
+   "franchise": "gintama",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 214,
+     "title": "Gintama Season 2",
+     "slug": "gintama-season-2",
+     "year": 2011,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "214": {
+     "status": "ok",
+     "anilist_id": 9969,
+     "mal_id": 9969,
+     "english": "Gintama Season 2",
+     "native": "銀魂’",
+     "year": 2011,
+     "episodes": 51,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2011 vs legacy 2006"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 61,
+   "legacy_title": "食戟之灵",
+   "legacy_slug": "食戟之灵",
+   "legacy_year": 2015,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "食戟之灵",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 326,
+     "title": "Food Wars Season 3",
+     "slug": "food-wars-season-3",
+     "year": 2017,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "326": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 63,
+   "legacy_title": "天使的心跳",
+   "legacy_slug": "天使的心跳",
+   "legacy_year": 2010,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "天使的心跳",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 894,
+     "title": "Angel Beats 2",
+     "slug": "angel-beats-2",
+     "year": 2010,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "894": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 66,
+   "legacy_title": "四月是你的谎言",
+   "legacy_slug": "四月是你的谎言",
+   "legacy_year": 2014,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "四月是你的谎言",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 571,
+     "title": "Your Lie in April OVA",
+     "slug": "your-lie-in-april-ova",
+     "year": 2015,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "571": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 68,
+   "legacy_title": "狼与香辛料",
+   "legacy_slug": "狼与香辛料",
+   "legacy_year": 2008,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "狼与香辛料",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 418,
+     "title": "Spice and Wolf 2",
+     "slug": "spice-and-wolf-2",
+     "year": 2009,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 419,
+     "title": "Spice and Wolf Remake",
+     "slug": "spice-and-wolf-remake",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "418": {
+     "status": "ok",
+     "anilist_id": 5341,
+     "mal_id": 5341,
+     "english": "Spice and Wolf II",
+     "native": "狼と香辛料II",
+     "year": 2009,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2024 vs legacy 2008"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 69,
+   "legacy_title": "记录的地平线",
+   "legacy_slug": "记录的地平线",
+   "legacy_year": 2013,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "记录的地平线",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 295,
+     "title": "Log Horizon S2",
+     "slug": "log-horizon-s2",
+     "year": 2014,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 421,
+     "title": "Log Horizon 3",
+     "slug": "log-horizon-3",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "295": {
+     "status": "http_404"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2021 vs legacy 2013"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 72,
+   "legacy_title": "黄金神威",
+   "legacy_slug": "黄金神威",
+   "legacy_year": 2018,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "黄金神威",
+   "legacy_status": "完结",
+   "franchise": "golden-kamuy",
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 938,
+     "title": "Golden Kamuy 2",
+     "slug": "golden-kamuy-2",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 939,
+     "title": "Golden Kamuy 3",
+     "slug": "golden-kamuy-3",
+     "year": 2020,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 940,
+     "title": "Golden Kamuy 4",
+     "slug": "golden-kamuy-4",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 941,
+     "title": "Golden Kamuy Final",
+     "slug": "golden-kamuy-final",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "938": {
+     "status": "ok",
+     "anilist_id": 102977,
+     "mal_id": 37989,
+     "english": "Golden Kamuy Season 2",
+     "native": "ゴールデンカムイ 第二期",
+     "year": 2018,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "4 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 75,
+   "legacy_title": "灵能百分百",
+   "legacy_slug": "灵能百分百",
+   "legacy_year": 2016,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "灵能百分百",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 776,
+     "title": "Mob Psycho 100 II",
+     "slug": "mob-psycho-100-ii",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 777,
+     "title": "Mob Psycho 100 III",
+     "slug": "mob-psycho-100-iii",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 778,
+     "title": "Mob Psycho 100 Reigen",
+     "slug": "mob-psycho-100-reigen",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "776": {
+     "status": "ok",
+     "anilist_id": 101338,
+     "mal_id": 37510,
+     "english": "Mob Psycho 100 II",
+     "native": "モブサイコ100 II",
+     "year": 2019,
+     "episodes": 13,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 79,
+   "legacy_title": "数码宝贝大冒险",
+   "legacy_slug": "数码宝贝大冒险",
+   "legacy_year": 1999,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "数码宝贝大冒险",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 450,
+     "title": "Digimon Adventure 02",
+     "slug": "digimon-adventure-02",
+     "year": 2000,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "450": {
+     "status": "ok",
+     "anilist_id": 1313,
+     "mal_id": 1313,
+     "english": "Digimon: Digital Monsters 02",
+     "native": "デジモンアドベンチャー０２",
+     "year": 2000,
+     "episodes": 50,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 80,
+   "legacy_title": "精灵宝可梦",
+   "legacy_slug": "精灵宝可梦",
+   "legacy_year": 1997,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "精灵宝可梦",
+   "legacy_status": "连载",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 451,
+     "title": "Pokemon Journeys",
+     "slug": "pokemon-journeys",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "451": {
+     "status": "ok",
+     "anilist_id": 112153,
+     "mal_id": 40351,
+     "english": "Pokémon Journeys: The Series",
+     "native": "ポケットモンスター (2019)",
+     "year": 2019,
+     "episodes": 136,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2019 vs legacy 1997"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 81,
+   "legacy_title": "游戏王",
+   "legacy_slug": "游戏王",
+   "legacy_year": 2000,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "游戏王",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 260,
+     "title": "Yu-Gi-Oh! Zexal",
+     "slug": "yu-gi-oh-zexal",
+     "year": 2011,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 452,
+     "title": "Yugioh 5Ds",
+     "slug": "yugioh-5ds",
+     "year": 2008,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 453,
+     "title": "Yu-Gi-Oh! Vrains",
+     "slug": "yu-gi-oh-vrains",
+     "year": 2017,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "260": {
+     "status": "ok",
+     "anilist_id": 10015,
+     "mal_id": 10015,
+     "english": "Yu-Gi-Oh! Zexal",
+     "native": "遊☆戯☆王ZEXAL",
+     "year": 2011,
+     "episodes": 73,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 82,
+   "legacy_title": "妖精的尾巴",
+   "legacy_slug": "妖精的尾巴",
+   "legacy_year": 2009,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "妖精的尾巴",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 744,
+     "title": "Fairy Tail Final",
+     "slug": "fairy-tail-final",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 787,
+     "title": "Fairy Tail 2",
+     "slug": "fairy-tail-2",
+     "year": 2014,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 972,
+     "title": "Fairy Tail 100",
+     "slug": "fairy-tail-100",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "744": {
+     "status": "ok",
+     "anilist_id": 99749,
+     "mal_id": 35972,
+     "english": "Fairy Tail Final Season",
+     "native": "FAIRY TAIL (2018)",
+     "year": 2018,
+     "episodes": 51,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 83,
+   "legacy_title": "七大罪",
+   "legacy_slug": "七大罪",
+   "legacy_year": 2014,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "七大罪",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 161,
+     "title": "Nanatsu no Taizai",
+     "slug": "nanatsu-no-taizai",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 783,
+     "title": "Seven Deadly Sins 2",
+     "slug": "seven-deadly-sins-2",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 784,
+     "title": "Seven Deadly Sins 3",
+     "slug": "seven-deadly-sins-3",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 785,
+     "title": "Seven Deadly Sins 4",
+     "slug": "seven-deadly-sins-4",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 786,
+     "title": "Nanatsu no Taizai Movie",
+     "slug": "nanatsu-no-taizai-movie",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "161": {
+     "status": "ok",
+     "anilist_id": 154197,
+     "mal_id": 54778,
+     "english": null,
+     "native": "ホークのお悩み相談室 Special",
+     "year": 2020,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "5 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 86,
+   "legacy_title": "棒球大联盟",
+   "legacy_slug": "棒球大联盟",
+   "legacy_year": 2004,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "棒球大联盟",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 762,
+     "title": "Major 2",
+     "slug": "major-2",
+     "year": 2006,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "762": {
+     "status": "ok",
+     "anilist_id": 100306,
+     "mal_id": 36565,
+     "english": "MAJOR 2nd",
+     "native": "メジャー2nd",
+     "year": 2018,
+     "episodes": 25,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 88,
+   "legacy_title": "少女与战车",
+   "legacy_slug": "少女与战车",
+   "legacy_year": 2012,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "少女与战车",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 311,
+     "title": "Girls und Panzer Movie",
+     "slug": "girls-und-panzer-movie",
+     "year": 2015,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 797,
+     "title": "Girls Und Panzer Finale",
+     "slug": "girls-und-panzer-finale",
+     "year": 2017,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "311": {
+     "status": "ok",
+     "anilist_id": 18617,
+     "mal_id": 18617,
+     "english": "Girls und Panzer der Film",
+     "native": "ガールズ&パンツァー 劇場版",
+     "year": 2015,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2015 vs legacy 2012",
+    "type movie vs legacy tv",
+    "year 2017 vs legacy 2012"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 89,
+   "legacy_title": "摇曳露营△",
+   "legacy_slug": "摇曳露营",
+   "legacy_year": 2018,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "摇曳露营△",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 317,
+     "title": "Yuru Camp Season 2",
+     "slug": "yuru-camp-season-2",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "317": {
+     "status": "ok",
+     "anilist_id": 104459,
+     "mal_id": 38474,
+     "english": "LAID-BACK CAMP SEASON2",
+     "native": "ゆるキャン△ SEASON２",
+     "year": 2021,
+     "episodes": 13,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2021 vs legacy 2018"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 90,
+   "legacy_title": "小林家的龙女仆",
+   "legacy_slug": "小林家的龙女仆",
+   "legacy_year": 2017,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "小林家的龙女仆",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 333,
+     "title": "Miss Kobayashi Dragon Maid S",
+     "slug": "miss-kobayashi-dragon-maid-s",
+     "year": 2021,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "333": {
+     "status": "ok",
+     "anilist_id": 107717,
+     "mal_id": 39247,
+     "english": "Miss Kobayashi's Dragon Maid S",
+     "native": "小林さんちのメイドラゴンＳ",
+     "year": 2021,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2021 vs legacy 2017"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 92,
+   "legacy_title": "齐木楠雄的灾难",
+   "legacy_slug": "齐木楠雄的灾难",
+   "legacy_year": 2016,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "齐木楠雄的灾难",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 340,
+     "title": "Saiki Kusuo 2",
+     "slug": "saiki-kusuo-2",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "340": {
+     "status": "ok",
+     "anilist_id": 98034,
+     "mal_id": 34612,
+     "english": "The Disastrous Life of Saiki K. Season 2",
+     "native": "斉木楠雄のΨ難 2",
+     "year": 2018,
+     "episodes": 24,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 100,
+   "legacy_title": "某科学的超电磁炮",
+   "legacy_slug": "某科学的超电磁炮",
+   "legacy_year": 2009,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "某科学的超电磁炮",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 391,
+     "title": "Railgun T",
+     "slug": "railgun-t",
+     "year": 2020,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "391": {
+     "status": "ok",
+     "anilist_id": 104462,
+     "mal_id": 38481,
+     "english": "A Certain Scientific Railgun T",
+     "native": "とある科学の超電磁砲T",
+     "year": 2020,
+     "episodes": 25,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2020 vs legacy 2009"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 101,
+   "legacy_title": "黑之契约者",
+   "legacy_slug": "黑之契约者",
+   "legacy_year": 2007,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "黑之契约者",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 471,
+     "title": "Darker than Black 2",
+     "slug": "darker-than-black-2",
+     "year": 2009,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "471": {
+     "status": "ok",
+     "anilist_id": 6573,
+     "mal_id": 6573,
+     "english": "Darker than Black: Gemini of the Meteor",
+     "native": "DARKER THAN BLACK -流星の双子-",
+     "year": 2009,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 104,
+   "legacy_title": "攻壳机动队SAC",
+   "legacy_slug": "sac",
+   "legacy_year": 2002,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "攻壳机动队SAC",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 682,
+     "title": "Ghost in the Shell SAC 2nd",
+     "slug": "ghost-in-the-shell-sac-2nd",
+     "year": 2004,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "682": {
+     "status": "ok",
+     "anilist_id": 2448,
+     "mal_id": 2448,
+     "english": "Ghost in the Shell: S.A.C. 2nd GIG - Individual Eleven",
+     "native": "攻殻機動隊 S.A.C. 2nd GIG Individual Eleven",
+     "year": 2006,
+     "episodes": 1,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "substring evidence only"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 105,
+   "legacy_title": "心理测量者",
+   "legacy_slug": "心理测量者",
+   "legacy_year": 2012,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "心理测量者",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 718,
+     "title": "Psycho-Pass 3",
+     "slug": "psycho-pass-3",
+     "year": 2019,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 719,
+     "title": "Psycho-Pass Movie",
+     "slug": "psycho-pass-movie",
+     "year": 2015,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 720,
+     "title": "Psycho-Pass Providence",
+     "slug": "psycho-pass-providence",
+     "year": 2023,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "718": {
+     "status": "ok",
+     "anilist_id": 108307,
+     "mal_id": 39491,
+     "english": "PSYCHO-PASS 3",
+     "native": "PSYCHO-PASS サイコパス3",
+     "year": 2019,
+     "episodes": 8,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "3 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 108,
+   "legacy_title": "魔卡少女樱",
+   "legacy_slug": "魔卡少女樱",
+   "legacy_year": 1998,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "魔卡少女樱",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 449,
+     "title": "Cardcaptor Sakura Clear Card",
+     "slug": "cardcaptor-sakura-clear-card",
+     "year": 2018,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "449": {
+     "status": "ok",
+     "anilist_id": 97881,
+     "mal_id": 33354,
+     "english": "Cardcaptor Sakura: Clear Card",
+     "native": "カードキャプターさくら クリアカード編",
+     "year": 2018,
+     "episodes": 22,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2018 vs legacy 1998"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 109,
+   "legacy_title": "美少女战士",
+   "legacy_slug": "美少女战士",
+   "legacy_year": 1992,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "美少女战士",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 448,
+     "title": "Sailor Moon Crystal",
+     "slug": "sailor-moon-crystal",
+     "year": 2014,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "448": {
+     "status": "ok",
+     "anilist_id": 14751,
+     "mal_id": 14751,
+     "english": "Pretty Guardian Sailor Moon Crystal: Seasons 1-2",
+     "native": "美少女戦士セーラームーンCrystal",
+     "year": 2014,
+     "episodes": 26,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2014 vs legacy 1992"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 110,
+   "legacy_title": "魔法少女小圆",
+   "legacy_slug": "魔法少女小圆",
+   "legacy_year": 2011,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "魔法少女小圆",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 237,
+     "title": "Madoka Magica Movie",
+     "slug": "madoka-magica-movie",
+     "year": 2012,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 651,
+     "title": "Puella Magi Madoka 2",
+     "slug": "puella-magi-madoka-2",
+     "year": 2013,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 652,
+     "title": "Madoka Magica Rebellion",
+     "slug": "madoka-magica-rebellion",
+     "year": 2013,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 995,
+     "title": "Madoka Magica 3",
+     "slug": "madoka-magica-3",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 996,
+     "title": "Puella Magi Walpurgis",
+     "slug": "puella-magi-walpurgis",
+     "year": 2025,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "237": {
+     "status": "error",
+     "detail": "URLError"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "5 brand-substring candidates (mostly sequels/movies)"
+   ],
+   "conflicts": [
+    "multiple brand candidates - needs franchise/season disambiguation"
+   ],
+   "priority": "P0",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 112,
+   "legacy_title": "交响情人梦",
+   "legacy_slug": "交响情人梦",
+   "legacy_year": 2007,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "交响情人梦",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 573,
+     "title": "Nodame Cantabile Finale",
+     "slug": "nodame-cantabile-finale",
+     "year": 2010,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "573": {
+     "status": "ok",
+     "anilist_id": 5690,
+     "mal_id": 5690,
+     "english": null,
+     "native": "のだめカンタービレ フィナーレ",
+     "year": 2010,
+     "episodes": 11,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2010 vs legacy 2007"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 114,
+   "legacy_title": "好想告诉你",
+   "legacy_slug": "好想告诉你",
+   "legacy_year": 2009,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "好想告诉你",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 197,
+     "title": "Kimi ni Todoke Season 2",
+     "slug": "kimi-ni-todoke-season-2",
+     "year": 2011,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    },
+    {
+     "id": 604,
+     "title": "Kimi ni Todoke 3",
+     "slug": "kimi-ni-todoke-3",
+     "year": 2024,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "197": {
+     "status": "ok",
+     "anilist_id": 10536,
+     "mal_id": 10536,
+     "english": null,
+     "native": "君に届け ミニトド劇場",
+     "year": 2011,
+     "episodes": 3,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2024 vs legacy 2009"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 117,
+   "legacy_title": "灼眼的夏娜",
+   "legacy_slug": "灼眼的夏娜",
+   "legacy_year": 2005,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "灼眼的夏娜",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 229,
+     "title": "Shakugan no Shana III",
+     "slug": "shakugan-no-shana-iii",
+     "year": 2011,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "229": {
+     "status": "ok",
+     "anilist_id": 6773,
+     "mal_id": 6773,
+     "english": "Shakugan no Shana: Season III",
+     "native": "灼眼のシャナIII (Final)",
+     "year": 2011,
+     "episodes": 24,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2011 vs legacy 2005"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  },
+  {
+   "legacy_anime_id": 118,
+   "legacy_title": "约会大作战",
+   "legacy_slug": "约会大作战",
+   "legacy_year": 2013,
+   "legacy_episodes": 12,
+   "legacy_chinese_title": "约会大作战",
+   "legacy_status": "完结",
+   "franchise": null,
+   "anilist_id": null,
+   "mal_id": null,
+   "candidates": [
+    {
+     "id": 193,
+     "title": "Date A Live IV",
+     "slug": "date-a-live-iv",
+     "year": 2022,
+     "episodes": 12,
+     "anilist_id": null,
+     "kind": "brand_substring"
+    }
+   ],
+   "external": {
+    "193": {
+     "status": "ok",
+     "anilist_id": 116605,
+     "mal_id": 41461,
+     "english": "Date A Live IV",
+     "native": "デート・ア・ライブIV",
+     "year": 2022,
+     "episodes": 12,
+     "source": "anilist"
+    }
+   },
+   "identity_decision": "MANUAL_REVIEW_REQUIRED",
+   "confidence": "LOW",
+   "evidence": [
+    "brand-substring only (no exact chinese_title/alias equality)"
+   ],
+   "conflicts": [
+    "year 2022 vs legacy 2013"
+   ],
+   "priority": "P1",
+   "recommended_action": "MANUAL_REVIEW"
+  }
+ ]
+}
